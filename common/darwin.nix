@@ -46,11 +46,6 @@
     })
   ];
 
-  programs.fish = lib.optionalAttrs (lib.hasAttr "babelfish" pkgs) {
-    useBabelfish = true;
-    babelfishPackage = pkgs.babelfish;
-  };
-
   services.nix-daemon.enable = true;
 
   users.nix.configureBuildUsers = true;
