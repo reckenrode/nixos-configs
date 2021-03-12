@@ -1,0 +1,60 @@
+#!@fish@/bin/fish
+
+function canonicalize_path -a path
+    pushd (@coreutils@/bin/pwd)
+    cd $path && @coreutils@/bin/pwd
+    popd
+end
+
+function copy_pdfs_to_staging_area -a path -a staging_path
+    @coreutils@/bin/cp $path/*.pdf $staging_path
+end
+
+function run_tesseract -a path -a lang
+    pushd (@coreutils@/bin/pwd)
+    cd $path
+    for pdf in *.pdf
+        set pdfbase (@coreutils@/bin/basename -s .pdf $pdf)
+        @poppler_utils@/bin/pdfimages -all $pdf $pdfbase
+
+        # pdfimages only sets the DPI on JPEG images. Parse the output and use ImageMagick to
+        # set the DPI. Otherwise, tesseract will set the DPI to 72, which is usually wrong.
+        set images (@coreutils@/bin/ls -1 $pdfbase-*)
+        set dpis (@poppler_utils@/bin/pdfimages -list $pdf | @coreutils@/bin/tail -n +3 | @gawk@/bin/awk '{printf "%dx%d\n", $13, $14}')
+        for index in (@coreutils@/bin/seq (count $dpis))
+            @imagemagick7@/bin/magick -density $dpis[$index] -units PixelsPerInch $images[$index] $images[$index]
+        end
+
+        set input (@coreutils@/bin/mktemp -p (@coreutils@/bin/pwd))
+        @coreutils@/bin/ls -1 $pdfbase-* > $input
+
+        set outbase {$pdfbase}_output
+	if [ -z $lang ]
+            @tesseract4@/bin/tesseract $input $outbase pdf
+	else
+            @tesseract4@/bin/tesseract $input $outbase -l $lang pdf
+	end
+
+        @coreutils@/bin/rm $pdf
+    end
+    popd
+end
+
+function save_results -a path -a target_path
+    @coreutils@/bin/mv $path/*.pdf $target_path
+end
+
+function clean_up_staging -a path
+    @coreutils@/bin/rm -rf $path
+end
+
+argparse --name=ocr-documents 'l/lang=' -- $argv
+
+set lang $_flag_l
+set path (canonicalize_path $argv[1])
+set staging (@coreutils@/bin/mktemp -d)
+
+copy_pdfs_to_staging_area $path $staging
+run_tesseract $staging $lang
+save_results $staging $path
+clean_up_staging $staging
