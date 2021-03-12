@@ -7,4 +7,6 @@
   ];
 
   programs.fish.enable = true;
+
+  home.stateVersion = "20.09";
 }
