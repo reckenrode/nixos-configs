@@ -72,8 +72,7 @@
                 ++ lib.optional (lib.trivial.pathExists hostDir) hostDir;
               userModule = lib.trivial.pipe userDirs [
                 (map import)
-		(modules: {pkgs, config, options, ...}@args:
-		  (builtins.foldl' lib.recursiveUpdate {} (map (module: (module args)) modules)))
+		lib.mkMerge
               ];
             in {
               inherit name;
