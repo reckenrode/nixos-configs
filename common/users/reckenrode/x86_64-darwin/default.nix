@@ -5,6 +5,7 @@
     ./bear.nix
     ./fish.nix
     ./safari.nix
+    ./ssh.nix
     ./things3.nix
     ./tower.nix
   ];
