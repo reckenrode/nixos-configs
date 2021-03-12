@@ -44,7 +44,7 @@
                 else nixpkgs.lib.nixosSystem;
             in {
               inherit name;
-              value = nixSystem {
+              value = nixSystem ({
                 modules = [
                   (./hosts + "/${system}/${name}" + /configuration.nix)
                   homeManagerModules {
@@ -53,7 +53,7 @@
                     home-manager.users = mkHomeManagerConfig users;
                   }
                 ];
-              } // lib.optionalAttrs stdenv.isLinux { inherit system; };
+              } // lib.optionalAttrs stdenv.isLinux { inherit system; });
             };
 
           mkUser = name: {
