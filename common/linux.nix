@@ -3,6 +3,7 @@
 {
   imports = [
     ./automatic-upgrades.nix
+    ./base.nix
     ./firewall.nix
     ./nix-flakes.nix
     ./nix-optimizations.nix

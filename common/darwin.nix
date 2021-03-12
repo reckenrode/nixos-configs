@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./base.nix
     ./nix-flakes.nix
   ];
 
