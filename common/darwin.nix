@@ -29,12 +29,12 @@
           /usr/bin/codesign -fs - $out/bin/pngout
         '';
       });
-      trash_mac = pkgs.unstable.callPackage ../pkgs/trash_mac {};
-      waifu2x-converter-cpp = (pkgs.unstable.waifu2x-converter-cpp.overrideAttrs (old: rec {
+      trash_mac = pkgs.callPackage ../pkgs/trash_mac {};
+      waifu2x-converter-cpp = (prev.waifu2x-converter-cpp.overrideAttrs (old: rec {
         patches = [ ./files/waifu2x_darwin_build.diff ];   
         patchPhase = null;
         postPatch = old.patchPhase;
-        preFixup = lib.optional (!pkgs.stdenv.isDarwin) old.preFixup; 
+        preFixup = lib.optional prev.stdenv.isLinux old.preFixup; 
         meta = old.meta // {                                     
           platforms = old.meta.platforms ++ lib.platforms.darwin; 
         };

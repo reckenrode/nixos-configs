@@ -1,16 +1,22 @@
 {
+  # FIXME: macOS 11 has poor compatability with 20.09. It works if you can get packages from
+  # the binary cache, but it breaks as soon as you need to compile anything.  Revert this
+  # change once 21.05 is released.
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-20.09";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     darwin.url = "github:lnl7/nix-darwin/master";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
+    darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     home-manager.url = "github:nix-community/home-manager/release-20.09";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager-unstable.url = "github:nix-community/home-manager";
+    home-manager-unstable.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
-  outputs = { self, nixpkgs, darwin, home-manager, nixpkgs-unstable }:
+  outputs = { self, nixpkgs, darwin, home-manager, nixpkgs-unstable, home-manager-unstable }:
     let
       lib = nixpkgs.lib;
       systems = readDirNames ./hosts;
@@ -38,7 +44,7 @@
           mkHost = name:
             let
               homeManagerModules = if stdenv.isDarwin
-                then home-manager.darwinModules.home-manager
+                then home-manager-unstable.darwinModules.home-manager
                 else home-manager.nixosModules.home-manager;
               nixSystem = if stdenv.isDarwin
                 then darwin.lib.darwinSystem
