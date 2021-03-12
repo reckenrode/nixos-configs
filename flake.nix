@@ -31,7 +31,7 @@
           mkConfiguration = f: pred: lst:
             lib.optionalAttrs pred (builtins.listToAttrs (map f lst));
 
-          mkHomeManagerConfig = mkConfiguration mkUser true;
+          mkHomeManagerConfig = host: mkConfiguration (mkUser host) true;
 
           mkHostConfig = mkConfiguration mkHost;
 
@@ -51,16 +51,34 @@
                   homeManagerModules {
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
-                    home-manager.users = mkHomeManagerConfig users;
+                    home-manager.users = mkHomeManagerConfig name users;
                   }
+                  ({ ... }: {
+                    nixpkgs.overlays = [
+                      (_: _: { unstable = nixpkgs-unstable.legacyPackages.${system}; })
+                    ];
+                  })
                 ];
               } // lib.optionalAttrs stdenv.isLinux { inherit system; });
             };
 
-          mkUser = name: {
-            inherit name;
-            value = import (./common/users + "/${name}");
-          };
+          mkUser = host: name:
+            let
+              systemDir = ./common/users + "/${name}/${system}";
+              hostDir = ./common/users + "/${name}/${host}";
+              userDirs = [
+                (./common/users + "/${name}")
+              ] ++ lib.optional (lib.trivial.pathExists systemDir) systemDir
+                ++ lib.optional (lib.trivial.pathExists hostDir) hostDir;
+              userModule = lib.trivial.pipe userDirs [
+                (map import)
+		(modules: {pkgs, config, options, ...}@args:
+		  (builtins.foldl' lib.recursiveUpdate {} (map (module: (module args)) modules)))
+              ];
+            in {
+              inherit name;
+              value = userModule;
+            };
 
         in {
           darwinConfigurations = mkHostConfig stdenv.isDarwin hosts;
