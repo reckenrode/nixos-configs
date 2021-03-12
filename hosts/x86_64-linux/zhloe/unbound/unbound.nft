@@ -1,0 +1,9 @@
+table inet filter {
+  chain input {
+    iifname enp2s0 ip6 saddr fda9:51fe:3bbf:c9f::/64 tcp dport https accept
+    iifname enp2s0 ip6 saddr fda9:51fe:3bbf:c9f::/64 udp dport https accept
+
+    iifname enp2s0 ip6 saddr fda9:51fe:3bbf:c9f::/64 tcp dport 853 accept
+    iifname enp2s0 ip6 saddr fda9:51fe:3bbf:c9f::/64 udp dport 853 accept
+  }
+}

@@ -1,0 +1,20 @@
+set -euf
+
+CERT_PFX=$(@coreutils@/bin/mktemp)
+PRIVKEY="$RENEWED_LINEAGE/privkey.pem"
+CERT="$RENEWED_LINEAGE/cert.pem"
+CHAIN="$RENEWED_LINEAGE/fullchain.pem"
+
+PASSWD=$(@openssl@/bin/openssl rand -base64 32)
+
+HOSTNAME=jihli.infra.largeandhighquality.com
+PATH=Security/DeviceCertificates/NewCertWithPassword/Upload
+
+NETRC=/var/lib/secrets/acme/hp_printer
+
+UPLOAD_URL="https://$HOSTNAME/$PATH"
+
+@openssl@/bin/openssl pkcs12 -export -out "$CERT_PFX" -inkey "$PRIVKEY" -in "$CERT" -certfile "$CHAIN" -passout "pass:$PASSWD"
+@curl@/bin/curl -v --netrc-file "$NETRC" --insecure "$UPLOAD_URL" --form "certificate=@$CERT_PFX" --form "password=$PASSWD"
+
+@coreutils@/bin/rm -f "$CERT_PFX"
