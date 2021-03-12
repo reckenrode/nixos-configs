@@ -11,7 +11,6 @@
       "$HOME/.nix-profile/bin"
       "/etc/profiles/per-user/reckenrode/bin"
       "/run/current-system/sw/bin"
-      "/nix/var/nix/profiles/default/bin"
     ];
     secretivePath = "$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh";
   in ''
