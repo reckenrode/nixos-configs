@@ -2,11 +2,11 @@
 
 {
   imports = [
-  #    ./bear.nix
+    ./bear.nix
     ./fish.nix
-  #    ./safari.nix
-  #    ./things3.nix
-  #    ./tower.nix
+    ./safari.nix
+    ./things3.nix
+    ./tower.nix
   ];
   
   home.packages = with pkgs; [
