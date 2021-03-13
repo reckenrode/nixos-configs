@@ -14,9 +14,13 @@
 
     home-manager-unstable.url = "github:nix-community/home-manager";
     home-manager-unstable.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+    foundryvtt.url = "github:reckenrode/foundryvtt";
+    foundryvtt.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, darwin, home-manager, nixpkgs-unstable, home-manager-unstable }:
+  outputs = { self, nixpkgs, darwin, home-manager, nixpkgs-unstable, home-manager-unstable,
+              foundryvtt }:
     let
       lib = nixpkgs.lib;
       systems = readDirNames ./hosts;
@@ -61,10 +65,13 @@
                   }
                   ({ ... }: {
                     nixpkgs.overlays = [
-                      (_: _: { unstable = nixpkgs-unstable.legacyPackages.${system}; })
+                      (_: _: {
+                        foundryvtt = foundryvtt.packages.${system}.foundryvtt;
+                        unstable = nixpkgs-unstable.legacyPackages.${system};
+                      })
                     ];
                   })
-                ];
+                ] ++ lib.optional stdenv.isLinux foundryvtt.nixosModules;
               } // lib.optionalAttrs stdenv.isLinux { inherit system; });
             };
 
