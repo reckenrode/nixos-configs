@@ -9,5 +9,5 @@
     package = pkgs.unstable.unbound;
   };
 
-  # networking.nftables.ruleset = readFile ./unbound.nft;
+  networking.nftables.ruleset = builtins.readFile ./unbound.nft;
 }
