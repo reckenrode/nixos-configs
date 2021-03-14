@@ -1,7 +1,8 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   imports = [ 
+    ./foundryvtt
     ./hardware-configuration.nix
     ../../../common/linux.nix
   ];
@@ -19,15 +20,6 @@
   networking.hostName = "web-host";
 
   nix.automaticUpgrades.enable = true;
-
-  services.foundryvtt = {
-    enable = true;
-    hostname = "vtt.largeandhighquality.com";
-    minifyStaticFiles = true;
-    proxyPort = 443;
-    proxySSL = true;
-    upnp = false;
-  };
 
   systemd.network.networks.external = {
     enable = true;
