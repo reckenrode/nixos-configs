@@ -65,7 +65,6 @@
                   ({ ... }: {
                     nixpkgs.overlays = [
                       (_: _: {
-                        foundryvtt = foundryvtt.packages.${system}.foundryvtt;
                         unstable = nixpkgs-unstable.legacyPackages.${system};
                       })
                     ];
