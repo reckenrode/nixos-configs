@@ -69,8 +69,8 @@
                         unstable = nixpkgs-unstable.legacyPackages.${system};
                       })
                     ];
-                  })
-                ] ++ lib.optional stdenv.isLinux foundryvtt.nixosModules;
+                  }
+                ] ++ lib.optional stdenv.isLinux foundryvtt.nixosModules.foundryvtt;
               } // lib.optionalAttrs stdenv.isLinux { inherit system; });
             };
 
