@@ -31,7 +31,7 @@ in {
     '';
   
     systemd.services.coturn.serviceConfig.ExecStart = lib.mkOverride 0 ''
-      ${pkgs.coturn}/bin/turnserver -c ${configFile}
+      ${pkgs.coturn}/bin/turnserver -c ${runtimeConfigFile}
     '';
   };
 }
