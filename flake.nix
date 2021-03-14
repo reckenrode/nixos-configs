@@ -19,8 +19,7 @@
     foundryvtt.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, darwin, home-manager, nixpkgs-unstable, home-manager-unstable,
-              foundryvtt }:
+  outputs = inputs@{ self, nixpkgs, darwin, home-manager, foundryvtt, ... }:
     let
       lib = nixpkgs.lib;
       systems = readDirNames ./hosts;
@@ -48,7 +47,7 @@
           mkHost = name:
             let
               homeManagerModules = if stdenv.isDarwin
-                then home-manager-unstable.darwinModules.home-manager
+                then inputs.home-manager-unstable.darwinModules.home-manager
                 else home-manager.nixosModules.home-manager;
               nixSystem = if stdenv.isDarwin
                 then darwin.lib.darwinSystem
