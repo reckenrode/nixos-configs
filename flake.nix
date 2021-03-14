@@ -49,9 +49,11 @@
               homeManagerModules = if stdenv.isDarwin
                 then inputs.home-manager-unstable.darwinModules.home-manager
                 else home-manager.nixosModules.home-manager;
+
               nixSystem = if stdenv.isDarwin
                 then darwin.lib.darwinSystem
                 else nixpkgs.lib.nixosSystem;
+
             in {
               inherit name;
               value = nixSystem ({
@@ -62,11 +64,9 @@
                     home-manager.useUserPackages = true;
                     home-manager.users = mkHomeManagerConfig name users;
                   }
-                  ({ ... }: {
+                  {
                     nixpkgs.overlays = [
-                      (_: _: {
-                        unstable = nixpkgs-unstable.legacyPackages.${system};
-                      })
+                      (_: _: { unstable = inputs.nixpkgs-unstable.legacyPackages.${system}; })
                     ];
                   }
                 ] ++ lib.optional stdenv.isLinux foundryvtt.nixosModules.foundryvtt;
