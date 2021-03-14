@@ -34,7 +34,6 @@
     matchConfig.Name = "enp*";
     networkConfig = {
       DHCP = "ipv4";
-      IPv6PrivacyExtensions = false;
     };
   };
 
