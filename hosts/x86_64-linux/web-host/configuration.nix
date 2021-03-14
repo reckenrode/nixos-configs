@@ -21,6 +21,8 @@
 
   nix.automaticUpgrades.enable = true;
 
+  sops.defaultSopsFile = ./secrets.yaml;
+
   systemd.network.networks.external = {
     enable = true;
     matchConfig.Name = "enp*";

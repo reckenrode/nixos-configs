@@ -55,12 +55,21 @@ let turnHostName = "turn.largeandhighquality.com"; in
     no-cli = true;
     lt-cred-mech = true;
     secure-stun = true;
+    static-users-file = "/run/secrets/coturn-users";
     extraConfig = ''
       no-tlsv1
       no-tlsv1_1
       #user=FIXME: generate this from a secret stored via sops-nix
     '';
   };
+
+  sops.secrets.coturn-users = {
+    mode = "0400";
+    owner = config.systemd.services.coturn.serviceConfig.User;
+    group = config.systemd.services.coturn.serviceConfig.Group;
+  };
+
+  systemd.services.coturn.serviceConfig.SupplementaryGroups = [ config.users.groups.keys.name ];
 
   users.groups.acme-certs = {};
 
