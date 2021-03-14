@@ -69,7 +69,9 @@
                       (_: _: { unstable = inputs.nixpkgs-unstable.legacyPackages.${system}; })
                     ];
                   }
-                ] ++ lib.optional stdenv.isLinux foundryvtt.nixosModules.foundryvtt;
+                ] ++ lib.optionals stdenv.isLinux [
+                  inputs.foundryvtt.nixosModules.foundryvtt
+                ];
               } // lib.optionalAttrs stdenv.isLinux { inherit system; });
             };
 
