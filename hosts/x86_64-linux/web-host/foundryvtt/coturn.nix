@@ -2,6 +2,10 @@
 
 let turnHostName = "turn.largeandhighquality.com"; in
 {
+  imports = [
+    ./coturn-ext.nix
+  ];
+
   networking.nftables.ruleset = let
     listeningPort = builtins.toString config.services.coturn.tls-listening-port;
     minPort = builtins.toString config.services.coturn.min-port;
