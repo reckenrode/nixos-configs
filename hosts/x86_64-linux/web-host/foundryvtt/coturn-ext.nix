@@ -18,7 +18,7 @@ in {
       type = lib.types.nullOr lib.types.path;
       description = ''
         File containing a list of static users for coturn. The list must follow the format used in
-	turnserver.conf.
+        turnserver.conf.
       '';
       default = null;
     };
