@@ -6,8 +6,8 @@
       unbound_doh = prev.unbound.overrideAttrs (old: {
         buildInputs = old.buildInputs ++ [ final.nghttp2 ];
         configureFlags = old.configureFlags ++ [
-	  "--with-libnghttp2=${final.nghttp2.dev}"
-	];
+          "--with-libnghttp2=${final.nghttp2.dev}"
+        ];
       });
     })
   ];

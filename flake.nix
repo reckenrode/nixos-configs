@@ -85,7 +85,7 @@
                 ++ lib.optional (lib.trivial.pathExists hostDir) hostDir;
               userModule = lib.trivial.pipe userDirs [
                 (map import)
-		lib.mkMerge
+                lib.mkMerge
               ];
             in {
               inherit name;
