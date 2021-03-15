@@ -16,6 +16,7 @@
   
   home.packages = with pkgs; [
     pngout
+    vscode
     waifu2x-converter-cpp
   ];
 }
