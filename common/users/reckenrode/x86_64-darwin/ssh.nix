@@ -16,7 +16,7 @@ in {
   programs.ssh = {
     enable = true;
     matchBlocks = builtins.listToAttrs (map mkConfig [
-      { hostname = "github.com"; }
+      { hostname = "github.com"; port = 22; }
       { hostname = "imac.local"; port = 22; user = "kenada"; }
       { hostname = "vtt.largeandhighquality.com"; }
       { hostname = "www.largeandhighquality.com"; }
