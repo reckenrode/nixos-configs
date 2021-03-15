@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./applications.nix
     ./bear.nix
     ./fish.nix
     ./safari.nix
