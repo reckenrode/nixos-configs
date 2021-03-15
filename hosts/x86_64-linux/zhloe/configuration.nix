@@ -8,7 +8,6 @@ in
     ./hardware-configuration.nix
     ./kea
     ./letsencrypt.nix
-    ./sops
     ./systemd-networkd
     ./unbound
     ../../../common/unbound.nix
@@ -26,6 +25,8 @@ in
   ];
 
   nix.automaticUpgrades.enable = true;
+
+  sops.defaultSopsFile = ./secrets.yaml;
 
   time.timeZone = "America/New_York";
 
