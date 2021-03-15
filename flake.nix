@@ -22,7 +22,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, darwin, home-manager, foundryvtt, ... }:
+  outputs = inputs@{ self, nixpkgs, darwin, home-manager, ... }:
     let
       lib = nixpkgs.lib;
       systems = readDirNames ./hosts;
