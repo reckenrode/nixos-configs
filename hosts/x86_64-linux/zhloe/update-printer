@@ -1,9 +1,9 @@
 set -euf
 
 CERT_PFX=$(@coreutils@/bin/mktemp)
-PRIVKEY="$RENEWED_LINEAGE/privkey.pem"
-CERT="$RENEWED_LINEAGE/cert.pem"
-CHAIN="$RENEWED_LINEAGE/fullchain.pem"
+PRIVKEY="key.pem"
+CERT="cert.pem"
+CHAIN="fullchain.pem"
 
 PASSWD=$(@openssl@/bin/openssl rand -base64 32)
 
