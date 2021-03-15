@@ -15,4 +15,9 @@
     coreutils
     trash_mac
   ];
+
+  programs.direnv = {
+    enable = true;
+    enableNixDirenvIntegration = true;
+  };
 }
