@@ -2,10 +2,10 @@
 
 {
   users.users.reckenrode = {
-    isNormalUser = true;
-    description = "reckenrode";
+    description = "Randy Eckenrode";
     shell = pkgs.fish;
   } // lib.optionalAttrs pkgs.stdenv.isLinux {
+    isNormalUser = true;
     extraGroups = [ "wheel" ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM+aydjZ/Yb8onZQ5OLyXZr18NchFZQcZh8yNEuK/wOM"
