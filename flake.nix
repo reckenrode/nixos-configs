@@ -74,6 +74,7 @@
                   }
                 ] ++ lib.optionals stdenv.isLinux [
                   inputs.foundryvtt.nixosModules.foundryvtt
+                  inputs.sops-nix.nixosModules.sops
                 ];
               } // lib.optionalAttrs stdenv.isLinux { inherit system; });
             };
