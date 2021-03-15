@@ -7,6 +7,7 @@
       enable = true;
       allowReboot = true;
       dates = "03:00";
+      flake = "github:reckenrode/nixos-configs/main";
     };
   };
 }
