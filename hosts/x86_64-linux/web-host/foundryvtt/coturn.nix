@@ -59,7 +59,6 @@ let turnHostName = "turn.largeandhighquality.com"; in
     extraConfig = ''
       no-tlsv1
       no-tlsv1_1
-      #user=FIXME: generate this from a secret stored via sops-nix
     '';
   };
 
