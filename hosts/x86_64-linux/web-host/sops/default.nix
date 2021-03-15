@@ -7,8 +7,4 @@
     path = "/root/.ssh/id_ed25519";
     mode = "0400";
   };
-
-  systemd.services.nixos-upgrade.serviceConfig.SupplementaryGroups = [
-    config.users.groups.keys.name
-  ];
 }
