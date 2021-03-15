@@ -25,6 +25,8 @@ in
 
   nix.automaticUpgrades.enable = true;
 
+  sops.defaultSopsFile = ./secrets.yaml;
+
   time.timeZone = "America/New_York";
 
   system.stateVersion = "20.09";

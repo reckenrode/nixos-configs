@@ -10,7 +10,7 @@ PASSWD=$(@openssl@/bin/openssl rand -base64 32)
 HOSTNAME=jihli.infra.largeandhighquality.com
 PATH=Security/DeviceCertificates/NewCertWithPassword/Upload
 
-NETRC=/var/lib/secrets/acme/hp_printer
+NETRC=/run/secrets/hp_printer
 
 UPLOAD_URL="https://$HOSTNAME/$PATH"
 

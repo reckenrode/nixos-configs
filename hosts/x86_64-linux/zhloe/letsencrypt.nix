@@ -1,10 +1,11 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
+
 {
   security.acme = {
     acceptTerms = true;
     certs = {
       "infra.largeandhighquality.com" = {
-        credentialsFile = "/var/lib/secrets/acme/linode";
+        credentialsFile = "/run/secrets/linode";
         dnsProvider = "linodev4";
         domain = "*.infra.largeandhighquality.com";
         email = "randy@largeandhighquality.com";
@@ -15,4 +16,17 @@
       };
     };
   };
+
+  sops.secrets = builtins.listToAttrs (map (secret: {
+    name = secret;
+    value = {
+      mode = "0400";
+      owner = config.systemd.services."acme-infra.largeandhighquality.com".serviceConfig.User;
+      group = config.systemd.services."acme-infra.largeandhighquality.com".serviceConfig.Group;
+    };
+  }) [ "hp_printer" "linode" ]);
+
+  systemd.services."acme-infra.largeandhighquality.com".serviceConfig.SupplementaryGroups = [
+    config.users.groups.keys.name
+  ];
 }
