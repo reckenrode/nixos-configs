@@ -4,6 +4,8 @@
   users.users.reckenrode = {
     description = "Randy Eckenrode";
     shell = pkgs.fish;
+  } // lib.optionalAttrs pkgs.stdenv.isDarwin {
+    home = "/Users/reckenrode";
   } // lib.optionalAttrs pkgs.stdenv.isLinux {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
