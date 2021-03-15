@@ -4,6 +4,7 @@
   imports = [ 
     ./foundryvtt
     ./hardware-configuration.nix
+    ./sops
     ../../../common/linux.nix
   ];
 
@@ -20,8 +21,6 @@
   networking.hostName = "web-host";
 
   nix.automaticUpgrades.enable = true;
-
-  sops.defaultSopsFile = ./secrets.yaml;
 
   systemd.network.networks.external = {
     enable = true;
