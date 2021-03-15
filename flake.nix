@@ -82,7 +82,7 @@
           mkUser = host: name:
             let
               systemDir = ./common/users + "/${name}/${system}";
-              hostDir = ./common/users + "/${name}/${host}";
+              hostDir = ./common/users + "/${name}/${system}/${host}";
               userDirs = [
                 (./common/users + "/${name}")
               ] ++ lib.optional (lib.trivial.pathExists systemDir) systemDir
