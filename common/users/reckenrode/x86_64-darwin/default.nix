@@ -11,6 +11,7 @@
   ];
   
   home.packages = with pkgs; [
+    coreutils
     trash_mac
   ];
 }
