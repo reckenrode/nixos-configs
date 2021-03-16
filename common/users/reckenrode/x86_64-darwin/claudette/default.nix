@@ -4,6 +4,7 @@
   imports = [
     ./fonts.nix
     ./git.nix
+    ./gnupg.nix
   ];
 
   home.file.".local/bin/ocr-documents" = {
