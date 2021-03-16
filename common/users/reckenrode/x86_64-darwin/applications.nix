@@ -14,7 +14,8 @@
         rm -rf "$baseDir"
       fi
       mkdir -p "$baseDir"
-      for appFile in $(shopt -s nullglob; ${apps}/Applications/*); do
+      shopt -s nullglob
+      for appFile in ${apps}/Applications/*; do
         target="$baseDir/$(basename "$appFile")"
         $DRY_RUN_CMD cp ''${VERBOSE_ARG:+-v} -fHRL "$appFile" "$baseDir"
         $DRY_RUN_CMD chmod ''${VERBOSE_ARG:+-v} -R +w "$target"
