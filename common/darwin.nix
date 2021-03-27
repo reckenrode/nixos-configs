@@ -20,6 +20,7 @@
   nixpkgs.overlays = [
     (final: prev: {
       finalfantasyxiv = pkgs.callPackage ../pkgs/finalfantasyxiv.nix {};
+      firefox-bin = pkgs.callPackage ../pkgs/firefox-bin.nix {};
       jetbrains = prev.jetbrains // {
         ruby-mine = pkgs.callPackage ../pkgs/ruby-mine.nix {};
         pycharm-professional = ../pkgs/pycharm-professional.nix {};
