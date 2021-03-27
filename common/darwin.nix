@@ -9,6 +9,7 @@
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "finalfantasyxiv"
+    "firefox-bin"
     "ruby-mine"
     "pycharm-professional"
     "pathofexile"
