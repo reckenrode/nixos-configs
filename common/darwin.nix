@@ -8,7 +8,12 @@
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "finalfantasyxiv"
+    "ruby-mine"
+    "pycharm-professional"
+    "pathofexile"
     "pngout"
+    "steam"
     "vscode"
   ];
 
