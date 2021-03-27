@@ -17,6 +17,7 @@
   
   home.packages = with pkgs; [
     finalfantasyxiv
+    firefox-bin
     jetbrains.ruby-mine
     netnewswire
     pathofexile
