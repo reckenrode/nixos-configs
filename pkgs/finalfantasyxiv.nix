@@ -1,18 +1,18 @@
-{ lib, fetchurl, stdenv, undmg }:
+{ lib, fetchurl, stdenv, unzip }:
 
 stdenv.mkDerivation rec {
   pname = "finalfantasyxiv";
-  version = "5.45";
+  version = "1.05";
 
   src = fetchurl {
-    url = "https://gdl.square-enix.com/ffxiv/inst/pnvdkzgk77dj10/FINAL_FANTASY_XIV_ONLINE_x64.dmg";
-    sha256 = "oYdBTgoKEBuZXwhwbRvTQZkiWOctU1QJ8RNtqu1BPxc=";
+    url = "https://mac-dl.ffxiv.com/cw/finalfantasyxiv-1.0.5.zip";
+    sha256 = "BZEDYRuBu9GwOmIgznoajQ50uGA/Y/GaX4xy1somzZE=";
   };
 
-  nativeBuildInputs = [ undmg ];
+  nativeBuildInputs = [ unzip ];
 
   unpackPhase = ''
-    undmg $src
+    unzip $src
   '';
 
   installPhase = ''
