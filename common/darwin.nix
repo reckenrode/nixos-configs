@@ -14,6 +14,13 @@
 
   nixpkgs.overlays = [
     (final: prev: {
+      finalfantasyxiv = pkgs.callPackage ../pkgs/finalfantasyxiv.nix {};
+      jetbrains = prev.jetbrains // {
+        ruby-mine = pkgs.callPackage ../pkgs/ruby-mine.nix {};
+        pycharm-professional = ../pkgs/pycharm-professional.nix {};
+      };
+      netnewswire = pkgs.callPackage ../pkgs/netnewswire.nix {};
+      pathofexile = pkgs.callPackage ../pkgs/pathofexile.nix {};
       pngout = prev.pngout.overrideAttrs (_: rec {
         name = "pngout-20200115";
         src = builtins.fetchurl {
@@ -30,6 +37,9 @@
           /usr/bin/codesign -fs - $out/bin/pngout
         '';
       });
+      secretive = pkgs.callPackage ../pkgs/secretive.nix {};
+      steam = pkgs.callPackage ../pkgs/steam.nix {};
+      tiled = pkgs.callPackage ../pkgs/tiled.nix {};
       trash_mac = pkgs.callPackage ../pkgs/trash_mac {};
       waifu2x-converter-cpp = (prev.waifu2x-converter-cpp.overrideAttrs (old: rec {
         patches = [ ./files/waifu2x_darwin_build.diff ];   
