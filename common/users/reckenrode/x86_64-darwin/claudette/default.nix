@@ -16,7 +16,14 @@
   };
   
   home.packages = with pkgs; [
+    finalfantasyxiv
+    jetbrains.ruby-mine
+    netnewswire
+    pathofexile
     pngout
+    secretive
+    steam
+    tiled
     vscode
     waifu2x-converter-cpp
   ];
