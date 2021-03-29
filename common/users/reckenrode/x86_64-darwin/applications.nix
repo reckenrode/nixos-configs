@@ -10,16 +10,9 @@
       };
     in lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       baseDir="$HOME/Applications/Home Manager Apps"
-      if [ -d "$baseDir" ]; then
-        rm -rf "$baseDir"
-      fi
+      rsyncArgs="--archive --chmod=u+w --delete -L"
       mkdir -p "$baseDir"
-      shopt -s nullglob
-      for appFile in ${apps}/Applications/*; do
-        target="$baseDir/$(basename "$appFile")"
-        $DRY_RUN_CMD cp ''${VERBOSE_ARG:+-v} -fHRL "$appFile" "$baseDir"
-        $DRY_RUN_CMD chmod ''${VERBOSE_ARG:+-v} -R +w "$target"
-      done
+      $DRY_RUN_CMD ${pkgs.rsync}/bin/rsync $rsyncArgs ${apps}/Applications/ "$baseDir"
     '';
   };
 }
