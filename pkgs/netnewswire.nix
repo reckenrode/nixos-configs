@@ -2,11 +2,11 @@
 
 stdenv.mkDerivation rec {
   pname = "netnewswire";
-  version = "5.1.3";
+  version = "6.0";
 
   src = fetchurl {
     url = "https://github.com/Ranchero-Software/NetNewsWire/releases/download/mac-${version}/NetNewsWire${version}.zip";
-    sha256 = "Xwj57phmIdFGxX86s+mCl5RK82jOf/E4Ko46bDH6teo=";
+    sha256 = "xXzswMqcTh6EDCNrx0UGYghGwsMFwTQqzkfP5R0CTcs=";
   };
 
   nativeBuildInputs = [ unzip ];
@@ -31,7 +31,7 @@ stdenv.mkDerivation rec {
     homepage = "https://netnewswire.com";
     changelog = "https://github.com/Ranchero-Software/NetNewsWire/releases";
     license = licenses.mit;
-    platforms = [ "x86_64-darwin" ];
+    platforms = [ "x86_64-darwin" "aarch64-darwin" ];
   };
 }
 
