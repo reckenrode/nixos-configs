@@ -12,7 +12,7 @@
     })
   ];
 
-  security.acme.certs."infra.largeandhighquality.com".postRun = "systemctl reload unbound.service";
+  security.acme.certs."infra.largeandhighquality.com".postRun = "${pkgs.systemd}/bin/systemctl reload unbound.service";
 
   services.unbound = {
     allowedAccess = [ "192.168.238.1/24" "fe80::/64" ];
