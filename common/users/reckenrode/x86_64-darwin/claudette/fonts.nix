@@ -11,7 +11,7 @@
     in lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       fontSrc="${fonts}/share/fonts/otf/"
       fontDir="$HOME/Library/Fonts/Home Manager Fonts"
-      rsyncArgs="--archive --delete -L"
+      rsyncArgs="--archive --chmod=u+w --delete -L"
       mkdir -p "$baseDir"
       $DRY_RUN_CMD ${pkgs.rsync}/bin/rsync ''${VERBOSE_ARG:+-v} $rsyncArgs "$fontSrc" "$fontDir"
     '';
