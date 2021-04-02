@@ -6,11 +6,11 @@ let
 in stdenv.mkDerivation rec {
   pname = "ruby-mine";
   version = "2021.1-beta${build}";
-  build = "211.6693.18";
+  build = "211.6693.78";
 
   src = fetchurl {
     url = "https://download.jetbrains.com/ruby/RubyMine-${build}${suffix}.dmg";
-    sha256 = "0K7SG01PHky6t0v7SD8p71s8ezfNzb47IdTStxqnEDo=";
+    sha256 = "R4JnS9rCKrQjqaDrQyU0OVmwtq4DpKUKsaXuL6BZY+k=";
   };
 
   nativeBuildInputs = [ undmg ];
