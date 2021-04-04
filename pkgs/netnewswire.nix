@@ -2,11 +2,11 @@
 
 stdenv.mkDerivation rec {
   pname = "netnewswire";
-  version = "6.0";
+  version = "6.0.1";
 
   src = fetchurl {
     url = "https://github.com/Ranchero-Software/NetNewsWire/releases/download/mac-${version}/NetNewsWire${version}.zip";
-    sha256 = "xXzswMqcTh6EDCNrx0UGYghGwsMFwTQqzkfP5R0CTcs=";
+    sha256 = "CxjJWiaasbHqYf5Pe3QXbIo/vDq/ieyYPgvM/Thofnk=";
   };
 
   nativeBuildInputs = [ unzip ];
