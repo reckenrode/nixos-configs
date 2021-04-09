@@ -1,15 +1,24 @@
 { lib, fetchurl, stdenv, undmg, system }:
 
 let
-  suffixes = { aarch64-darwin = "-aarch64"; x86_64-darwin = ""; };
-  suffix = suffixes.${system};
+  arches = {
+    aarch64-darwin = {
+      suffix = "-aarch64";
+      sha256 = "sha256-VWd/PoxFs+nT+vs2njeAk98hcX0TeBfHpA8xvLOkCPs=";
+    };
+    x86_64-darwin = {
+      suffix = "";
+      hash = "sha256-VTo+Cz4R9C3vVJC/9m1mKJ5YCv2JKtV3VbOitweQCek=";
+    };
+  };
+  arch = arches.${system};
 in stdenv.mkDerivation rec {
   pname = "ruby-mine";
   version = "2021.1";
 
   src = fetchurl {
-    url = "https://download.jetbrains.com/ruby/RubyMine-${version}${suffix}.dmg";
-    sha256 = "VTo+Cz4R9C3vVJC/9m1mKJ5YCv2JKtV3VbOitweQCek=";
+    url = "https://download.jetbrains.com/ruby/RubyMine-${version}${arch.suffix}.dmg";
+    sha256 = arch.sha256;
   };
 
   nativeBuildInputs = [ undmg ];
