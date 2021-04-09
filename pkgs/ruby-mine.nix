@@ -5,12 +5,11 @@ let
   suffix = suffixes.${system};
 in stdenv.mkDerivation rec {
   pname = "ruby-mine";
-  version = "2021.1-beta${build}";
-  build = "211.6693.78";
+  version = "2021.1";
 
   src = fetchurl {
-    url = "https://download.jetbrains.com/ruby/RubyMine-${build}${suffix}.dmg";
-    sha256 = "R4JnS9rCKrQjqaDrQyU0OVmwtq4DpKUKsaXuL6BZY+k=";
+    url = "https://download.jetbrains.com/ruby/RubyMine-${version}${suffix}.dmg";
+    sha256 = "VTo+Cz4R9C3vVJC/9m1mKJ5YCv2JKtV3VbOitweQCek=";
   };
 
   nativeBuildInputs = [ undmg ];
