@@ -24,7 +24,7 @@
       firefox-bin = pkgs.callPackage ../pkgs/firefox-bin.nix {};
       jetbrains = prev.jetbrains // {
         ruby-mine = pkgs.callPackage ../pkgs/ruby-mine.nix {};
-        pycharm-professional = ../pkgs/pycharm-professional.nix {};
+        pycharm-professional = pkgs.callPackage ../pkgs/pycharm-professional.nix {};
       };
       netnewswire = pkgs.callPackage ../pkgs/netnewswire.nix {};
       pathofexile = pkgs.callPackage ../pkgs/pathofexile.nix {};
