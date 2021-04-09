@@ -11,6 +11,7 @@
     };
     extraConfig = {
       init = { defaultBranch = "main"; };
+      credential.helper = "${pkgs.git}/bin/git-credential-osxkeychain";
     };
   };
 }
