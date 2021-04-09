@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/mapeditor/tiled/releases/download/v${version}/Tiled-${version}-macos.zip";
-    sha256 = "6w12RP3H9rVn9ALIT6eUc11xTvdcQNYjVz5n4PmkRe0=";
+    hash = "sha256-6w12RP3H9rVn9ALIT6eUc11xTvdcQNYjVz5n4PmkRe0=";
   };
 
   nativeBuildInputs = [ unzip ];

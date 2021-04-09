@@ -4,7 +4,7 @@ let
   arches = {
     aarch64-darwin = {
       suffix = "-aarch64";
-      sha256 = "sha256-VWd/PoxFs+nT+vs2njeAk98hcX0TeBfHpA8xvLOkCPs=";
+      hash = "sha256-VWd/PoxFs+nT+vs2njeAk98hcX0TeBfHpA8xvLOkCPs=";
     };
     x86_64-darwin = {
       suffix = "";
@@ -18,7 +18,7 @@ in stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://download.jetbrains.com/ruby/RubyMine-${version}${arch.suffix}.dmg";
-    sha256 = arch.sha256;
+    hash = arch.hash;
   };
 
   nativeBuildInputs = [ undmg ];

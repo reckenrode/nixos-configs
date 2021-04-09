@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
   src = fetchurl {
     name = "Firefox-${lang}-${version}.dmg";
     url = "https://download-installer.cdn.mozilla.net/pub/firefox/releases/87.0/mac/${lang}/Firefox%20${version}.dmg";
-    sha256 = "4sf7C94PVB0T+6AdRSouNxU1HcSUC54xhqyOckU0MLI=";
+    hash = "sha256-4sf7C94PVB0T+6AdRSouNxU1HcSUC54xhqyOckU0MLI=";
   };
 
   nativeBuildInputs = [ undmg ];

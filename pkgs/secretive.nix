@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/maxgoedjen/secretive/releases/download/v${version}/Secretive.zip";
-    sha256 = "WSHYxFKsnk9ddJ2sFiy1sExEvBNDYxTjZ1V5khMR3JU=";
+    hash = "sha256-WSHYxFKsnk9ddJ2sFiy1sExEvBNDYxTjZ1V5khMR3JU=";
   };
 
   nativeBuildInputs = [ unzip ];

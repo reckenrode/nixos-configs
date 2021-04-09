@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://cdn.cloudflare.steamstatic.com/client/installer/steam.dmg";
-    sha256 = "2nhxNan13aOYESua7p5rYhbtdUZ8UMcPXfOXo1N2oOk=";
+    hash = "sha256-2nhxNan13aOYESua7p5rYhbtdUZ8UMcPXfOXo1N2oOk=";
   };
 
   nativeBuildInputs = [ undmg ];

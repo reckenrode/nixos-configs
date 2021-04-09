@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "http://webcdn.pathofexile.com/public/tmp/PathOfExile-Installer.dmg";
-    sha256 = "acpDCljSFL9uLDpfQtz+zxljfPpB2LqxlNcBkPIMYXY=";
+    hash = "sha256-acpDCljSFL9uLDpfQtz+zxljfPpB2LqxlNcBkPIMYXY=";
   };
 
   nativeBuildInputs = [ undmg ];

@@ -32,7 +32,7 @@
         name = "pngout-20200115";
         src = builtins.fetchurl {
           url = "http://www.jonof.id.au/files/kenutils/pngout-20200115-macos.zip";
-          sha256 = "0vk8ys45rzjm4a4ycmd5j3823ylyby9i87vf1301mz7agsaglwij";
+          sha256 = "sha256-MnL6lH7q/BrACG4fFJNfnvoh0JClVeaJIlX+XIj2aG4=";
         };
         nativeBuildInputs = with final; [ unzip ];
         unpackPhase = ''

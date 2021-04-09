@@ -4,7 +4,7 @@ let
   arches = {
     aarch64-darwin = {
       suffix = "-aarch64";
-      sha256 = "sha256-rtycSiLwzt/6AYAQi3QPV70/t1SPbJCUk3MSL/MdSnk=";
+      hash = "sha256-rtycSiLwzt/6AYAQi3QPV70/t1SPbJCUk3MSL/MdSnk=";
     };
     x86_64-darwin = {
       suffix = "";
@@ -18,7 +18,7 @@ in stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://download.jetbrains.com/python/${pname}-${version}${arch.suffix}.dmg";
-    sha256 = arch.sha256;
+    hash = arch.hash;
   };
 
   nativeBuildInputs = [ undmg ];

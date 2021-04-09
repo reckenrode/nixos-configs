@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/Ranchero-Software/NetNewsWire/releases/download/mac-${version}/NetNewsWire${version}.zip";
-    sha256 = "CxjJWiaasbHqYf5Pe3QXbIo/vDq/ieyYPgvM/Thofnk=";
+    hash = "sha256-CxjJWiaasbHqYf5Pe3QXbIo/vDq/ieyYPgvM/Thofnk=";
   };
 
   nativeBuildInputs = [ unzip ];

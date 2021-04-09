@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://mac-dl.ffxiv.com/cw/finalfantasyxiv-1.0.5.zip";
-    sha256 = "BZEDYRuBu9GwOmIgznoajQ50uGA/Y/GaX4xy1somzZE=";
+    hash = "sha256-BZEDYRuBu9GwOmIgznoajQ50uGA/Y/GaX4xy1somzZE=";
   };
 
   nativeBuildInputs = [ unzip ];
