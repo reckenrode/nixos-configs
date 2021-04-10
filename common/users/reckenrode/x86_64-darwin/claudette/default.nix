@@ -20,6 +20,7 @@
     firefox-bin
     jetbrains.ruby-mine
     netnewswire
+    openra
     openttd
     pathofexile
     pngout
