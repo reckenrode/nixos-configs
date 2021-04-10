@@ -27,6 +27,7 @@
         pycharm-professional = pkgs.callPackage ../pkgs/pycharm-professional.nix {};
       };
       netnewswire = pkgs.callPackage ../pkgs/netnewswire.nix {};
+      openttd = pkgs.callPackage ../pkgs/openttd.nix {};
       pathofexile = pkgs.callPackage ../pkgs/pathofexile.nix {};
       pngout = prev.pngout.overrideAttrs (_: rec {
         name = "pngout-20200115";
