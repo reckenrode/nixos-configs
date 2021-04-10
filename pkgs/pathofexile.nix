@@ -2,7 +2,7 @@
 
 stdenv.mkDerivation rec {
   pname = "pathofexile";
-  version = "3.13.1e";
+  version = "1.0";
 
   src = fetchurl {
     url = "http://webcdn.pathofexile.com/public/tmp/PathOfExile-Installer.dmg";
