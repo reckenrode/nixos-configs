@@ -12,7 +12,7 @@
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM+aydjZ/Yb8onZQ5OLyXZr18NchFZQcZh8yNEuK/wOM"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBP7kafg9acMfZFFX6yj6t7HTdGg+KfFkXSopu5ZySCj"
-      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFeIm2KFBjxtm0v/xpOyiAkaiiJkvniwigEbOWxA8SHrolUM6PI0HhcW9CWA7txgObFxBNnyCC7avyYltRUoN0s= SSH-Key@secretive.claudette.local"
+      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBD10tzdnD0GW/gdKC6yKjc2tbBnlhgsbiK/JZLSwWNMYcQ4QrFp1+MUjBfiy8Ey00xrN9YcCkuTIBBcQ+niQYFg="
     ];
   };
 }
