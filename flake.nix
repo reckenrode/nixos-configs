@@ -1,19 +1,12 @@
 {
-  # FIXME: macOS 11 has poor compatability with 20.09. It works if you can get packages from
-  # the binary cache, but it breaks as soon as you need to compile anything.  Revert this
-  # change once 21.05 is released.
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-20.09";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
 
     darwin.url = "github:lnl7/nix-darwin/master";
-    darwin.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager.url = "github:nix-community/home-manager/release-20.09";
+    home-manager.url = "github:nix-community/home-manager/release-21.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    home-manager-unstable.url = "github:nix-community/home-manager";
-    home-manager-unstable.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     foundryvtt.url = "github:reckenrode/nix-foundryvtt";
     foundryvtt.inputs.nixpkgs.follows = "nixpkgs";
@@ -54,7 +47,7 @@
           mkHost = name:
             let
               homeManagerModules = if stdenv.isDarwin
-                then inputs.home-manager-unstable.darwinModules.home-manager
+                then home-manager.darwinModules.home-manager
                 else home-manager.nixosModules.home-manager;
 
               nixSystem = if stdenv.isDarwin
@@ -73,11 +66,6 @@
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
                     home-manager.users = mkHomeManagerConfig name hostUsers;
-                  }
-                  {
-                    nixpkgs.overlays = [
-                      (_: _: { unstable = inputs.nixpkgs-unstable.legacyPackages.${system}; })
-                    ];
                   }
                 ] ++ lib.optionals stdenv.isLinux [
                   inputs.foundryvtt.nixosModules.foundryvtt

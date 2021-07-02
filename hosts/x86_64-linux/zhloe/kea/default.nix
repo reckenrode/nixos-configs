@@ -14,7 +14,7 @@ let
       Type = "exec";
       Environment = "KEA_PIDFILE_DIR=/run/kea";
       ExecReload = "${utillinux}/bin/kill -HUP `${coreutils}/bin/cat ${pidLocation}`";
-      ExecStart = "${unstable.kea}/bin/${bin} -c ${config}";
+      ExecStart = "${pkgs.kea}/bin/${bin} -c ${config}";
       PIDFile = pidLocation;
       Restart = "on-failure";
       RuntimeDirectory = "kea";
