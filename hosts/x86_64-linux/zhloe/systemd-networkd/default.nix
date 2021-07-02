@@ -23,10 +23,12 @@
       Domains = "infra.largeandhighquality.com";
       DNSLifetimeSec = 1800; # infinity
     };
-    ipv6Prefixes = {
-      Prefix = "fda9:51fe:3bbf:c9f::/64";
-      Assign = true;
-    };
+    ipv6Prefixes = [
+      {
+        Prefix = "fda9:51fe:3bbf:c9f::/64";
+        Assign = true;
+      }
+    ];
   };
 
   systemd.network.networks.wan = {
