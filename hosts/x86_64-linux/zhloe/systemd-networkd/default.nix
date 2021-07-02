@@ -16,19 +16,18 @@
       DNS = "192.168.238.1#zhloe.infra.largeandhighquality.com";
       IPv6SendRA = true;
     };
-    ipv6SendRAConfig = {
+    ipv6SendRaConfig = {
       OtherInformation = true;
       RouterLifetimeSec = 5400;
       DNS = "_link_local";
       Domains = "infra.largeandhighquality.com";
       DNSLifetimeSec = 1800; # infinity
     };
-    ipv6Prefixes = [
-      {
-        Prefix = "fda9:51fe:3bbf:c9f::/64";
-        Assign = true;
-      }
-    ];
+    extraConfig = ''
+      [IPv6Prefix]
+      Prefix=fda9:51fe:3bbf:c9f::/64
+      Assign=true
+    '';
   };
 
   systemd.network.networks.wan = {
