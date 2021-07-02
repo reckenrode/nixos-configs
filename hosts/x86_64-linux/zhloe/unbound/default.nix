@@ -15,12 +15,29 @@
   security.acme.certs."infra.largeandhighquality.com".postRun = "${pkgs.systemd}/bin/systemctl restart unbound.service";
 
   services.unbound = {
-    allowedAccess = [ "192.168.238.1/24" "fe80::/64" ];
-    interfaces = [ "192.168.238.1" "fe80::2e0:67ff:fe15:ced3%enp2s0" ];
-    extraConfig = let
-      certPath = config.security.acme.certs."infra.largeandhighquality.com".directory;
-    in builtins.readFile (pkgs.substituteAll { src = ./unbound.conf; inherit certPath; });
     package = pkgs.unbound_doh;
+    settings = {
+      server = {
+        access-control = [
+          "192.168.238.1/24"
+          "fe80::/64"
+          "fda9:51fe:3bbf:c9f::/64"
+        ];
+        interface = [
+          "192.168.238.1"
+          "fe80::2e0:67ff:fe15:ced3%enp2s0"
+          "fda9:51fe:3bbf:c9f:2e0:67ff:fe15:ced3@443"
+          "fda9:51fe:3bbf:c9f:2e0:67ff:fe15:ced3@853"
+        ];
+        local-zone = [
+          "largeandhighquality.com. transparent"
+        ];
+        local-data = [
+          "jihli.infra.largeandhighquality.com AAAA fda9:51fe:3bbf:c9f:c665:16ff:fedd:7d5b"
+          "zhloe.infra.largeandhighquality.com AAAA fda9:51fe:3bbf:c9f:2e0:67ff:fe15:ced3"
+        ];
+      };
+    };
   };
 
   networking.nftables.ruleset = builtins.readFile ./unbound.nft;
