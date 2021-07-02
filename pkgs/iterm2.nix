@@ -4,9 +4,11 @@ stdenv.mkDerivation rec {
   pname = "iterm2";
   version = "3.4.8";
 
-  src = fetchurl {
-    url = "https://github.com/gnachman/iTerm2/archive/refs/tags/${version}.zip"
-    hash = "sha256-6u81KbweAgJEuyCnJbdG+7RNvCVr4YjVDVAiWttnax0=";
+  src = let
+    filename = "iTerm2-${lib.replaceChars ["."] ["_"] version}.zip";
+  in fetchurl {
+    url = "https://iterm2.com/downloads/stable/${filename}";
+    hash = "sha256-KeHPgN/zzWPiPkLXgZaddKf+06revHVtAAGULkC7N28=";
   };
 
   nativeBuildInputs = [ unzip ];
