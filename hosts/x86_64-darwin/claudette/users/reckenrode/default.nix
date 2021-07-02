@@ -19,18 +19,19 @@
   };
   
   home.packages = with pkgs; [
-    # finalfantasyxiv
-    # firefox-bin
+    finalfantasyxiv
+    firefox-bin
     # jetbrains.ruby-mine
-    # netnewswire
-    # openra
-    # openttd
+    netnewswire
+    openra
+    openttd
     # pathofexile
+    iterm2
     pngout
-    # secretive
-    # steam
+    secretive
+    steam
     # tiled
-    # vscode
+    vscode
     waifu2x-converter-cpp
   ];
 

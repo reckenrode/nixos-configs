@@ -21,6 +21,7 @@
     (final: prev: {
       finalfantasyxiv = pkgs.callPackage ../pkgs/finalfantasyxiv.nix {};
       firefox-bin = pkgs.callPackage ../pkgs/firefox-bin.nix {};
+      iterm2 = pkgs.callPackage ../pkgs/iterm2.nix {};
       jetbrains = prev.jetbrains // {
         ruby-mine = pkgs.callPackage ../pkgs/ruby-mine.nix {};
         pycharm-professional = pkgs.callPackage ../pkgs/pycharm-professional.nix {};
