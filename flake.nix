@@ -37,8 +37,12 @@
       (map (system:
         let
           stdenv = nixpkgs.legacyPackages.${system}.stdenv;
+
           hosts = readDirNames (./hosts + "/${system}");
-          users = readDirNames ./common/users;
+          users = host: readDirNames ((hostPath host) + /users);
+
+          hostPath = host: ./hosts + "/${system}/${host}";
+          userPath = user: host: (hostPath host) + /users + "/${user}";
 
           mkConfiguration = f: pred: lst:
             lib.optionalAttrs pred (builtins.listToAttrs (map f lst));
@@ -57,15 +61,18 @@
                 then darwin.lib.darwinSystem
                 else nixpkgs.lib.nixosSystem;
 
+              hostUsers = users name;
+              userConfigs = [ ./common/users/reckenrode ];#map (userPath name) users;
+
             in {
               inherit name;
               value = nixSystem ({
-                modules = [
-                  (./hosts + "/${system}/${name}" + /configuration.nix)
+                modules = userConfigs ++ [
+                  ((hostPath name) + /configuration.nix)
                   homeManagerModules {
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
-                    home-manager.users = mkHomeManagerConfig name users;
+                    home-manager.users = mkHomeManagerConfig name hostUsers;
                   }
                   {
                     nixpkgs.overlays = [
@@ -81,12 +88,12 @@
 
           mkUser = host: name:
             let
-              systemDir = ./common/users + "/${name}/${system}";
-              hostDir = ./common/users + "/${name}/${system}/${host}";
+              hostDir = (hostPath host) + /users + "/${name}";
+              systemDir = ./common/home-manager + "/${system}";
               userDirs = [
-                (./common/users + "/${name}")
-              ] ++ lib.optional (lib.trivial.pathExists systemDir) systemDir
-                ++ lib.optional (lib.trivial.pathExists hostDir) hostDir;
+                (./common/users + "/${name}" + /home-manager.nix)
+              ] ++ lib.optional (lib.trivial.pathExists hostDir) hostDir
+                ++ lib.optional (lib.trivial.pathExists systemDir) systemDir;
               userModule = lib.trivial.pipe userDirs [
                 (map import)
                 lib.mkMerge

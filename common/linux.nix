@@ -9,7 +9,6 @@
     ./nix-optimizations.nix
     ./sshd.nix
     ./systemd-networkd.nix
-    ./users
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;

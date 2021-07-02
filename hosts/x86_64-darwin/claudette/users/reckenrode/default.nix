@@ -2,9 +2,12 @@
 
 {
   imports = [
+    ./bear.nix
+    ./fish.nix
     ./fonts.nix
     ./git.nix
     ./gnupg.nix
+    ./ssh.nix
   ];
 
   home.file.".local/bin/ocr-documents" = {
@@ -16,18 +19,23 @@
   };
   
   home.packages = with pkgs; [
-    finalfantasyxiv
-    firefox-bin
-    jetbrains.ruby-mine
-    netnewswire
-    openra
-    openttd
-    pathofexile
+    # finalfantasyxiv
+    # firefox-bin
+    # jetbrains.ruby-mine
+    # netnewswire
+    # openra
+    # openttd
+    # pathofexile
     pngout
-    secretive
-    steam
-    tiled
-    vscode
+    # secretive
+    # steam
+    # tiled
+    # vscode
     waifu2x-converter-cpp
   ];
+
+  programs.direnv = {
+    enable = true;
+    enableNixDirenvIntegration = true;
+  };
 }

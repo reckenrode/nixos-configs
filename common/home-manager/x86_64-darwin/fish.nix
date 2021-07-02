@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   programs.fish.shellAliases = {
@@ -7,15 +7,13 @@
 
   programs.fish.loginShellInit = let
     fishUserPaths = builtins.foldl' (a: b: "${a} ${b}") "" [
+      "/run/current-system/sw/bin"
       "$HOME/.local/bin"
       "$HOME/.nix-profile/bin"
-      "/etc/profiles/per-user/reckenrode/bin"
-      "/run/current-system/sw/bin"
+      "/etc/profiles/per-user/$USER/bin"
     ];
-    secretivePath = "$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh";
   in ''
     set fish_user_paths ${fishUserPaths}
-    set -x SSH_AUTH_SOCK ${secretivePath}
   '';
 
 }
