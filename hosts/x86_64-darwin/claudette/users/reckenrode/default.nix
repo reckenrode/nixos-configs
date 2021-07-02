@@ -34,8 +34,6 @@
     waifu2x-converter-cpp
   ];
 
-  programs.direnv = {
-    enable = true;
-    enableNixDirenvIntegration = true;
-  };
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
 }
