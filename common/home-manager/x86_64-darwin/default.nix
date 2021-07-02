@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -9,5 +9,10 @@
     ./keyboard.nix
     ./safari.nix
     ./ui.nix
+  ];
+
+  home.packages = with pkgs; [
+    coreutils
+    trash_mac
   ];
 }
