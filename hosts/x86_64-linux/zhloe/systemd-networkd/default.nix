@@ -16,7 +16,7 @@
       DNS = "192.168.238.1#zhloe.infra.largeandhighquality.com";
       IPv6SendRA = true;
     };
-    ipv6SendRaConfig = {
+    ipv6SendRAConfig = {
       OtherInformation = true;
       RouterLifetimeSec = 5400;
       DNS = "_link_local";
