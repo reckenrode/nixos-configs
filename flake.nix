@@ -55,7 +55,7 @@
                 else nixpkgs.lib.nixosSystem;
 
               hostUsers = users name;
-              userConfigs = [ ./common/users/reckenrode ];#map (userPath name) users;
+              userConfigs = [ ./common/users/reckenrode ];
 
             in {
               inherit name;
