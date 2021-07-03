@@ -14,7 +14,9 @@
 
   security.acme.certs."infra.largeandhighquality.com".postRun = "${pkgs.systemd}/bin/systemctl restart unbound.service";
 
-  services.unbound = {
+  services.unbound = let
+    certPath = config.security.acme.certs."infra.largeandhighquality.com".directory;
+  in {
     package = pkgs.unbound_doh;
     settings = {
       server = {
@@ -36,6 +38,8 @@
           "jihli.infra.largeandhighquality.com AAAA fda9:51fe:3bbf:c9f:c665:16ff:fedd:7d5b"
           "zhloe.infra.largeandhighquality.com AAAA fda9:51fe:3bbf:c9f:2e0:67ff:fe15:ced3"
         ];
+        tls-service-key = certPath + /key.pem;
+        tls-service-pem = certPath + /fullchain.pem;
       };
     };
   };
