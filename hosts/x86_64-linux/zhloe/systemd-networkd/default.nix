@@ -14,6 +14,7 @@
       Address = "192.168.238.1/24";
       Domains = [ "~infra.largeandhighquality.com" ];
       DNS = "192.168.238.1#zhloe.infra.largeandhighquality.com";
+      DHCPv6PrefixDelegation = true;
       IPv6SendRA = true;
     };
     ipv6SendRAConfig = {
