@@ -20,6 +20,7 @@
   };
   
   home.packages = with pkgs; [
+    crossover
     finalfantasyxiv
     firefox-bin
     # jetbrains.ruby-mine
