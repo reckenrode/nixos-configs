@@ -10,6 +10,7 @@
         ms-dotnettools.csharp
       ];
       userSettings = {
+        "FSharp.dotnetRoot" = "${pkgs.dotnet-sdk_5}";
         "editor.minimap.enabled" = false;
         "editor.roundedSelection" = false;
         "editor.rulers" = [ 100 ];
