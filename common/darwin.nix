@@ -7,6 +7,7 @@
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "crossover"
     "finalfantasyxiv"
     "firefox-bin"
     "ruby-mine"
@@ -19,6 +20,9 @@
 
   nixpkgs.overlays = [
     (final: prev: {
+      crossover = pkgs.callPackage ../pkgs/crossover.nix {
+        crossover-icon = ../pkgs/crossover.icns;
+      };
       finalfantasyxiv = pkgs.callPackage ../pkgs/finalfantasyxiv.nix {};
       firefox-bin = pkgs.callPackage ../pkgs/firefox-bin.nix {};
       iterm2 = pkgs.callPackage ../pkgs/iterm2.nix {};
