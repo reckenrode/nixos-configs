@@ -31,4 +31,6 @@
   systemd.services."acme-infra.largeandhighquality.com".serviceConfig.SupplementaryGroups = [
     config.users.groups.keys.name
   ];
+
+  users.groups.acme-certs = {};
 }
