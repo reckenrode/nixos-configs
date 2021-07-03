@@ -18,6 +18,8 @@
         "explorer.confirmDragAndDrop" = false;
         "extensions.autoCheckUpdates" = false;
         "extensions.autoUpdate" = false;
+	"omnisharp.monoPath" = "${pkgs.mono}/bin/mono";
+	"omnisharp.useGlobalMono" = "always";
         "telemetry.enableTelemetry" = false;
         "update.mode" = "none";
         "window.titleBarStyle" = "native";
