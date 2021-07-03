@@ -7,6 +7,7 @@
         bbenoist.Nix
         editorconfig.editorconfig
         pkgs.unstable.vscode-extensions.ionide.ionide-fsharp # FIXME: once 21.11 lands
+        ms-dotnettools.csharp
       ];
       userSettings = {
         "editor.minimap.enabled" = false;

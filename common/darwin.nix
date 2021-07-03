@@ -63,6 +63,13 @@
         ocl-icd = final.darwin.apple_sdk.frameworks.OpenCL;                         
         opencl-headers = final.darwin.apple_sdk.frameworks.OpenCL;   
       };
+      vscode-extensions = prev.vscode-extensions // {
+        ms-dotnettools.csharp = prev.vscode-extensions.ms-dotnettools.csharp.overrideAttrs (old: rec {
+          meta = old.meta // {
+            platforms = old.meta.platforms ++ lib.platforms.darwin;
+          };
+        });
+      };
     })
   ];
 
