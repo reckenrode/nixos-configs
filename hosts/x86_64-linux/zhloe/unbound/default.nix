@@ -12,6 +12,8 @@
     })
   ];
 
+  networking.nftables.ruleset = builtins.readFile ./unbound.nft;
+
   security.acme.certs."infra.largeandhighquality.com".postRun = "${pkgs.systemd}/bin/systemctl restart unbound.service";
 
   services.unbound = let
@@ -47,6 +49,4 @@
   systemd.services.unbound.serviceConfig.SupplementaryGroups = [
     config.users.groups.acme-certs.name
   ];
-
-  networking.nftables.ruleset = builtins.readFile ./unbound.nft;
 }
