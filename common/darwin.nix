@@ -51,7 +51,7 @@
         '';
       });
       secretive = pkgs.callPackage ../pkgs/secretive.nix {};
-      steam = pkgs.callPackage ../pkgs/steam.nix {};
+      steam = pkgs.callPackage ../pkgs/steam.nix { steam-icon = ../pkgs/steam.icns; };
       tiled = pkgs.callPackage ../pkgs/tiled.nix {};
       trash_mac = pkgs.callPackage ../pkgs/trash_mac {};
       waifu2x-converter-cpp = (prev.waifu2x-converter-cpp.overrideAttrs (old: rec {

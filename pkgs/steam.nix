@@ -1,4 +1,4 @@
-{ lib, fetchurl, stdenv, undmg }:
+{ lib, fetchurl, stdenv, undmg, steam-icon ? null }:
 
 stdenv.mkDerivation rec {
   pname = "steam";
@@ -18,6 +18,8 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p $out/Applications
     cp -r *.app $out/Applications
+  '' + lib.optionalString (!isNull steam-icon) ''
+    cp ${steam-icon} $out/Applications/Steam.app/Contents/Resources/Steam.icns
   '';
 
   meta = with lib; {
