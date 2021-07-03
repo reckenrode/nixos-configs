@@ -14,8 +14,9 @@
         "editor.rulers" = [ 100 ];
         "explorer.confirmDelete" = false;
         "explorer.confirmDragAndDrop" = false;
-        "workbench.colorTheme" = "Default Light+";
+        "telemetry.enableTelemetry" = false;
         "window.titleBarStyle" = "native";
+        "workbench.colorTheme" = "Default Light+";
       };
     };
 }
