@@ -9,6 +9,7 @@
         dnsProvider = "linodev4";
         domain = "*.infra.largeandhighquality.com";
         email = "randy@largeandhighquality.com";
+        group = config.users.groups.acme-certs.name;
         keyType = "rsa4096";
         postRun = builtins.readFile (pkgs.substituteAll {
           src = ./update-printer;

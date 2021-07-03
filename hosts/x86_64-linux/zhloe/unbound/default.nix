@@ -44,5 +44,9 @@
     };
   };
 
+  systemd.services.unbound.serviceConfig.SupplementaryGroups = [
+    config.users.groups.acme-certs.name
+  ];
+
   networking.nftables.ruleset = builtins.readFile ./unbound.nft;
 }
