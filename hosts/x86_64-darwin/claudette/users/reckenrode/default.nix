@@ -3,6 +3,7 @@
 {
   imports = [
     ./bear.nix
+    ./direnv.nix
     ./fish.nix
     ./fonts.nix
     ./git.nix
@@ -35,10 +36,4 @@
     # tiled
     waifu2x-converter-cpp
   ];
-
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv = {
-    enable = true;
-    enableFlakes = true;
-  };
 }
