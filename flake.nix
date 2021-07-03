@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -66,6 +67,11 @@
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
                     home-manager.users = mkHomeManagerConfig name hostUsers;
+                  }
+		  {
+                    nixpkgs.overlays = [
+                      (_: _: { unstable = inputs.nixpkgs-unstable.legacyPackages.${system}; })
+                    ];
                   }
                 ] ++ lib.optionals stdenv.isLinux [
                   inputs.foundryvtt.nixosModules.foundryvtt
