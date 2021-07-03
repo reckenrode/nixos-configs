@@ -8,6 +8,7 @@
     ./git.nix
     ./gnupg.nix
     ./ssh.nix
+    ./vscode.nix
   ];
 
   home.file.".local/bin/ocr-documents" = {
@@ -31,7 +32,6 @@
     secretive
     steam
     # tiled
-    vscode
     waifu2x-converter-cpp
   ];
 
