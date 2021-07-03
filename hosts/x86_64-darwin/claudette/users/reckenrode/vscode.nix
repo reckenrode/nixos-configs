@@ -16,7 +16,10 @@
         "editor.rulers" = [ 100 ];
         "explorer.confirmDelete" = false;
         "explorer.confirmDragAndDrop" = false;
+	"extensions.autoCheckUpdates" = false;
+	"extensions.autoUpdate" = false;
         "telemetry.enableTelemetry" = false;
+	"update.mode" = "none";
         "window.titleBarStyle" = "native";
         "workbench.colorTheme" = "Default Light+";
       };
