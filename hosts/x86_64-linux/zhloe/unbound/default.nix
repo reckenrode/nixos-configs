@@ -38,8 +38,8 @@
           "jihli.infra.largeandhighquality.com AAAA fda9:51fe:3bbf:c9f:c665:16ff:fedd:7d5b"
           "zhloe.infra.largeandhighquality.com AAAA fda9:51fe:3bbf:c9f:2e0:67ff:fe15:ced3"
         ];
-        tls-service-key = certPath + /key.pem;
-        tls-service-pem = certPath + /fullchain.pem;
+        tls-service-key = "${certPath}/key.pem";
+        tls-service-pem = "${certPath}/fullchain.pem";
       };
     };
   };
