@@ -21,6 +21,7 @@
         "telemetry.enableTelemetry" = false;
 	"update.mode" = "none";
         "window.titleBarStyle" = "native";
+        "workbench.editor.tabCloseButton" = "left";
         "workbench.colorTheme" = "Default Light+";
       };
     };
