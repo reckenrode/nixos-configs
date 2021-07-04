@@ -4,17 +4,17 @@ let
   arches = {
     aarch64-darwin = {
       suffix = "-aarch64";
-      hash = "sha256-VWd/PoxFs+nT+vs2njeAk98hcX0TeBfHpA8xvLOkCPs=";
+      hash = "sha256-U9EYQoW9U+KQBatCRu2++vm1fXHQJXrMxk0EPQtPOhw=";
     };
     x86_64-darwin = {
       suffix = "";
-      hash = "sha256-VTo+Cz4R9C3vVJC/9m1mKJ5YCv2JKtV3VbOitweQCek=";
+      hash = "sha256-18en0lfej4WipSrgrNGmwP6QvEgPbpbTRvfcK2Nm3Y8=";
     };
   };
   arch = arches.${system};
 in stdenv.mkDerivation rec {
   pname = "ruby-mine";
-  version = "2021.1";
+  version = "2021.1.2";
 
   src = fetchurl {
     url = "https://download.jetbrains.com/ruby/RubyMine-${version}${arch.suffix}.dmg";
