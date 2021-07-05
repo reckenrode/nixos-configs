@@ -22,6 +22,7 @@
       "omnisharp.monoPath" = "${pkgs.mono}/bin/mono";
       "omnisharp.useGlobalMono" = "always";
       "telemetry.enableTelemetry" = false;
+      "terminal.integrated.env.osx" = { "PATH" = "\${env:PATH}:${pkgs.dotnet-sdk_5}"; };
       "update.mode" = "none";
       "window.titleBarStyle" = "native";
       "workbench.editor.tabCloseButton" = "left";
