@@ -8,6 +8,7 @@
       editorconfig.editorconfig
       pkgs.unstable.vscode-extensions.ionide.ionide-fsharp # FIXME: once 21.11 lands
       ms-dotnettools.csharp
+      rubymaniac.vscode-direnv
     ];
     userSettings = {
       "FSharp.dotnetRoot" = "${pkgs.dotnet-sdk_5}";

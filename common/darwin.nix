@@ -69,6 +69,7 @@
       };
       vscode-extensions = prev.vscode-extensions // {
         ms-dotnettools.csharp = pkgs.callPackage ../pkgs/omnisharp {};
+        rubymaniac.vscode-direnv = pkgs.callPackage ../pkgs/rubymaniac.vscode-direnv.nix {};
       };
     })
   ];
