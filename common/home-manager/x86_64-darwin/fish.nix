@@ -1,10 +1,6 @@
 { ... }:
 
 {
-  programs.fish.shellAliases = {
-    trash = "trash -F";
-  };
-
   programs.fish.loginShellInit = let
     fishUserPaths = builtins.foldl' (a: b: "${a} ${b}") "" [
       "$HOME/.nix-profile/bin"
