@@ -1,0 +1,72 @@
+{
+  "OmniSharp-x86_64-darwin": {
+    "installPath": ".omnisharp/1.37.10",
+    "binaries": [
+      "./mono.osx",
+      "./run"
+    ],
+    "urls": [
+      "https://download.visualstudio.microsoft.com/download/pr/c330c5bf-aa2e-43f6-ae59-d9e5274a0741/73e0f5e02297e2bde431c3260af009d5/omnisharp-osx-1.37.10.zip",
+      "https://roslynomnisharp.blob.core.windows.net/releases/1.37.10/omnisharp-osx-1.37.10.zip"
+    ],
+    "sha256": "15h9diypmp626rm2ffrl43dp6mrlsa7pmnpw4z99j2ar7zrdzaz7"
+  },
+  "OmniSharp-x86_64-linux": {
+    "installPath": ".omnisharp/1.37.10",
+    "binaries": [
+      "./mono.linux-x86_64",
+      "./run"
+    ],
+    "urls": [
+      "https://download.visualstudio.microsoft.com/download/pr/c330c5bf-aa2e-43f6-ae59-d9e5274a0741/abbdf147583dfbcf108ae3925f175f30/omnisharp-linux-x64-1.37.10.zip",
+      "https://roslynomnisharp.blob.core.windows.net/releases/1.37.10/omnisharp-linux-x64-1.37.10.zip"
+    ],
+    "sha256": "12qp5ans32rqq4y0cc71p6300v8yxxnzkdwrn5c3k1a11kx0shx7"
+  },
+  "Debugger-x86_64-darwin": {
+    "installPath": ".debugger/x86_64",
+    "binaries": [
+      "./vsdbg-ui",
+      "./vsdbg"
+    ],
+    "urls": [
+      "https://download.visualstudio.microsoft.com/download/pr/15786370-6d35-4cac-8d70-618dfc5aa9ad/829575bd3a1e1837b3be4c2d1e02fc85/coreclr-debug-osx-x64.zip",
+      "https://vsdebugger.blob.core.windows.net/coreclr-debug-1-23-12/coreclr-debug-osx-x64.zip"
+    ],
+    "sha256": "1bh48rrgq60g3hibxf8rp796s6nmr8ybvylmmg80bd7kz11dcz1c"
+  },
+  "Debugger-x86_64-linux": {
+    "installPath": ".debugger",
+    "binaries": [
+      "./vsdbg-ui",
+      "./vsdbg"
+    ],
+    "urls": [
+      "https://download.visualstudio.microsoft.com/download/pr/15786370-6d35-4cac-8d70-618dfc5aa9ad/92eeb7715c63c006df2318abeefc15b4/coreclr-debug-linux-x64.zip",
+      "https://vsdebugger.blob.core.windows.net/coreclr-debug-1-23-12/coreclr-debug-linux-x64.zip"
+    ],
+    "sha256": "0jscjzf5nys7jq639j1v3rawabfaz28rsswd21vvfkdi8fq7xbx1"
+  },
+  "Razor-x86_64-linux": {
+    "installPath": ".razor",
+    "binaries": [
+      "./rzls"
+    ],
+    "urls": [
+      "https://download.visualstudio.microsoft.com/download/pr/752cb2c4-4352-499f-ab81-54454d6e7a92/344a62e65802d1f611bb0a8e94751cc8/razorlanguageserver-linux-x64-6.0.0-preview.5.21271.1.zip",
+      null
+    ],
+    "sha256": "0l8i1hwr3zmm34wjmmlnfb16isk2zr2ac4njl19my7drajr3yb13"
+  },
+  "Razor-x86_64-darwin": {
+    "installPath": ".razor",
+    "binaries": [
+      "./rzls"
+    ],
+    "urls": [
+      "https://download.visualstudio.microsoft.com/download/pr/752cb2c4-4352-499f-ab81-54454d6e7a92/095200d2ec40538faa0f59b52e229192/razorlanguageserver-osx-x64-6.0.0-preview.5.21271.1.zip",
+      null
+    ],
+    "sha256": "1fd1apjn0h4djr7vyg8ijy7qmrr7igv02ala5gdl25a97p3cjaan"
+  }
+}
