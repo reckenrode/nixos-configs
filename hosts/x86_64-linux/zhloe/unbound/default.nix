@@ -3,12 +3,7 @@
 {
   nixpkgs.overlays = [
     (final: prev: {
-      unbound_doh = prev.unbound.overrideAttrs (old: {
-        buildInputs = old.buildInputs ++ [ final.nghttp2 ];
-        configureFlags = old.configureFlags ++ [
-          "--with-libnghttp2=${final.nghttp2.dev}"
-        ];
-      });
+      unbound-with-systemd = prev.unbound-with-systemd.override { withDoH = true; };
     })
   ];
 
@@ -19,7 +14,6 @@
   services.unbound = let
     certPath = config.security.acme.certs."infra.largeandhighquality.com".directory;
   in {
-    package = pkgs.unbound_doh;
     settings = {
       server = {
         access-control = [
