@@ -11,6 +11,7 @@
     ];
     userSettings = {
       "FSharp.dotnetRoot" = "${pkgs.dotnet-sdk_5}";
+      "editor.fontFamily" = "SF Mono, Menlo, Monaco, 'Courier New', monospace";
       "editor.minimap.enabled" = false;
       "editor.roundedSelection" = false;
       "editor.rulers" = [ 100 ];
