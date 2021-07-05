@@ -22,7 +22,7 @@
       RouterLifetimeSec = 5400;
       DNS = "_link_local";
       Domains = "infra.largeandhighquality.com";
-      DNSLifetimeSec = 1800; # infinity
+      DNSLifetimeSec = "infinity";
     };
     extraConfig = ''
       [IPv6Prefix]
