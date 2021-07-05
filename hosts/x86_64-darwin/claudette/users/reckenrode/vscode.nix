@@ -19,7 +19,7 @@
       "explorer.confirmDragAndDrop" = false;
       "extensions.autoCheckUpdates" = false;
       "extensions.autoUpdate" = false;
-      "omnisharp.monoPath" = "${pkgs.mono}/bin/mono";
+      "omnisharp.monoPath" = "${pkgs.mono}/bin";
       "omnisharp.useGlobalMono" = "always";
       "telemetry.enableTelemetry" = false;
       "terminal.integrated.env.osx" = { "PATH" = "\${env:PATH}:${pkgs.dotnet-sdk_5}"; };
