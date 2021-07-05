@@ -4,6 +4,7 @@
   imports = [
     ./base.nix
     ./nix-flakes.nix
+    ./nix-optimizations-darwin.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
