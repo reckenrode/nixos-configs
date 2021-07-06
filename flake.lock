@@ -21,42 +21,6 @@
         "type": "github"
       }
     },
-    "flake-utils": {
-      "locked": {
-        "lastModified": 1614513358,
-        "narHash": "sha256-LakhOx3S1dRjnh0b5Dg3mbZyH0ToC9I8Y2wKSkBaTzU=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "5466c5bbece17adaab2d82fae80b46e807611bf3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "foundryvtt": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1615697362,
-        "narHash": "sha256-Zug6z6XGCIzqEsFncgS2JCJuGNQ3DMhekmFDp739hJ4=",
-        "owner": "reckenrode",
-        "repo": "nix-foundryvtt",
-        "rev": "ed2e5333fc56dfdb5cade2008b7c66e62425e611",
-        "type": "github"
-      },
-      "original": {
-        "owner": "reckenrode",
-        "repo": "nix-foundryvtt",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -113,7 +77,6 @@
     "root": {
       "inputs": {
         "darwin": "darwin",
-        "foundryvtt": "foundryvtt",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",

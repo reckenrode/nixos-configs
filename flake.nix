@@ -9,9 +9,6 @@
     home-manager.url = "github:nix-community/home-manager/release-21.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    foundryvtt.url = "github:reckenrode/nix-foundryvtt";
-    foundryvtt.inputs.nixpkgs.follows = "nixpkgs";
-
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -74,7 +71,6 @@
                     ];
                   }
                 ] ++ lib.optionals stdenv.isLinux [
-                  inputs.foundryvtt.nixosModules.foundryvtt
                   inputs.sops-nix.nixosModules.sops
                 ];
               } // lib.optionalAttrs stdenv.isLinux { inherit system; });
