@@ -74,12 +74,29 @@
         "type": "github"
       }
     },
+    "nvd": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1621214682,
+        "narHash": "sha256-43yr1okIVWI6mdBp03bkeyeK0SrP+C4rdJCo5H8nfaY=",
+        "owner": "khumba",
+        "repo": "nvd",
+        "rev": "1e6e419be37fca2748f73b084962849692d7d77c",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "khumba",
+        "repo": "nvd",
+        "type": "gitlab"
+      }
+    },
     "root": {
       "inputs": {
         "darwin": "darwin",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "nvd": "nvd",
         "sops-nix": "sops-nix"
       }
     },

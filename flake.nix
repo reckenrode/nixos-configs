@@ -9,6 +9,9 @@
     home-manager.url = "github:nix-community/home-manager/release-21.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nvd.url = "gitlab:khumba/nvd";
+    nvd.flake = false;
+
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -27,7 +30,8 @@
     in lib.trivial.pipe systems [
       (map (system:
         let
-          stdenv = nixpkgs.legacyPackages.${system}.stdenv;
+          pkgs = nixpkgs.legacyPackages.${system};
+          stdenv = pkgs.stdenv;
 
           hosts = readDirNames (./hosts + "/${system}");
           users = host: readDirNames ((hostPath host) + /users);
@@ -65,9 +69,10 @@
                     home-manager.useUserPackages = true;
                     home-manager.users = mkHomeManagerConfig name hostUsers;
                   }
-		  {
+                  {
                     nixpkgs.overlays = [
                       (_: _: { unstable = inputs.nixpkgs-unstable.legacyPackages.${system}; })
+                      (_: _: { nvd = import inputs.nvd { inherit pkgs; }; })
                     ];
                   }
                 ] ++ lib.optionals stdenv.isLinux [
