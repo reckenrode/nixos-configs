@@ -6,12 +6,11 @@
     ripgrep
   ];
 
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = ''
-      set -x EDITOR "${pkgs.neovim}/bin/nvim";
-    '';
+  home.sessionVariables = {
+    EDITOR = "${pkgs.neovim}/bin/nvim";
   };
+
+  programs.fish.enable = true;
 
   home.stateVersion = "21.05";
 }
