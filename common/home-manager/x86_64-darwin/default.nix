@@ -7,6 +7,7 @@
     ./finder.nix
     ./fish.nix
     ./keyboard.nix
+    ./kitty.nix
     ./safari.nix
     ./ui.nix
   ];
