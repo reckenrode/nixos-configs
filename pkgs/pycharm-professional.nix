@@ -4,17 +4,17 @@ let
   arches = {
     aarch64-darwin = {
       suffix = "-aarch64";
-      hash = "sha256-dDw3ZQ2FNEXpJ8MMks5MURhr5nwk/laOEfvckPuir4o=";
+      hash = "sha256-SbMp+N60GvonxdcWs2cYu5dSppo8W02UU5McbAnI0lM=";
     };
     x86_64-darwin = {
       suffix = "";
-      hash = "sha256-FfZXCcPjXN0iaJhh3zM2ZAk9QFyMhtJtXdRZ8FZy3E0=";
+      hash = "sha256-rrws3rHZw4knshj+nZaCIDb8+cZ73C88HGchShVbL+U=";
     };
   };
   arch = arches.${system};
 in stdenv.mkDerivation rec {
   pname = "pycharm-professional";
-  version = "2021.1";
+  version = "2021.1.3";
 
   src = fetchurl {
     url = "https://download.jetbrains.com/python/${pname}-${version}${arch.suffix}.dmg";
