@@ -29,7 +29,6 @@
     openra
     openttd
     # pathofexile
-    iterm2
     pngout
     secretive
     steam
