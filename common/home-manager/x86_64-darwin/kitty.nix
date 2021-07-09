@@ -3,6 +3,10 @@
 {
   programs.kitty = {
     enable = true;
+    keybindings = {
+      "cmd+n" = "new_os_window_with_cwd";
+      "cmd+t" = "new_tab_with_cwd";
+    };
     settings = {
       # Font settings
       font_family = "SFMono-Regular";
