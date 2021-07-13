@@ -12,7 +12,7 @@
       appsSrc="${apps}/Applications/"
       baseDir="$HOME/Applications/Home Manager Apps"
       rsyncArgs="--archive --chmod=u-w --delete -cL"
-      mkdir -p "$baseDir"
+      ${pkgs.coreutils}/bin/mkdir -p "$baseDir"
       $DRY_RUN_CMD ${pkgs.findutils}/bin/find "$appsSrc" -maxdepth 1 -print0 | \
         ${pkgs.findutils}/bin/xargs -0 -n1 -P0 -I% \
         ${pkgs.rsync}/bin/rsync ''${VERBOSE_ARG:+-v} $rsyncArgs % "$baseDir"
