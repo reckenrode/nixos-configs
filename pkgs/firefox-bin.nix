@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   pname = "firefox-bin";
-  version = "89.0.2";
+  version = "90.0";
   lang = "en-US";
 
   src = fetchurl {
     name = "Firefox-${lang}-${version}.dmg";
     url = "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${version}/mac/${lang}/Firefox%20${version}.dmg";
-    hash = "sha256-zCITPCND4AM3laLVZ36rOAEXEP4KBG7jAr56hFq1kEM=";
+    hash = "sha256-28CAOOKiYBfTYLvzZqk1CE7Q4JFNxQ8+fkGeW3ZciGM=";
   };
 
   nativeBuildInputs = [ undmg ];
