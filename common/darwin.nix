@@ -30,7 +30,6 @@
         ruby-mine = pkgs.callPackage ../pkgs/ruby-mine.nix {};
         pycharm-professional = pkgs.callPackage ../pkgs/pycharm-professional.nix {};
       };
-      kitty = final.unstable.kitty;
       netnewswire = pkgs.callPackage ../pkgs/netnewswire.nix {};
       openra = pkgs.callPackage ../pkgs/openra.nix {};
       openttd = pkgs.callPackage ../pkgs/openttd.nix {};
