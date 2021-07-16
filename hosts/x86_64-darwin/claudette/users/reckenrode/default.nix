@@ -33,6 +33,7 @@
     secretive
     steam
     # tiled
+    verify-archive
     waifu2x-converter-cpp
   ];
 }
