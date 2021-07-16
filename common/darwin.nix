@@ -3,6 +3,7 @@
 {
   imports = [
     ./base.nix
+    ./automatic-upgrades-darwin.nix
     ./nix-flakes.nix
     ./nix-optimizations-darwin.nix
   ];
