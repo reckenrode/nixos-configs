@@ -16,6 +16,7 @@
         Minute = 0;
       }
     ];
+    StandardOutPath = "/var/log/nix-store.log";
   };
   # While it’s possible to set `auto-optimise-store` in `nix.conf`, it sometimes causes problems
   # on Darwin.  Run a job periodically to optimise the store.
@@ -33,5 +34,6 @@
         Minute = 30;
       }
     ];
+    StandardOutPath = "/var/log/nix-store.log";
   };
 }
