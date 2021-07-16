@@ -14,6 +14,9 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    verify-archive.url = "github:reckenrode/VerifyArchive";
+    verify-archive.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs@{ self, nixpkgs, darwin, home-manager, ... }:
@@ -73,6 +76,9 @@
                     nixpkgs.overlays = [
                       (_: _: { unstable = inputs.nixpkgs-unstable.legacyPackages.${system}; })
                       (_: _: { nvd = import inputs.nvd { inherit pkgs; }; })
+                      (_: _: {
+                        verify-archive = inputs.verify-archive.packages.${system}.verify-archive;
+                      })
                     ];
                   }
                 ] ++ lib.optionals stdenv.isLinux [
