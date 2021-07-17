@@ -16,6 +16,7 @@
         Minute = 0;
       }
     ];
+    StandardErrorPath = "/var/log/nix-store.log";
     StandardOutPath = "/var/log/nix-store.log";
   };
   # While it’s possible to set `auto-optimise-store` in `nix.conf`, it sometimes causes problems
@@ -34,6 +35,7 @@
         Minute = 30;
       }
     ];
+    StandardErrorPath = "/var/log/nix-store.log";
     StandardOutPath = "/var/log/nix-store.log";
   };
 }

@@ -19,6 +19,7 @@
           Minute = 0;
         }
       ];
+      StandardErrorPath = "/var/log/darwin-upgrade.log";
       StandardOutPath = "/var/log/darwin-upgrade.log";
     };
   };
