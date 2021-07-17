@@ -9,5 +9,5 @@
   };
   targets.darwin.defaults."com.apple.universalaccess" = {
     showWindowTitlebarIcons = true;
-  }
+  };
 }
