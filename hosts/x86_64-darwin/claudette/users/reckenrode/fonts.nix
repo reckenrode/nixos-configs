@@ -13,9 +13,7 @@
       fontDir="$HOME/Library/Fonts/Home Manager Fonts"
       rsyncArgs="--archive --chmod=u-w --delete -cL"
       $DRY_RUN_CMD ${pkgs.coreutils}/bin/mkdir -p "$fontDir"
-      $DRY_RUN_CMD ${pkgs.findutils}/bin/find "$fontSrc" -maxdepth 1 -print0 | \
-        ${pkgs.findutils}/bin/xargs -0 -n1 -P0 -I% \
-        ${pkgs.rsync}/bin/rsync ''${VERBOSE_ARG:+-v} $rsyncArgs % "$fontDir"
+      $DRY_RUN_CMD ${pkgs.rsync}/bin/rsync ''${VERBOSE_ARG:+-v} $rsyncArgs "$fontSrc" "$fontDir"
     '';
   };
 }
