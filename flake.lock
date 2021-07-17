@@ -144,11 +144,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1626458412,
-        "narHash": "sha256-jJbZ9/PcrSmSA2yhtfVQbIS5ObHYZHyC8CnmeoblvKw=",
+        "lastModified": 1626466828,
+        "narHash": "sha256-PTq98+EkA/Pr5q2l9yPpjbrPciOos4Dbft1wCJzHwUQ=",
         "owner": "reckenrode",
         "repo": "VerifyArchive",
-        "rev": "efbf7eb9a519feed9eb5ac4861fe40c169e3bf7e",
+        "rev": "3cf12ea7d44a946ba7a9bb23fd8817c9352b014d",
         "type": "github"
       },
       "original": {
