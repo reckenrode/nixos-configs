@@ -7,6 +7,4 @@
   ];
 
   networking.hostName = "claudette";
-
-  nix.automaticUpgrades.enable = true;
 }
