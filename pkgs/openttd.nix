@@ -35,6 +35,6 @@ stdenv.mkDerivation rec {
     homepage = "https://www.openttd.org/";
     changelog = "https://cdn.openttd.org/openttd-releases/${version}/changelog.txt";
     license = licenses.gpl2;
-    platforms = [ "x86_64-darwin" "aarch64-darwin" ];
+    platforms = platforms.darwin;
   };
 }

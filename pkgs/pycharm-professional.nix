@@ -49,6 +49,6 @@ in stdenv.mkDerivation rec {
     homepage = "https://www.jetbrains.com/pycharm/";
     changelog = "https://www.jetbrains.com/pycharm/whatsnew/";
     license = licenses.unfree;
-    platforms = [ "x86_64-darwin" "aarch64-darwin" ];
+    platforms = platforms.darwin;
   };
 }

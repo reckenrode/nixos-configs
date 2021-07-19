@@ -31,7 +31,7 @@ stdenv.mkDerivation rec {
     homepage = "https://netnewswire.com";
     changelog = "https://github.com/Ranchero-Software/NetNewsWire/releases";
     license = licenses.mit;
-    platforms = [ "x86_64-darwin" "aarch64-darwin" ];
+    platforms = platforms.darwin;
   };
 }
 

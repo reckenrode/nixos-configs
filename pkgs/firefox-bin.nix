@@ -37,7 +37,7 @@ stdenv.mkDerivation rec {
       free = false;
       url = "http://www.mozilla.org/en-US/foundation/trademarks/policy/";
     };
-    platforms = [ "x86_64-darwin" "aarch64-darwin" ];
+    platforms = platforms.darwin;
   };
 }
 
