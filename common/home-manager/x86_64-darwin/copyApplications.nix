@@ -54,7 +54,7 @@
         done
       done
 
-      $DRY_RUN_CMD find "$baseDir" -mindepth 1 -print0 | xargs -0 touch -ht 196912312359.59
+      $DRY_RUN_CMD find "$baseDir" -mindepth 1 -print0 | TZ=UTC xargs -0 touch -ht 197001010000.00
       $DRY_RUN_CMD chmod -R -w ''${VERBOSE_ARG:+-v} "$baseDir"/*
     '';
   };
