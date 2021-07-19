@@ -19,7 +19,8 @@
       for app in "$appsSrc"/*; do
 	# Instead of symlinking into the home-manager buildEnv, symlink to the original app
 	# in the Nix store.  The buildEnv is just a convenient way of getting all the packages
-	# with .app bundles.
+	# with .app bundles.  This helps avoid macOS TCC nagging when an app doesn’t change
+	# during a generation switch.
         app=$(readlink "$app")
 
         appName=$(basename "$app")
