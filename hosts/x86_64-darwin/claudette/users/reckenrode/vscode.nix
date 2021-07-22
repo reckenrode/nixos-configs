@@ -9,6 +9,7 @@
       pkgs.unstable.vscode-extensions.ionide.ionide-fsharp # FIXME: once 21.11 lands
       ms-dotnettools.csharp
       rubymaniac.vscode-direnv
+      pkgs.unstable.vscode-extensions.matklad.rust-analyzer
     ];
     userSettings = {
       "FSharp.dotnetRoot" = "${pkgs.dotnet-sdk_5}";
