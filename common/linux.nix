@@ -13,7 +13,10 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  security.sudo.wheelNeedsPassword = false;
+  security.sudo = {
+    execWheelOnly = true;
+    wheelNeedsPassword = false;
+  };
 
   users.mutableUsers = false;
 
