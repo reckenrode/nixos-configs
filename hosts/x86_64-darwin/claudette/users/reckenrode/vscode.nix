@@ -22,6 +22,7 @@
       "explorer.confirmDragAndDrop" = false;
       "extensions.autoCheckUpdates" = false;
       "extensions.autoUpdate" = false;
+      "git.path" = "${pkgs.git}/bin/git";
       "telemetry.enableTelemetry" = false;
       "terminal.integrated.env.osx" = { "PATH" = "\${env:PATH}:${pkgs.dotnet-sdk_5}"; };
       "update.mode" = "none";
