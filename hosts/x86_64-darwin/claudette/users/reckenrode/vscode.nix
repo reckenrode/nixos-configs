@@ -24,7 +24,11 @@
       "extensions.autoUpdate" = false;
       "git.path" = "${pkgs.git}/bin/git";
       "telemetry.enableTelemetry" = false;
-      "terminal.integrated.env.osx" = { "PATH" = "\${env:PATH}:${pkgs.dotnet-sdk_5}"; };
+      "terminal.integrated.env.osx" = {
+        # Put Git first to prevent VS Code from finding it in /usr/bin and triggering annoying
+        # command-line tools installation dialogs.
+        "PATH" = "${pkgs.git}/bin:\${env:PATH}:${pkgs.dotnet-sdk_5}";
+      };
       "update.mode" = "none";
       "window.titleBarStyle" = "native";
       "workbench.editor.tabCloseButton" = "left";
