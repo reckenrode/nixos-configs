@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
-{
+let
+  commandLineTools = "/Library/Developer/CommandLineTools";
+  lldbFramework = "${commandLineTools}/Library/PrivateFrameworks/LLDB.framework";
+  debugserver = "${lldbFramework}/Versions/A/Resources/debugserver";
+in {
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
@@ -10,6 +14,7 @@
       ms-dotnettools.csharp
       rubymaniac.vscode-direnv
       pkgs.unstable.vscode-extensions.matklad.rust-analyzer
+      pkgs.vscode-lldb.vscode-extensions.vadimcn.vscode-lldb
     ];
     userSettings = {
       "FSharp.dotnetRoot" = "${pkgs.dotnet-sdk_5}";
@@ -33,6 +38,9 @@
       "window.titleBarStyle" = "native";
       "workbench.editor.tabCloseButton" = "left";
       "workbench.colorTheme" = "Default Light+";
+      "lldb.adapterEnv" = {
+        "LLDB_DEBUGSERVER_PATH" = debugserver;
+      };
     };
   };
 }
