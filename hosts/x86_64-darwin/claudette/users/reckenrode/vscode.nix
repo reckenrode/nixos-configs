@@ -1,8 +1,8 @@
 { pkgs, ... }:
 
 let
-  commandLineTools = "/Library/Developer/CommandLineTools";
-  lldbFramework = "${commandLineTools}/Library/PrivateFrameworks/LLDB.framework";
+  xcodePath = "/Applications/Xcode.app";
+  lldbFramework = "${xcodePath}/Contents/SharedFrameworks/LLDB.framework";
   debugserver = "${lldbFramework}/Versions/A/Resources/debugserver";
 in {
   programs.vscode = {
