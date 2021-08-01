@@ -44,15 +44,15 @@ function save_results -a path -a target_path
     @coreutils@/bin/mv $path/*.pdf $target_path
 end
 
-function clean_up_staging -a path
-    @coreutils@/bin/rm -rf $path
-end
-
 argparse --name=ocr-documents 'l/lang=' -- $argv
 
 set lang $_flag_l
 set path (canonicalize_path $argv[1])
 set staging (@coreutils@/bin/mktemp -d)
+
+function clean_up_staging --on-event EXIT -e INT -e QUIT -e TERM
+    @coreutils@/bin/rm -rf $staging
+end
 
 copy_pdfs_to_staging_area $path $staging
 run_tesseract $staging $lang
