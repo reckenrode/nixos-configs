@@ -16,7 +16,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    verify-archive.url = "github:reckenrode/VerifyArchive";
+    verify-archive.url = "github:reckenrode/verify-archive";
     verify-archive.inputs.nixpkgs.follows = "nixpkgs";
   };
 
