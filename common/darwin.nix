@@ -32,6 +32,7 @@
         pycharm-professional = pkgs.callPackage ../pkgs/pycharm-professional.nix {};
       };
       netnewswire = pkgs.callPackage ../pkgs/netnewswire.nix {};
+      ocr-documents = pkgs.callPackage ../pkgs/ocr-documents {};
       openra = pkgs.callPackage ../pkgs/openra.nix {};
       openttd = pkgs.callPackage ../pkgs/openttd.nix {};
       pathofexile = pkgs.callPackage ../pkgs/pathofexile.nix {};
