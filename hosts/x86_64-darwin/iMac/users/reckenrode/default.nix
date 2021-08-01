@@ -7,6 +7,7 @@
   
   home.packages = with pkgs; [
     openssh
+    steam
     verify-archive
   ];
 }
