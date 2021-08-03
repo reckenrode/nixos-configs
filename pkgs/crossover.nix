@@ -27,7 +27,7 @@ stdenv.mkDerivation rec {
     description = ''
       Steam is the ultimate destination for playing, discussing, and creating games.
     '';
-    homepage = "https://steampowered.com";
+    homepage = "https://www.codeweavers.com/crossover";
     license = licenses.unfree;
     platforms = [ "x86_64-darwin" ];
   };
