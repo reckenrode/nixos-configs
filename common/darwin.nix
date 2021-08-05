@@ -27,10 +27,6 @@
       };
       finalfantasyxiv = pkgs.callPackage ../pkgs/finalfantasyxiv.nix {};
       firefox-bin = pkgs.callPackage ../pkgs/firefox-bin.nix {};
-      jetbrains = prev.jetbrains // {
-        ruby-mine = pkgs.callPackage ../pkgs/ruby-mine.nix {};
-        pycharm-professional = pkgs.callPackage ../pkgs/pycharm-professional.nix {};
-      };
       netnewswire = pkgs.callPackage ../pkgs/netnewswire.nix {};
       ocr-documents = pkgs.callPackage ../pkgs/ocr-documents {};
       openra = pkgs.callPackage ../pkgs/openra.nix {};
