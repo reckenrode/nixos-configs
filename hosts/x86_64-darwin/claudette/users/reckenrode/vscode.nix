@@ -11,7 +11,7 @@ in {
       bbenoist.Nix
       editorconfig.editorconfig
       rubymaniac.vscode-direnv
-      pkgs.unstable.vscode-extensions.matklad.rust-analyzer
+      matklad.rust-analyzer
       pkgs.vscode-lldb.vscode-extensions.vadimcn.vscode-lldb
     ];
     userSettings = {
