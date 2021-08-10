@@ -12,7 +12,7 @@ in {
       editorconfig.editorconfig
       rubymaniac.vscode-direnv
       matklad.rust-analyzer
-      pkgs.vscode-lldb.vscode-extensions.vadimcn.vscode-lldb
+      pkgs.unstable.vscode-extensions.vadimcn.vscode-lldb
     ];
     userSettings = {
       "editor.fontFamily" = "SF Mono, Menlo, Monaco, 'Courier New', monospace";

@@ -74,11 +74,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1628186972,
-        "narHash": "sha256-wWXlIQdZq/EtlBAGFJ62YHYEnJclxCuUOUGnrQqJ3zg=",
+        "lastModified": 1628427351,
+        "narHash": "sha256-WuZUIQ07AvRw+T9wvQ3qFf8MXmKZ+ktZz9drNgWXDbs=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "733682c32929293341f113f297b64ea6319e9089",
+        "rev": "348bc5de8bca09c624f5c4975f538684da4713d2",
         "type": "github"
       },
       "original": {
@@ -90,32 +90,16 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1628287055,
-        "narHash": "sha256-YwxtAt25pZofJT/e4sxw9cFBaFok+zgIy04HFV0rDd0=",
+        "lastModified": 1628465643,
+        "narHash": "sha256-QSNw9bDq9uGUniQQtakRuw4m21Jxugm23SXLVgEV4DM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "0dde103318090f77ac95ef7fc26fe0cdd00fa0b3",
+        "rev": "6ef4f522d63f22b40004319778761040d3197390",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-vscode-lldb": {
-      "locked": {
-        "lastModified": 1627098576,
-        "narHash": "sha256-FxlmbeOIN3ue3MVhm5tP2hz0EAbRGWt+d8ZqgYOCVpU=",
-        "owner": "reckenrode",
-        "repo": "nixpkgs",
-        "rev": "1fa46c67ec952d8de5d3ff9325e1068fb5b9404f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "reckenrode",
-        "ref": "vscode-lldb",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -142,7 +126,6 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "nixpkgs-vscode-lldb": "nixpkgs-vscode-lldb",
         "nvd": "nvd",
         "sops-nix": "sops-nix",
         "verify-archive": "verify-archive"

@@ -2,7 +2,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-vscode-lldb.url = "github:reckenrode/nixpkgs/vscode-lldb";
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -76,7 +75,6 @@
                   {
                     nixpkgs.overlays = [
                       (_: _: { unstable = inputs.nixpkgs-unstable.legacyPackages.${system}; })
-                      (_: _: { vscode-lldb = inputs.nixpkgs-vscode-lldb.legacyPackages.${system}; })
                       (_: _: { nvd = import inputs.nvd { inherit pkgs; }; })
                       (_: _: {
                         verify-archive = inputs.verify-archive.packages.${system}.verify-archive;
