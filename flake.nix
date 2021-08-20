@@ -9,6 +9,8 @@
     home-manager.url = "github:nix-community/home-manager/release-21.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    mkalias.url = "github:reckenrode/mkalias";
+
     nvd.url = "gitlab:khumba/nvd";
     nvd.flake = false;
 
@@ -78,6 +80,7 @@
                       (_: _: { nvd = import inputs.nvd { inherit pkgs; }; })
                       (_: _: {
                         verify-archive = inputs.verify-archive.packages.${system}.verify-archive;
+                        mkalias = inputs.mkalias.packages.${system}.mkalias;
                       })
                     ];
                   }
