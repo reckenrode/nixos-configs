@@ -4,6 +4,7 @@
   imports = [
     ./bear.nix
     ./direnv.nix
+    ./ffxiv.nix
     ./fish.nix
     ./fonts.nix
     ./git.nix
@@ -14,7 +15,6 @@
   
   home.packages = with pkgs; [
     crossover
-    finalfantasyxiv
     firefox-bin
     # jetbrains.ruby-mine
     netnewswire
