@@ -52,19 +52,6 @@
       steam = pkgs.callPackage ../pkgs/steam.nix { steam-icon = ../pkgs/steam.icns; };
       tiled = pkgs.callPackage ../pkgs/tiled.nix {};
       trash_mac = pkgs.callPackage ../pkgs/trash_mac {};
-      waifu2x-converter-cpp = (prev.waifu2x-converter-cpp.overrideAttrs (old: rec {
-        patches = [ ./files/waifu2x_darwin_build.diff ];   
-        patchPhase = null;
-        postPatch = old.patchPhase;
-        preFixup = lib.optional prev.stdenv.isLinux old.preFixup; 
-        meta = old.meta // {                                     
-          platforms = old.meta.platforms ++ lib.platforms.darwin; 
-        };
-      })).override {                                                                           
-        opencv3 = final.opencv4;
-        ocl-icd = final.darwin.apple_sdk.frameworks.OpenCL;                         
-        opencl-headers = final.darwin.apple_sdk.frameworks.OpenCL;   
-      };
       vscode-extensions = prev.vscode-extensions // {
         rubymaniac.vscode-direnv = pkgs.callPackage ../pkgs/rubymaniac.vscode-direnv.nix {};
       };

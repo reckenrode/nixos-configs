@@ -27,6 +27,6 @@
     steam
     # tiled
     verify-archive
-    waifu2x-converter-cpp
+    unstable.waifu2x-converter-cpp
   ];
 }
