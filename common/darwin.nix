@@ -52,9 +52,6 @@
       steam = pkgs.callPackage ../pkgs/steam.nix { steam-icon = ../pkgs/steam.icns; };
       tiled = pkgs.callPackage ../pkgs/tiled.nix {};
       trash_mac = pkgs.callPackage ../pkgs/trash_mac {};
-      vscode-extensions = prev.vscode-extensions // {
-        rubymaniac.vscode-direnv = pkgs.callPackage ../pkgs/rubymaniac.vscode-direnv.nix {};
-      };
     })
   ];
 

@@ -4,13 +4,22 @@ let
   xcodePath = "/Applications/Xcode.app";
   lldbFramework = "${xcodePath}/Contents/SharedFrameworks/LLDB.framework";
   debugserver = "${lldbFramework}/Versions/A/Resources/debugserver";
+let
+  direnv = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    {
+      publisher = "cab404";
+      name = "vscode-direnv";
+      version = "1.0.0";
+      sha256 = "sha256-+nLH+T9v6TQCqKZw6HPN/ZevQ65FVm2SAo2V9RecM3Y=";
+    }
+  ];
 in {
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
       bbenoist.Nix
+      direnv
       editorconfig.editorconfig
-      rubymaniac.vscode-direnv
       matklad.rust-analyzer
       pkgs.unstable.vscode-extensions.vadimcn.vscode-lldb
     ];
