@@ -9,9 +9,6 @@
     home-manager.url = "github:nix-community/home-manager/release-21.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nvd.url = "gitlab:khumba/nvd";
-    nvd.flake = false;
-
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -75,7 +72,6 @@
                   {
                     nixpkgs.overlays = [
                       (_: _: { unstable = inputs.nixpkgs-unstable.legacyPackages.${system}; })
-                      (_: _: { nvd = import inputs.nvd { inherit pkgs; }; })
                       (_: _: {
                         verify-archive = inputs.verify-archive.packages.${system}.verify-archive;
                       })

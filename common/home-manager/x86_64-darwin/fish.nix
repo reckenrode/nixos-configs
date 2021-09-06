@@ -20,7 +20,7 @@
           
           set new_gen (get_gen)
           
-          ${nvd}/bin/nvd diff $old_gen $new_gen
+          ${unstable.nvd}/bin/nvd diff $old_gen $new_gen
         else
           command darwin-rebuild $argv
         end
