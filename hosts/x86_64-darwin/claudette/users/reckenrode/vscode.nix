@@ -1,26 +1,41 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 let
   xcodePath = "/Applications/Xcode.app";
   lldbFramework = "${xcodePath}/Contents/SharedFrameworks/LLDB.framework";
   debugserver = "${lldbFramework}/Versions/A/Resources/debugserver";
-let
-  direnv = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-    {
+
+  direnv = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+    mktplcRef = {
       publisher = "cab404";
       name = "vscode-direnv";
       version = "1.0.0";
       sha256 = "sha256-+nLH+T9v6TQCqKZw6HPN/ZevQ65FVm2SAo2V9RecM3Y=";
-    }
-  ];
-in {
+    };
+  };
+  rust-analyzer = loadAfter [ "cab404.vscode-direnv" ] pkgs.vscode-extensions.matklad.rust-analyzer;
+
+  # Work around the lack of extension ordering in VS Code
+  # See: https://github.com/Microsoft/vscode/issues/57481#issuecomment-910883638
+  loadAfter = deps: pkg: pkg.overrideAttrs (old: {
+    nativeBuildInputs = old.nativeBuildInputs or [] ++ [ pkgs.jq pkgs.moreutils ];
+
+    preInstall = ''
+      ${old.preInstall}
+      jq '.extensionDependencies |= . + $deps' \
+      --argjson deps ${lib.escapeShellArg (builtins.toJSON deps)} \
+      package.json | sponge package.json
+    '';
+  });
+in
+{
   programs.vscode = {
     enable = true;
     extensions = with pkgs.vscode-extensions; [
       bbenoist.Nix
       direnv
       editorconfig.editorconfig
-      matklad.rust-analyzer
+      rust-analyzer
       pkgs.unstable.vscode-extensions.vadimcn.vscode-lldb
     ];
     userSettings = {
