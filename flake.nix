@@ -60,7 +60,7 @@
               userConfigs = [ ./common/users/reckenrode ];
 
             in {
-              inherit name;
+              inherit name system;
               value = nixSystem ({
                 modules = userConfigs ++ [
                   ((hostPath name) + /configuration.nix)
@@ -80,7 +80,7 @@
                 ] ++ lib.optionals stdenv.isLinux [
                   inputs.sops-nix.nixosModules.sops
                 ];
-              } // lib.optionalAttrs stdenv.isLinux { inherit system; });
+              };
             };
 
           mkUser = host: name:
