@@ -3,7 +3,7 @@
 let
   copyOtf = pkg: pkg.overrideAttrs (old: {
       installPhase = ''
-        install -D -m 444 fonts/otf/* -t $out/share/fonts/otf
+        $DRY_RUN_CMD install -D -m 444 fonts/otf/* -t $out/share/fonts/otf
       '';
   });
 in

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, flakePkgs, ... }:
 
 let
   ffxiv_path = "${config.home.homeDirectory}/Library/Application Support/FINAL FANTASY XIV ONLINE";
@@ -15,5 +15,5 @@ in
         $DRY_RUN_CMD ln -sfn ''${VERBOSE_ARG:+-v} "${settings_path}" "${docs_path}"
      '';
    };
-  home.packages = [ pkgs.finalfantasyxiv ];
+  home.packages = [ flakePkgs.finalfantasyxiv ];
 }

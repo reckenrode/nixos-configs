@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, unstablePkgs, ... }:
 
 let
   xcodePath = "/Applications/Xcode.app";
@@ -36,7 +36,7 @@ in
       direnv
       editorconfig.editorconfig
       rust-analyzer
-      pkgs.unstable.vscode-extensions.vadimcn.vscode-lldb
+      unstablePkgs.vscode-extensions.vadimcn.vscode-lldb
     ];
     userSettings = {
       "editor.fontFamily" = "SF Mono, Menlo, Monaco, 'Courier New', monospace";

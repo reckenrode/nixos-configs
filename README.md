@@ -10,14 +10,19 @@ configuration without having to write that explicitly in the flake. Architecture
 follow the Nix convention (x86_64-linux, aarch64-darwin, etc).
 
 - **common:** configuration shared across hosts
-  - **darwin.nix:** configuration for Darwin-based hosts
-  - **linux.nix:** configuration for Linux-based hosts
-  - **home-manager/&lt;architecture&gt;**: architecture-specific home-manager configuration
+  - **darwin:** configuration for Darwin-based hosts
+    - **home-manager**: home-manager configuration for Darwin
+      - **x86_64/aarch64**: architecture-specific home-manager configuration
+  - **linux:** configuration for Linux-based hosts
+    - **home-manager**: home-manager configuration for Linux
+      - **x86_64/aarch64**: architecture-specific home-manager configuration
   - **users/&lt;username&gt;:** non-system (i.e., interactive) user definitions
     - **default.nix:** user definitions
     - **home-manager.nix:** user-specific home-manager configuration
 - **hosts/&lt;architecture&gt;/&lt;hostname&gt;:** host-specific configuration
   - **users/&lt;username&gt;:** system-specific home-manager configuration for the user
+- **lib**: support functions used by the flake
+- **overlays**: custom overlay definitions
 - **pkgs:** custom package derivations
 
 [1]: https://github.com/Mic92/sops-nix

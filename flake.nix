@@ -6,6 +6,8 @@
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
+    utils.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.3.0";
+
     home-manager.url = "github:nix-community/home-manager/release-21.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -16,94 +18,40 @@
     verify-archive.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, darwin, home-manager, ... }:
+  outputs = inputs@{ self, utils, nixpkgs, darwin, home-manager, ... }:
     let
-      lib = nixpkgs.lib;
-      systems = readDirNames ./hosts;
+      inherit (import ./lib) mkHosts;
 
-      readDirNames = path:
-        lib.trivial.pipe (builtins.readDir path) [
-          (lib.filterAttrs (_: entryType: entryType == "directory"))
-          (lib.attrNames)
+      overlays = import ./overlays;
+      packages = import ./pkgs;
+    in
+    utils.lib.mkFlake rec {
+      inherit self inputs;
+
+      channels.nixpkgs = {
+        config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
+          "crossover"
+          "finalfantasyxiv"
+          "firefox-bin"
+          "ruby-mine"
+          "pycharm-professional"
+          "pathofexile"
+          "pngout"
+          "steam"
+          "vscode"
         ];
+        overlaysBuilder = channels: [ overlays ];
+      };
 
-    in lib.trivial.pipe systems [
-      (map (system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-          stdenv = pkgs.stdenv;
-
-          hosts = readDirNames (./hosts + "/${system}");
-          users = host: readDirNames ((hostPath host) + /users);
-
-          hostPath = host: ./hosts + "/${system}/${host}";
-          userPath = user: host: (hostPath host) + /users + "/${user}";
-
-          mkConfiguration = f: pred: lst:
-            lib.optionalAttrs pred (builtins.listToAttrs (map f lst));
-
-          mkHomeManagerConfig = host: mkConfiguration (mkUser host) true;
-
-          mkHostConfig = mkConfiguration mkHost;
-
-          mkHost = name:
-            let
-              homeManagerModules = if stdenv.isDarwin
-                then home-manager.darwinModules.home-manager
-                else home-manager.nixosModules.home-manager;
-
-              nixSystem = if stdenv.isDarwin
-                then darwin.lib.darwinSystem
-                else nixpkgs.lib.nixosSystem;
-
-              hostUsers = users name;
-              userConfigs = [ ./common/users/reckenrode ];
-
-            in {
-              inherit name system;
-              value = nixSystem ({
-                modules = userConfigs ++ [
-                  ((hostPath name) + /configuration.nix)
-                  homeManagerModules {
-                    home-manager.useGlobalPkgs = true;
-                    home-manager.useUserPackages = true;
-                    home-manager.users = mkHomeManagerConfig name hostUsers;
-                  }
-                  {
-                    nixpkgs.overlays = [
-                      (_: _: { unstable = inputs.nixpkgs-unstable.legacyPackages.${system}; })
-                      (_: _: {
-                        verify-archive = inputs.verify-archive.packages.${system}.verify-archive;
-                      })
-                    ];
-                  }
-                ] ++ lib.optionals stdenv.isLinux [
-                  inputs.sops-nix.nixosModules.sops
-                ];
-              };
-            };
-
-          mkUser = host: name:
-            let
-              hostDir = (hostPath host) + /users + "/${name}";
-              systemDir = ./common/home-manager + "/${system}";
-              userDirs = [
-                (./common/users + "/${name}" + /home-manager.nix)
-              ] ++ lib.optional (lib.trivial.pathExists hostDir) hostDir
-                ++ lib.optional (lib.trivial.pathExists systemDir) systemDir;
-              userModule = lib.trivial.pipe userDirs [
-                (map import)
-                lib.mkMerge
-              ];
-            in {
-              inherit name;
-              value = userModule;
-            };
-
-        in {
-          darwinConfigurations = mkHostConfig stdenv.isDarwin hosts;
-          nixosConfigurations = mkHostConfig stdenv.isLinux hosts;
-        }))
-      (builtins.foldl' lib.recursiveUpdate {})
-    ];
+      hostDefaults.modules = [
+        ./common
+      ];
+      hosts = mkHosts self ./hosts;
+      
+      outputsBuilder = channels: {
+        packages = packages channels.nixpkgs // {
+          verify-archive = inputs.verify-archive.packages.${channels.nixpkgs.system}.verify-archive;
+        };
+      };
+    };
 }
