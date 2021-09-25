@@ -21,6 +21,7 @@
   outputs = inputs@{ self, utils, nixpkgs, darwin, home-manager, ... }:
     let
       inherit (import ./lib) mkHosts;
+      inherit (nixpkgs.lib) recursiveUpdate;
 
       overlays = import ./overlays;
       packages = import ./pkgs;
@@ -46,7 +47,10 @@
       hostDefaults.modules = [
         ./common
       ];
-      hosts = mkHosts self ./hosts;
+
+      hosts = recursiveUpdate (mkHosts self ./hosts) {
+        zhloe.modules = [ inputs.sops-nix.nixosModules.sops ];
+      };
       
       outputsBuilder = channels: {
         packages = packages channels.nixpkgs // {
