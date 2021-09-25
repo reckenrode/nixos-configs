@@ -22,7 +22,9 @@ let
 
       hasDefaultNix = path: pathExists (path + "/default.nix");
 
-      usersPath = hostConfiguration + "/users";
+      fullHostPath = hostPath + /${system}/${name};
+
+      usersPath = fullHostPath + "/users";
       users = if pathExists usersPath
       	then readDirNames usersPath
         else [];
@@ -36,7 +38,7 @@ let
       platformConfiguration = if isDarwin
         then ../common/darwin
         else ../common/linux;
-      hostConfiguration = hostPath + /${system}/${name};
+      hostConfiguration = hostPath + /${system}/${name}/configuration.nix;
     in
     {
       inherit name;
