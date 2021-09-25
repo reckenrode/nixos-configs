@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  unboundWithDoH = pkgs.unbound-with-systemd.unbound-with-systemd.override { withDoH = true; };
+  unboundWithDoH = pkgs.unbound-with-systemd.override { withDoH = true; };
 in
 {
   networking.nftables.ruleset = builtins.readFile ./unbound.nft;
