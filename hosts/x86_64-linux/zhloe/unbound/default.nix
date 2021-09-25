@@ -13,6 +13,7 @@ in
       certPath = config.security.acme.certs."infra.largeandhighquality.com".directory;
     in
     {
+      enable = true;
       package = unboundWithDoH;
       settings = {
         server = {
