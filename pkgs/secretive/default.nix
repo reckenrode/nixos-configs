@@ -2,11 +2,11 @@
 
 stdenv.mkDerivation rec {
   pname = "secretive";
-  version = "2.1.0";
+  version = "2.1.1";
 
   src = fetchurl {
     url = "https://github.com/maxgoedjen/secretive/releases/download/v${version}/Secretive.zip";
-    hash = "sha256-WSHYxFKsnk9ddJ2sFiy1sExEvBNDYxTjZ1V5khMR3JU=";
+    hash = "sha256-JKeUZFBggML7fyBnFnj3J/Xi6/Q2g5yLkK2VPTBf2Zk=";
   };
 
   nativeBuildInputs = [ unzip ];
