@@ -1,5 +1,5 @@
 inputs:
 
 [
-    inputs.nix-sops.nixosModules.sops
+  inputs.sops-nix.nixosModules.sops
 ]

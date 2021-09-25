@@ -48,13 +48,7 @@
         ./common
       ];
 
-      hosts =
-        let
-          hosts' = mkHosts self ./hosts;
-        in
-        recursiveUpdate hosts' {
-          zhloe.modules = hosts'.zhloe.modules ++ [ inputs.sops-nix.nixosModules.sops ];
-        };
+      hosts = mkHosts self ./hosts;
       
       outputsBuilder = channels: {
         packages = packages channels.nixpkgs // {

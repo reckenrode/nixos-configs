@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./home-manager.nix
     ./nix-flakes.nix
   ];
 

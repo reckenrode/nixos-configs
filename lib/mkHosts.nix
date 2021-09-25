@@ -3,7 +3,7 @@ let
 
   mkHost = flake: hostPath: system: name:
     let
-      inherit (builtins) filter map pathExists;
+      inherit (builtins) concatMap filter map pathExists;
       inherit (flake.inputs) darwin home-manager;
 
       # Define `hasSuffix` and `optionalAttrs` manually because trying to access
@@ -32,27 +32,33 @@ let
       commonUserConfigs = filter hasDefaultNix (map (user: ../common/users + "/${user}") users);
       userConfigs = filter hasDefaultNix (map (user: usersPath + /${user}) users);
 
-      homeManagerModule = if isDarwin
-        then home-manager.darwinModule
-        else home-manager.nixosModule;
       platformConfiguration = if isDarwin
         then ../common/darwin
         else ../common/linux;
-      hostConfiguration = hostPath + /${system}/${name}/configuration.nix;
+      hostConfiguration = fullHostPath + /configuration.nix;
+
+      modules =
+        let
+          srcs = map (path: path + "/modules.nix") [
+            platformConfiguration
+            fullHostPath
+          ];
+          extantSrcs = filter pathExists srcs;
+        in
+        concatMap (src: import src flake.inputs) extantSrcs;
     in
     {
       inherit name;
       value = {
         inherit system;
         modules = [
-          homeManagerModule
           platformConfiguration
           hostConfiguration
-          ../common/home-manager.nix
         ] ++ commonUserConfigs
-          ++ userConfigs;
+          ++ userConfigs
+          ++ modules;
         specialArgs = {
-          host = hostConfiguration;
+          host = fullHostPath;
           extraSpecialArgs = {
             flakePkgs = flake.outputs.packages.${system};
             unstablePkgs = flake.outputs.pkgs.${system}.nixpkgs-unstable;
