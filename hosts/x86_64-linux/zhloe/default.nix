@@ -10,7 +10,6 @@ in
     ./letsencrypt.nix
     ./systemd-networkd
     ./unbound
-    ../../../common/unbound.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
