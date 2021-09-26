@@ -20,26 +20,26 @@ let
       
       isDarwin = hasSuffix "darwin" system;
 
-      hasDefaultNix = path: pathExists (path + "/default.nix");
+      hasDefaultNix = path: pathExists (path + /default.nix);
 
-      fullHostPath = hostPath + "/${system}/${name}";
+      fullHostPath = hostPath + /${system}/${name};
 
-      usersPath = fullHostPath + "/users";
+      usersPath = fullHostPath + /users;
       users = if pathExists usersPath
       	then readDirNames usersPath
         else [];
 
-      commonUserConfigs = filter hasDefaultNix (map (user: ../common/users + "/${user}") users);
-      userConfigs = filter hasDefaultNix (map (user: usersPath + "/${user}") users);
+      commonUserConfigs = filter hasDefaultNix (map (user: ../common/users/${user}) users);
+      userConfigs = filter hasDefaultNix (map (user: usersPath + /${user}) users);
 
       platformConfiguration = if isDarwin
         then ../common/darwin
         else ../common/linux;
-      hostConfiguration = fullHostPath + "/configuration.nix";
+      hostConfiguration = fullHostPath + /configuration.nix;
 
       modules =
         let
-          srcs = map (path: path + "/modules.nix") [
+          srcs = map (path: path + /modules.nix) [
             platformConfiguration
             fullHostPath
           ];
@@ -74,7 +74,7 @@ let
     let
       inherit (builtins) mapAttrs;
 
-      hosts = readDirNames (hostPath + "/${system}");
+      hosts = readDirNames (hostPath + /${system});
     in
     builtins.map (mkHost flake hostPath system) hosts;
 
