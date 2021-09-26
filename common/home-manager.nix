@@ -1,4 +1,4 @@
-{ config, lib, pkgs, host, extraSpecialArgs, ... }:
+{ config, lib, pkgs, hostPath, extraSpecialArgs, ... }:
 
 let
   inherit (import ../lib) readDirNames;
@@ -11,16 +11,16 @@ let
   arch = elemAt platformTuple 0;
   platform = elemAt platformTuple 1;
 
-  mkUsers = host:
+  mkUsers = hostPath:
     let
       inherit (builtins) listToAttrs map;
 
-      usersPath = host + /users;
+      usersPath = hostPath + /users;
       users = readDirNames usersPath;
     in
-    listToAttrs (map (mkUser host) users);
+    listToAttrs (map (mkUser hostPath) users);
 
-  mkUser = host: name:
+  mkUser = hostPath: name:
     let
       inherit (builtins) filter;
       inherit (lib) mkMerge;
@@ -28,7 +28,7 @@ let
 
       srcPaths = [
         ./users/${name}
-        (host + /users/${name})
+        (hostPath + /users/${name})
         ./${platform}
         ./${platform}/${arch}
       ];
@@ -46,6 +46,6 @@ in
 {
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users = mkUsers host;
+  home-manager.users = mkUsers hostPath;
   home-manager.extraSpecialArgs = extraSpecialArgs;
 }

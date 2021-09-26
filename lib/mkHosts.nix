@@ -58,7 +58,7 @@ let
           ++ userConfigs
           ++ modules;
         specialArgs = {
-          host = fullHostPath;
+          hostPath = fullHostPath;
           extraSpecialArgs = {
             flakePkgs = flake.outputs.packages.${system};
             unstablePkgs = flake.outputs.pkgs.${system}.nixpkgs-unstable;
