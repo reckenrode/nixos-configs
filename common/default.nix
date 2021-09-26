@@ -3,6 +3,7 @@
 {
   imports = [
     ./home-manager.nix
+    ./kitty.nix
     ./nix-flakes.nix
   ];
 

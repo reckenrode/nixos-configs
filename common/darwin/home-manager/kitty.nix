@@ -1,10 +1,6 @@
 { pkgs, ... }:
 
 {
-  home.sessionVariables = {
-    TERMINFO_DIRS = "${pkgs.kitty.terminfo.outPath}/share/terminfo";
-  };
-
   programs.fish.functions = {
     fish_title = ''
       set host (hostname -s)
