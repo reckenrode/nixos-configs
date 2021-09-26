@@ -15,26 +15,28 @@ let
     let
       inherit (builtins) listToAttrs map;
 
-      usersPath = host + "/users";
+      usersPath = host + /users;
       users = readDirNames usersPath;
     in
     listToAttrs (map (mkUser host) users);
 
   mkUser = host: name:
     let
-      inherit (lib) mkMerge optional;
+      inherit (builtins) filter;
+      inherit (lib) mkMerge;
       inherit (lib.trivial) pathExists pipe;
 
-      userDir = ./. + "/users/${name}/home-manager.nix";
-      hostDir = host + "/users/${name}/home-manager.nix";
-      platformDir = ./. + "${platform}/home-manager";
-      systemDir = ./. + "${platform}/${arch}/home-manager";
+      srcPaths = [
+        ./users/${name}
+        (host + /users/${name})
+        ./${platform}
+        ./${platform}/${arch}
+      ];
+
+      homeManagerPaths = map (path: path + /home-manager) srcPaths;
       
-      dirs =
-           optional (pathExists userDir) userDir
-        ++ optional (pathExists hostDir) hostDir
-        ++ optional (pathExists platformDir) platformDir
-        ++ optional (pathExists systemDir) systemDir;
+      dirs = filter pathExists homeManagerPaths;
+
       userModule = pipe dirs [ (map import) mkMerge ];
     in {
       inherit name;
