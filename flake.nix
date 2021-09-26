@@ -45,7 +45,7 @@
       };
 
       hostDefaults.modules = [
-        ./common
+        ./common/configuration.nix
       ];
 
       hosts = mkHosts self ./hosts;

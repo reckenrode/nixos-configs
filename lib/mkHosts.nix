@@ -3,68 +3,50 @@ let
 
   mkHost = flake: hostPath: system: name:
     let
-      inherit (builtins) concatMap filter map pathExists;
+      inherit (builtins) concatMap elemAt filter map pathExists split;
       inherit (flake.inputs) darwin home-manager;
 
-      # Define `hasSuffix` and `optionalAttrs` manually because trying to access
+      # Define `optionalAttrs` manually because trying to access
       # `flake.input.nixpkgs` causes an infinite recursion.
-      hasSuffix = substr: target:
-        let
-          inherit (builtins) stringLength substring;
-          substrLength = stringLength substr;
-          offset = (stringLength target) - substrLength;
-        in
-        offset >= 0 && substring offset substrLength target == substr;
-      
       optionalAttrs = pred: attrs: if pred then attrs else {};
       
-      isDarwin = hasSuffix "darwin" system;
-
-      hasDefaultNix = path: pathExists (path + /default.nix);
+      platformTuple = split "-" system;
+      platform = elemAt platformTuple 2;
+      arch = elemAt platformTuple 0;
 
       fullHostPath = hostPath + /${system}/${name};
-
       usersPath = fullHostPath + /users;
-      users = if pathExists usersPath
-      	then readDirNames usersPath
-        else [];
 
-      commonUserConfigs = filter hasDefaultNix (map (user: ../common/users/${user}) users);
-      userConfigs = filter hasDefaultNix (map (user: usersPath + /${user}) users);
+      users = if pathExists usersPath then readDirNames usersPath else [];
 
-      platformConfiguration = if isDarwin
-        then ../common/darwin
-        else ../common/linux;
-      hostConfiguration = fullHostPath + /configuration.nix;
+      paths =
+        map (user: ../common/users/${user}) users ++ map (user: usersPath + /${user}) users ++ [
+          ../common/${platform}
+          ../common/${platform}/${arch}
+          fullHostPath
+        ];
 
-      modules =
-        let
-          srcs = map (path: path + /modules.nix) [
-            platformConfiguration
-            fullHostPath
-          ];
-          extantSrcs = filter pathExists srcs;
-        in
-        concatMap (src: import src flake.inputs) extantSrcs;
+      configPaths = map (path: path + /configuration.nix) paths;
+      configs = filter pathExists configPaths;
+
+      modulesPaths = map (path: path + /modules.nix) paths;
+      modulesConfigs = concatMap (src: import src flake.inputs) (filter pathExists modulesPaths);
     in
     {
       inherit name;
       value = {
         inherit system;
-        modules = [
-          platformConfiguration
-          hostConfiguration
-        ] ++ commonUserConfigs
-          ++ userConfigs
-          ++ modules;
+        modules = configs ++ modulesConfigs;
         specialArgs = {
           hostPath = fullHostPath;
+          flakePkgs = flake.outputs.packages.${system};
+          unstablePkgs = flake.outputs.pkgs.${system}.nixpkgs-unstable;
           extraSpecialArgs = {
             flakePkgs = flake.outputs.packages.${system};
             unstablePkgs = flake.outputs.pkgs.${system}.nixpkgs-unstable;
           };
         };
-      } // optionalAttrs isDarwin {
+      } // optionalAttrs (platform == "darwin") {
         output = "darwinConfigurations";
         builder = darwin.lib.darwinSystem;
       };
