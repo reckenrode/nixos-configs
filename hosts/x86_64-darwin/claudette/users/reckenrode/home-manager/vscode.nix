@@ -21,7 +21,7 @@ let
     nativeBuildInputs = old.nativeBuildInputs or [] ++ [ pkgs.jq pkgs.moreutils ];
 
     preInstall = ''
-      ${old.preInstall}
+      ${old.preInstall or ""}
       jq '.extensionDependencies |= . + $deps' \
       --argjson deps ${lib.escapeShellArg (builtins.toJSON deps)} \
       package.json | sponge package.json
