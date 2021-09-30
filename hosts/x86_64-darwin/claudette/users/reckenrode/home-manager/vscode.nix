@@ -13,6 +13,17 @@ let
       sha256 = "sha256-+nLH+T9v6TQCqKZw6HPN/ZevQ65FVm2SAo2V9RecM3Y=";
     };
   };
+
+  hledgerExtension = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      publisher = "mark-hansen";
+      name = "hledger-vscode";
+      version = "0.0.7";
+      sha256 = "sha256-whQaXrzDhVbDRlT7uCK5ORkxT4f1X4cWwSS1YOvL5xI=";
+    };
+  };
+
+  hledger-vscode = loadAfter [ "cab404.vscode-direnv" ] hledgerExtension;
   rust-analyzer = loadAfter [ "cab404.vscode-direnv" ] pkgs.vscode-extensions.matklad.rust-analyzer;
 
   # Work around the lack of extension ordering in VS Code
@@ -35,6 +46,7 @@ in
       bbenoist.Nix
       direnv
       editorconfig.editorconfig
+      hledger-vscode
       rust-analyzer
       unstablePkgs.vscode-extensions.vadimcn.vscode-lldb
     ];
