@@ -64,6 +64,7 @@ in
       "extensions.autoUpdate" = false;
       "git.path" = "${pkgs.git}/bin/git";
       "telemetry.enableTelemetry" = false;
+      "telemetry.telemetryLevel" = "off";
       "update.mode" = "none";
       "window.titleBarStyle" = "native";
       "workbench.editor.tabCloseButton" = "left";
