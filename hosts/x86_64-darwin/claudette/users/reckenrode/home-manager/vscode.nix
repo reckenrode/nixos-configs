@@ -38,17 +38,20 @@ let
       package.json | sponge package.json
     '';
   });
+  vscode-lldb = unstablePkgs.vscode-extensions.vadimcn.vscode-lldb.override {
+    rustPlatform = pkgs.rustPlatform;
+  };
 in
 {
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      bbenoist.Nix
+    extensions = [
+      pkgs.vscode-extensions.bbenoist.Nix
+      pkgs.vscode-extensions.editorconfig.editorconfig
       direnv
-      editorconfig.editorconfig
       hledger-vscode
       rust-analyzer
-      unstablePkgs.vscode-extensions.vadimcn.vscode-lldb
+      vscode-lldb
     ];
     userSettings = {
       "editor.fontFamily" = "SF Mono, Menlo, Monaco, 'Courier New', monospace";
