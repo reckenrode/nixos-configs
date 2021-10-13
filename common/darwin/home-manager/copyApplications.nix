@@ -1,19 +1,13 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   home.activation = {
-    copyApplications = let
-      apps = pkgs.buildEnv {
-        name = "home-manager-applications";
-        paths = config.home.packages;
-        pathsToLink = "/Applications";
-      };
-    in lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      appsSrc="${apps}/Applications/"
+    copyApplications = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      appsSrc="$genProfilePath/home-path/Applications/"
       baseDir="$HOME/Applications/Home Manager Apps"
       rsyncArgs="--archive --checksum --chmod=-w --copy-unsafe-links --delete"
       $DRY_RUN_CMD mkdir -p "$baseDir"
       $DRY_RUN_CMD ${pkgs.rsync}/bin/rsync ''${VERBOSE_ARG:+-v} $rsyncArgs "$appsSrc" "$baseDir"
-     '';
-   };
- }
+    '';
+  };
+}
