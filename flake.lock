@@ -53,11 +53,11 @@
     },
     "flake-utils_3": {
       "locked": {
-        "lastModified": 1614513358,
-        "narHash": "sha256-LakhOx3S1dRjnh0b5Dg3mbZyH0ToC9I8Y2wKSkBaTzU=",
+        "lastModified": 1629481132,
+        "narHash": "sha256-JHgasjPR0/J1J3DRm4KxM4zTyAj4IOJY8vIl75v/kPI=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "5466c5bbece17adaab2d82fae80b46e807611bf3",
+        "rev": "997f7efcb746a9c140ce1f13c72263189225f482",
         "type": "github"
       },
       "original": {
@@ -132,17 +132,17 @@
     },
     "rust-overlay": {
       "inputs": {
-        "flake-utils": "flake-utils_3",
+        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1627697717,
-        "narHash": "sha256-ij7rk2VkPpNf0NTbpP5jfbwuIWfrLXN00pZ+pizGnGM=",
+        "lastModified": 1634005054,
+        "narHash": "sha256-/V60AOy9tY7e5/CGvMg6o9vcyjBhNZ2VbGhXfRil2jQ=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "6d957c2105a5a548211c412fbc97bae81b7b8eb6",
+        "rev": "08de2ff90cc08e7f9523ad97e4c1653b09f703ec",
         "type": "github"
       },
       "original": {
@@ -190,20 +190,39 @@
         "type": "github"
       }
     },
+    "utils_2": {
+      "inputs": {
+        "flake-utils": "flake-utils_3"
+      },
+      "locked": {
+        "lastModified": 1632420560,
+        "narHash": "sha256-8Tsa4Hp/CHCA6J8/E7EODhp75z5N1NBhFiOb3lBv/tI=",
+        "owner": "gytis-ivaskevicius",
+        "repo": "flake-utils-plus",
+        "rev": "4b1bcafcfcd78bd36ceabfe3872822ba5c7fcbe8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gytis-ivaskevicius",
+        "ref": "v1.3.0",
+        "repo": "flake-utils-plus",
+        "type": "github"
+      }
+    },
     "verify-archive": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
         ],
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay",
+        "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1630900156,
-        "narHash": "sha256-MdMREKCSpPUEKEWetwAubJU+sUiH5D3JcLvraRRuBYM=",
+        "lastModified": 1634044388,
+        "narHash": "sha256-DoPoyEIHuQIQBKI0CJH7j7xpO9Es79C3dUl5TihbRrU=",
         "owner": "reckenrode",
         "repo": "verify-archive",
-        "rev": "9d9ffa02ac0f967de11bed8f038f5b036f27983b",
+        "rev": "5711bb03817f4b69477a24e4c1829e25973d01ee",
         "type": "github"
       },
       "original": {
