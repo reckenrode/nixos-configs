@@ -1,7 +1,7 @@
-{ config, lib, pkgs, hostPath, extraSpecialArgs, ... }:
+{ config, lib, pkgs, flake, hostPath, extraSpecialArgs, ... }:
 
 let
-  inherit (import ../lib) readDirNames;
+  inherit (flake.lib) readDirNames;
 
   inherit (builtins) elemAt;
   inherit (lib.strings) splitString;

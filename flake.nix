@@ -20,7 +20,6 @@
 
   outputs = inputs@{ self, utils, nixpkgs, darwin, home-manager, ... }:
     let
-      inherit (import ./lib) mkHosts;
       inherit (nixpkgs.lib) recursiveUpdate;
 
       overlays = import ./overlays;
@@ -48,8 +47,10 @@
         ./common/configuration.nix
       ];
 
-      hosts = mkHosts self ./hosts;
-      
+      hosts = lib.mkHosts self ./hosts;
+
+      lib = import ./lib;
+
       outputsBuilder = channels: {
         packages = packages channels.nixpkgs // {
           verify-archive = inputs.verify-archive.packages.${channels.nixpkgs.system}.verify-archive;

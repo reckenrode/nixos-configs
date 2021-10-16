@@ -38,10 +38,12 @@ let
         inherit system;
         modules = configs ++ modulesConfigs;
         specialArgs = {
+          inherit flake;
           hostPath = fullHostPath;
           flakePkgs = flake.outputs.packages.${system};
           unstablePkgs = flake.outputs.pkgs.${system}.nixpkgs-unstable;
           extraSpecialArgs = {
+            inherit flake;
             flakePkgs = flake.outputs.packages.${system};
             unstablePkgs = flake.outputs.pkgs.${system}.nixpkgs-unstable;
           };
