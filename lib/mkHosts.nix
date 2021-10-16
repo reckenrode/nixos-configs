@@ -46,6 +46,12 @@ let
             inherit flake;
             flakePkgs = flake.outputs.packages.${system};
             unstablePkgs = flake.outputs.pkgs.${system}.nixpkgs-unstable;
+          } // optionalAttrs (arch == "aarch64") {
+            x86_64 = {
+              flakePkgs = flake.outputs.packages."x86_64-${platform}";
+              pkgs = flake.outputs.pkgs."x86_64-${platform}".nixpkgs;
+              unstablePkgs = flake.outputs.pkgs."x86_64-${platform}".nixpkgs-unstable;
+            };
           };
         };
       } // optionalAttrs (platform == "darwin") {
