@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./bear.nix
     ./direnv.nix
     ./ffxiv.nix
     ./fish.nix
