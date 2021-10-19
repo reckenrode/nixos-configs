@@ -1,4 +1,4 @@
-{ pkgs, flakePkgs, ... }:
+{ pkgs, config, flakePkgs, ... }:
 
 {
   imports = [
@@ -8,6 +8,8 @@
     ./fish.nix
     ./keyboard.nix
     ./kitty.nix
+    ./less.nix
+    ./rust.nix
 #    ./safari.nix
     ./ui.nix
   ];
