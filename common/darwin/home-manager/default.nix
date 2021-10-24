@@ -10,7 +10,7 @@
     ./kitty.nix
     ./less.nix
     ./rust.nix
-#    ./safari.nix
+    ./safari.nix
     ./ui.nix
   ];
 
