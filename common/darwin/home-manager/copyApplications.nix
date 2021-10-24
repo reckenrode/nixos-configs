@@ -3,7 +3,7 @@
 {
   home.activation = {
     copyApplications = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      appsSrc="$genProfilePath/home-path/Applications/"
+      appsSrc="$newGenPath/home-path/Applications/"
       baseDir="$HOME/Applications/Home Manager Apps"
       rsyncArgs="--archive --checksum --chmod=-w --copy-unsafe-links --delete"
       $DRY_RUN_CMD mkdir -p "$baseDir"
