@@ -1,9 +1,7 @@
-{ lib, pkgs, unstablePkgs, ... }:
+{ lib, pkgs, flakePkgs, unstablePkgs, ... }:
 
 let
-  xcodePath = "/Applications/Xcode.app";
-  lldbFramework = "${xcodePath}/Contents/SharedFrameworks/LLDB.framework";
-  debugserver = "${lldbFramework}/Versions/A/Resources/debugserver";
+  debugserver = "${flakePkgs.debugserver}/bin/debugserver";
 
   direnv = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
     mktplcRef = {
