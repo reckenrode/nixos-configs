@@ -2,11 +2,11 @@
 
 stdenv.mkDerivation rec {
   pname = "steam";
-  version = "v020";
+  version = "1.0.0.72";
 
   src = fetchurl {
     url = "https://cdn.cloudflare.steamstatic.com/client/installer/steam.dmg";
-    hash = "sha256-2nhxNan13aOYESua7p5rYhbtdUZ8UMcPXfOXo1N2oOk=";
+    hash = "sha256-86WB93ckhFALP1onHDH4kba0sayBglXf2cOtXb4QSl4=";
   };
 
   nativeBuildInputs = [ undmg ];
