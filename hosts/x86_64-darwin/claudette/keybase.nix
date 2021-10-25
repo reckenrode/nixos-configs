@@ -19,7 +19,8 @@
     StandardOutPath = "/Users/reckenrode/Library/Logs/keybase.start.log";
     WorkingDirectory = "/tmp";
   };
-    launchd.user.agents."kbfs".serviceConfig = rec {
+  
+  launchd.user.agents."kbfs".serviceConfig = rec {
     ProgramArguments = [
       "/bin/sh" "-c"
       ''
