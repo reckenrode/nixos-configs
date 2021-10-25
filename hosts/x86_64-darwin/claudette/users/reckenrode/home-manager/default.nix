@@ -15,6 +15,7 @@
   home.packages = with pkgs; with flakePkgs; [
     crossover
     firefox-bin
+    keybase
     netnewswire
     ocr-documents
     openra
