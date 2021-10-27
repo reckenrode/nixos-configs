@@ -25,7 +25,7 @@
       firefox-bin
       keybase
       netnewswire
-#      ocr-documents
+      ocr-documents
       openra
       openttd
       pngout
