@@ -11,7 +11,8 @@ in
   home.activation = {
     setUpFinalFantasyXIV =
       lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-	$DRY_RUN_CMD mkdir -p ''${VERBOSE_ARG:+-v} "${settings_path}"
+        $DRY_RUN_CMD mkdir -p ''${VERBOSE_ARG:+-v} "${settings_path}"
+        $DRY_RUN_CMD mkdir -p ''${VERBOSE_ARG:+-v} "${docs_path}"
         $DRY_RUN_CMD ln -sfn ''${VERBOSE_ARG:+-v} "${settings_path}" "${docs_path}"
      '';
    };
