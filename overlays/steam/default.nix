@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-86WB93ckhFALP1onHDH4kba0sayBglXf2cOtXb4QSl4=";
   };
 
-  nativeBuildInputs = [ undmg ];
+  buildInputs = [ undmg ];
 
   unpackPhase = ''
     undmg $src
