@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-1cfXLBmJQEZ/+1P8iGhPB5alp18lBRJS2Xno3FfuJMI=";
   };
 
-  nativeBuildInputs = [ unzip ];
+  buildInputs = [ unzip ];
 
   unpackPhase = ''
     unzip $src

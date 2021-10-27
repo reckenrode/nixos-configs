@@ -11,8 +11,15 @@ stdenv.mkDerivation rec {
     hash = "sha256-vibUimY15KTulGVqmmTGtO/+XowoRHykcmL8twdgebQ=";
   };
 
-  buildInputs = with darwin.apple_sdk.frameworks; [ Cocoa ScriptingBridge ];
-  nativeBuildInputs = [ perl ]; 
+  buildInputs =
+    let
+      inherit (darwin.apple_sdk.frameworks) Cocoa ScriptingBridge;
+    in
+    [
+      Cocoa
+      ScriptingBridge
+      perl
+    ];
 
   patches = [ ./files/disable_x86.diff ];
 

@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
     hash = "sha256-JKeUZFBggML7fyBnFnj3J/Xi6/Q2g5yLkK2VPTBf2Zk=";
   };
 
-  nativeBuildInputs = [ unzip ];
+  buildInputs = [ unzip ];
 
   unpackPhase = ''
     unzip $src
@@ -29,6 +29,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/maxgoedjen/secretive";
     changelog = "https://github.com/maxgoedjen/secretive/releases";
     license = licenses.mit;
-    platforms = [ "x86_64-darwin" ];
+    platforms = platforms.darwin;
   };
 }
