@@ -40,14 +40,23 @@
           "steam"
           "vscode"
         ];
-        overlaysBuilder = channels: [ overlays ];
+        overlaysBuilder = channels:
+          [
+            overlays
+            # FIXME: flake-utils-plus forces a build of nixUnstable, which fails on aarch64-darwin.  Use
+            # the 2.4 RC instead.
+            (_: _: { nixUnstable = channels.nixpkgs-unstable.nix_2_4; })
+          ];
       };
 
       hostDefaults.modules = [
         ./common/configuration.nix
       ];
 
-      hosts = lib.mkHosts self ./hosts;
+      hosts = lib.mkHosts {
+        inherit self channels overlays;
+        hostsPath = ./hosts;
+      };
 
       lib = import ./lib;
 
