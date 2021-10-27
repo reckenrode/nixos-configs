@@ -7,6 +7,7 @@
     ./fonts.nix
     ./git.nix
     ./gnupg.nix
+    ./secretive.nix
     ./ssh.nix
     ./vscode.nix
   ];
