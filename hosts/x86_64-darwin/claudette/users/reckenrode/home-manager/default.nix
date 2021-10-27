@@ -4,7 +4,6 @@
   imports = [
     ./direnv.nix
     ./ffxiv.nix
-    ./fish.nix
     ./fonts.nix
     ./git.nix
     ./gnupg.nix
