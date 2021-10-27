@@ -1,13 +1,17 @@
-{ pkgs, ... }:
+{ pkgs, unstablePkgs, ... }:
 
+let
+  inherit (pkgs) ripgrep;
+  inherit (unstablePkgs) neovim;
+in
 {
-  home.packages = with pkgs; [
+  home.packages = [
     neovim
     ripgrep
   ];
 
   home.sessionVariables = {
-    EDITOR = "${pkgs.neovim}/bin/nvim";
+    EDITOR = "${neovim}/bin/nvim";
   };
 
   programs.fish.enable = true;
