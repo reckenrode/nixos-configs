@@ -15,11 +15,16 @@
     ./xdg.nix
   ];
 
-  home.packages = with pkgs; [
-    coreutils
-    findutils
-    flakePkgs.trash_mac
-  ];
+  home.packages =
+    let
+      inherit (pkgs) coreutils findutils;
+      inherit (flakePkgs) trash_mac;
+    in
+    [
+      coreutils
+      findutils
+      trash_mac
+    ];
 
   home.stateVersion = "21.05";
 }

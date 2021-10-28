@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
     cp -r *.app $out/Applications
   '';
 
-  meta = with lib; {
+  meta = {
     description = ''
       It’s a free and open source feed reader for macOS and iOS.
 
@@ -30,8 +30,8 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://netnewswire.com";
     changelog = "https://github.com/Ranchero-Software/NetNewsWire/releases";
-    license = licenses.mit;
-    platforms = platforms.darwin;
+    license = lib.licenses.mit;
+    platforms = lib.platforms.darwin;
   };
 }
 

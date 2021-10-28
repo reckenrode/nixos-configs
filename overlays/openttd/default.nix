@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
     cp -r *.app $out/Applications
   '';
 
-  meta = with lib; {
+  meta = {
     description = ''Open source clone of the Microprose game "Transport Tycoon Deluxe"'';
     longDescription = ''
       OpenTTD is a transportation economics simulator. In single player mode,
@@ -34,7 +34,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://www.openttd.org/";
     changelog = "https://cdn.openttd.org/openttd-releases/${version}/changelog.txt";
-    license = licenses.gpl2;
-    platforms = platforms.darwin;
+    license = lib.licenses.gpl2;
+    platforms = lib.platforms.darwin;
   };
 }

@@ -17,11 +17,6 @@ in
 
   networking.hostName = "zhloe";
 
-  environment.systemPackages = with pkgs; [
-    neovim
-    ripgrep
-  ];
-
   nix.automaticUpgrades.enable = true;
 
   sops.defaultSopsFile = ./secrets.yaml;

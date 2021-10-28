@@ -22,12 +22,12 @@ stdenv.mkDerivation rec {
     cp ${steam-icon} $out/Applications/Steam.app/Contents/Resources/Steam.icns
   '';
 
-  meta = with lib; {
+  meta = {
     description = ''
       Steam is the ultimate destination for playing, discussing, and creating games.
     '';
     homepage = "https://steampowered.com";
-    license = licenses.unfree;
+    license = lib.licenses.unfree;
     platforms = [ "x86_64-darwin" ];
   };
 }

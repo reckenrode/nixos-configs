@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
     cp -r *.app $out/Applications
   '';
 
-  meta = with lib; {
+  meta = {
     description = ''
       Path of Exile is an online Action RPG set in the dark fantasy world of Wraeclast. It is
       designed around a strong online item economy, deep character customisation, competitive PvP
@@ -28,7 +28,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://www.pathofexile.com";
     changelog = "https://www.pathofexile.com/forum/view-forum/patch-notes";
-    license = licenses.unfree;
+    license = lib.licenses.unfree;
     platforms = [ "x86_64-darwin" ];
   };
 }

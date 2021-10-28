@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
     cp -r *.app $out/Applications
   '';
 
-  meta = with lib; {
+  meta = {
     description = ''
       Secretive is an app for storing and managing SSH keys in the Secure Enclave. It is inspired by
       the sekey project, but rewritten in Swift with no external dependencies and with a handy
@@ -28,7 +28,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://github.com/maxgoedjen/secretive";
     changelog = "https://github.com/maxgoedjen/secretive/releases";
-    license = licenses.mit;
-    platforms = platforms.darwin;
+    license = lib.licenses.mit;
+    platforms = lib.platforms.darwin;
   };
 }

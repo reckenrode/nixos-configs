@@ -37,7 +37,7 @@ let
     '';
   });
   vscode-lldb = unstablePkgs.vscode-extensions.vadimcn.vscode-lldb.override {
-    rustPlatform = pkgs.rustPlatform;
+    inherit (pkgs) rustPlatform;
   };
 in
 {

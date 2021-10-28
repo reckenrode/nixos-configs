@@ -59,12 +59,12 @@ let
         specialArgs = aarch64ExtraPkgs // {
           flake = self;
           hostPath = fullHostPath;
-          flakePkgs = self.outputs.packages.${system};
-          unstablePkgs = self.outputs.pkgs.${system}.nixpkgs-unstable;
+          flakePkgs = self.outputs.packages."${system}";
+          unstablePkgs = self.outputs.pkgs."${system}".nixpkgs-unstable;
           extraSpecialArgs = aarch64ExtraPkgs // {
             flake = self;
-            flakePkgs = self.outputs.packages.${system};
-            unstablePkgs = self.outputs.pkgs.${system}.nixpkgs-unstable;
+            flakePkgs = self.outputs.packages."${system}";
+            unstablePkgs = self.outputs.pkgs."${system}".nixpkgs-unstable;
           };
         };
       } // optionalAttrs (platform == "darwin") {

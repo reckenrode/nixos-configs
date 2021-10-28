@@ -23,12 +23,12 @@ stdenv.mkDerivation rec {
     cp ${crossover-icon} $out/Applications/CrossOver.app/Contents/Resources/CrossOver.icns
   '';
 
-  meta = with lib; {
+  meta = {
     description = ''
       Steam is the ultimate destination for playing, discussing, and creating games.
     '';
     homepage = "https://www.codeweavers.com/crossover";
-    license = licenses.unfree;
+    license = lib.licenses.unfree;
     platforms = [ "x86_64-darwin" ];
   };
 }

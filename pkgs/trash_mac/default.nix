@@ -34,10 +34,10 @@ stdenv.mkDerivation rec {
     install -m 0644 trash.1 $out/share/man/man1/trash.1
   '';
 
-  meta = with lib; {
+  meta = {
     description = "This is a small command-line program for OS X that moves files or folders to the trash.";
     homepage = "https://github.com/ali-rantakari/trash";
-    license = licenses.mit;
-    platform = platforms.darwin;
+    license = lib.licenses.mit;
+    platform = lib.platforms.darwin;
   };
 }

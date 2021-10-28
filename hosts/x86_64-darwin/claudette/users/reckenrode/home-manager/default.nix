@@ -12,18 +12,23 @@
     ./vscode.nix
   ];
   
-  home.packages = with pkgs; with flakePkgs; [
-    crossover
-    firefox-bin
-    keybase
-    netnewswire
-    ocr-documents
-    openra
-    openttd
-    pngout
-    secretive
-    steam
-    verify-archive
-    unstablePkgs.waifu2x-converter-cpp
-  ];
+  home.packages =
+    let
+      inherit (flakePkgs) crossover netnewswire ocr-documents secretive verify-archive;
+      inherit (pkgs) firefox-bin keybase openra openttd pngout steam;
+      inherit (unstablePkgs) waifu2x-converter-cpp;
+    [
+      crossover
+      firefox-bin
+      keybase
+      netnewswire
+      ocr-documents
+      openra
+      openttd
+      pngout
+      secretive
+      steam
+      verify-archive
+      waifu2x-converter-cpp
+    ];
 }

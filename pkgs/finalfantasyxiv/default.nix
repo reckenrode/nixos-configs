@@ -20,13 +20,13 @@ stdenv.mkDerivation rec {
     cp -r *.app $out/Applications
   '';
 
-  meta = with lib; {
+  meta = {
     description = ''
       Become the Warrior of Light, and fight to deliver the realm from destruction.
     '';
     homepage = "https://www.finalfantasyxiv.com";
     changelog = "https://na.finalfantasyxiv.com/lodestone/special/patchnote_log/";
-    license = licenses.unfree;
+    license = lib.licenses.unfree;
     platforms = [ "x86_64-darwin" ];
   };
 }

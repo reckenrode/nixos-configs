@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
     cp -r *.app $out/Applications
   '';
 
-  meta = with lib; {
+  meta = {
     description = ''
       Tiled is a general purpose tile map editor for all tile-based games, such as RPGs, platformers
       or Breakout clones.
@@ -33,7 +33,7 @@ stdenv.mkDerivation rec {
     '';
     homepage = "https://www.mapeditor.org";
     changelog = "https://github.com/mapeditor/tiled/releases";
-    license = licenses.gpl2;
+    license = lib.licenses.gpl2;
     platforms = [ "x86_64-darwin" ];
   };
 }

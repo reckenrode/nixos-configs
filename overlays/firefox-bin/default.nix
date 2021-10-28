@@ -27,7 +27,7 @@ stdenv.mkDerivation rec {
     echo 'pref("app.update.auto", "false");' >> Firefox.app/Contents/Resources/defaults/pref/channel-prefs.js
   '';
 
-  meta = with lib; {
+  meta = {
     description = ''
       Mozilla Firefox, free web browser (binary package)
     '';
@@ -37,7 +37,7 @@ stdenv.mkDerivation rec {
       free = false;
       url = "http://www.mozilla.org/en-US/foundation/trademarks/policy/";
     };
-    platforms = platforms.darwin;
+    platforms = lib.platforms.darwin;
   };
 }
 

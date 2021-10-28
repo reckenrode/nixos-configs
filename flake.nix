@@ -62,7 +62,7 @@
 
       outputsBuilder = channels: {
         packages = packages channels.nixpkgs // {
-          verify-archive = inputs.verify-archive.packages.${channels.nixpkgs.system}.verify-archive;
+          inherit (inputs.verify-archive.packages."${channels.nixpkgs.system}") verify-archive;
         };
       };
     };
