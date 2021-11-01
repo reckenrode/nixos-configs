@@ -33,22 +33,11 @@ let
       modulesConfigs = concatMap (src: import src self.inputs) (filter pathExists modulesPaths);
 
       aarch64ExtraPkgs = optionalAttrs (system == "aarch64-darwin") {
-        x86_64 =
-          let
-            flakePackages = self.packages."x86_64-${platform}";
-          in
-          rec {
-            flakePkgs = mapAttrs (_: pkg: pkgs.callPackage pkg.override {}) flakePackages;
-            pkgs = import self.inputs.nixpkgs {
-              config = channels.nixpkgs.config or {};
-              localSystem = "x86_64-darwin";
-              overlays = [ overlays ];
-            };
-            unstablePkgs = self.inputs.nixpkgs-unstable {
-              config = channels.nixpkgs-unstable.config or {};
-              localSystem = "x86_64-darwin";
-            };
-          };
+        x86_64 = {
+          flakePkgs = self.packages."x86_64-${platform}";
+          pkgs = self.pkgs."x86_64-${platform}".nixpkgs;
+          unstablePkgs = self.pkgs."x86_64-${platform}".nixpkgs-unstable;
+        };
       };
     in
     {
