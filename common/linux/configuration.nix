@@ -16,6 +16,7 @@
     wheelNeedsPassword = false;
   };
 
+  users.defaultUserShell = pkgs.fish;
   users.mutableUsers = false;
 
   zramSwap.enable = true;
