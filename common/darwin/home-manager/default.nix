@@ -1,4 +1,4 @@
-{ pkgs, config, flakePkgs, ... }:
+{ pkgs, config, unstablePkgs, ... }:
 
 {
   imports = [
@@ -18,12 +18,12 @@
   home.packages =
     let
       inherit (pkgs) coreutils findutils;
-      inherit (flakePkgs) trash_mac;
+      inherit (unstablePkgs.darwin) trash;
     in
     [
       coreutils
       findutils
-      trash_mac
+      trash
     ];
 
   home.stateVersion = "21.05";
