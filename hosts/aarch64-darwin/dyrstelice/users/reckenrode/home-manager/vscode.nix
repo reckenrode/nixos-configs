@@ -73,7 +73,7 @@ in
         editorconfig.editorconfig
         mark-hansen.hledger-vscode
         matklad.rust-analyzer
-        vadimcn.vscode-lldb
+        #vadimcn.vscode-lldb
       ];
     userSettings = {
       "editor.fontFamily" = "SF Mono, Menlo, Monaco, 'Courier New', monospace";
