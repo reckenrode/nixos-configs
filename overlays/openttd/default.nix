@@ -2,11 +2,11 @@
 
 stdenv.mkDerivation rec {
   pname = "openttd";
-  version = "1.11.0";
+  version = "12.0";
 
   src = fetchurl {
     url = "https://cdn.openttd.org/openttd-releases/${version}/openttd-${version}-macos-universal.zip";
-    hash = "sha256-kzFrBhgAJxuTPNExpLhQe8NU0hHiAOUAZnNrXTaiZ4Y=";
+    hash = "sha256-Z0ZtQa/oBttf+n2RFdTGM3EwddDNg507QZ4oXv6kKsA=";
   };
 
   buildInputs = [ unzip ];
