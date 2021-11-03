@@ -12,8 +12,7 @@
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM+aydjZ/Yb8onZQ5OLyXZr18NchFZQcZh8yNEuK/wOM"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBP7kafg9acMfZFFX6yj6t7HTdGg+KfFkXSopu5ZySCj"
-      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBD10tzdnD0GW/gdKC6yKjc2tbBnlhgsbiK/JZLSwWNMYcQ4QrFp1+MUjBfiy8Ey00xrN9YcCkuTIBBcQ+niQYFg="
-      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJzrqskgs3oJdjRf8qh595Tv/eDxhKIoFPAsmz3OOLv9gJEUOEBRiDyu2rzw3o56LqReAFGasPZddPmA38aDKRg="
+      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOuTA92YDDZ8JrKj/qJia1uQ3qv0A8amt1+0AWT/i3bh6oVTrcbcbci9Bdbx1VAGS91IXgXooYfLlWdUk2mw4sQ="
     ];
   };
 }
