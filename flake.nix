@@ -31,6 +31,7 @@
       channels.nixpkgs = {
         config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
           "crossover"
+          "daisydisk"
           "finalfantasyxiv"
           "firefox-bin"
           "ruby-mine"

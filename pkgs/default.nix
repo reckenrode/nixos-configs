@@ -2,6 +2,7 @@ pkgs:
 
 {
   crossover = pkgs.callPackage ./crossover {};
+  daisydisk = pkgs.callPackage ./daisydisk {};
   debugserver = pkgs.callPackage ./debugserver {};
   finalfantasyxiv = pkgs.callPackage ./finalfantasyxiv {};
   netnewswire = pkgs.callPackage ./netnewswire {};
