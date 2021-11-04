@@ -18,7 +18,7 @@
       fsType = "xfs";
     };
 
-  fileSystems."/boot/efi" =
+  fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/AE28-6FDB";
       fsType = "vfat";
     };
