@@ -20,6 +20,8 @@ in
 
   nix.nixPath = mkForce nixPath;
 
+  programs.bash.enable = false;
+
   services.nix-daemon.enable = true;
 
   users.nix.configureBuildUsers = true;

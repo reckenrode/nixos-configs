@@ -14,6 +14,5 @@
     generateNixPathFromInputs = true;
   };
 
-  programs.bash.enable = false;
   programs.fish.enable = true;
 }
