@@ -1,0 +1,5 @@
+table inet filter {
+  chain input {
+    iifname enabcm6e4ei0 ip6 daddr fe80::/64 udp dport dhcpv6-client accept
+  }
+}
