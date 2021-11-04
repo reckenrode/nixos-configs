@@ -3,13 +3,12 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./kernel.nix
     ./systemd-networkd
   ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.kernelPackages = lib.mkForce unstablePkgs.linuxPackages_latest;
 
   networking.hostName = "khloe";
 
