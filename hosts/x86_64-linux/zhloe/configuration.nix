@@ -1,8 +1,5 @@
 { pkgs, ... }:
 
-let
-  secrets = import ./secrets.nix;
-in
 {
   imports = [
     ./hardware-configuration.nix
