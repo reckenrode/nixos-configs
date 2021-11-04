@@ -1,6 +1,6 @@
 prev:
 
-prev.pngout.overrideAttrs (_: rec {
+prev.pngout.overrideAttrs (old: rec {
   name = "pngout-20200115";
 
   src = builtins.fetchurl {
@@ -22,4 +22,8 @@ prev.pngout.overrideAttrs (_: rec {
     mkdir -p $out/bin
     install -m 755 ${name}-macos/pngout $out/bin
   '';
+
+  meta = old.meta // {
+    platform = [ "x86_64-darwin" ];
+  };
 })
