@@ -6,7 +6,7 @@ let
     let
       inherit (builtins) baseNameOf stringLength substring;
 
-      fileName = (baseNameOf (substring 0 ((stringLength config) - 5) config))
+      fileName = (baseNameOf (substring 0 ((stringLength config) - 5) config));
       pidLocation = "/run/kea/${fileName}.${bin}.pid";
     in
     {
