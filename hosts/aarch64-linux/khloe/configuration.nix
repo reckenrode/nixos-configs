@@ -7,8 +7,8 @@
     ./systemd-networkd
   ];
 
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.efi.canTouchEfiVariables = false;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "khloe";
 
