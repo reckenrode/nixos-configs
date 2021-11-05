@@ -8,13 +8,13 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "usbhid" "usb_storage" "uas" ];
+  boot.initrd.availableKernelModules = [ "reset-raspberrypi" "xhci_pci" "usbhid" "usb_storage" "uas" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/b5992aed-0bb6-4f8b-8cdd-81b97ecdc1c2";
+    { device = "/dev/disk/by-uuid/d9e2bb39-ef9e-4ba9-b250-8b654e04210f";
       fsType = "xfs";
     };
 
