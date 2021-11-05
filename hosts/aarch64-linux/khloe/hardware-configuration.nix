@@ -8,8 +8,8 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "reset-raspberrypi" "xhci_pci" "usbhid" "usb_storage" "uas" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" "uas" ];
+  boot.initrd.kernelModules = [ "reset-raspberrypi" ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
