@@ -8,8 +8,8 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "reset-raspberrypi" "ahci" "xhci_pci" "usbhid" "usb_storage" "uas" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.availableKernelModules = [ "usbhid" "usb_storage" "uas" ];
+  boot.initrd.kernelModules = [ "reset-raspberrypi" ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
@@ -25,4 +25,5 @@
 
   swapDevices = [ ];
 
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 }
