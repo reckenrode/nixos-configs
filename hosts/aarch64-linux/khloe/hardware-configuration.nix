@@ -9,7 +9,7 @@
     ];
 
   boot.initrd.availableKernelModules = [ "usbhid" "usb_storage" "uas" ];
-  boot.initrd.kernelModules = [ "ahci" "xhci_pci" "reset-raspberrypi" ];
+  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
