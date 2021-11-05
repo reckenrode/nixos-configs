@@ -3,7 +3,7 @@
 {
   imports = [
     ./direnv.nix
-    ./ffxiv.nix
+    # ./ffxiv.nix - Disable until if/when the official Mac client is updated to use CrossOver 21
     ./fonts.nix
     ./git.nix
     ./gnupg.nix
