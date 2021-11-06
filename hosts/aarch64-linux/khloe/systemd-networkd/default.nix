@@ -7,7 +7,7 @@
 
   systemd.network.networks.lan = {
     enable = true;
-    matchConfig.Name = "enabcm6e4ei0";
+    matchConfig.Name = "eth0";
     networkConfig = {
       DHCP = "yes";
       IPv6PrivacyExtensions = true;
