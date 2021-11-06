@@ -6,12 +6,11 @@
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
+      (modulesPath + "/profiles/all-hardware.nix")
     ];
 
   boot.initrd.availableKernelModules = [
     "reset_raspberrypi"
-    "xhci_pci" "xhci_pci_renesas"
-    "usb_storage" "uas"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];

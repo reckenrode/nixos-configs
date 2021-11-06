@@ -7,8 +7,8 @@
     ./systemd-networkd
   ];
 
-  boot.loader.grub.enable = false;
-  boot.loader.generic-extlinux-compatible.enable = true;
+  boot.loader.systemd-boot.enable = false;
+  boot.loader.efi.canTouchEfiVariables = false;
 
   networking.hostName = "khloe";
 
