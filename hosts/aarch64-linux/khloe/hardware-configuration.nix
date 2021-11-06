@@ -11,9 +11,11 @@
   boot.initrd.availableKernelModules = [
     "reset_raspberrypi"
     "xhci_pci" "xhci_pci_renesas"
-    "usbhid" "usb_storage" "uas"
+    "usb_storage" "uas"
   ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.kernelModules = [
+    "usbhid" 
+  ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
