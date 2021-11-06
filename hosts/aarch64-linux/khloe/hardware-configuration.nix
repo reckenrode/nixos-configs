@@ -8,22 +8,22 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ ];
-  boot.initrd.kernelModules = [
+  boot.initrd.availableKernelModules = [
     "reset_raspberrypi"
     "xhci_pci" "xhci_pci_renesas"
     "usbhid" "usb_storage" "uas"
   ];
+  boot.initrd.kernelModules = [ ]
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-label/NixOS";
+    { device = "/dev/sda1";
       fsType = "xfs";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-label/EPS";
+    { device = "/dev/sda2";
       fsType = "vfat";
     };
 
