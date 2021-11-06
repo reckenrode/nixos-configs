@@ -19,6 +19,7 @@ in {
       { hostname = "github.com"; port = 22; }
       { hostname = "imac.local"; port = 22; }
       { hostname = "largeandhighquality.com"; }
+      { hostname = "khloe.infra.largeandhighquality.com"; }
       { hostname = "zhloe.infra.largeandhighquality.com"; }
     ]);
   };
