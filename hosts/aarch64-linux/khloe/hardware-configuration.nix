@@ -17,7 +17,7 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/c6a97f1e-b1cd-4ced-83a4-a2103894f0f1";
+    { device = "/dev/disk/by-uuid/e0896913-1e33-4af8-a9ea-18d39c9405e1";
       fsType = "xfs";
     };
 
@@ -26,7 +26,9 @@
       fsType = "vfat";
     };
 
-  swapDevices = [ ];
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/31884435-61b9-407a-8923-32dec5a40078"; }
+    ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }
