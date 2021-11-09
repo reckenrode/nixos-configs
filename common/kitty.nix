@@ -1,7 +1,5 @@
 { pkgs, ... }:
 
 {
-  environment.variables = {
-    TERMINFO_DIRS = "${pkgs.kitty.terminfo.outPath}/share/terminfo";
-  };
+  environment.systemPackages = [ pkgs.kitty.terminfo ];
 }
