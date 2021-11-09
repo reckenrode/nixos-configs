@@ -62,9 +62,13 @@
       lib = import ./lib;
 
       outputsBuilder = channels: {
-        packages = packages channels.nixpkgs // {
-          inherit (inputs.verify-archive.packages."${channels.nixpkgs.system}") verify-archive;
-        };
+        packages =
+          let
+            inherit (channels.nixpkgs.stdenv.hostPlatform) system;
+          in
+          packages channels.nixpkgs // {
+            inherit (inputs.verify-archive.packages."${system}") verify-archive;
+          };
       };
     };
 }

@@ -5,7 +5,7 @@ let
 
   inherit (builtins) elemAt;
   inherit (lib.strings) splitString;
-  inherit (pkgs) system;
+  inherit (pkgs.stdenv.hostPlatform) system;
 
   platformTuple = splitString "-" system;
   arch = elemAt platformTuple 0;

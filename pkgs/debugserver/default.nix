@@ -1,9 +1,11 @@
 { stdenv
-, system
 , fetchurl
 , unzip
 }:
 
+let
+  inherit (stdenv.hostPlatform) system;
+in
 stdenv.mkDerivation rec {
   pname = "debugserver";
   version = "1.6.8";
