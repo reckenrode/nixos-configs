@@ -5,6 +5,10 @@ let
   inherit (unstablePkgs) neovim;
 in
 {
+  imports = [
+    ./gnupg.nix
+  ];
+
   home.packages = [
     neovim
     ripgrep

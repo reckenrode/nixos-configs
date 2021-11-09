@@ -6,6 +6,7 @@
     ./dock.nix
     ./finder.nix
     ./fish.nix
+    ./gnupg.nix
     ./keyboard.nix
     ./kitty.nix
     ./less.nix
