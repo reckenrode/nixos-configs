@@ -7,6 +7,7 @@ in
 {
   imports = [
     ./gnupg.nix
+    ./less.nix
   ];
 
   home.packages = [

@@ -9,7 +9,6 @@
     ./gnupg.nix
     ./keyboard.nix
     ./kitty.nix
-    ./less.nix
     ./rust.nix
     ./safari.nix
     ./ui.nix
@@ -18,12 +17,13 @@
 
   home.packages =
     let
-      inherit (pkgs) coreutils findutils;
+      inherit (pkgs) coreutils findutils less;
       inherit (unstablePkgs.darwin) trash;
     in
     [
       coreutils
       findutils
+      less
       trash
     ];
 

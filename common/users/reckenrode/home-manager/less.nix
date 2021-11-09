@@ -1,8 +1,6 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 
 {
-  home.packages = [ pkgs.less ];
-
   home.sessionVariables = {
     LESSHISTFILE = "${config.xdg.dataHome}/less/history";
   };
