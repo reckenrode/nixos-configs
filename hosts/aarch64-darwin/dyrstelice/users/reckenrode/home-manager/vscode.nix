@@ -76,7 +76,9 @@ in
         #vadimcn.vscode-lldb
       ];
     userSettings = {
+      "editor.bracketPairColorization.enabled" = true;
       "editor.fontFamily" = "SF Mono, Menlo, Monaco, 'Courier New', monospace";
+      "editor.guides.bracketPairs" = "active";
       "editor.minimap.enabled" = false;
       "editor.roundedSelection" = false;
       "editor.rulers" = [ 100 ];
