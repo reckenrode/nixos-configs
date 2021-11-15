@@ -126,7 +126,7 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix",
-        "utils": "utils",
+        "utils": "utils"
       }
     },
     "rust-overlay": {
