@@ -207,7 +207,7 @@
         "repo": "flake-utils-plus",
         "type": "github"
       }
-    },
+    }
   },
   "root": "root",
   "version": 7
