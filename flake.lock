@@ -127,7 +127,6 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix",
         "utils": "utils",
-        "verify-archive": "verify-archive"
       }
     },
     "rust-overlay": {
@@ -209,28 +208,6 @@
         "type": "github"
       }
     },
-    "verify-archive": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "rust-overlay": "rust-overlay",
-        "utils": "utils_2"
-      },
-      "locked": {
-        "lastModified": 1634044388,
-        "narHash": "sha256-DoPoyEIHuQIQBKI0CJH7j7xpO9Es79C3dUl5TihbRrU=",
-        "owner": "reckenrode",
-        "repo": "verify-archive",
-        "rev": "5711bb03817f4b69477a24e4c1829e25973d01ee",
-        "type": "github"
-      },
-      "original": {
-        "owner": "reckenrode",
-        "repo": "verify-archive",
-        "type": "github"
-      }
-    }
   },
   "root": "root",
   "version": 7
