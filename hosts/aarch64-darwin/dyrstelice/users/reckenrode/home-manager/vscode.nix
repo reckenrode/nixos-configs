@@ -55,8 +55,13 @@ let
     in
     loadAfter [ "cab404.vscode-direnv" ] matklad.rust-analyzer;
 
-  vadimcn.vscode-lldb = unstablePkgs.vscode-extensions.vadimcn.vscode-lldb.override {
-    inherit (pkgs) rustPlatform;
+  ombratteng.nftables = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      publisher = "ombratteng";
+      name = "nftables";
+      version = "0.4.4";
+      sha256 = "sha256-zmTbF676rKhSR9qS+Iw23qvnsTLZFEswoS9e8sy+ec0=";
+    };
   };
 in
 {
@@ -65,6 +70,7 @@ in
     extensions =
       let
         inherit (pkgs.vscode-extensions) bbenoist editorconfig;
+        inherit (unstablePkgs.vscode-extensions) vadimcn;
       in
       [
         bbenoist.Nix
@@ -73,7 +79,8 @@ in
         editorconfig.editorconfig
         mark-hansen.hledger-vscode
         matklad.rust-analyzer
-        #vadimcn.vscode-lldb
+        ombratteng.nftables
+        vadimcn.vscode-lldb
       ];
     userSettings = {
       "editor.bracketPairColorization.enabled" = true;
