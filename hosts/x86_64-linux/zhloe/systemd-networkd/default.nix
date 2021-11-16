@@ -1,8 +1,8 @@
 { ... }:
 
 {
-  roles.dhcpV6Client = {
-    enable = true;
+  services.dhcpV6Client = {
+    openFirewall = true;
     interfaces = [ "enp1s0" ];
   };
 

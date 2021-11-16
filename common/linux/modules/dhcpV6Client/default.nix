@@ -6,9 +6,9 @@ let
   inherit (lib.trivial) pipe;
   inherit (pkgs) stdenv substituteAll;
 in
-optionalAttrs stdenv.isLinux {
-  options.roles.dhcp6Client = {
-    enable = lib.mkEnableOption "Open the firewall to allow DHCPv6 on the specified interfaces";
+{
+  options.services.dhcp6Client = {
+    openFirewall = lib.mkEnableOption "Open the firewall to allow DHCPv6 on the specified interfaces";
     interfaces = lib.mkOption {
       default = [];
       defaultText = "[]";
@@ -19,14 +19,14 @@ optionalAttrs stdenv.isLinux {
   };
   config =
     let
-      inherit (config.roles.dhcp6Client) interfaces;
+      inherit (config.services.dhcp6Client) interfaces;
 
       generateFirewallRules = interface: readFile (pkgs.substituteAll {
         inherit interface;
         src = ./dhcp6Client.nft;
       });
     in
-    lib.mkIf config.roles.dhcp6Client.enable {
+    lib.mkIf config.services.dhcp6Client.openFirewall {
       networking.nftables.ruleset = pipe interfaces [
         (map generateFirewallRules)
         (builtins.concatStringsSep "\n")
