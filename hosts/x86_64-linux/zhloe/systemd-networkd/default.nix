@@ -1,9 +1,12 @@
 { ... }:
+
 {
-  networking.nftables.ruleset = builtins.concatStringsSep "\n" [
-    (builtins.readFile ./dhcp6-client.nft)
-    (builtins.readFile ./masquerade.nft)
-  ];
+  roles.dhcpV6Client = {
+    enable = true;
+    interfaces = [ "enp1s0" ];
+  };
+
+  networking.nftables.ruleset = builtins.readFile ./masquerade.nft;
 
   services.resolved.dnssec = "false";
 
@@ -35,7 +38,7 @@
     enable = true;
     matchConfig.Name = "enp1s0";
     networkConfig = {
-      DHCP = "yes";
+      DHCP = "ipv4";
       DNS = [ "1.1.1.1" "1.0.0.1" ];
       IPv6PrivacyExtensions = false;
       IPv6AcceptRA = true;

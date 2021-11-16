@@ -1,7 +1,10 @@
 { ... }:
 
 {
-  networking.nftables.ruleset = builtins.readFile ./dhcp6-client.nft;
+  roles.dhcpV6Client = {
+    enable = true;
+    interfaces = [ "eth0" ];
+  };
 
   services.resolved.dnssec = "false";
 
