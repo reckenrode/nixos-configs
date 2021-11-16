@@ -12,7 +12,6 @@
     ./rust.nix
     ./safari.nix
     ./ui.nix
-    ./xdg.nix
   ];
 
   home.packages =

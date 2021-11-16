@@ -8,6 +8,7 @@ in
   imports = [
     ./gnupg.nix
     ./less.nix
+    ./xdg.nix
   ];
 
   home.packages = [
