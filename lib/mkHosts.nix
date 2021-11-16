@@ -30,7 +30,7 @@ let
       configs = filter pathExists configPaths;
 
       modulesPaths = map (path: path + /modules.nix) paths;
-      modulesConfigs = concatMap (src: import src self.inputs) (filter pathExists modulesPaths);
+      modulesConfigs = concatMap (src: import src self) (filter pathExists modulesPaths);
 
       aarch64ExtraPkgs = optionalAttrs (system == "aarch64-darwin") {
         x86_64 = {

@@ -1,5 +1,5 @@
-inputs:
+flake:
 
 [
-  inputs.home-manager.nixosModules.home-manager
-]
+  flake.inputs.home-manager.nixosModules.home-manager
+] ++ flake.lib.loadModules ./modules

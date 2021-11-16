@@ -1,5 +1,5 @@
-inputs:
+flake:
 
 [
-  inputs.home-manager.darwinModules.home-manager
-]
+  flake.inputs.home-manager.darwinModules.home-manager
+] ++ flake.lib.loadModules ./modules
