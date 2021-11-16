@@ -1,11 +1,14 @@
 { config, ... }:
 
+let
+  lessStateDir = "${config.home.sessionVariables.XDG_STATE_HOME}/less";
+in
 {
   home.sessionVariables = {
-    LESSHISTFILE = "${config.xdg.dataHome}/less/history";
+    LESSHISTFILE = "${lessStateDir}/history";
   };
 
-  xdg.dataFile."less/.keep" = {
+  home.file."${lessStateDir}/.keep" = {
     recursive = true;
     text = "";
   };
