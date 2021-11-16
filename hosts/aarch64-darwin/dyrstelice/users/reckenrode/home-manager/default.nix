@@ -31,7 +31,7 @@
       pngout
       secretive
       steam
-      verify-archive
+      #verify-archive
       waifu2x-converter-cpp
     ];
 }
