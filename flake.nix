@@ -47,6 +47,9 @@
           ];
       };
 
+      channels.nixpkgs-unstable.config.allowUnfreePredicate =
+        pkg: builtins.elem (nixpkgs.lib.getName pkg) [ "pngout" ];
+
       hostDefaults.modules = [
         ./common/configuration.nix
       ];

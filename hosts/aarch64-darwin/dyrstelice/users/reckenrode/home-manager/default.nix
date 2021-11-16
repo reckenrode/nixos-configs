@@ -14,7 +14,8 @@
   home.packages =
     let
       inherit (x86_64.flakePkgs) crossover;
-      inherit (x86_64.pkgs) openra pngout steam;
+      inherit (x86_64.pkgs) openra steam;
+      inherit (x86_64.unstablePkgs) pngout;
       inherit (flakePkgs) daisydisk netnewswire ocr-documents secretive verify-archive;
       inherit (pkgs) firefox-bin openttd;
       inherit (unstablePkgs) keybase waifu2x-converter-cpp;
