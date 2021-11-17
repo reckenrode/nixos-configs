@@ -12,7 +12,7 @@
     enable = true;
     matchConfig.Name = "eth0";
     networkConfig = {
-      DHCP = "yes";
+      DHCP = "ipv4";
       IPv6PrivacyExtensions = true;
       IPv6AcceptRA = true;
     };
