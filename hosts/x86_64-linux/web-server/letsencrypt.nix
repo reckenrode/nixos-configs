@@ -5,7 +5,7 @@
   #   acceptTerms = true;
   #   certs = {
   #     "largeandhighquality.com" = {
-  #       credentialsFile = "/run/secrets/linode_token";
+  #       credentialsFile = "/run/secrets/linode";
   #       dnsProvider = "linodev4";
   #       domain = "largeandhighquality.com";
   #       email = "randy@largeandhighquality.com";
