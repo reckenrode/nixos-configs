@@ -3,11 +3,9 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./loader.nix
     ./systemd-networkd.nix
   ];
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "web-server";
 
