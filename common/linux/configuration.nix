@@ -19,5 +19,9 @@
   users.defaultUserShell = pkgs.fish;
   users.mutableUsers = false;
 
-  zramSwap.enable = true;
+  zramSwap = {
+    enable = true;
+    memoryMax = 8 * 1024 * 1024 * 1024;
+    memoryPercent = 100;
+  };
 }
