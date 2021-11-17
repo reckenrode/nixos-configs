@@ -3,12 +3,12 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./kernel.nix
+    ./loader.nix
     ./systemd-networkd
   ];
 
-  boot.loader.systemd-boot.enable = false;
-  boot.loader.efi.canTouchEfiVariables = false;
+  # FIXME: Once 21.11 is out, this should be able to use the default (stable) kernel
+  boot.kernelPackages = lib.mkForce unstablePkgs.linuxPackages_latest;
 
   networking.hostName = "khloe";
 
