@@ -23,8 +23,8 @@
       fsType = "vfat";
     };
 
-  # swapDevices =
-  #   [ { device = "/dev/sdb"; }
-  #   ];
+  swapDevices =
+    [ { device = "/dev/sdb"; }
+    ];
 
 }
