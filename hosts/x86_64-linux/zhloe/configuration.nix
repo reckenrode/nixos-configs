@@ -5,12 +5,10 @@
     ./hardware-configuration.nix
     ./kea
     ./letsencrypt.nix
+    ./loader.nix
     ./systemd-networkd
     ./unbound
   ];
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "zhloe";
 
