@@ -14,12 +14,17 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/sda";
+    { device = "/dev/sda2";
       fsType = "xfs";
     };
 
-  swapDevices =
-    [ { device = "/dev/sdb"; }
-    ];
+  fileSystems."/boot/efi" =
+    { device = "/dev/sda3";
+      fsType = "vfat";
+    };
+
+  # swapDevices =
+  #   [ { device = "/dev/sdb"; }
+  #   ];
 
 }

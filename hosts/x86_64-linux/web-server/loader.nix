@@ -8,10 +8,11 @@
     terminal_output serial
   '';
 
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+
   boot.loader.timeout = 10;
   boot.loader.grub = {
     enable = true;
-    device = "nodev";
-    forceInstall = true;
+    device = "/dev/sda";
   };
 }
