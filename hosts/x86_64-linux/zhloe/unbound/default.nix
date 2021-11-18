@@ -6,11 +6,12 @@ in
 {
   networking.nftables.ruleset = builtins.readFile ./unbound.nft;
 
-  security.acme.certs."infra.largeandhighquality.com".postRun = "${pkgs.systemd}/bin/systemctl restart unbound.service";
+  security.acme.certs."zhloe.infra.largeandhighquality.com".postRun =
+    "${pkgs.systemd}/bin/systemctl restart unbound.service";
 
   services.unbound =
     let
-      certPath = config.security.acme.certs."infra.largeandhighquality.com".directory;
+      certPath = config.security.acme.certs."zhloe.infra.largeandhighquality.com".directory;
     in
     {
       enable = true;
