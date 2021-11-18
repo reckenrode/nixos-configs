@@ -24,5 +24,9 @@ in
 
   services.nix-daemon.enable = true;
 
+  environment.variables = {
+    TERMINFO_DIRS = "$HOME/.nix-profile/share/terminfo:/etc/profiles/per-user/$USER/share/terminfo:/nix/var/nix/profiles/default/share/terminfo:/run/current-system/sw/share/terminfo:${pkgs.kitty.terminfo}/share/terminfo";
+  };
+
   users.nix.configureBuildUsers = true;
 }
