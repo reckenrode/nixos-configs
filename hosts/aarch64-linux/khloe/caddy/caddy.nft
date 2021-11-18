@@ -1,0 +1,8 @@
+table inet filter {
+    chain input {
+        ip6 saddr fda9:51fe:3bbf:c9f::/64 tcp dport { http, https } accept
+        ip6 saddr fda9:51fe:3bbf:c9f::/64 udp dport { http, https } accept
+        ip  saddr        192.168.238.0/24 tcp dport { http, https } accept
+        ip  saddr        192.168.238.0/24 udp dport { http, https } accept
+    }
+}
