@@ -1,0 +1,15 @@
+http://khloe.infra.largeandhighquality.com {
+    redir https://khloe.infra.largeandhighquality.com{uri} 301
+}
+https://khloe.infra.largeandhighquality.com {
+    tls /var/lib/acme/khloe.infra.largeandhighquality.com/fullchain.pem /var/lib/acme/khloe.infra.largeandhighquality.com/key.pem
+    root * /srv/khloe/
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    }
+    encode {
+        zstd
+        gzip
+    }
+    file_server
+}

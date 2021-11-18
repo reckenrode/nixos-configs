@@ -17,17 +17,17 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/e0896913-1e33-4af8-a9ea-18d39c9405e1";
+    { device = "/dev/disk/by-uuid/06d45151-9770-4c2c-b061-b118a3710e3c";
       fsType = "xfs";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8048-8B73";
+  fileSystems."/boot/efi" =
+    { device = "/dev/disk/by-uuid/ACDA-EE06";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/31884435-61b9-407a-8923-32dec5a40078"; }
+    [ { device = "/dev/disk/by-uuid/8575b966-d556-4bcf-bff9-72964cb23414"; }
     ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
