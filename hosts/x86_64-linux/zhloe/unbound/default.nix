@@ -97,7 +97,9 @@ in
       };
     };
 
-  systemd.services.unbound.serviceConfig.SupplementaryGroups = [
-    config.users.groups.acme-certs.name
-  ];
+  systemd.services.unbound = {
+    wants = [ "sys-subsystem-net-devices-enp2s0.device" ];
+    after = [ "sys-subsystem-net-devices-enp2s0.device" ];
+    serviceConfig.SupplementaryGroups = [ config.users.groups.acme-certs.name ];
+  };
 }
