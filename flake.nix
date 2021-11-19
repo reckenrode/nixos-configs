@@ -13,6 +13,9 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    verify-archive.url = "github:reckenrode/verify-archive/releases";
+    verify-archive.inputs.nixpkgs.follows = "nixpkgs-unstable";
   };
 
   outputs = inputs@{ self, utils, nixpkgs, darwin, home-manager, ... }:
@@ -66,7 +69,9 @@
           let
             inherit (channels.nixpkgs.stdenv.hostPlatform) system;
           in
-          packages channels.nixpkgs;
+          packages channels.nixpkgs // {
+            inherit (inputs.verify-archive.packages."${system}") verify-archive;
+          };
       };
     };
 }
