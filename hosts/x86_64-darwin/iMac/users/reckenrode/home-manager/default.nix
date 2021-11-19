@@ -9,6 +9,6 @@
     [
       openssh
       steam
-      # verify-archive
+      verify-archive
     ];
 }
