@@ -51,7 +51,7 @@ let
 
   matklad.rust-analyzer =
     let
-      inherit (pkgs.vscode-extensions) matklad;
+      inherit (unstablePkgs.vscode-extensions) matklad;
     in
     loadAfter [ "cab404.vscode-direnv" ] matklad.rust-analyzer;
 
