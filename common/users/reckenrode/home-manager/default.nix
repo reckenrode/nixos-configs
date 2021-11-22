@@ -6,6 +6,7 @@ let
 in
 {
   imports = [
+    ./bash.nix
     ./gnupg.nix
     ./less.nix
     ./python.nix
