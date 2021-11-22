@@ -8,6 +8,7 @@ in
   imports = [
     ./gnupg.nix
     ./less.nix
+    ./python.nix
     ./xdg.nix
   ];
 
