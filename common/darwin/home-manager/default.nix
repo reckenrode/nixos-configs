@@ -16,11 +16,12 @@
 
   home.packages =
     let
-      inherit (pkgs) coreutils findutils less;
+      inherit (pkgs) coreutils diffutils findutils less;
       inherit (unstablePkgs.darwin) trash;
     in
     [
       coreutils
+      diffutils
       findutils
       less
       trash
