@@ -16,5 +16,6 @@ then
       tesseractBase = import ./tesseract4 prev;
     };
     tiled = prev.callPackage ./tiled {};
+    weechat-unwrapped = import ./weechat prev;
 }
 else {}
