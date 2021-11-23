@@ -19,6 +19,19 @@
       inherit (flakePkgs) daisydisk netnewswire ocr-documents secretive verify-archive;
       inherit (pkgs) firefox-bin openttd;
       inherit (unstablePkgs) keybase waifu2x-converter-cpp;
+
+      weechat = pkgs.weechat.override {
+        configure = { availablePlugins, ... }: {
+          scripts =
+            let
+              inherit (pkgs.weechatScripts) wee-slack weechat-matrix;
+            in
+            [
+              wee-slack
+              weechat-matrix
+            ];
+        };
+      };
     in
     [
       crossover
@@ -34,5 +47,6 @@
       steam
       verify-archive
       waifu2x-converter-cpp
+      weechat
     ];
 }
