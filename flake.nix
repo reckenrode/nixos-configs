@@ -3,6 +3,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    nixpkgs-wip.url = "github:reckenrode/nixpkgs/omnisharp-darwin";
+
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -49,6 +51,14 @@
             (_: _: { nixUnstable = channels.nixpkgs-unstable.nix_2_4; })
           ];
       };
+
+      channels.nixpkgs-unstable.overlaysBuilder = channels: [
+        (_: prev: {
+          vscode-extensions = prev.vscode-extensions // {
+            ms-dotnettools.csharp = channels.nixpkgs-wip.vscode-extensions.ms-dotnettools.csharp;
+          };
+        })
+      ];
 
       channels.nixpkgs-unstable.config.allowUnfreePredicate =
         pkg: builtins.elem (nixpkgs.lib.getName pkg) [ "pngout" ];

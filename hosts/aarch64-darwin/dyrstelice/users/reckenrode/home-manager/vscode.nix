@@ -1,4 +1,4 @@
-{ lib, pkgs, flakePkgs, unstablePkgs, ... }:
+{ lib, pkgs, flakePkgs, unstablePkgs, x86_64, ... }:
 
 let
   inherit (pkgs.vscode-utils) buildVscodeMarketplaceExtension;
@@ -18,6 +18,15 @@ let
     '';
   });
 
+  bmalehorn.vscode-fish = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      publisher = "bmalehorn";
+      name = "vscode-fish";
+      version = "1.0.24";
+      sha256 = "sha256-q0TzKQFSqRX7KUAjOJPkUPk00YbdyCK8S8DfD3vsKcI=";
+    };
+  };
+
   cab404.direnv = buildVscodeMarketplaceExtension {
     mktplcRef = {
       publisher = "cab404";
@@ -27,14 +36,18 @@ let
     };
   };
 
-  bmalehorn.vscode-fish = buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      publisher = "bmalehorn";
-      name = "vscode-fish";
-      version = "1.0.24";
-      sha256 = "sha256-q0TzKQFSqRX7KUAjOJPkUPk00YbdyCK8S8DfD3vsKcI=";
-    };
-  };
+  ionide.ionide-fsharp =
+    let
+      ionide-fsharp = buildVscodeMarketplaceExtension {
+        mktplcRef = {
+          publisher = "ionide";
+          name = "ionide-fsharp";
+          version = "5.10.1";
+          sha256 = "sha256-LkWWgyh4khPyUgekVeO8ZzPK+1gTrS8d9Yz6/kHomr8=";
+        };
+      };
+    in 
+    loadAfter [ "cab404.vscode-direnv" ] ionide-fsharp;
 
   mark-hansen.hledger-vscode =
     let
@@ -54,6 +67,12 @@ let
       inherit (unstablePkgs.vscode-extensions) matklad;
     in
     loadAfter [ "cab404.vscode-direnv" ] matklad.rust-analyzer;
+
+  ms-dotnettools.csharp =
+    let
+      inherit (x86_64.unstablePkgs.vscode-extensions) ms-dotnettools;
+    in
+    loadAfter [ "cab404.vscode-direnv" ] ms-dotnettools.csharp;
 
   ombratteng.nftables = buildVscodeMarketplaceExtension {
     mktplcRef = {
@@ -77,8 +96,10 @@ in
         bmalehorn.vscode-fish
         cab404.direnv
         editorconfig.editorconfig
+        ionide.ionide-fsharp
         mark-hansen.hledger-vscode
         matklad.rust-analyzer
+        ms-dotnettools.csharp
         ombratteng.nftables
         vadimcn.vscode-lldb
       ];
