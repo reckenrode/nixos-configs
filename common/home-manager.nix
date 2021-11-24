@@ -1,4 +1,4 @@
-{ config, lib, pkgs, flake, hostPath, extraSpecialArgs, ... }:
+{ config, lib, pkgs, flake, hostPath, specialArgs, ... }:
 
 let
   inherit (flake.lib) readDirNames;
@@ -47,5 +47,5 @@ in
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users = mkUsers hostPath;
-  home-manager.extraSpecialArgs = extraSpecialArgs;
+  home-manager.extraSpecialArgs = specialArgs;
 }
