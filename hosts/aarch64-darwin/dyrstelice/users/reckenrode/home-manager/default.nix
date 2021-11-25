@@ -17,8 +17,27 @@
       inherit (x86_64.pkgs) openra steam;
       inherit (x86_64.unstablePkgs) pngout;
       inherit (flakePkgs) daisydisk netnewswire ocr-documents secretive verify-archive;
-      inherit (pkgs) firefox-bin gomuks openttd;
+      inherit (pkgs) firefox-bin openttd terminal-notifier;
       inherit (unstablePkgs) keybase waifu2x-converter-cpp;
+
+      gomuks = pkgs.gomuks.overrideAttrs (old: {
+        postInstall = ''
+          cp -r ${
+            pkgs.makeDesktopItem {
+              name = "net.maunium.gomuks.desktop";
+              exec = "@out@/bin/gomuks";
+              terminal = "true";
+              desktopName = "Gomuks";
+              genericName = "Matrix client";
+              categories = "Network;Chat";
+              comment = old.meta.description;
+            }
+          }/* $out/
+          substituteAllInPlace $out/share/applications/*
+          wrapProgram $out/bin/gomuks \
+            --prefix PATH : "${lib.makeBinPath [ terminal-notifier ]}"
+        '';
+      });
     in
     [
       crossover
