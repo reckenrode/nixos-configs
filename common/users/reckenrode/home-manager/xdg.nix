@@ -13,8 +13,4 @@
     XDG_PUBLICSHARE_DIR = "${config.home.homeDirectory}/Public";
     XDG_VIDEOS_DIR = "${config.home.homeDirectory}/Movies";
   };
-
-  home.packages = [
-    pkgs.xdg-utils
-  ];
 }
