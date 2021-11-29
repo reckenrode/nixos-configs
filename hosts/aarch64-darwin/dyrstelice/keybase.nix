@@ -1,7 +1,7 @@
-{ unstablePkgs, ... }:
+{ pkgs, ... }:
 
 let
-  inherit (unstablePkgs) keybase kbfs;
+  inherit (pkgs) keybase kbfs;
 in
 {
   launchd.user.agents."keybase".serviceConfig = rec {
@@ -22,7 +22,7 @@ in
     StandardOutPath = "/Users/reckenrode/Library/Logs/keybase.start.log";
     WorkingDirectory = "/tmp";
   };
-  
+
   launchd.user.agents."kbfs".serviceConfig = rec {
     ProgramArguments = [
       "/bin/sh" "-c"

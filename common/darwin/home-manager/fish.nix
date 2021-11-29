@@ -1,11 +1,10 @@
-{ pkgs, unstablePkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.fish = {
     functions =
       let
-        inherit (pkgs) findutils coreutils;
-        inherit (unstablePkgs) nvd;
+        inherit (pkgs) findutils coreutils nvd;
       in
       {
         darwin-rebuild = ''
@@ -15,10 +14,10 @@
               | ${coreutils}/bin/sort \
               | ${coreutils}/bin/tail -n1
           end
-          
+
           if string match -q switch -- $argv
             set old_gen (get_gen)
-            
+
             set scratch_dir (${coreutils}/bin/mktemp -d)
             function clean_up_scratch --on-event EXIT -e INT -e QUIT -e TERM
                 ${coreutils}/bin/rm -rf $scratch
@@ -27,9 +26,9 @@
             pushd $scratch_dir
             command darwin-rebuild $argv
             popd
-            
+
             set new_gen (get_gen)
-            
+
             ${nvd}/bin/nvd diff $old_gen $new_gen
           else
             command darwin-rebuild $argv

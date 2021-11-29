@@ -1,8 +1,7 @@
-{ pkgs, unstablePkgs, ... }:
+{ pkgs, ... }:
 
 let
-  inherit (pkgs) ripgrep;
-  inherit (unstablePkgs) neovim;
+  inherit (pkgs) neovim ripgrep;
 in
 {
   imports = [

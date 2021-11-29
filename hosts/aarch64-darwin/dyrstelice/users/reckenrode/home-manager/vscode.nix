@@ -1,4 +1,4 @@
-{ lib, pkgs, flakePkgs, unstablePkgs, x86_64, ... }:
+{ lib, pkgs, flakePkgs, x86_64, ... }:
 
 let
   inherit (pkgs.vscode-utils) buildVscodeMarketplaceExtension;
@@ -64,13 +64,13 @@ let
 
   matklad.rust-analyzer =
     let
-      inherit (unstablePkgs.vscode-extensions) matklad;
+      inherit (pkgs.vscode-extensions) matklad;
     in
     loadAfter [ "cab404.vscode-direnv" ] matklad.rust-analyzer;
 
   ms-dotnettools.csharp =
     let
-      inherit (x86_64.unstablePkgs.vscode-extensions) ms-dotnettools;
+      inherit (x86_64.pkgs.vscode-extensions) ms-dotnettools;
     in
     loadAfter [ "cab404.vscode-direnv" ] ms-dotnettools.csharp;
 
@@ -88,11 +88,10 @@ in
     enable = true;
     extensions =
       let
-        inherit (pkgs.vscode-extensions) bbenoist editorconfig;
-        inherit (unstablePkgs.vscode-extensions) vadimcn;
+        inherit (pkgs.vscode-extensions) bbenoist editorconfig vadimcn;
       in
       [
-        bbenoist.Nix
+        bbenoist.nix
         bmalehorn.vscode-fish
         cab404.direnv
         editorconfig.editorconfig

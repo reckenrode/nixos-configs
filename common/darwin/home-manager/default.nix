@@ -16,8 +16,9 @@
   home.packages =
     let
       inherit (pkgs) coreutils diffutils findutils less;
-      inherit (unstablePkgs.darwin) trash;
-      inherit (unstablePkgs) iterm2;
+      inherit (pkgs.darwin) trash;
+
+      iterm2 = pkgs.callPackage unstablePkgs.iterm2.override {};
     in
     [
       coreutils

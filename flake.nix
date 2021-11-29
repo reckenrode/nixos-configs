@@ -1,14 +1,14 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    utils.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.3.0";
+    utils.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.3.1";
 
-    home-manager.url = "github:nix-community/home-manager/release-21.05";
+    home-manager.url = "github:nix-community/home-manager/release-21.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:Mic92/sops-nix";
@@ -44,9 +44,6 @@
         overlaysBuilder = channels:
           [
             (overlays { inherit lib; })
-            # FIXME: flake-utils-plus forces a build of nixUnstable, which fails on aarch64-darwin.  Use
-            # the 2.4 RC instead.
-            (_: _: { nixUnstable = channels.nixpkgs-unstable.nix_2_4; })
           ];
       };
 

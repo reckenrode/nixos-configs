@@ -1,4 +1,4 @@
-{ config, lib, pkgs, flakePkgs, unstablePkgs, x86_64, ... }:
+{ config, lib, pkgs, flakePkgs, x86_64, ... }:
 
 {
   imports = [
@@ -10,15 +10,13 @@
     ./ssh.nix
     ./vscode.nix
   ];
-  
+
   home.packages =
     let
       inherit (x86_64.flakePkgs) crossover;
-      inherit (x86_64.pkgs) openra steam;
-      inherit (x86_64.unstablePkgs) pngout;
+      inherit (x86_64.pkgs) openra pngout steam;
       inherit (flakePkgs) daisydisk netnewswire ocr-documents secretive verify-archive;
-      inherit (pkgs) firefox-bin openttd terminal-notifier;
-      inherit (unstablePkgs) keybase waifu2x-converter-cpp;
+      inherit (pkgs) firefox-bin keybase waifu2x-converter-cpp openttd terminal-notifier;
 
       gomuks = pkgs.gomuks.overrideAttrs (old: {
         postInstall = ''
