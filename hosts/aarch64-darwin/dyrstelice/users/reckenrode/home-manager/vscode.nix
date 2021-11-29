@@ -99,7 +99,7 @@ in
         ionide.ionide-fsharp
         mark-hansen.hledger-vscode
         matklad.rust-analyzer
-        ms-dotnettools.csharp
+        # ms-dotnettools.csharp
         ombratteng.nftables
         vadimcn.vscode-lldb
       ];
