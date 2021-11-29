@@ -1,20 +1,14 @@
-final: prev:
+{ lib }:
 
-let
-  inherit (prev) stdenv;
-in
-if stdenv.isDarwin
-then
-{
-    firefox-bin = prev.callPackage ./firefox-bin {};
-    kitty = import ./kitty prev;
-    openra = prev.callPackage ./openra {};
-    openttd = prev.callPackage ./openttd {};
-    steam = prev.callPackage ./steam {};
-    tesseract4 = prev.tesseract4.override {
-      tesseractBase = import ./tesseract4 prev;
-    };
-    tiled = prev.callPackage ./tiled {};
-    weechat-unwrapped = import ./weechat prev;
-}
-else {}
+final: prev:
+  let
+    inherit (builtins) listToAttrs;
+    inherit (prev.lib.trivial) pipe;
+
+    platform = prev.hostPlatform.parsed.kernel.name;
+    overlays = lib.readDirNames ./${platform};
+  in
+    pipe overlays [
+      (map (pkg: { name = pkg; value = import ./${platform}/${pkg} final prev; }))
+      listToAttrs
+    ]

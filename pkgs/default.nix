@@ -1,12 +1,12 @@
-pkgs:
+{ lib, channels }:
 
-{
-  crossover = pkgs.callPackage ./crossover {};
-  daisydisk = pkgs.callPackage ./daisydisk {};
-  debugserver = pkgs.callPackage ./debugserver {};
-  finalfantasyxiv = pkgs.callPackage ./finalfantasyxiv {};
-  netnewswire = pkgs.callPackage ./netnewswire {};
-  ocr-documents = pkgs.callPackage ./ocr-documents {};
-  pathofexile = pkgs.callPackage ./pathofexile {};
-  secretive = pkgs.callPackage ./secretive {};
-}
+let
+  inherit (builtins) listToAttrs;
+  inherit (channels.nixpkgs.lib.trivial) pipe;
+
+  flakePkgs = lib.readDirNames ./.;
+in
+pipe flakePkgs [
+  (map (pkg: { name = pkg; value = channels.nixpkgs.callPackage ./${pkg} {}; }))
+  listToAttrs
+]

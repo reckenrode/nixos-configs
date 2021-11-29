@@ -1,4 +1,4 @@
-prev:
+_: prev:
 
 let
   inherit (prev) lib stdenv;

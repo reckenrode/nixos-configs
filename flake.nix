@@ -3,8 +3,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixpkgs-wip.url = "github:reckenrode/nixpkgs/omnisharp-darwin";
-
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -45,7 +43,7 @@
         ];
         overlaysBuilder = channels:
           [
-            overlays
+            (overlays { inherit lib; })
             # FIXME: flake-utils-plus forces a build of nixUnstable, which fails on aarch64-darwin.  Use
             # the 2.4 RC instead.
             (_: _: { nixUnstable = channels.nixpkgs-unstable.nix_2_4; })
@@ -53,6 +51,7 @@
       };
 
       channels.nixpkgs-unstable.overlaysBuilder = channels: [
+        (overlays { inherit lib; })
         (_: prev: {
           vscode-extensions = prev.vscode-extensions // {
             ms-dotnettools.csharp = channels.nixpkgs-wip.vscode-extensions.ms-dotnettools.csharp;
@@ -79,7 +78,7 @@
           let
             inherit (channels.nixpkgs.stdenv.hostPlatform) system;
           in
-          packages channels.nixpkgs // {
+          packages { inherit lib channels; } // {
             inherit (inputs.verify-archive.packages."${system}") verify-archive;
           };
       };
