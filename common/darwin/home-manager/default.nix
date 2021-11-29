@@ -8,7 +8,6 @@
     ./fish.nix
     ./gnupg.nix
     ./keyboard.nix
-    ./kitty.nix
     ./rust.nix
     ./safari.nix
     ./ui.nix
@@ -18,6 +17,7 @@
     let
       inherit (pkgs) coreutils diffutils findutils less;
       inherit (unstablePkgs.darwin) trash;
+      inherit (unstablePkgs) iterm2;
     in
     [
       coreutils
@@ -25,6 +25,7 @@
       findutils
       less
       trash
+      iterm2
     ];
 
   home.stateVersion = "21.05";
