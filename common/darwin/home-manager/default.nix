@@ -28,6 +28,4 @@
       trash
       iterm2
     ];
-
-  home.stateVersion = "21.05";
 }
