@@ -46,7 +46,7 @@ let
           sha256 = "sha256-LkWWgyh4khPyUgekVeO8ZzPK+1gTrS8d9Yz6/kHomr8=";
         };
       };
-    in 
+    in
     loadAfter [ "cab404.vscode-direnv" ] ionide-fsharp;
 
   mark-hansen.hledger-vscode =
@@ -98,7 +98,7 @@ in
         ionide.ionide-fsharp
         mark-hansen.hledger-vscode
         matklad.rust-analyzer
-        # ms-dotnettools.csharp
+        ms-dotnettools.csharp
         ombratteng.nftables
         vadimcn.vscode-lldb
       ];
