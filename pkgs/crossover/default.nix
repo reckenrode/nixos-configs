@@ -2,11 +2,11 @@
 
 stdenv.mkDerivation rec {
   pname = "crossover";
-  version = "21.0.0";
+  version = "21.1.0";
 
   src = fetchurl {
     url = "https://media.codeweavers.com/pub/crossover/cxmac/demo/crossover-${version}.zip";
-    hash = "sha256-1cfXLBmJQEZ/+1P8iGhPB5alp18lBRJS2Xno3FfuJMI=";
+    hash = "sha256-PBMOLrD9PVUkhPBy3CDmZQSGmOff+wbE84kAE+/1dJw";
   };
 
   buildInputs = [ unzip ];
