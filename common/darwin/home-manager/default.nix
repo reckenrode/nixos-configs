@@ -15,7 +15,7 @@
 
   home.packages =
     let
-      inherit (pkgs) coreutils diffutils findutils less;
+      inherit (pkgs) coreutils diffutils findutils gnutar less;
       inherit (pkgs.darwin) trash;
 
       iterm2 = pkgs.callPackage unstablePkgs.iterm2.override {};
@@ -24,6 +24,7 @@
       coreutils
       diffutils
       findutils
+      gnutar
       less
       trash
       iterm2
