@@ -53,8 +53,10 @@
           ];
       };
 
-      channels.nixpkgs-unstable.config.allowUnfreePredicate =
-        pkg: builtins.elem (nixpkgs.lib.getName pkg) [ "pngout" ];
+      channels.nixpkgs-unstable = {
+        config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [ "pngout" ];
+        overlaysBuilder = channels: [ (overlays { inherit lib; }) ];
+      };
 
       hostDefaults.modules = [
         ./common/configuration.nix
