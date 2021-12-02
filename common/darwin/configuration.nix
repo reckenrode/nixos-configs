@@ -15,6 +15,7 @@ let
 in
 {
   imports = [
+    ./diff-closures.nix
     ./nix-optimizations-darwin.nix
   ];
 

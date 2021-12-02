@@ -3,6 +3,7 @@
 {
   imports = [
     ./automatic-upgrades.nix
+    ./diff-closures.nix
     ./firewall.nix
     ./nix-optimizations.nix
     ./sshd.nix
