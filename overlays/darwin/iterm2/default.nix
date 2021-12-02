@@ -1,6 +1,11 @@
 final: prev:
 
 prev.iterm2.overrideAttrs (old: {
+  preBuild = ''
+    ${prev.lib.optionalString (old ? preBuild) old.preBuild}
+    sed -i "s/3.4.%(extra)s/${old.version}/" version.txt
+  '';
+
   postFixup = ''
     ${prev.lib.optionalString (old ? postFixup) old.postFixup}
     ITERM_APP=$out/Applications/iTerm.app
