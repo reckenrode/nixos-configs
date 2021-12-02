@@ -7,6 +7,7 @@
     ./finder.nix
     ./fish.nix
     ./gnupg.nix
+    ./iterm2.nix
     ./keyboard.nix
     ./rust.nix
     ./safari.nix
@@ -17,8 +18,6 @@
     let
       inherit (pkgs) coreutils diffutils findutils gnutar less;
       inherit (pkgs.darwin) trash;
-
-      iterm2 = pkgs.callPackage unstablePkgs.iterm2.override {};
     in
     [
       coreutils
@@ -27,6 +26,5 @@
       gnutar
       less
       trash
-      iterm2
     ];
 }
