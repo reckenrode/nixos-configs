@@ -16,15 +16,20 @@
 
   home.packages =
     let
-      inherit (pkgs) coreutils diffutils findutils gnutar less;
+      inherit (pkgs) bzip2 coreutils diffutils findutils gzip gnutar less time unzip zip;
       inherit (pkgs.darwin) trash;
     in
     [
+      bzip2
       coreutils
       diffutils
       findutils
       gnutar
+      gzip
       less
+      time
       trash
+      unzip
+      zip
     ];
 }
