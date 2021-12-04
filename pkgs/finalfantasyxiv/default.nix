@@ -2,10 +2,10 @@
 
 stdenv.mkDerivation rec {
   pname = "finalfantasyxiv";
-  version = "1.05";
+  version = "1.0.5";
 
   src = fetchurl {
-    url = "https://mac-dl.ffxiv.com/cw/finalfantasyxiv-1.0.5.zip";
+    url = "https://mac-dl.ffxiv.com/cw/finalfantasyxiv-${version}.zip";
     hash = "sha256-BZEDYRuBu9GwOmIgznoajQ50uGA/Y/GaX4xy1somzZE=";
   };
 
