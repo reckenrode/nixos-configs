@@ -2,6 +2,24 @@
 
 {
   programs.fish = {
+    functions =
+      let
+        inherit (pkgs) findutils coreutils nvd;
+      in
+      {
+        darwin-rebuild = ''
+          if string match -q switch -- $argv
+            set scratch_dir (${coreutils}/bin/mktemp -d)
+            function clean_up_scratch --on-event EXIT -e INT -e QUIT -e TERM
+                ${coreutils}/bin/rm -rf $scratch
+                popd
+            end
+            pushd $scratch_dir
+          end
+          command darwin-rebuild $argv
+        '';
+      };
+
     loginShellInit = let
       fishUserPaths = builtins.foldl' (a: b: "${a} ${b}") "" [
         "$HOME/.nix-profile/bin"
