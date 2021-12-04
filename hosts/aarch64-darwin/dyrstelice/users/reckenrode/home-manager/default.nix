@@ -52,6 +52,5 @@
       steam
       verify-archive
       waifu2x-converter-cpp
-      # weechat
     ];
 }
