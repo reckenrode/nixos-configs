@@ -36,19 +36,6 @@ let
     };
   };
 
-  ionide.ionide-fsharp =
-    let
-      ionide-fsharp = buildVscodeMarketplaceExtension {
-        mktplcRef = {
-          publisher = "ionide";
-          name = "ionide-fsharp";
-          version = "5.10.1";
-          sha256 = "sha256-LkWWgyh4khPyUgekVeO8ZzPK+1gTrS8d9Yz6/kHomr8=";
-        };
-      };
-    in
-    loadAfter [ "cab404.vscode-direnv" ] ionide-fsharp;
-
   mark-hansen.hledger-vscode =
     let
       hledger-vscode = buildVscodeMarketplaceExtension {
@@ -95,10 +82,10 @@ in
         bmalehorn.vscode-fish
         cab404.direnv
         editorconfig.editorconfig
-        ionide.ionide-fsharp
+        # ionide.ionide-fsharp
         mark-hansen.hledger-vscode
         matklad.rust-analyzer
-        ms-dotnettools.csharp
+        # ms-dotnettools.csharp
         ombratteng.nftables
         vadimcn.vscode-lldb
       ];
@@ -111,6 +98,7 @@ in
       "editor.rulers" = [ 100 ];
       "explorer.confirmDelete" = false;
       "explorer.confirmDragAndDrop" = false;
+      "explorer.sortOrder" = "mixed";
       "extensions.autoCheckUpdates" = false;
       "extensions.autoUpdate" = false;
       "git.path" = "${pkgs.git}/bin/git";
