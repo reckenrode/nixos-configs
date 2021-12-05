@@ -8,15 +8,17 @@
       in
       {
         darwin-rebuild = ''
+          pushd (pwd)
           if string match -q switch -- $argv
             set scratch_dir (${coreutils}/bin/mktemp -d)
             function clean_up_scratch --on-event EXIT -e INT -e QUIT -e TERM
                 ${coreutils}/bin/rm -rf $scratch
-                popd
             end
+            popd
             pushd $scratch_dir
           end
           command darwin-rebuild $argv
+          popd
         '';
       };
 
