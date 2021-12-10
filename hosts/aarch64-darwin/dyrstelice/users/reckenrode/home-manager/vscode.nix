@@ -1,4 +1,4 @@
-{ lib, pkgs, flakePkgs, x86_64, ... }:
+{ lib, pkgs, flakePkgs, unstablePkgs, x86_64, ... }:
 
 let
   inherit (pkgs.vscode-utils) buildVscodeMarketplaceExtension;
@@ -35,6 +35,12 @@ let
       sha256 = "sha256-+nLH+T9v6TQCqKZw6HPN/ZevQ65FVm2SAo2V9RecM3Y=";
     };
   };
+
+  ionide.ionide-fsharp =
+    let
+      inherit (unstablePkgs.vscode-extensions) ionide;
+    in
+    loadAfter [ "cab404.vscode-direnv" ] ionide.ionide-fsharp;
 
   mark-hansen.hledger-vscode =
     let
@@ -82,10 +88,10 @@ in
         bmalehorn.vscode-fish
         cab404.direnv
         editorconfig.editorconfig
-        # ionide.ionide-fsharp
+        ionide.ionide-fsharp
         mark-hansen.hledger-vscode
         matklad.rust-analyzer
-        # ms-dotnettools.csharp
+        ms-dotnettools.csharp
         ombratteng.nftables
         vadimcn.vscode-lldb
       ];
