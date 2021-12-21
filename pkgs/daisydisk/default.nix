@@ -11,13 +11,9 @@ stdenv.mkDerivation rec {
 
   buildInputs = [ unzip ];
 
-  unpackPhase = ''
-    unzip $src
-  '';
-
   installPhase = ''
     mkdir -p $out/Applications
-    cp -r *.app $out/Applications
+    cp -R ../*.app $out/Applications
   '';
 
   meta = {

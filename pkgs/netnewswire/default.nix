@@ -9,15 +9,11 @@ stdenv.mkDerivation rec {
     hash = "sha256-0erzd23Mda0mDPoUvVuPbLO1cshKwBtUX+bM8aYJd3w=";
   };
 
-  buildInputs = [ unzip ];
-
-  unpackPhase = ''
-    unzip $src
-  '';
+  nativeBuildInputs = [ unzip ];
 
   installPhase = ''
     mkdir -p $out/Applications
-    cp -r *.app $out/Applications
+    cp -R ../*.app $out/Applications
   '';
 
   meta = {

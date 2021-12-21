@@ -9,15 +9,11 @@ stdenv.mkDerivation rec {
     hash = "sha256-acpDCljSFL9uLDpfQtz+zxljfPpB2LqxlNcBkPIMYXY=";
   };
 
-  buildInputs = [ undmg ];
-
-  unpackPhase = ''
-    undmg $src
-  '';
+  nativeBuildInputs = [ undmg ];
 
   installPhase = ''
     mkdir -p $out/Applications
-    cp -r *.app $out/Applications
+    cp -R ../*.app $out/Applications
   '';
 
   meta = {
