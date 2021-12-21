@@ -1,4 +1,4 @@
-{ lib, fetchurl, stdenv, unzip, crossover-icon ? ./crossover.icns }:
+{ lib, fetchurl, stdenv, unzip }:
 
 stdenv.mkDerivation rec {
   pname = "crossover";
@@ -6,21 +6,21 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://media.codeweavers.com/pub/crossover/cxmac/demo/crossover-${version}.zip";
-    hash = "sha256-PBMOLrD9PVUkhPBy3CDmZQSGmOff+wbE84kAE+/1dJw";
+    hash = "sha256-PBMOLrD9PVUkhPBy3CDmZQSGmOff+wbE84kAE+/1dJw=";
   };
 
-  buildInputs = [ unzip ];
+  icon = fetchurl {
+    url = "https://media.macosicons.com/parse/files/macOSicons/2db0bb2cacd0fd3d7644ab8a89cb14cd_CrossOver.icns";
+    hash = "sha256-e/tFudvMO0igTfgwN81kAwicLiGliUdCFEqr/AljZnc=";
+  };
 
-  unpackPhase = ''
-    unzip $src
-  '';
+  nativeBuildInputs = [ unzip ];
 
   installPhase = ''
     mkdir -p $out/Applications
-    cp -r *.app $out/Applications
+    cp -R ../*.app $out/Applications
     rm -rf "$out/Applications/CrossOver.app/Contents/Resources/CrossOver CD Helper.app"
-  '' + lib.optionalString (!isNull crossover-icon) ''
-    cp ${crossover-icon} $out/Applications/CrossOver.app/Contents/Resources/CrossOver.icns
+    cp ${icon} $out/Applications/CrossOver.app/Contents/Resources/CrossOver.icns
   '';
 
   meta = {
