@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ config, ... }:
 
 {
   system.activationScripts.postActivation.text = ''
-    ${pkgs.nix_2_4}/bin/nix store --experimental-features 'nix-command' diff-closures \
+    ${config.nix.package}/bin/nix store --experimental-features 'nix-command' diff-closures \
       /run/current-system "$systemConfig"
   '';
 }
