@@ -36,12 +36,6 @@ let
     };
   };
 
-  ionide.ionide-fsharp =
-    let
-      inherit (unstablePkgs.vscode-extensions) ionide;
-    in
-    loadAfter [ "cab404.vscode-direnv" ] ionide.ionide-fsharp;
-
   mark-hansen.hledger-vscode =
     let
       hledger-vscode = buildVscodeMarketplaceExtension {
@@ -60,12 +54,6 @@ let
       inherit (pkgs.vscode-extensions) matklad;
     in
     loadAfter [ "cab404.vscode-direnv" ] matklad.rust-analyzer;
-
-  ms-dotnettools.csharp =
-    let
-      inherit (x86_64.pkgs.vscode-extensions) ms-dotnettools;
-    in
-    loadAfter [ "cab404.vscode-direnv" ] ms-dotnettools.csharp;
 
   ombratteng.nftables = buildVscodeMarketplaceExtension {
     mktplcRef = {
@@ -88,10 +76,8 @@ in
         bmalehorn.vscode-fish
         cab404.direnv
         editorconfig.editorconfig
-        ionide.ionide-fsharp
         mark-hansen.hledger-vscode
         matklad.rust-analyzer
-        ms-dotnettools.csharp
         ombratteng.nftables
         vadimcn.vscode-lldb
       ];

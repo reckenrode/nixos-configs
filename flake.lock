@@ -88,22 +88,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-omnisharp": {
-      "locked": {
-        "lastModified": 1638235476,
-        "narHash": "sha256-9p5dWV6PcGi3tU1hbc0ZGlPNA6FJe/7WF5vwnkTJiBs=",
-        "owner": "reckenrode",
-        "repo": "nixpkgs",
-        "rev": "6b5cebe20fa716f10e8deae119520b630300e433",
-        "type": "github"
-      },
-      "original": {
-        "owner": "reckenrode",
-        "ref": "omnisharp-darwin",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-unstable": {
       "locked": {
         "lastModified": 1640139330,
@@ -125,7 +109,6 @@
         "darwin": "darwin",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-omnisharp": "nixpkgs-omnisharp",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix",
         "utils": "utils",
