@@ -33,12 +33,17 @@ stdenv.mkDerivation rec {
   '';
 
   buildPhase = ''
-    install -d -m755 Contents/SharedSupport/DXVK/
-    pushd ../dxvk-1.9.2-mac-async/x64/
-    install -m755 \
-      d3d10.dll d3d10_1.dll d3d10core.dll d3d11.dll d3d9.dll dxgi.dll \
-      ../../CrossOver.app/Contents/SharedSupport/DXVK/
-    popd
+    install_dxvk() {
+      arch=$([ "$1" = "64" ] && echo "x64" || echo "x32")
+      lib=$([ "$1" = "64" ] && echo "lib64" || echo "lib")
+      pushd ../dxvk-1.9.2-mac-async/$arch
+      install -m755 \
+        d3d10.dll d3d10_1.dll d3d10core.dll d3d11.dll d3d9.dll dxgi.dll \
+        ../../CrossOver.app/Contents/SharedSupport/CrossOver/$lib/wine/dxvk
+      popd
+    }
+    install_dxvk 32
+    install_dxvk 64
     install -m755 ../Package/Release/MoltenVK/dylib/macOS/libMoltenVK.dylib \
       Contents/SharedSupport/CrossOver/lib64/
     install -m644 ${icon} Contents/Resources/CrossOver.icns
@@ -51,10 +56,7 @@ stdenv.mkDerivation rec {
   '';
 
   meta = {
-    description = ''
-      CrossOver is the easiest way to run many Microsoft applications on your Mac without a clunky
-      Windows emulator.
-    '';
+    description = "CrossOver allows you to run Microsoft applications on your Mac.";
     homepage = "https://www.codeweavers.com/crossover";
     license = lib.licenses.unfree;
     platforms = [ "x86_64-darwin" ];
