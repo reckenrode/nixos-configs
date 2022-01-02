@@ -12,6 +12,9 @@
               echo -n "$PWD" | shasum | cut -d ' ' -f 1
           )}"
       }
+      # FIXME: Remove once nix-direnv 1.5.1 is available.
+      # See: https://github.com/nix-community/nix-direnv/issues/120#issuecomment-967747092
+      sed() { ${pkgs.gnused}/bin/sed "$@"; }
     '';
   };
 
