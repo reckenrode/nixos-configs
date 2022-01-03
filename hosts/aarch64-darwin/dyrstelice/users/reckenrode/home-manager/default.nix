@@ -38,6 +38,11 @@
       });
     in
     [
+      (
+        (flakePkgs.macvim.override { withAppBundle = import ./withHomeManagerAppBundle { inherit config; };}).configure {
+          customRC = "set autoindent";
+        }
+      )
       crossover
       daisydisk
       firefox-bin
