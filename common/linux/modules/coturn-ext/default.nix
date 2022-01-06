@@ -3,6 +3,7 @@
 let
   inherit (lib) types;
 
+  cfg = config.services.coturn;
   runtimeConfigFile = "/run/coturn/turnserver.cfg";
 in
 {
@@ -17,9 +18,8 @@ in
     };
   };
 
-  config = lib.mkIf (config.services.coturn ? static-users-file) {
-    systemd.services.coturn.preStart = ''
-      cat ${config.services.coturn.static-users-file} >> ${runtimeConfigFile}
-    '';
+  config = lib.mkIf (cfg.enable) {
+    systemd.services.coturn.preStart = lib.optionalString (cfg.static-users-file != null)
+      "cat ${cfg.static-users-file} >> ${runtimeConfigFile}";
   };
 }
