@@ -6,6 +6,8 @@
     ./letsencrypt.nix
     ./loader.nix
     ./systemd-networkd.nix
+    services/caddy.nix
+    services/coturn.nix
   ];
 
   networking.hostName = "web-server";
