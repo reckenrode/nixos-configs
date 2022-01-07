@@ -8,6 +8,8 @@
     ./systemd-networkd.nix
     services/caddy.nix
     services/coturn.nix
+    services/foundryvtt.nix
+    services/reverse-proxy.nix
   ];
 
   networking.hostName = "web-server";

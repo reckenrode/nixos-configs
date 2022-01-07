@@ -11,6 +11,9 @@
     home-manager.url = "github:nix-community/home-manager/release-21.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    foundryvtt.url = "github:reckenrode/nix-foundryvtt";
+    foundryvtt.inputs.nixpkgs.follows = "nixpkgs";
+
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -34,6 +37,7 @@
           "daisydisk"
           "finalfantasyxiv"
           "firefox-bin"
+          "foundryvtt"
           "ruby-mine"
           "pycharm-professional"
           "pathofexile"
@@ -45,7 +49,6 @@
       };
 
       channels.nixpkgs-unstable = {
-        config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [ "pngout" ];
         overlaysBuilder = channels: [ (overlays { inherit lib; }) ];
       };
 
@@ -67,6 +70,7 @@
           in
           packages { inherit lib channels; } // {
             inherit (inputs.verify-archive.packages."${system}") verify-archive;
+            inherit (inputs.foundryvtt.packages."${system}") foundryvtt;
           };
       };
     };

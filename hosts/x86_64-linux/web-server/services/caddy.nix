@@ -16,7 +16,7 @@
       www.largeandhighquality.com {
         tls /var/lib/acme/largeandhighquality.com/fullchain.pem /var/lib/acme/largeandhighquality.com/key.pem
 
-        root * /srv
+        root * /srv/www
 
         header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
 
