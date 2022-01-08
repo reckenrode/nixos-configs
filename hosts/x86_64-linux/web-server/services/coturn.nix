@@ -49,6 +49,10 @@ in
       extraConfig = ''
         no-tlsv1
         no-tlsv1_1
+        no-prometheus
+        no-rfc5780
+        no-stun-backward-compatibility
+        response-origin-only-with-rfc5780
       '';
     };
 
