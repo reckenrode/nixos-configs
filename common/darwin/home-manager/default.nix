@@ -12,6 +12,7 @@
     ./rust.nix
     ./safari.nix
     ./ui.nix
+    ./vscode.nix
   ];
 
   home.packages =

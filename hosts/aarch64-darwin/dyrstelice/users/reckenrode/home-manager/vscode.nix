@@ -4,9 +4,6 @@ let
   inherit (pkgs.vscode-utils) buildVscodeMarketplaceExtension;
 
   debugserver = "${flakePkgs.debugserver}/bin/debugserver";
-  vscode = flakePkgs.vscode.override {
-    withAppBundle = import ./withHomeManagerAppBundle { inherit config; };
-  };
 
   # Work around the lack of extension ordering in VS Code
   # See: https://github.com/Microsoft/vscode/issues/57481#issuecomment-910883638
@@ -84,7 +81,6 @@ in
         ombratteng.nftables
         vadimcn.vscode-lldb
       ];
-    package = vscode;
     userSettings = {
       "editor.bracketPairColorization.enabled" = true;
       "editor.fontFamily" = "SF Mono, Menlo, Monaco, 'Courier New', monospace";
