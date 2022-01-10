@@ -4,13 +4,13 @@ let
   derivation = { lib, fetchurl, stdenv, undmg }:
   stdenv.mkDerivation rec {
     pname = "firefox-bin";
-    version = "95.0";
+    version = "95.0.2";
     lang = "en-US";
 
     src = fetchurl {
       name = "Firefox-${lang}-${version}.dmg";
       url = "https://download-installer.cdn.mozilla.net/pub/firefox/releases/${version}/mac/${lang}/Firefox%20${version}.dmg";
-      hash = "sha256-34+Su6pirQSnCzjXH7dbUYElD//bYIX2aY+jPM5sBwQ";
+      hash = "sha256-6COQHXfB2yCvzVJw0VklajQJdNgI+Yo/LoVg3ATFjFc";
     };
 
     buildInputs = [ undmg ];
