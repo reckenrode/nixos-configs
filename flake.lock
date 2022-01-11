@@ -110,16 +110,32 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1641783572,
-        "narHash": "sha256-gkrIuUtbRKGEb+SrBVl6hEG4PY9rg+zhDyX0n3mRFMY=",
+        "lastModified": 1641870998,
+        "narHash": "sha256-6HkxR2WZsm37VoQS7jgp6Omd71iw6t1kP8bDbaqCDuI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "79c7b6a353e22f0eec342dead0bc69fb7ce846db",
+        "rev": "386234e2a61e1e8acf94dfa3a3d3ca19a6776efb",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
         "ref": "nixos-21.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-msdotnettools": {
+      "locked": {
+        "lastModified": 1638235476,
+        "narHash": "sha256-9p5dWV6PcGi3tU1hbc0ZGlPNA6FJe/7WF5vwnkTJiBs=",
+        "owner": "reckenrode",
+        "repo": "nixpkgs",
+        "rev": "6b5cebe20fa716f10e8deae119520b630300e433",
+        "type": "github"
+      },
+      "original": {
+        "owner": "reckenrode",
+        "ref": "omnisharp-darwin",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -146,6 +162,7 @@
         "foundryvtt": "foundryvtt",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-msdotnettools": "nixpkgs-msdotnettools",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix",
         "utils": "utils_2",
