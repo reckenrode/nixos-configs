@@ -19,7 +19,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
     verify-archive.url = "github:reckenrode/verify-archive/releases";
-    verify-archive.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    verify-archive.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs@{ self, utils, nixpkgs, darwin, home-manager, ... }:

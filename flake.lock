@@ -249,7 +249,7 @@
     "verify-archive": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-unstable"
+          "nixpkgs"
         ],
         "utils": "utils_3"
       },
