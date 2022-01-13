@@ -15,8 +15,8 @@ stdenv.mkDerivation rec {
   };
 
   dxvk = fetchurl {
-    url = "https://github.com/marzent/dxvk/releases/download/v1.9.2-mac-async/dxvk-1.9.2-mac-async.zip";
-    hash = "sha256-2vOVR4b1ek1UdGRlIIGBLQd9XUqZLyVrxBnaufutfFg=";
+    url = "https://github.com/marzent/dxvk/releases/download/v1.9.3-mac/dxvk-1.9.3-mac-async.tar.xz";
+    hash = "sha256-onFrs0uIWHHGJWGEa1GIAKq4UMFHagejg29kEkN++/g=";
   };
 
   moltenvk = fetchurl {
@@ -28,7 +28,7 @@ stdenv.mkDerivation rec {
 
   unpackPhase = ''
     unpackPhase
-    unzip ${dxvk}
+    xz -d < "${dxvk}" | tar xf - --warning=no-timestamp
     xz -d < "${moltenvk}" | tar xf - --warning=no-timestamp
   '';
 
@@ -36,7 +36,7 @@ stdenv.mkDerivation rec {
     install_dxvk() {
       arch=$([ "$1" = "64" ] && echo "x64" || echo "x32")
       lib=$([ "$1" = "64" ] && echo "lib64" || echo "lib")
-      pushd ../dxvk-1.9.2-mac-async/$arch
+      pushd ../dxvk-1.9.3-mac-async/$arch
       install -m755 \
         d3d10.dll d3d10_1.dll d3d10core.dll d3d11.dll d3d9.dll dxgi.dll \
         ../../CrossOver.app/Contents/SharedSupport/CrossOver/$lib/wine/dxvk
