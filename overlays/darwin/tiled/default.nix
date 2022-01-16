@@ -4,11 +4,11 @@ let
   derivation = { lib, fetchurl, stdenv, unzip }:
     stdenv.mkDerivation rec {
       pname = "Tiled";
-      version = "1.5.0";
+      version = "1.7.2";
 
       src = fetchurl {
         url = "https://github.com/mapeditor/tiled/releases/download/v${version}/Tiled-${version}-macos.zip";
-        hash = "sha256-6w12RP3H9rVn9ALIT6eUc11xTvdcQNYjVz5n4PmkRe0=";
+        hash = "sha256-5DxGe7Ago5r0Pz7VxYRljdCxcy7Qtl+ma2+eNjNMXV8=";
       };
 
       buildInputs = [ unzip ];
