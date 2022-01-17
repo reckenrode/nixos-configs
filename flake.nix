@@ -36,6 +36,8 @@
         config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
           "crossover"
           "daisydisk"
+          "dungeondraft"
+          "wonderdraft"
           "finalfantasyxiv"
           "firefox-bin"
           "foundryvtt"
