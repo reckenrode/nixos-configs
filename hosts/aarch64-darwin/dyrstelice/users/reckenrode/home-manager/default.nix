@@ -13,8 +13,8 @@
 
   home.packages =
     let
-      inherit (x86_64.flakePkgs) crossover;
-      inherit (x86_64.pkgs) openra pngout steam;
+      inherit (x86_64.flakePkgs) crossover wonderdraft;
+      inherit (x86_64.pkgs) openra pngout steam tiled;
       inherit (flakePkgs) daisydisk netnewswire ocr-documents secretive verify-archive;
       inherit (pkgs) firefox-bin keybase waifu2x-converter-cpp openttd terminal-notifier;
 
@@ -52,5 +52,6 @@
       steam
       verify-archive
       waifu2x-converter-cpp
+      wonderdraft
     ];
 }
