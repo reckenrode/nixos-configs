@@ -50,6 +50,7 @@
       pngout
       secretive
       steam
+      tiled
       verify-archive
       waifu2x-converter-cpp
       wonderdraft
