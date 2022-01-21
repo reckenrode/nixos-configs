@@ -90,8 +90,8 @@ in
             name = ".";
             forward-tls-upstream = true;
             forward-addr = [
-              "2606:4700:4700::1111@853#cloudflare-dns.com"
-              "2606:4700:4700::1001@853#cloudflare-dns.com"
+              "2001:4860:4860::8888@853#dns.google"
+              "2001:4860:4860::8844@853#dns.google"
             ];
           }
         ];
