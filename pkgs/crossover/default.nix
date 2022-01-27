@@ -1,4 +1,4 @@
-{ lib, fetchurl, fetchFromGitHub, stdenv, unzip, xz }:
+{ lib, fetchurl, fetchFromGitHub, stdenv, unzip }:
 
 let
   dxvk.version = "1.9.3";
@@ -31,12 +31,12 @@ stdenv.mkDerivation rec {
     hash = "sha256-XwGEK/3AEKgo+LiRS2GTZNFlZsj+uudT2zZoEReMShU=";
   };
 
-  buildInputs = [ unzip xz ];
+  nativeBuildInputs = [ unzip ];
 
   unpackPhase = ''
     unpackPhase
-    xz -d < "${dxvkDist}" | tar xf - --warning=no-timestamp
-    xz -d < "${moltenvkDist}" | tar xf - --warning=no-timestamp
+    unpackFile "${dxvkDist}"
+    unpackFile "${moltenvkDist}"
   '';
 
   buildPhase = ''
