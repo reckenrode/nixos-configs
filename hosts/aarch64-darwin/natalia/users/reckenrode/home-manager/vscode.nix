@@ -68,12 +68,6 @@ let
     in
     loadAfter [ "cab404.vscode-direnv" ] matklad.rust-analyzer;
 
-  ms-dotnettools.csharp =
-    let
-      inherit (x86_64.pkgs.vscode-extensions) ms-dotnettools;
-    in
-    loadAfter [ "cab404.vscode-direnv" ] ms-dotnettools.csharp;
-
   ombratteng.nftables = buildVscodeMarketplaceExtension {
     mktplcRef = {
       publisher = "ombratteng";
@@ -98,7 +92,6 @@ in
         ionide.ionide-fsharp
         mark-hansen.hledger-vscode
         matklad.rust-analyzer
-        ms-dotnettools.csharp
         ombratteng.nftables
         vadimcn.vscode-lldb
       ];

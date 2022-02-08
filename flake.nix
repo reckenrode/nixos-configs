@@ -2,7 +2,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-msdotnettools.url = "github:reckenrode/nixpkgs/omnisharp-darwin";
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -50,15 +49,6 @@
         ];
         overlaysBuilder = channels: [
           (overlays { inherit lib; })
-          (_: prev: {
-            vscode-extensions =
-              let
-                inherit (channels.nixpkgs-msdotnettools.vscode-extensions) ms-dotnettools;
-              in
-              prev.vscode-extensions // {
-                ms-dotnettools.csharp = prev.callPackage ms-dotnettools.csharp.override {};
-              };
-          })
         ];
       };
 
