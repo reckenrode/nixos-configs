@@ -6,7 +6,7 @@
     ./secretive.nix
   ];
 
-  networking.hostName = "dyrstelice";
+  networking.hostName = "natalia";
 
   system.homePrinterFixup = true;
 }
