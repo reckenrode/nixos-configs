@@ -20,7 +20,7 @@ let
       installPhase = ''
         mkdir -p $out/Applications
         cp -r *.app $out/Applications
-      '' + lib.optionalString (!isNull steam-icon) ''
+      '' + lib.optionalString (steam-icon != null) ''
         cp ${steam-icon} $out/Applications/Steam.app/Contents/Resources/Steam.icns
       '';
 
