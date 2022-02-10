@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [
+      (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "virtio_pci" "virtio_scsi" "ahci" "sd_mod" ];
@@ -14,17 +15,18 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/sda2";
+    {
+      device = "/dev/sda2";
       fsType = "xfs";
     };
 
   fileSystems."/boot/efi" =
-    { device = "/dev/sda3";
+    {
+      device = "/dev/sda3";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/sdb"; }
-    ];
+    [{ device = "/dev/sdb"; }];
 
 }

@@ -34,4 +34,4 @@ let
       };
     };
 in
-prev.callPackage derivation {}
+prev.callPackage derivation { }

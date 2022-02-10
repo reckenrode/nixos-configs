@@ -9,7 +9,8 @@ in
       listeningPort = builtins.toString config.services.coturn.tls-listening-port;
       minPort = builtins.toString config.services.coturn.min-port;
       maxPort = builtins.toString config.services.coturn.max-port;
-    in ''
+    in
+    ''
       table inet filter {
         chain input {
           tcp dport { ${listeningPort}, ${minPort} - ${maxPort} } accept

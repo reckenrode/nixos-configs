@@ -27,5 +27,5 @@
     config.users.groups.keys.name
   ];
 
-  users.groups.acme-certs = {};
+  users.groups.acme-certs = { };
 }

@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 
 let
-  mkConfig = { host ? hostname, hostname, port ? 562, user ? "reckenrode", identityFile ? null}: {
+  mkConfig = { host ? hostname, hostname, port ? 562, user ? "reckenrode", identityFile ? null }: {
     name = host;
     value = {
       inherit hostname port user;
@@ -10,7 +10,8 @@ let
       identitiesOnly = true;
     };
   };
-in {
+in
+{
   home.packages = [ pkgs.openssh ];
 
   programs.ssh = {

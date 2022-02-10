@@ -2,7 +2,7 @@
 
 {
   networking.nftables.ruleset = builtins.readFile ./caddy.nft;
-  
+
   services.caddy = {
     enable = true;
     config = builtins.readFile ./Caddyfile;

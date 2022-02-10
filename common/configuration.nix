@@ -9,7 +9,7 @@
   environment.systemPackages =
     let
       inherit (pkgs) git;
-      pijul = pkgs.callPackage unstablePkgs.pijul.override {};
+      pijul = pkgs.callPackage unstablePkgs.pijul.override { };
     in
     [ git pijul ];
 

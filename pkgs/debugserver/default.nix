@@ -12,7 +12,8 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/vadimcn/vscode-lldb/releases/download/v${version}/codelldb-${system}.vsix";
-    hash = if system == "aarch64-darwin"
+    hash =
+      if system == "aarch64-darwin"
       then "sha256-3aElZtXzlWasqB/ZtUT6+J05QdRefP3Ze7ZJL4g+L5Y="
       else "sha256-rxe4DMv1/lfbMCkwKqvNCuBO0n0wtDndNPslG18BekI=";
   };

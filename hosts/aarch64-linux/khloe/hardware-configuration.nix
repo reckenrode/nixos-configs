@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
       (modulesPath + "/profiles/all-hardware.nix")
     ];
 
@@ -17,18 +18,19 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/06d45151-9770-4c2c-b061-b118a3710e3c";
+    {
+      device = "/dev/disk/by-uuid/06d45151-9770-4c2c-b061-b118a3710e3c";
       fsType = "xfs";
     };
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/ACDA-EE06";
+    {
+      device = "/dev/disk/by-uuid/ACDA-EE06";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/8575b966-d556-4bcf-bff9-72964cb23414"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/8575b966-d556-4bcf-bff9-72964cb23414"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 }

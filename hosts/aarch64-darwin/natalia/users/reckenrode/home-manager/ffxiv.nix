@@ -15,7 +15,7 @@ in
         $DRY_RUN_CMD mkdir -p ''${VERBOSE_ARG:+-v} "${settingsPath}"
         $DRY_RUN_CMD mkdir -p ''${VERBOSE_ARG:+-v} "${docsPath}"
         $DRY_RUN_CMD ln -sfn ''${VERBOSE_ARG:+-v} "${settingsPath}" "${targetPath}"
-     '';
-   };
+      '';
+  };
   home.packages = [ x86_64.flakePkgs.finalfantasyxiv ];
 }

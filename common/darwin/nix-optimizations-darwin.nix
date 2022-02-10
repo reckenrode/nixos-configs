@@ -3,7 +3,8 @@
 {
   launchd.daemons."nix-collect-garbage".serviceConfig = {
     ProgramArguments = [
-      "/bin/sh" "-c"
+      "/bin/sh"
+      "-c"
       ''
         /bin/wait4path ${config.nix.package}/bin/nix-collect-garbage && \
           exec ${config.nix.package}/bin/nix-collect-garbage --delete-older-than 30d
@@ -23,7 +24,8 @@
   # on Darwin.  Run a job periodically to optimise the store.
   launchd.daemons."nix-store-optimise".serviceConfig = {
     ProgramArguments = [
-      "/bin/sh" "-c"
+      "/bin/sh"
+      "-c"
       ''
         /bin/wait4path ${config.nix.package}/bin/nix && \
           exec ${config.nix.package}/bin/nix store optimise

@@ -6,7 +6,8 @@ in
 {
   launchd.user.agents."keybase".serviceConfig = rec {
     ProgramArguments = [
-      "/bin/sh" "-c"
+      "/bin/sh"
+      "-c"
       ''
         /bin/wait4path ${keybase}/bin/keybase && \
           exec ${keybase}/bin/keybase --log-file=/Users/reckenrode/Library/Logs/keybase.service.log service
@@ -25,7 +26,8 @@ in
 
   launchd.user.agents."kbfs".serviceConfig = rec {
     ProgramArguments = [
-      "/bin/sh" "-c"
+      "/bin/sh"
+      "-c"
       ''
         /bin/wait4path ${kbfs}/bin/kbfsfuse && \
           exec ${kbfs}/bin/kbfsfuse -log-file=/Users/reckenrode/Library/Logs/keybase.kbfs.log -mount-type=none

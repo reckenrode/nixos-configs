@@ -10,7 +10,7 @@ in
   options.services.dhcpV6Client = {
     openFirewall = lib.mkEnableOption "Open the firewall to allow DHCPv6 on the specified interfaces";
     interfaces = lib.mkOption {
-      default = [];
+      default = [ ];
       defaultText = "[]";
       example = ''[ "enp1s0" ]'';
       description = "The interfaces for which to set up firewall rules to allow DHCPv6";

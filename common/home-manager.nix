@@ -34,11 +34,12 @@ let
       ];
 
       homeManagerPaths = map (path: path + /home-manager) srcPaths;
-      
+
       dirs = filter pathExists homeManagerPaths;
 
       userModule = pipe dirs [ (map import) mkMerge ];
-    in {
+    in
+    {
       inherit name;
       value = userModule;
     };

@@ -8,8 +8,8 @@ let
 
       # Define `optionalAttrs` and `id` manually because trying to access
       # `self.input.nixpkgs` causes an infinite recursion.
-      optionalAttrs = pred: attrs: if pred then attrs else {};
-      
+      optionalAttrs = pred: attrs: if pred then attrs else { };
+
       platformTuple = split "-" system;
       platform = elemAt platformTuple 2;
       arch = elemAt platformTuple 0;
@@ -17,7 +17,7 @@ let
       fullHostPath = hostsPath + /${system}/${name};
       usersPath = fullHostPath + /users;
 
-      users = if pathExists usersPath then readDirNames usersPath else [];
+      users = if pathExists usersPath then readDirNames usersPath else [ ];
 
       paths =
         map (user: ../common/users/${user}) users ++ map (user: usersPath + /${user}) users ++ [

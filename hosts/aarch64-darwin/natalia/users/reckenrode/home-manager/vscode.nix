@@ -8,7 +8,7 @@ let
   # Work around the lack of extension ordering in VS Code
   # See: https://github.com/Microsoft/vscode/issues/57481#issuecomment-910883638
   loadAfter = deps: pkg: pkg.overrideAttrs (old: {
-    nativeBuildInputs = old.nativeBuildInputs or [] ++ [ pkgs.jq pkgs.moreutils ];
+    nativeBuildInputs = old.nativeBuildInputs or [ ] ++ [ pkgs.jq pkgs.moreutils ];
 
     preInstall = ''
       ${old.preInstall or ""}

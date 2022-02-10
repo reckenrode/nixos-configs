@@ -3,7 +3,8 @@
 let
   ppd = ./files/HP_Color_LaserJet_Pro_M454dw.ppd;
   ppdIcon = ./files/M453dw.icns;
-in {
+in
+{
   options.system.homePrinterFixup = lib.mkEnableOption "Augment the CUPS printer settings";
   config = lib.mkIf config.system.homePrinterFixup {
     system.activationScripts.extraActivation.text = ''
