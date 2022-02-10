@@ -89,7 +89,6 @@ in
         bmalehorn.vscode-fish
         cab404.direnv
         editorconfig.editorconfig
-        ionide.ionide-fsharp
         mark-hansen.hledger-vscode
         matklad.rust-analyzer
         ombratteng.nftables
