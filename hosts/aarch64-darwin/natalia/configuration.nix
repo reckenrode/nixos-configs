@@ -8,5 +8,6 @@
 
   networking.hostName = "natalia";
 
+  security.pam.enableSudoTouchIdAuth = true;
   system.homePrinterFixup = true;
 }
