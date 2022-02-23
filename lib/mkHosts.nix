@@ -1,7 +1,7 @@
 let
   inherit (import ./.) readDirNames;
 
-  mkHost = { self, hostsPath, channels, overlays, system }: name:
+  mkHost = { self, hostsPath, system }: name:
     let
       inherit (builtins) concatMap elemAt filter map mapAttrs pathExists split;
       inherit (self.inputs) darwin home-manager;
@@ -63,7 +63,7 @@ let
     in
     builtins.map (mkHost (args // { inherit system; })) hosts;
 
-  mkHosts = args@{ self, hostsPath, channels, overlays }:
+  mkHosts = args@{ self, hostsPath }:
     let
       inherit (builtins) concatMap listToAttrs;
 

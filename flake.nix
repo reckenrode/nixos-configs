@@ -61,7 +61,7 @@
       ];
 
       hosts = lib.mkHosts {
-        inherit self channels overlays;
+        inherit self;
         hostsPath = ./hosts;
       };
 
