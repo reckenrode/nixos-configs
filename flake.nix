@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    ffxiv.url = "github:reckenrode/nixpkgs/ffxiv";
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -25,35 +26,36 @@
     let
       inherit (nixpkgs.lib) recursiveUpdate;
 
-      overlays = import ./overlays;
+      lib = import ./lib;
+      overlays = import ./overlays { inherit lib; };
       packages = import ./pkgs;
     in
     utils.lib.mkFlake rec {
-      inherit self inputs;
+      inherit self inputs lib;
 
-      channels.nixpkgs = {
-        config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
-          "crossover"
-          "daisydisk"
-          "dungeondraft"
-          "wonderdraft"
-          "finalfantasyxiv"
-          "firefox-bin"
-          "foundryvtt"
-          "ruby-mine"
-          "pycharm-professional"
-          "pathofexile"
-          "pngout"
-          "steam"
-          "vscode"
-        ];
-        overlaysBuilder = channels: [
-          (overlays { inherit lib; })
-        ];
-      };
+      channelsConfig.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
+        "crossover"
+        "daisydisk"
+        "dungeondraft"
+        "wonderdraft"
+        "ffxiv"
+        "ffxiv-client"
+        "firefox-bin"
+        "foundryvtt"
+        "ruby-mine"
+        "pycharm-professional"
+        "pathofexile"
+        "pngout"
+        "steam"
+        "vscode"
+      ];
+
+      sharedOverlays = [ overlays ];
 
       channels.nixpkgs-unstable = {
-        overlaysBuilder = channels: [ (overlays { inherit lib; }) ];
+        overlaysBuilder = channels: [
+          (_: _: { ffxiv = channels.ffxiv.ffxiv; })
+        ];
       };
 
       hostDefaults.modules = [
@@ -64,8 +66,6 @@
         inherit self;
         hostsPath = ./hosts;
       };
-
-      lib = import ./lib;
 
       outputsBuilder = channels: {
         packages =

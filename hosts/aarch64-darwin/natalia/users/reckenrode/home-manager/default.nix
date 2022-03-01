@@ -15,12 +15,14 @@
     let
       inherit (x86_64.flakePkgs) crossover wonderdraft;
       inherit (x86_64.pkgs) openra steam tiled;
+      inherit (x86_64.unstablePkgs) ffxiv;
       inherit (flakePkgs) daisydisk netnewswire ocr-documents secretive verify-archive;
       inherit (pkgs) firefox-bin keybase waifu2x-converter-cpp openttd terminal-notifier;
     in
     [
       crossover
       daisydisk
+      ffxiv
       firefox-bin
       keybase
       netnewswire
