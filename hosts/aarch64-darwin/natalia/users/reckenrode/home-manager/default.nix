@@ -16,7 +16,7 @@
       inherit (x86_64.flakePkgs) crossover wonderdraft;
       inherit (x86_64.pkgs) openra steam tiled;
       inherit (x86_64.unstablePkgs) ffxiv;
-      inherit (flakePkgs) daisydisk netnewswire ocr-documents secretive verify-archive;
+      inherit (flakePkgs) daisydisk netnewswire ocr-documents verify-archive;
       inherit (pkgs) firefox-bin keybase waifu2x-converter-cpp openttd terminal-notifier;
     in
     [
@@ -29,7 +29,6 @@
       ocr-documents
       openra
       openttd
-      secretive
       steam
       tiled
       verify-archive
