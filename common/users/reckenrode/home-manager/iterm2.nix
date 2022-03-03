@@ -1,4 +1,5 @@
-{ pkgs, unstablePkgs, ... }:
+{ ...
+}:
 
 {
   programs.fish.functions = {
@@ -10,11 +11,4 @@
       echo "$user@$host:$path  $job"
     '';
   };
-  home.packages =
-    let
-      iterm2 = pkgs.callPackage unstablePkgs.iterm2.override { };
-    in
-    [
-      iterm2
-    ];
 }

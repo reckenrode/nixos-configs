@@ -7,6 +7,7 @@ in
   imports = [
     ./bash.nix
     ./gnupg.nix
+    ./iterm2.nix
     ./less.nix
     ./python.nix
     ./xdg.nix

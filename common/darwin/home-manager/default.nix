@@ -7,7 +7,6 @@
     ./finder.nix
     ./fish.nix
     ./gnupg.nix
-    ./iterm2.nix
     ./keyboard.nix
     ./rust.nix
     ./safari.nix

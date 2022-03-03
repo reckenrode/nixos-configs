@@ -17,6 +17,7 @@ in
   imports = [
     ./copy-applications.nix
     ./diff-closures.nix
+    ./iterm2.nix
     ./nix-optimizations-darwin.nix
   ];
 
