@@ -23,11 +23,11 @@
     },
     "ffxiv": {
       "locked": {
-        "lastModified": 1646439488,
-        "narHash": "sha256-PgzDRSsgFLjvq6vuiyh029swM+/EmTUqHw5iBv2fp2s=",
+        "lastModified": 1646505678,
+        "narHash": "sha256-5PrHx8M5nZRHwD6eIYHP1l7mlojPKIeMmYvvJUUZ2Lk=",
         "owner": "reckenrode",
         "repo": "nixpkgs",
-        "rev": "fa20b2dfc1cc2957d460a3e9c1777f0f887902b2",
+        "rev": "8976e301e12cdab70fadab3ec96c3eb4a2439e44",
         "type": "github"
       },
       "original": {
