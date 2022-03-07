@@ -54,7 +54,7 @@
 
       channels.nixpkgs-unstable = {
         overlaysBuilder = channels: [
-          (_: _: { ffxiv = channels.ffxiv.ffxiv; })
+          (_: _: { inherit (channels.ffxiv) ffxiv; })
         ];
       };
 
