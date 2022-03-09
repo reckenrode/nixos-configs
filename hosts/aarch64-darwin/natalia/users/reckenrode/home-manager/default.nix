@@ -1,4 +1,4 @@
-{ config, lib, pkgs, flakePkgs, x86_64, ... }:
+{ config, lib, pkgs, flakePkgs, unstablePkgs, x86_64, ... }:
 
 {
   imports = [
@@ -18,10 +18,12 @@
       inherit (x86_64.unstablePkgs) ffxiv;
       inherit (flakePkgs) daisydisk netnewswire ocr-documents verify-archive;
       inherit (pkgs) firefox-bin keybase waifu2x-converter-cpp openttd terminal-notifier;
+      inherit (unstablePkgs) element-desktop;
     in
     [
       crossover
       daisydisk
+      element-desktop
       ffxiv
       firefox-bin
       keybase
