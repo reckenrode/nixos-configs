@@ -39,7 +39,6 @@
         "dungeondraft"
         "wonderdraft"
         "ffxiv"
-        "ffxiv-client"
         "firefox-bin"
         "foundryvtt"
         "ruby-mine"
