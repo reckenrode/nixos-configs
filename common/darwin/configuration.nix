@@ -21,6 +21,8 @@ in
     ./nix-optimizations-darwin.nix
   ];
 
+  system.defaults.finder.FXPreferredViewStyle = null;
+
   nix.nixPath = mkForce nixPath;
 
   programs.bash.enable = false;
