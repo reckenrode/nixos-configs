@@ -6,5 +6,7 @@
     shell = pkgs.zsh;
   } // lib.optionalAttrs pkgs.stdenv.isDarwin {
     home = "/Users/weiweilin";
+  } // lib.optionalAttrs pkgs.stdenv.isLinux {
+    isNormalUser = true;
   };
 }
