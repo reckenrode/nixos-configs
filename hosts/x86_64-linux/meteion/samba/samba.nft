@@ -1,0 +1,14 @@
+table inet filter {
+  chain input {
+    ip6 saddr fda9:51fe:3bbf:c9f::/64 udp dport netbios-ns accept
+    ip6 saddr fda9:51fe:3bbf:c9f::/64 udp dport netbios-dgm accept
+    ip6 saddr fda9:51fe:3bbf:c9f::/64 tcp dport netbios-ssn accept
+    ip6 saddr fda9:51fe:3bbf:c9f::/64 tcp dport microsoft-ds accept
+    ip saddr 192.168.238.0/24 udp dport netbios-ns accept
+    ip saddr 192.168.238.0/24 udp dport netbios-dgm accept
+    ip saddr 192.168.238.0/24 tcp dport netbios-ssn accept
+    ip saddr 192.168.238.0/24 tcp dport microsoft-ds accept
+    ip daddr 224.0.0.251/32 udp dport mdns accept
+    ip6 daddr ff02::fb/128 udp dport mdns accept
+  }
+}

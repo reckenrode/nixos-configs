@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./loader.nix
+    ./samba
     ./systemd-networkd.nix
     ./zfs.nix
   ];
@@ -13,7 +14,7 @@
 
   nix.automaticUpgrades.enable = true;
 
-  # sops.defaultSopsFile = ./secrets.yaml;
+  sops.defaultSopsFile = ./secrets.yaml;
 
   time.timeZone = "America/New_York";
 
