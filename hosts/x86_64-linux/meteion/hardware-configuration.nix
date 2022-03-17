@@ -34,7 +34,7 @@
     };
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/EB76-5AF9";
+    { device = "/dev/disk/by-uuid/0DDE-9C1F";
       fsType = "vfat";
     };
 
@@ -54,9 +54,7 @@
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-partuuid/508a1fbc-c951-4448-a66c-a285653156aa";
-        randomEncryption = true;
-      }
+    [ { device = "/dev/disk/by-uuid/377435b9-edbd-4a2d-961b-f8226b972009"; }
     ];
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
