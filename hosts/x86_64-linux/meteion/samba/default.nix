@@ -29,7 +29,6 @@
       #vfs objects = zfsacl catia fruit streams_xattr
       vfs objects = catia fruit streams_xattr
       fruit:aapl = yes
-      fruit:copyfile = yes
       fruit:resource = xattr
       fruit:metadata = stream
       fruit:encoding = native
