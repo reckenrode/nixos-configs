@@ -5,7 +5,10 @@
 {
   services.avahi = {
     enable = true;
-    publish.enable = true;
+    publish = {
+      enable = true;
+      addresses = true;
+    };
     extraServiceFiles = {
       time-machine = ''
         <?xml version="1.0" standalone='no'?>
