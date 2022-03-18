@@ -7,6 +7,7 @@
 {
   imports = [
     ./shares.nix
+    ./time-machine.nix
   ];
 
   # services.elasticsearch.enable = true;
