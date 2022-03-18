@@ -17,6 +17,11 @@
             <port>445</port>
             <host-name>meteion.infra.largeandhighquality.com</host-name>
           </service>
+          <service>
+            <type>_device-info._tcp</type>
+            <port>0</port>
+            <txt-record>model=RackMac</txt-record>
+          </service>
         </service-group>
       '';
     };
