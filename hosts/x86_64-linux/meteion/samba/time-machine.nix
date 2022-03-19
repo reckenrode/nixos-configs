@@ -11,6 +11,10 @@
     };
   };
 
+  services.samba.extraConfig = ''
+    mdns name = mdns
+  '';
+
   services.samba.shares.time-machine = {
     path = "/srv/time-machine";
     "valid users" = "time-machine";
