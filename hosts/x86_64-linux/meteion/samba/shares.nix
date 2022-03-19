@@ -13,6 +13,14 @@
     "directory mask" = "0750";
   };
 
+  services.samba.shares.tabletop-group = {
+    path = "/srv/samba/tabletop-group";
+    browseable = "yes";
+    "guest ok" = "yes";
+    writeable = "no";
+    "write list" = "reckenrode";
+  };
+
   services.samba.shares.weiweilin = {
     path = "/srv/samba/weiweilin";
     "valid users" = "weiweilin";
