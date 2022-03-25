@@ -48,6 +48,11 @@
       fsType = "zfs";
     };
 
+  fileSystems."/srv/samba/tabletop-group" =
+    { device = "ultima-thule/user/tabletop-group";
+      fsType = "zfs";
+    };
+
   fileSystems."/srv/time-machine" =
     { device = "ultima-thule/time-machine";
       fsType = "zfs";
