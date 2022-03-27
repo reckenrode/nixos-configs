@@ -85,17 +85,6 @@ in
           msg-cache-size = "128m";
           rrset-cache-size = "256m";
         };
-
-        forward-zone = [
-          {
-            name = ".";
-            forward-tls-upstream = true;
-            forward-addr = [
-              "2001:4860:4860::8888@853#dns.google"
-              "2001:4860:4860::8844@853#dns.google"
-            ];
-          }
-        ];
       };
     };
 
