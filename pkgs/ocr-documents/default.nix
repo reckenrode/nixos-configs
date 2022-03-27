@@ -1,15 +1,14 @@
 { stdenv
 , coreutils
 , fish
-, gawk
-, imagemagick7
-, poppler_utils
+, gnused
+, sane-backends
 , tesseract4
 }:
 
 stdenv.mkDerivation {
   pname = "ocr-documents";
-  version = "1.0.0";
+  version = "2.0.0";
 
   src = ./.;
 
@@ -18,9 +17,8 @@ stdenv.mkDerivation {
     substitute $src/ocr-documents $out/bin/ocr-documents \
       --subst-var-by coreutils ${coreutils} \
       --subst-var-by fish ${fish} \
-      --subst-var-by gawk ${gawk} \
-      --subst-var-by imagemagick7 ${imagemagick7} \
-      --subst-var-by poppler_utils ${poppler_utils} \
+      --subst-var-by gnused ${gnused} \
+      --subst-var-by sane-backends ${sane-backends} \
       --subst-var-by tesseract4 ${tesseract4}
     chmod a+x $out/bin/ocr-documents
   '';
