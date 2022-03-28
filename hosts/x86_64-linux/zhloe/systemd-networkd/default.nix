@@ -8,7 +8,10 @@
 
   networking.nftables.ruleset = builtins.readFile ./masquerade.nft;
 
-  services.resolved.dnssec = "false";
+  services.resolved = {
+    dnssec = "true";
+    extraConfig = "DNSOverTLS=true";
+  };
 
   systemd.network.networks.lan = {
     enable = true;
@@ -39,7 +42,7 @@
     matchConfig.Name = "enp1s0";
     networkConfig = {
       DHCP = "ipv4";
-      DNS = [ "1.1.1.1" "1.0.0.1" ];
+      DNS = [ "1.1.1.1#cloudflare-dns.com" "1.0.0.1#cloudflare-dns.com" ];
       IPv6PrivacyExtensions = false;
       IPv6AcceptRA = true;
       IPForward = true;
