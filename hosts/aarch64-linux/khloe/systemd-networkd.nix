@@ -6,7 +6,7 @@
     interfaces = [ "eth0" ];
   };
 
-  services.resolved.dnssec = "false";
+  services.resolved.dnssec = "true";
 
   systemd.network.networks.lan = {
     enable = true;
