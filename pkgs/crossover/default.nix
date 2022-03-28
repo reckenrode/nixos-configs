@@ -1,19 +1,21 @@
-{ lib, fetchurl, fetchFromGitHub, stdenv, unzip }:
+{ lib
+, fetchurl
+, stdenv
+, darwin
+, dxvk
+, unzip
+}:
 
 let
-  dxvk.version = "1.9.3";
-  moltenvk = {
-    version = "1.1.6";
-    build = "_2";
-  };
+  moltenvk = dxvk.patchMoltenVK darwin.moltenvk;
 in
 stdenv.mkDerivation rec {
   pname = "crossover";
-  version = "21.1.0";
+  version = "21.2.0";
 
   src = fetchurl {
     url = "https://media.codeweavers.com/pub/crossover/cxmac/demo/crossover-${version}.zip";
-    hash = "sha256-PBMOLrD9PVUkhPBy3CDmZQSGmOff+wbE84kAE+/1dJw=";
+    hash = "sha256-lOs2O9m9ztlVSOhYki0mLKP3AVarnbo9aH6y+ii9uuA=";
   };
 
   icon = fetchurl {
@@ -21,39 +23,24 @@ stdenv.mkDerivation rec {
     hash = "sha256-e/tFudvMO0igTfgwN81kAwicLiGliUdCFEqr/AljZnc=";
   };
 
-  dxvkDist = fetchurl {
-    url = "https://github.com/marzent/dxvk/releases/download/v${dxvk.version}-mac/dxvk-${dxvk.version}-mac-async.tar.xz";
-    hash = "sha256-onFrs0uIWHHGJWGEa1GIAKq4UMFHagejg29kEkN++/g=";
-  };
-
-  moltenvkDist = fetchurl {
-    url = "https://github.com/Gcenx/moltenvk/releases/download/v${moltenvk.version}/macos_dxvk_patched-${moltenvk.version}${moltenvk.build}.tar.xz";
-    hash = "sha256-XwGEK/3AEKgo+LiRS2GTZNFlZsj+uudT2zZoEReMShU=";
-  };
-
   nativeBuildInputs = [ unzip ];
-
-  unpackPhase = ''
-    unpackPhase
-    unpackFile "${dxvkDist}"
-    unpackFile "${moltenvkDist}"
-  '';
 
   buildPhase = ''
     install_dxvk() {
       arch=$([ "$1" = "64" ] && echo "x64" || echo "x32")
       lib=$([ "$1" = "64" ] && echo "lib64" || echo "lib")
-      pushd ../dxvk-${dxvk.version}-mac-async/$arch
-      install -m755 \
-        d3d10.dll d3d10_1.dll d3d10core.dll d3d11.dll d3d9.dll dxgi.dll \
-        ../../CrossOver.app/Contents/SharedSupport/CrossOver/$lib/wine/dxvk
-      popd
+      rm -rf Contents/SharedSupport/CrossOver/$lib/wine/dxvk
+      ln -s ${dxvk.bin}/$arch Contents/SharedSupport/CrossOver/$lib/wine/dxvk
     }
+
     install_dxvk 32
     install_dxvk 64
-    install -m755 ../Package/Release/moltenvk/dylib/macOS/libmoltenvk.dylib \
-      Contents/SharedSupport/CrossOver/lib64/
+
+    rm Contents/SharedSupport/CrossOver/lib64/libMoltenVK.dylib
+    ln -s ${moltenvk}/lib/libMoltenVK.dylib Contents/SharedSupport/CrossOver/lib64/libMoltenVK.dylib
+
     install -m644 ${icon} Contents/Resources/CrossOver.icns
+
     rm -rf "CrossOver.app/Contents/Resources/CrossOver CD Helper.app"
   '';
 

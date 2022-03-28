@@ -7,6 +7,9 @@ let
   flakePkgs = lib.readDirNames ./.;
 in
 pipe flakePkgs [
-  (map (pkg: { name = pkg; value = channels.nixpkgs.callPackage ./${pkg} {}; }))
+  (map (pkg:
+    if pkg == "crossover"
+    then { name = pkg; value = channels.nixpkgs-unstable.callPackage ./${pkg} {}; }
+    else { name = pkg; value = channels.nixpkgs.callPackage ./${pkg} {}; }))
   listToAttrs
 ]
