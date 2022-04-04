@@ -4,11 +4,11 @@ let
   derivation = { lib, fetchurl, stdenv, undmg, steam-icon ? ./steam.icns }:
     stdenv.mkDerivation rec {
       pname = "steam";
-      version = "1.0.0.72";
+      version = "2022.03.07";
 
       src = fetchurl {
-        url = "https://cdn.cloudflare.steamstatic.com/client/installer/steam.dmg";
-        hash = "sha256-86WB93ckhFALP1onHDH4kba0sayBglXf2cOtXb4QSl4=";
+        url = "https://web.archive.org/web/20220307001519/https://cdn.cloudflare.steamstatic.com/client/installer/steam.dmg";
+        hash = "sha256-86WB93ckhFALP1onHDH4kba0sayBglXf2cOtXb4QSl4";
       };
 
       buildInputs = [ undmg ];
