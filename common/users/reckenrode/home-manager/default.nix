@@ -6,10 +6,16 @@ in
 {
   imports = [
     ./bash.nix
+    ./dock.nix
+    ./finder.nix
+    ./gnupg.nix
     ./gnupg.nix
     ./iterm2.nix
+    ./keyboard.nix
     ./less.nix
     ./python.nix
+    ./safari.nix
+    ./ui.nix
     ./xdg.nix
   ];
 

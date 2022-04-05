@@ -3,14 +3,9 @@
 {
   imports = [
     ./copyApplications.nix
-    ./dock.nix
-    ./finder.nix
     ./fish.nix
     ./gnupg.nix
-    ./keyboard.nix
     ./rust.nix
-    ./safari.nix
-    ./ui.nix
     ./vscode.nix
   ];
 
