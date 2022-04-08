@@ -7,5 +7,12 @@
     ./git.nix
   ];
 
-  home.packages = [ (pkgs.python3.withPackages (pkgs: [ pkgs.tkinter ])) ];
+  home.packages =
+    let
+      inherit (pkgs) poetry python3;
+    in
+    [
+      poetry
+      (python3.withPackages (pkgs: [ pkgs.tkinter ]))
+    ];
 }
