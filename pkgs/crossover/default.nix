@@ -4,13 +4,16 @@
 , darwin
 , dxvk
 , unzip
+, iUnderstandThatReplacingMoltenVKAndDXVKIsNotSupportedByCodeWeaversAndWillNotBotherThemForSupport ? false
 }:
 
 let
   moltenvk = dxvk.patchMoltenVK darwin.moltenvk;
 in
 stdenv.mkDerivation rec {
-  pname = "crossover";
+  pname = if !iUnderstandThatReplacingMoltenVKAndDXVKIsNotSupportedByCodeWeaversAndWillNotBotherThemForSupport
+    then throw "Modifying the files in CrossOver is not supported by CodeWeavers."
+    else "crossover";
   version = "21.2.0";
 
   src = fetchurl {
