@@ -7,5 +7,5 @@
     ./git.nix
   ];
 
-  home.packages = [ pkgs.python3Full ];
+  home.packages = [ pkgs.poetry pkgs.python3Full ];
 }
