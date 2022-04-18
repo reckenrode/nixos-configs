@@ -5,11 +5,12 @@ let
 in
 {
   imports = [
-    ./bash.nix
-    ./gnupg.nix
-    ./less.nix
-    ./python.nix
-    ./xdg.nix
+    ./dock.nix
+    ./finder.nix
+    ./iterm2.nix
+    ./keyboard.nix
+    ./safari.nix
+    ./ui.nix
   ];
 
   home.packages = [

@@ -28,6 +28,8 @@ let
 
       srcPaths = [
         ./users/${name}
+        ./users/${name}/${platform}
+        ./users/${name}/${platform}/${arch}
         (hostPath + /users/${name})
         ./${platform}
         ./${platform}/${arch}
