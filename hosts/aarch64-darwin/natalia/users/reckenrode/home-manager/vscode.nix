@@ -82,13 +82,13 @@ in
     enable = true;
     extensions =
       let
-        inherit (pkgs.vscode-extensions) bbenoist editorconfig vadimcn;
+        inherit (pkgs.vscode-extensions) jnoortheen editorconfig vadimcn;
       in
       [
-        bbenoist.nix
         bmalehorn.vscode-fish
         cab404.direnv
         editorconfig.editorconfig
+        jnoortheen.nix-ide
         mark-hansen.hledger-vscode
         matklad.rust-analyzer
         ombratteng.nftables
@@ -116,6 +116,8 @@ in
       "lldb.adapterEnv" = {
         "LLDB_DEBUGSERVER_PATH" = debugserver;
       };
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "${pkgs.rnix-lsp}/bin/rnix-lsp";
     };
   };
 }
