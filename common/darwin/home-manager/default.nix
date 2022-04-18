@@ -7,6 +7,7 @@
     ./gnupg.nix
     ./rust.nix
     ./vscode.nix
+    ./xdg.nix
   ];
 
   home.packages =

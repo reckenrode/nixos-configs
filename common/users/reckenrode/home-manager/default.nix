@@ -4,14 +4,6 @@ let
   inherit (pkgs) neovim ripgrep;
 in
 {
-  imports = [
-    ./bash.nix
-    ./gnupg.nix
-    ./less.nix
-    ./python.nix
-    ./xdg.nix
-  ];
-
   home.packages = [
     neovim
     ripgrep
@@ -22,6 +14,4 @@ in
   };
 
   programs.fish.enable = true;
-
-  home.stateVersion = "21.11";
 }

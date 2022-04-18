@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  lessStateDir = "${config.home.sessionVariables.XDG_STATE_HOME}/less";
+  lessStateDir = "${config.xdg.stateHome}/less";
 in
 {
   home.sessionVariables = {

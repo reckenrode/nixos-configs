@@ -31,6 +31,7 @@ let
         ./users/${name}/${platform}
         ./users/${name}/${platform}/${arch}
         (hostPath + /users/${name})
+        ./shared
         ./${platform}
         ./${platform}/${arch}
       ];

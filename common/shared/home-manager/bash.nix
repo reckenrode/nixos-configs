@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  bashStateDir = "${config.home.sessionVariables.XDG_STATE_HOME}/bash";
+  bashStateDir = "${config.xdg.stateHome}/bash";
 in
 {
   home.sessionVariables.HISTFILE = "${bashStateDir}/bash_history";
