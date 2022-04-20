@@ -18,7 +18,6 @@
       inherit (x86_64.unstablePkgs) ffxiv;
       inherit (flakePkgs) daisydisk netnewswire ocr-documents verify-archive;
       inherit (pkgs) firefox-bin keybase waifu2x-converter-cpp openttd terminal-notifier;
-      inherit (unstablePkgs) element-desktop;
 
       crossover = x86_64.flakePkgs.crossover.override {
         iUnderstandThatReplacingMoltenVKAndDXVKIsNotSupportedByCodeWeaversAndWillNotBotherThemForSupport = true;
@@ -27,7 +26,6 @@
     [
       crossover
       daisydisk
-      element-desktop
       ffxiv
       firefox-bin
       keybase
