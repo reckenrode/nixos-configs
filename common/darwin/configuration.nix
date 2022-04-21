@@ -23,7 +23,10 @@ in
 
   system.defaults.finder.FXPreferredViewStyle = null;
 
-  nix.nixPath = mkForce nixPath;
+  nix = {
+    useSandbox = "relaxed";
+    nixPath = mkForce nixPath;
+  };
 
   programs.bash.enable = false;
 
