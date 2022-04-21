@@ -21,8 +21,6 @@ in
     ./nix-optimizations-darwin.nix
   ];
 
-  system.defaults.finder.FXPreferredViewStyle = null;
-
   nix = {
     useSandbox = "relaxed";
     nixPath = mkForce nixPath;
