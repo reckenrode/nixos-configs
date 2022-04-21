@@ -1,5 +1,11 @@
-{ config, ... }:
+{ config
+, lib
+, ...
+}:
 
+let
+  mkXdgHomeBin = lib.mkOrder 0 ''install -m700 -d "$HOME/.local/bin"'';
+in
 {
   xdg.enable = true;
 
@@ -12,4 +18,8 @@
     XDG_PUBLICSHARE_DIR = "${config.home.homeDirectory}/Public";
     XDG_VIDEOS_DIR = "${config.home.homeDirectory}/Movies";
   };
+
+  programs.bash.initExtra = mkXdgHomeBin;
+  programs.fish.loginShellInit = mkXdgHomeBin;
+  programs.zsh.initExtraFirst = mkXdgHomeBin;
 }
