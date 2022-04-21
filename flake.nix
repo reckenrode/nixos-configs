@@ -10,7 +10,8 @@
 
     utils.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.3.1";
 
-    home-manager.url = "github:nix-community/home-manager/release-21.11";
+    # FIXME: revert to `release-22.05` once 22.05 is out
+    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     foundryvtt.url = "github:reckenrode/nix-foundryvtt";
