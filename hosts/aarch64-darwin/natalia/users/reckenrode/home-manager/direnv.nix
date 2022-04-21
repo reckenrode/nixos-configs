@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstablePkgs, ... }:
 
 {
   programs.direnv = {
@@ -18,8 +18,5 @@
     '';
   };
 
-  programs.direnv.nix-direnv = {
-    enable = true;
-    enableFlakes = true;
-  };
+  programs.direnv.nix-direnv.enable = true;
 }
