@@ -23,11 +23,11 @@
     },
     "ffxiv": {
       "locked": {
-        "lastModified": 1650072305,
-        "narHash": "sha256-4jptcOvNkYPk1f9OltGqOEgfjFcZTYGw2mbc7cuZPO4=",
+        "lastModified": 1650576412,
+        "narHash": "sha256-Ki/5Qew0vldBVkqOFqo4JPbma10N72XocE//P6Sbi68=",
         "owner": "reckenrode",
         "repo": "nixpkgs",
-        "rev": "0270732c2100e796ed4879b08ea17df8c92b6489",
+        "rev": "6b04bc03d11b184bf7c9388993ce99aa3ed644d4",
         "type": "github"
       },
       "original": {
@@ -171,11 +171,11 @@
     },
     "sane": {
       "locked": {
-        "lastModified": 1650506410,
-        "narHash": "sha256-59vM1OhWy2pgo4y+9yN0INXZr548gWO5epVe/KM6A8U=",
+        "lastModified": 1650592879,
+        "narHash": "sha256-yEC4zQ2VzNX9ZuHO03NmvtYUqvpwQAPmfrnErQGaRRE=",
         "owner": "reckenrode",
         "repo": "nixpkgs",
-        "rev": "9e8be2de45a93657b5b12ab99870aaa988e9c571",
+        "rev": "f6999e0cc5d3b5b970bfa2fdc52e9c9fbcde2091",
         "type": "github"
       },
       "original": {
