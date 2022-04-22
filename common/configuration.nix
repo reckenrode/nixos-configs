@@ -1,4 +1,4 @@
-{ lib, pkgs, unstablePkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports = [
@@ -6,12 +6,7 @@
     ./nix-flakes.nix
   ];
 
-  environment.systemPackages =
-    let
-      inherit (pkgs) git;
-      pijul = pkgs.callPackage unstablePkgs.pijul.override { };
-    in
-    [ git pijul ];
+  environment.systemPackages = [ pkgs.git ];
 
   nix = {
     generateRegistryFromInputs = true;
