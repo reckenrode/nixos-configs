@@ -30,5 +30,7 @@ in
 
   services.nix-daemon.enable = true;
 
+  system.defaults.ActivityMonitor.ShowCategory = null;
+
   users.nix.configureBuildUsers = true;
 }
