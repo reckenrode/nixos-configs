@@ -56,6 +56,11 @@
       channels.nixpkgs = {
         overlaysBuilder = channels: [
           (_: _: { inherit (channels.sane) sane-backends; })
+          (_: prev: {
+            nix-direnv = prev.callPackage channels.nixpkgs-unstable.nix-direnv.override {
+              inherit (channels.nixpkgs-unstable) nix;
+            };
+          })
         ];
       };
 
