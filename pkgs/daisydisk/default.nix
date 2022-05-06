@@ -5,7 +5,7 @@ stdenv.mkDerivation rec {
   version = "4.21.4";
 
   src = fetchurl {
-    url = "https://daisydiskapp.com/downloads/DaisyDisk.zip";
+    url = "https://web.archive.org/web/20220125065525/https://daisydiskapp.com/downloads/DaisyDisk.zip";
     hash = "sha256-SKJjemZGTSFq+FWD4ccV7UURKZ4Iv7SXhV09dA/UwJ0=";
   };
 
