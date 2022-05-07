@@ -40,7 +40,10 @@ let
 
       dirs = filter pathExists homeManagerPaths;
 
-      userModule = pipe dirs [ (map import) mkMerge ];
+      modulesPaths = map (path: path + /modules.nix) dirs;
+      modulesConfigs = concatMap (src: import src flake) (filter pathExists modulesPaths);
+
+      userModule = mkMerge ((map import dirs) ++ modulesConfigs);
     in
     {
       inherit name;
