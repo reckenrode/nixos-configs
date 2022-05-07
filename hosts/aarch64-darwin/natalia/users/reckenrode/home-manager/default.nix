@@ -1,4 +1,4 @@
-{ config, lib, pkgs, flakePkgs, unstablePkgs, x86_64, ... }:
+{ config, lib, pkgs, flakePkgs, unstablePkgs, x86_64, modulesPath, ... }:
 
 {
   imports = [
@@ -17,7 +17,7 @@
       inherit (x86_64.pkgs) openra steam tiled;
       inherit (x86_64.unstablePkgs) ffxiv;
       inherit (flakePkgs) daisydisk netnewswire ocr-documents verify-archive;
-      inherit (pkgs) firefox-bin keybase waifu2x-converter-cpp openttd terminal-notifier;
+      inherit (pkgs) firefox-bin waifu2x-converter-cpp openttd terminal-notifier;
 
       crossover = x86_64.flakePkgs.crossover.override {
         iUnderstandThatReplacingMoltenVKAndDXVKIsNotSupportedByCodeWeaversAndWillNotBotherThemForSupport = true;
@@ -28,7 +28,6 @@
       daisydisk
       ffxiv
       firefox-bin
-      keybase
       netnewswire
       ocr-documents
       openra
@@ -39,4 +38,10 @@
       waifu2x-converter-cpp
       wonderdraft
     ];
+
+  services.keybase.enable = true;
+  services.kbfs = {
+    enable = true;
+    extraFlags = [ "-mount-type=none" ];
+  };
 }
