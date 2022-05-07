@@ -3,7 +3,7 @@
 let
   inherit (flake.lib) readDirNames;
 
-  inherit (builtins) elemAt;
+  inherit (builtins) elemAt removeAttrs;
   inherit (lib.strings) splitString;
   inherit (pkgs.stdenv.hostPlatform) system;
 
@@ -22,7 +22,7 @@ let
 
   mkUser = hostPath: name:
     let
-      inherit (builtins) filter;
+      inherit (builtins) concatMap filter;
       inherit (lib) mkMerge;
       inherit (lib.trivial) pathExists pipe;
 
@@ -51,5 +51,5 @@ in
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users = mkUsers hostPath;
-  home-manager.extraSpecialArgs = specialArgs;
+  home-manager.extraSpecialArgs = removeAttrs specialArgs [ "modulesPath" ];
 }
