@@ -4,7 +4,6 @@
 
 {
   imports = [
-    # ./keybase.nix
     ./secretive.nix
   ];
 
