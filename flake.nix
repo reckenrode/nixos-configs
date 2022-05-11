@@ -2,7 +2,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    ffxiv.url = "github:reckenrode/nixpkgs/ffxiv";
     sane.url = "github:reckenrode/nixpkgs/darwin-sane";
 
     darwin.url = "github:lnl7/nix-darwin/master";
@@ -65,7 +64,6 @@
 
       channels.nixpkgs-unstable = {
         overlaysBuilder = channels: [
-          (_: _: { inherit (channels.ffxiv) ffxiv; })
           (_: _: { inherit (channels.sane) sane-backends; })
         ];
       };
