@@ -146,26 +146,9 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "sane": "sane",
         "sops-nix": "sops-nix",
         "utils": "utils_2",
         "verify-archive": "verify-archive"
-      }
-    },
-    "sane": {
-      "locked": {
-        "lastModified": 1650592879,
-        "narHash": "sha256-yEC4zQ2VzNX9ZuHO03NmvtYUqvpwQAPmfrnErQGaRRE=",
-        "owner": "reckenrode",
-        "repo": "nixpkgs",
-        "rev": "f6999e0cc5d3b5b970bfa2fdc52e9c9fbcde2091",
-        "type": "github"
-      },
-      "original": {
-        "owner": "reckenrode",
-        "ref": "darwin-sane",
-        "repo": "nixpkgs",
-        "type": "github"
       }
     },
     "sops-nix": {

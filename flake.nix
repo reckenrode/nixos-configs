@@ -2,7 +2,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    sane.url = "github:reckenrode/nixpkgs/darwin-sane";
 
     darwin.url = "github:lnl7/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -59,12 +58,6 @@
               inherit (channels.nixpkgs-unstable) nix;
             };
           })
-        ];
-      };
-
-      channels.nixpkgs-unstable = {
-        overlaysBuilder = channels: [
-          (_: _: { inherit (channels.sane) sane-backends; })
         ];
       };
 
