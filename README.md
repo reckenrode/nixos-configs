@@ -1,5 +1,5 @@
 These are my NixOS and nix-darwin configs. Everything is flake-based, so I can have my servers
-update automatically.  Secrets are kept in [sops-nix][1].
+update automatically.  Secrets are kept in [sops-nix][2].
 
 I use [flake-utils-plus][1] to build the flake, but the repository itself is set up to allow my
 configs to be convention-based (see below for the convention).  This allows me to create a new host
