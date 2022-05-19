@@ -15,7 +15,7 @@ stdenvNoCC.mkDerivation rec {
   # the 1.0.5 version was pulled off Square Enix CDN and replaced with the unreleased 1.0.7 version for macOS.
   src = fetchurl {
     url = "https://mac-dl.ffxiv.com/cw/finalfantasyxiv-${version}.zip";
-    hash = "sha256-0c256lg1qfccdr0y80i53xzcfdbknjm8rv682mqga5436v27fcla";
+    sha256 = "a20525cce87222e6a9bbd9fe1f818a3aca1a70387ab466f95ccd38916b97b69e";
   };
 
   nativeBuildInputs = [ unzip ];
