@@ -25,7 +25,7 @@ let
     patches = old.patches ++ [
       (fetchpatch {
         url = "https://raw.githubusercontent.com/Sporif/dxvk-async/${dxvk.version}/dxvk-async.patch";
-        hash = "sha256-0c256lg1qfccdr0y80i53xzcfdbknjm8rv682mqga5436v27fcla";
+        hash = "sha256-fWGd0a54C2kQ8slvgGu/6PE3RcReW1yF7mPaBPaW1Fw=";
       })
     ];
   });
