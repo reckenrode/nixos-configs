@@ -27,12 +27,12 @@ let
     };
   };
 
-  cab404.direnv = buildVscodeMarketplaceExtension {
+  mkhl.direnv = buildVscodeMarketplaceExtension {
     mktplcRef = {
-      publisher = "cab404";
-      name = "vscode-direnv";
-      version = "1.0.0";
-      sha256 = "sha256-+nLH+T9v6TQCqKZw6HPN/ZevQ65FVm2SAo2V9RecM3Y=";
+      publisher = "mkhl";
+      name = "direnv";
+      version = "0.6.1";
+      sha256 = "sha256-5/Tqpn/7byl+z2ATflgKV1+rhdqj+XMEZNbGwDmGwLQ=";
     };
   };
 
@@ -47,7 +47,7 @@ let
         };
       };
     in
-    loadAfter [ "cab404.vscode-direnv" ] ionide.ionide-fsharp;
+    loadAfter [ "mkhl.direnv" ] ionide.ionide-fsharp;
 
   mark-hansen.hledger-vscode =
     let
@@ -60,13 +60,13 @@ let
         };
       };
     in
-    loadAfter [ "cab404.vscode-direnv" ] hledger-vscode;
+    loadAfter [ "mkhl.direnv" ] hledger-vscode;
 
   matklad.rust-analyzer =
     let
       inherit (pkgs.vscode-extensions) matklad;
     in
-    loadAfter [ "cab404.vscode-direnv" ] matklad.rust-analyzer;
+    loadAfter [ "mkhl.direnv" ] matklad.rust-analyzer;
 
   ombratteng.nftables = buildVscodeMarketplaceExtension {
     mktplcRef = {
@@ -86,7 +86,7 @@ in
       in
       [
         bmalehorn.vscode-fish
-        cab404.direnv
+        mkhl.direnv
         editorconfig.editorconfig
         jnoortheen.nix-ide
         mark-hansen.hledger-vscode
