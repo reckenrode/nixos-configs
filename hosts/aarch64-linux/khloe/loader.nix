@@ -1,4 +1,4 @@
-{ lib, unstablePkgs, ... }:
+{ lib, ... }:
 
 {
   boot.loader.systemd-boot.enable = false;

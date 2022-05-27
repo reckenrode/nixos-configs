@@ -23,6 +23,4 @@ in
   };
 
   programs.fish.enable = true;
-
-  home.stateVersion = "21.11";
 }

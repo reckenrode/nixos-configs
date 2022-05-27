@@ -43,6 +43,7 @@ let
     {
       inherit name;
       value = {
+
         inherit system;
         modules = configs ++ modulesConfigs;
         specialArgs = aarch64ExtraPkgs // {

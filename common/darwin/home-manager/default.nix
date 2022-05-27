@@ -1,4 +1,4 @@
-{ pkgs, config, unstablePkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   imports = [

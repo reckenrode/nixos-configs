@@ -55,7 +55,7 @@ and home-manager configuration.  Its configuration is found in the following dir
 
 ## Extra Packages
 
-My configs follow the `nixos-21.11` channel on both Linux and Darwin.  A GitHub action updates
+My configs follow the `nixos-22.05` channel on both Linux and Darwin.  A GitHub action updates
 `flake.lock` nightly.  Two additional package repositories are made available in this flake (for
 both system and Home Manager configuration).
 

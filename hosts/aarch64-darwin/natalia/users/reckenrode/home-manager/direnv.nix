@@ -1,4 +1,4 @@
-{ pkgs, unstablePkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.direnv = {

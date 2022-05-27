@@ -1,4 +1,4 @@
-{ config, lib, pkgs, flakePkgs, unstablePkgs, x86_64, modulesPath, ... }:
+{ config, lib, pkgs, flakePkgs, x86_64, modulesPath, ... }:
 
 {
   imports = [

@@ -1,5 +1,5 @@
-{ pkgs, unstablePkgs, ... }:
+{ pkgs, ... }:
 
 {
-  environment.systemPackages = [ unstablePkgs.iterm2 ];
+  environment.systemPackages = [ pkgs.iterm2 ];
 }

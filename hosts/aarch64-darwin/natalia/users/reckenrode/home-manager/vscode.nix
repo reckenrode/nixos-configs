@@ -70,7 +70,7 @@ let
 
   ms-dotnettools.csharp =
     let
-      inherit (x86_64.unstablePkgs.vscode-extensions) ms-dotnettools;
+      inherit (x86_64.pkgs.vscode-extensions) ms-dotnettools;
     in
     loadAfter [ "mkhl.direnv" ] ms-dotnettools.csharp;
 

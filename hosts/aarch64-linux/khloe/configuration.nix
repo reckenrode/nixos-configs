@@ -1,4 +1,4 @@
-{ lib, pkgs, unstablePkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports = [
@@ -17,5 +17,5 @@
 
   time.timeZone = "America/New_York";
 
-  system.stateVersion = "21.11";
+  system.stateVersion = "22.05";
 }

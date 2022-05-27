@@ -1,15 +1,16 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
-    utils.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.3.1";
+    # FIXME: switch back to a versioned branch once the fix for building on recent nix-darwin
+    # lands there.
+    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
 
-    # FIXME: revert to `release-22.05` once 22.05 is out
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-22.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     foundryvtt.url = "github:reckenrode/nix-foundryvtt";
@@ -50,16 +51,6 @@
       ];
 
       sharedOverlays = [ overlays ];
-
-      channels.nixpkgs = {
-        overlaysBuilder = channels: [
-          (_: prev: {
-            nix-direnv = prev.callPackage channels.nixpkgs-unstable.nix-direnv.override {
-              inherit (channels.nixpkgs-unstable) nix;
-            };
-          })
-        ];
-      };
 
       hostDefaults.modules = [
         ./common/configuration.nix

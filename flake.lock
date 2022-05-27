@@ -16,7 +16,6 @@
       },
       "original": {
         "owner": "lnl7",
-        "ref": "master",
         "repo": "nix-darwin",
         "type": "github"
       }
@@ -38,11 +37,11 @@
     },
     "flake-utils_2": {
       "locked": {
-        "lastModified": 1638122382,
-        "narHash": "sha256-sQzZzAbvKEqN9s0bzWuYmRaA03v40gaJ4+iL1LXjaeI=",
+        "lastModified": 1644229661,
+        "narHash": "sha256-1YdnJAsNy69bpcjuoKdOYQX0YxZBiCYZo4Twxerqv7k=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "74f7e4319258e287b0f9cb95426c9853b282730b",
+        "rev": "3cecb5b042f7f209c56ffd8371b2711a290ec797",
         "type": "github"
       },
       "original": {
@@ -103,22 +102,23 @@
       },
       "original": {
         "owner": "nix-community",
+        "ref": "release-22.05",
         "repo": "home-manager",
         "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1653229824,
-        "narHash": "sha256-klSCYMpR4TqWYoTD/xZ2qM9UIPRFC6pK+S/kJuVLbFw=",
+        "lastModified": 1653504306,
+        "narHash": "sha256-bqjEskV+/tqOQqSEaCu4e6uWZ0F7ekBiMR16xpn4V0k=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "06db2e2197401b74fcf82d4e84be15b0b5851c7b",
+        "rev": "6efc186e6079ff3f328a2497ff3d36741ac60f6e",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-21.11",
+        "ref": "nixos-22.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -229,16 +229,15 @@
         "flake-utils": "flake-utils_2"
       },
       "locked": {
-        "lastModified": 1638172912,
-        "narHash": "sha256-jxhQGNEsZTdop/Br3JPS+xmBf6t9cIWRzVZFxbT76Rw=",
+        "lastModified": 1652704544,
+        "narHash": "sha256-UTKE33tYgCmDszaVyWA33a8mtegM5xfH4fH8w4y6TxA=",
         "owner": "gytis-ivaskevicius",
         "repo": "flake-utils-plus",
-        "rev": "166d6ebd9f0de03afc98060ac92cba9c71cfe550",
+        "rev": "f8d6d1f87b6177e3bc674c29f247bdbf897ba274",
         "type": "github"
       },
       "original": {
         "owner": "gytis-ivaskevicius",
-        "ref": "v1.3.1",
         "repo": "flake-utils-plus",
         "type": "github"
       }
