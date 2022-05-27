@@ -26,7 +26,7 @@
 
   services.caddy = {
     enable = true;
-    config = ''
+    extraConfig = ''
       ${config.services.foundryvtt.hostname} {
         header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
         encode zstd gzip

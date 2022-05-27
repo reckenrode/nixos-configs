@@ -12,7 +12,7 @@
 
   services.caddy = {
     enable = true;
-    config = ''
+    extraConfig = ''
       www.largeandhighquality.com {
         tls /var/lib/acme/largeandhighquality.com/fullchain.pem /var/lib/acme/largeandhighquality.com/key.pem
 
