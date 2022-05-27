@@ -1,4 +1,4 @@
-{ config, lib, pkgs, flakePkgs, unstablePkgs, x86_64, ... }:
+{ config, lib, pkgs, flakePkgs, x86_64, ... }:
 
 let
   inherit (pkgs.vscode-utils) buildVscodeMarketplaceExtension;
@@ -42,8 +42,8 @@ let
         mktplcRef = {
           publisher = "ionide";
           name = "ionide-fsharp";
-          version = "5.10.2";
-          sha256 = "sha256-bYbbJMhEcmOXxcUSY6qVJtXx2IjgAzLg3ie1SHsuHDE=";
+          version = "6.0.4";
+          sha256 = "sha256-gdM7mG5ykBiwLHodZ2VyF4uYYuAPhXP2MturNvfQ5iM=";
         };
       };
     in
@@ -68,6 +68,12 @@ let
     in
     loadAfter [ "mkhl.direnv" ] matklad.rust-analyzer;
 
+  ms-dotnettools.csharp =
+    let
+      inherit (x86_64.unstablePkgs.vscode-extensions) ms-dotnettools;
+    in
+    loadAfter [ "mkhl.direnv" ] ms-dotnettools.csharp;
+
   ombratteng.nftables = buildVscodeMarketplaceExtension {
     mktplcRef = {
       publisher = "ombratteng";
@@ -86,11 +92,13 @@ in
       in
       [
         bmalehorn.vscode-fish
-        mkhl.direnv
         editorconfig.editorconfig
+        ionide.ionide-fsharp
         jnoortheen.nix-ide
         mark-hansen.hledger-vscode
         matklad.rust-analyzer
+        mkhl.direnv
+	ms-dotnettools.csharp
         ombratteng.nftables
         vadimcn.vscode-lldb
       ];
@@ -98,9 +106,25 @@ in
       "editor.bracketPairColorization.enabled" = true;
       "editor.fontFamily" = "SF Mono, Menlo, Monaco, 'Courier New', monospace";
       "editor.guides.bracketPairs" = "active";
+      "editor.inlayHints.enabled" = "off";
       "editor.minimap.enabled" = false;
       "editor.roundedSelection" = false;
       "editor.rulers" = [ 100 ];
+      "editor.semanticTokenColorCustomizations" = {
+        "[Default Light+]" = {
+          "enabled" = true;
+          "rules" = {
+              "*.mutable" = {
+                 # "foreground" = "#FF0000";
+                  "fontStyle" = "underline";
+              };
+              "*.disposable" = {
+                 # "foreground" = "#ff8b2c";
+                  "fontStyle" = "bold";
+              };
+          };
+        };
+      };
       "explorer.confirmDelete" = false;
       "explorer.confirmDragAndDrop" = false;
       "explorer.sortOrder" = "mixed";
