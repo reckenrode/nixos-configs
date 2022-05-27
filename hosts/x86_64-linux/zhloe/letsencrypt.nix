@@ -27,6 +27,7 @@ in
         group = config.users.groups.acme-certs.name;
       };
     };
+    defaults.dnsResolver = "1.1.1.1:53";
   };
 
   sops.secrets = listToAttrs (map
