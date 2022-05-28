@@ -42,7 +42,7 @@
     matchConfig.Name = "enp1s0";
     networkConfig = {
       DHCP = "ipv4";
-      DNS = [ "1.1.1.1#cloudflare-dns.com" "1.0.0.1#cloudflare-dns.com" ];
+      DNS = "192.168.238.1#zhloe.infra.largeandhighquality.com";
       IPv6PrivacyExtensions = false;
       IPv6AcceptRA = true;
       IPForward = true;
