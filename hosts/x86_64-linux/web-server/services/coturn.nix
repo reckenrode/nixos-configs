@@ -23,11 +23,7 @@ in
     acceptTerms = true;
     certs = {
       "${turnHostName}" = {
-        credentialsFile = "/run/secrets/linode";
-        dnsProvider = "linodev4";
         domain = turnHostName;
-        email = "randy@largeandhighquality.com";
-        group = config.users.groups.acme-certs.name;
         postRun = "systemctl restart coturn";
       };
     };

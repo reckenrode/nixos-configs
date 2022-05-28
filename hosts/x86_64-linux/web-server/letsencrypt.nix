@@ -5,15 +5,17 @@
     acceptTerms = true;
     certs = {
       "largeandhighquality.com" = {
-        credentialsFile = "/run/secrets/linode";
-        dnsProvider = "linodev4";
         domain = "largeandhighquality.com";
-        email = "randy@largeandhighquality.com";
         extraDomainNames = [
           "www.largeandhighquality.com"
         ];
-        group = config.users.groups.acme-certs.name;
       };
+    };
+    defaults = {
+      credentialsFile = "/run/secrets/linode";
+      dnsProvider = "linodev4";
+      email = "randy@largeandhighquality.com";
+      group = config.users.groups.acme-certs.name;
     };
   };
 
