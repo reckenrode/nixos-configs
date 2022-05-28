@@ -20,7 +20,7 @@ in
     defaults = {
       credentialsFile = "/run/secrets/linode";
       dnsProvider = "linodev4";
-      dnsResolver = "1.1.1.1:53";
+      dnsResolver = "192.168.238.1:53";
       email = "randy@largeandhighquality.com";
       group = config.users.groups.acme-certs.name;
     };
