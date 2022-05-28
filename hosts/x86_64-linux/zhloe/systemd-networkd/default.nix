@@ -14,7 +14,7 @@
     networkConfig = {
       Address = "192.168.238.1/24";
       Domains = [ "~infra.largeandhighquality.com" ];
-      DNS = "192.168.238.1:853#zhloe.infra.largeandhighquality.com";
+      DNS = "fda9:51fe:3bbf:c9f:2e0:67ff:fe15:ced3#zhloe.infra.largeandhighquality.com";
       DNSOverTLS = true;
       DNSSEC = true;
       DHCPv6PrefixDelegation = true;
@@ -39,7 +39,7 @@
     matchConfig.Name = "enp1s0";
     networkConfig = {
       DHCP = "ipv4";
-      DNS = [ "192.168.238.1:853#zhloe.infra.largeandhighquality.com" ];
+      DNS = [ "fda9:51fe:3bbf:c9f:2e0:67ff:fe15:ced3#zhloe.infra.largeandhighquality.com" ];
       DNSOverTLS = true;
       DNSSEC = true;
       IPv6PrivacyExtensions = false;
