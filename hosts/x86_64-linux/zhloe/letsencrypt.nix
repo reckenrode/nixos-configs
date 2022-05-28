@@ -8,26 +8,22 @@ in
     acceptTerms = true;
     certs = {
       "jihli.infra.largeandhighquality.com" = {
-        credentialsFile = "/run/secrets/linode";
-        dnsProvider = "linodev4";
         domain = "jihli.infra.largeandhighquality.com";
-        email = "randy@largeandhighquality.com";
-        group = config.users.groups.acme-certs.name;
         keyType = "rsa4096";
         postRun = builtins.readFile (pkgs.substituteAll {
           inherit (pkgs) coreutils curl openssl;
           src = ./update-printer;
         });
       };
-      "zhloe.infra.largeandhighquality.com" = {
-        credentialsFile = "/run/secrets/linode";
-        dnsProvider = "linodev4";
-        domain = "zhloe.infra.largeandhighquality.com";
-        email = "randy@largeandhighquality.com";
-        group = config.users.groups.acme-certs.name;
-      };
+      "zhloe.infra.largeandhighquality.com".domain = "zhloe.infra.largeandhighquality.com";
     };
-    defaults.dnsResolver = "1.1.1.1:53";
+    defaults = {
+      credentialsFile = "/run/secrets/linode";
+      dnsProvider = "linodev4";
+      dnsResolver = "1.1.1.1:53";
+      email = "randy@largeandhighquality.com";
+      group = config.users.groups.acme-certs.name;
+    };
   };
 
   sops.secrets = listToAttrs (map
