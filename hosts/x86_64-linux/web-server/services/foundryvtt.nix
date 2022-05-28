@@ -3,7 +3,6 @@
 let
   foundryvtt = flakePkgs.foundryvtt.override {
     inherit (pkgs) pngout;
-    nodejs = pkgs.nodejs-16_x;
   };
 in
 {
