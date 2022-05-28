@@ -73,11 +73,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1644327033,
-        "narHash": "sha256-6oioQTGIWsNHH48+omJY315lYzy1V3jzI6//LLghfSw=",
+        "lastModified": 1653706576,
+        "narHash": "sha256-qeO/APzI/hvDollEhymLAufOs7ug9SLtFxaUtS7uTA4=",
         "owner": "reckenrode",
         "repo": "nix-foundryvtt",
-        "rev": "e1fd4a9c93a9bf7aa15aad5aea74a840ddf4db34",
+        "rev": "845b0822167eb16885915eccc69051d6a28e1d3c",
         "type": "github"
       },
       "original": {
@@ -157,11 +157,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1653407748,
-        "narHash": "sha256-g9puJaILRTb9ttlLQ7IehpV7Wcy0n+vs8LOFu6ylQcM=",
+        "lastModified": 1653495658,
+        "narHash": "sha256-66YwJ6nuDHRxpYRiKtNC3qA9QkrHHJn6c+cJriiOGZI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5ce6597eca7d7b518c03ecda57d45f9404b5e060",
+        "rev": "7fa8d8b2e206be87de8e4128441384f171c8a33b",
         "type": "github"
       },
       "original": {
