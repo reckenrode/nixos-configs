@@ -35,7 +35,7 @@
       tiled
       verify-archive
       waifu2x-converter-cpp
-      wonderdraft
+      # wonderdraft
     ];
 
   services.keybase.enable = true;
