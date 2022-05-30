@@ -10,12 +10,12 @@ stdenv.mkDerivation rec {
 
   majorVersion = "1";
   minorVersion = "1";
-  patchVersion = "6";
-  build = "1";
+  patchVersion = "7";
+  build = "3";
 
   src = requireFile {
     name = "Wonderdraft-${majorVersion}.${minorVersion}.${patchVersion}.${build}-macOS.dmg";
-    sha256 = "sha256-wvJ9RrtdlQ2e4lBYOGfVzaCDx7wpCef4UzbGObug5cE=";
+    sha256 = "sha256-uzzVocM1stS4leYGbApDvruy6H4DdnpEPY0rHjhCF/k=";
     url = "https://www.wonderdraft.net";
   };
 
