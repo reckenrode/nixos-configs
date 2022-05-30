@@ -32,6 +32,7 @@ let
 
   wine64 = wine64Packages.unstable.override {
     moltenvk = asyncDxvk.patchMoltenVK darwin.moltenvk;
+    vulkanSupport = true;
     vkd3dSupport = false;
     embedInstallers = true;
   };
