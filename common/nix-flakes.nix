@@ -1,5 +1,8 @@
-{ lib, unstablePkgs, ... }:
+{ lib
+, pkgs
+, ...
+}:
 
 {
-  nix.package = unstablePkgs.nix;
+  nix.package = pkgs.nix;
 }

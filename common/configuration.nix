@@ -3,6 +3,7 @@
 {
   imports = [
     ./home-manager.nix
+    ./nix-flakes.nix
   ];
 
   environment.systemPackages = [ pkgs.git ];
