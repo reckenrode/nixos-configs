@@ -7,9 +7,6 @@
 , iUnderstandThatReplacingMoltenVKAndDXVKIsNotSupportedByCodeWeaversAndWillNotBotherThemForSupport ? false
 }:
 
-let
-  moltenvk = dxvk.patchMoltenVK darwin.moltenvk;
-in
 stdenv.mkDerivation rec {
   pname = if !iUnderstandThatReplacingMoltenVKAndDXVKIsNotSupportedByCodeWeaversAndWillNotBotherThemForSupport
     then throw "Modifying the files in CrossOver is not supported by CodeWeavers."
@@ -40,7 +37,7 @@ stdenv.mkDerivation rec {
     install_dxvk 64
 
     rm Contents/SharedSupport/CrossOver/lib64/libMoltenVK.dylib
-    ln -s ${moltenvk}/lib/libMoltenVK.dylib Contents/SharedSupport/CrossOver/lib64/libMoltenVK.dylib
+    ln -s ${darwin.moltenvk}/lib/libMoltenVK.dylib Contents/SharedSupport/CrossOver/lib64/libMoltenVK.dylib
 
     install -m644 ${icon} Contents/Resources/CrossOver.icns
 
