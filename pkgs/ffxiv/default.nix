@@ -7,6 +7,7 @@
 , makeDesktopItem
 , unzip
 , writeShellApplication
+, coreutils
 , darwin
 , dxvk
 , pkgsCross
@@ -22,7 +23,7 @@ let
   ffxivClient = callPackage ./ffxiv-client.nix { };
 
   asyncDxvk = dxvk.overrideAttrs (old: {
-    patches = old.patches ++ [
+    dxvkPatches = old.dxvkPatches ++ [
       (fetchpatch {
         url = "https://raw.githubusercontent.com/Sporif/dxvk-async/${dxvk.version}/dxvk-async.patch";
         hash = "sha256-fWGd0a54C2kQ8slvgGu/6PE3RcReW1yF7mPaBPaW1Fw=";
@@ -31,7 +32,6 @@ let
   });
 
   wine64 = wine64Packages.unstable.override {
-    moltenvk = asyncDxvk.patchMoltenVK darwin.moltenvk;
     vulkanSupport = true;
     vkd3dSupport = false;
     embedInstallers = true;
@@ -61,10 +61,28 @@ let
       FFXIVWINCONFIG="$WINEDOCUMENTS/My Games/FINAL FANTASY XIV - A Realm Reborn"
       FFXIVWINPATH="$WINEPREFIX/dosdevices/c:/Program Files/FFXIV"
 
-      # Enable ESYNC and disable Wine and MoltenVK logging.
-      MVK_CONFIG_LOG_LEVEL=0
+      # Enable ESYNC and disable logging
       WINEDEBUG=-all
       WINEESYNC=1
+
+      # Darwin MoltenVK compatibility settings
+      if [[ "$(${coreutils}/bin/uname -s)" = "Darwin" ]]; then
+        MVK_CONFIG_LOG_LEVEL=0
+        MVK_CONFIG_RESUME_LOST_DEVICE=1
+        # Detect whether FFXIV is running on Apple Silicon
+        if /usr/bin/arch -arch arm64 -c /bin/echo &> /dev/null; then
+          # Enable Metal fences on Apple GPUs for better performance.
+          MVK_ALLOW_METAL_EVENTS=0
+          MVK_ALLOW_METAL_FENCES=1
+          MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE=0
+        else
+          MVK_ALLOW_METAL_EVENTS=1
+          MVK_ALLOW_METAL_FENCES=0
+          MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE=1 # Required by DXVK on Intel and AMD GPUs.
+        fi
+        export MVK_CONFIG_RESUME_LOST_DEVICE \
+          MVK_ALLOW_METAL_EVENTS MVK_ALLOW_METAL_FENCES MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE
+      fi
 
       export WINEPREFIX MVK_CONFIG_LOG_LEVEL WINEDEBUG WINEESYNC \
       	DXVK_CONFIG_FILE DXVK_LOG_PATH DXVK_STATE_CACHE_PATH
