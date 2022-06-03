@@ -42,8 +42,8 @@ let
         mktplcRef = {
           publisher = "ionide";
           name = "ionide-fsharp";
-          version = "6.0.4";
-          sha256 = "sha256-gdM7mG5ykBiwLHodZ2VyF4uYYuAPhXP2MturNvfQ5iM=";
+          version = "6.0.5";
+          sha256 = "sha256-vlmLr/1rBreqZifzEwAlhyGzHG28oZa+kmMzRl53tOI=";
         };
       };
     in
@@ -98,7 +98,7 @@ in
         mark-hansen.hledger-vscode
         matklad.rust-analyzer
         mkhl.direnv
-	ms-dotnettools.csharp
+        ms-dotnettools.csharp
         ombratteng.nftables
         vadimcn.vscode-lldb
       ];
