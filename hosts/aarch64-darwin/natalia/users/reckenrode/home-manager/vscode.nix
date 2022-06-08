@@ -114,14 +114,14 @@ in
         "[Default Light+]" = {
           "enabled" = true;
           "rules" = {
-              "*.mutable" = {
-                 # "foreground" = "#FF0000";
-                  "fontStyle" = "underline";
-              };
-              "*.disposable" = {
-                 # "foreground" = "#ff8b2c";
-                  "fontStyle" = "bold";
-              };
+            "*.mutable" = {
+              # "foreground" = "#FF0000";
+              "fontStyle" = "underline";
+            };
+            "*.disposable" = {
+              # "foreground" = "#ff8b2c";
+              "fontStyle" = "bold";
+            };
           };
         };
       };

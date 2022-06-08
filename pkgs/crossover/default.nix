@@ -8,7 +8,8 @@
 }:
 
 stdenv.mkDerivation rec {
-  pname = if !iUnderstandThatReplacingMoltenVKAndDXVKIsNotSupportedByCodeWeaversAndWillNotBotherThemForSupport
+  pname =
+    if !iUnderstandThatReplacingMoltenVKAndDXVKIsNotSupportedByCodeWeaversAndWillNotBotherThemForSupport
     then throw "Modifying the files in CrossOver is not supported by CodeWeavers."
     else "crossover";
   version = "21.2.0";

@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
@@ -14,53 +15,61 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "meteia/system/mnt-root";
+    {
+      device = "meteia/system/mnt-root";
       fsType = "zfs";
     };
 
   fileSystems."/nix" =
-    { device = "meteia/system/nix";
+    {
+      device = "meteia/system/nix";
       fsType = "zfs";
     };
 
   fileSystems."/home" =
-    { device = "meteia/user/home";
+    {
+      device = "meteia/user/home";
       fsType = "zfs";
     };
 
   fileSystems."/root" =
-    { device = "meteia/user/root";
+    {
+      device = "meteia/user/root";
       fsType = "zfs";
     };
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/0DDE-9C1F";
+    {
+      device = "/dev/disk/by-uuid/0DDE-9C1F";
       fsType = "vfat";
     };
 
   fileSystems."/srv/samba/weiweilin" =
-    { device = "ultima-thule/user/weiweilin";
+    {
+      device = "ultima-thule/user/weiweilin";
       fsType = "zfs";
     };
 
   fileSystems."/srv/samba/reckenrode" =
-    { device = "ultima-thule/user/reckenrode";
+    {
+      device = "ultima-thule/user/reckenrode";
       fsType = "zfs";
     };
 
   fileSystems."/srv/samba/tabletop-group" =
-    { device = "ultima-thule/user/tabletop-group";
+    {
+      device = "ultima-thule/user/tabletop-group";
       fsType = "zfs";
     };
 
   fileSystems."/srv/time-machine" =
-    { device = "ultima-thule/time-machine";
+    {
+      device = "ultima-thule/time-machine";
       fsType = "zfs";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/377435b9-edbd-4a2d-961b-f8226b972009"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/377435b9-edbd-4a2d-961b-f8226b972009"; }];
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";

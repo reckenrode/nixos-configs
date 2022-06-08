@@ -12,7 +12,7 @@
 
   # services.elasticsearch.enable = true;
 
-  networking.nftables.ruleset =  builtins.readFile ./samba.nft;
+  networking.nftables.ruleset = builtins.readFile ./samba.nft;
 
   services.samba = {
     enable = true;
@@ -48,9 +48,9 @@
   system.activationScripts = lib.mkIf config.services.samba.enable {
     sambaUserSetup = {
       text = ''
-          ${pkgs.samba}/bin/pdbedit \
-            -i smbpasswd:/run/secrets/smbpasswd \
-            -e tdbsam:/var/lib/samba/private/passdb.tdb
+        ${pkgs.samba}/bin/pdbedit \
+          -i smbpasswd:/run/secrets/smbpasswd \
+          -e tdbsam:/var/lib/samba/private/passdb.tdb
       '';
       deps = [ "setupSecrets" ];
     };

@@ -85,7 +85,7 @@ let
       fi
 
       export WINEPREFIX MVK_CONFIG_LOG_LEVEL WINEDEBUG WINEESYNC \
-      	DXVK_CONFIG_FILE DXVK_LOG_PATH DXVK_STATE_CACHE_PATH
+        DXVK_CONFIG_FILE DXVK_LOG_PATH DXVK_STATE_CACHE_PATH
 
       # Bootstrap the game if the prefix doesn’t already exist.
       if [ ! -d "$FFXIVWINPATH" ]; then
