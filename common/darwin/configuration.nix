@@ -26,6 +26,10 @@ in
     nixPath = mkForce nixPath;
   };
 
+  # Too many packages try to spawn a server during their tests and connect to it,
+  # so relax the sandbox to prevent build failures.
+  security.sandbox.profiles.allowLocalNetworking = true;
+
   programs.bash.enable = false;
 
   services.nix-daemon.enable = true;
