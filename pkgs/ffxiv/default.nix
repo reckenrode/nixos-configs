@@ -22,14 +22,14 @@ let
   # multiple GB unnecessarily.
   ffxivClient = callPackage ./ffxiv-client.nix { };
 
-  asyncDxvk = dxvk.overrideAttrs (old: {
-    dxvkPatches = old.dxvkPatches ++ [
-      (fetchpatch {
-        url = "https://raw.githubusercontent.com/Sporif/dxvk-async/${dxvk.version}/dxvk-async.patch";
-        hash = "sha256-fWGd0a54C2kQ8slvgGu/6PE3RcReW1yF7mPaBPaW1Fw=";
-      })
-    ];
-  });
+  # asyncDxvk = dxvk.overrideAttrs (old: {
+  #   dxvkPatches = old.dxvkPatches ++ [
+  #     (fetchpatch {
+  #       url = "https://raw.githubusercontent.com/Sporif/dxvk-async/${dxvk.version}/dxvk-async.patch";
+  #       hash = "sha256-16j0FbgT98mCziolnJ79wgY4dAELad03881L3tmnMlY=";
+  #     })
+  #   ];
+  # });
 
   wine64 = wine64Packages.unstable.override {
     vulkanSupport = true;
@@ -116,12 +116,12 @@ let
         rm "$WINEDOCUMENTS"
         mkdir -p "$(dirname "$FFXIVWINCONFIG")" "$FFXIVCONFIG"
         ln -s "$FFXIVCONFIG" "$FFXIVWINCONFIG"
-        echo "dxvk.enableAsync = true" > "$FFXIVCONFIG/dxvk.conf"
+        # echo "dxvk.enableAsync = true" > "$FFXIVCONFIG/dxvk.conf"
         ln -s "$FFXIVCONFIG/dxvk.conf" "$FFXIVWINPATH/boot/dxvk.conf"
       fi
 
       # Make sure DXVK and mcfgthreads reflect the latest versions in nixpkgs.
-      for dll in ${asyncDxvk.bin}/x64/*; do
+      for dll in ${dxvk.bin}/x64/*; do
         dllname=$(basename "$dll")
         ln -sf "$dll" "$WINEPREFIX/dosdevices/c:/windows/system32/$dllname"
       done
