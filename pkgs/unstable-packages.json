@@ -1,1 +1,3 @@
-{ }
+{
+    "ffxiv": "nixpkgs-unstable"
+}
