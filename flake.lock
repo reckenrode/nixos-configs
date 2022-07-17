@@ -20,6 +20,22 @@
         "type": "github"
       }
     },
+    "dxvk": {
+      "locked": {
+        "lastModified": 1657888633,
+        "narHash": "sha256-EfIc4v376KLjE3D33UW8QvP4c8qtlmhGtU0UtznVn9g=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3acf4e7060d1e2832fb59207c701d3296ecfa36a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "pull/181602/head",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1638122382,
@@ -107,6 +123,22 @@
         "type": "github"
       }
     },
+    "moltenvk": {
+      "locked": {
+        "lastModified": 1657496360,
+        "narHash": "sha256-9fZ61N4BZ9kWwkxH4hYS+s2kxJkw0g50JlD8lvi9U3w=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3adeb79b7e89d0ffc55648a39131df09620deac2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "pull/180988/head",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1657815135,
@@ -158,8 +190,10 @@
     "root": {
       "inputs": {
         "darwin": "darwin",
+        "dxvk": "dxvk",
         "foundryvtt": "foundryvtt",
         "home-manager": "home-manager",
+        "moltenvk": "moltenvk",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix",
