@@ -13,7 +13,7 @@ in
 pipe flakePkgs [
   (map (pkg:
     if unstablePkgs ? "${pkg}"
-    then { name = pkg; value = channels.${unstablePkgs.${pkg}}.callPackage ./${pkg} {}; }
-    else { name = pkg; value = channels.nixpkgs.callPackage ./${pkg} {}; }))
+    then { name = pkg; value = channels.${unstablePkgs.${pkg}}.callPackage ./${pkg} { }; }
+    else { name = pkg; value = channels.nixpkgs.callPackage ./${pkg} { }; }))
   listToAttrs
 ]
