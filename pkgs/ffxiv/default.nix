@@ -14,6 +14,8 @@
 , wine64Packages
 }:
 
+assert wine64Packages.unstable.version == "7.13";
+
 let
   pname = "ffxiv";
   desktopName = "Final Fantasy XIV (Unofficial)";
@@ -31,7 +33,14 @@ let
   #   ];
   # });
 
-  wine64 = wine64Packages.unstable.override {
+  wine64 = (wine64Packages.unstable.overrideAttrs (old: {
+    patches = old.patches ++ [
+      (fetchpatch {
+        url = "https://bugs.winehq.org/attachment.cgi?id=72773&action=diff&context=patch&collapsed=&headers=1&format=raw";
+        hash = "sha256-0Wv53ZE0M+N865ZvDpsX3EG3D6vyWs3YxkpQdUZh+20=";
+      })
+    ];
+  })).override {
     vulkanSupport = true;
     vkd3dSupport = false;
     embedInstallers = true;
