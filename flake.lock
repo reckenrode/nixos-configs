@@ -123,22 +123,6 @@
         "type": "github"
       }
     },
-    "moltenvk": {
-      "locked": {
-        "lastModified": 1658437434,
-        "narHash": "sha256-DFpo/sI7IIQZ77VA33nZc5tQiW7HtW+G5/e2bZ5/s7k=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "3c695f159a7124f5355c1b2ee58b39f7b594218c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "pull/180988/head",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1659253578,
@@ -193,7 +177,6 @@
         "dxvk": "dxvk",
         "foundryvtt": "foundryvtt",
         "home-manager": "home-manager",
-        "moltenvk": "moltenvk",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix",

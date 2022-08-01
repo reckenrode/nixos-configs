@@ -4,7 +4,6 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     dxvk.url = "github:NixOS/nixpkgs/pull/181602/head";
-    moltenvk.url = "github:NixOS/nixpkgs/pull/180988/head";
 
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -54,13 +53,7 @@
       ];
 
       channels.nixpkgs-unstable.overlaysBuilder = channels: [
-        (final: prev: {
-          inherit (channels.dxvk) dxvk;
-
-          darwin = prev.darwin.overrideScope (_: _: {
-            inherit (channels.moltenvk.darwin) moltenvk;
-          });
-        })
+        (final: prev: { inherit (channels.dxvk) dxvk; })
       ];
 
       sharedOverlays = [ overlays ];
