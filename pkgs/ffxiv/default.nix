@@ -36,8 +36,8 @@ let
   wine64 = (wine64Packages.unstable.overrideAttrs (old: {
     patches = old.patches ++ [
       (fetchpatch {
-        url = "https://bugs.winehq.org/attachment.cgi?id=72773&action=diff&context=patch&collapsed=&headers=1&format=raw";
-        hash = "sha256-0Wv53ZE0M+N865ZvDpsX3EG3D6vyWs3YxkpQdUZh+20=";
+        url = "https://bugs.winehq.org/attachment.cgi?id=72791&action=diff&context=patch&collapsed=&headers=1&format=raw";
+        hash = "sha256-hiYH374lr85ekqg8v2WNvjxHR5ysKHPaQnsb1NJ36n0=";
       })
     ];
   })).override {
