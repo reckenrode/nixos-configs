@@ -93,14 +93,14 @@ in
       [
         bmalehorn.vscode-fish
         editorconfig.editorconfig
-        ionide.ionide-fsharp
+        # ionide.ionide-fsharp
         jnoortheen.nix-ide
         mark-hansen.hledger-vscode
-        matklad.rust-analyzer
+        # matklad.rust-analyzer
         mkhl.direnv
-        ms-dotnettools.csharp
+        # ms-dotnettools.csharp
         ombratteng.nftables
-        vadimcn.vscode-lldb
+        # vadimcn.vscode-lldb
       ];
     userSettings = {
       "editor.bracketPairColorization.enabled" = true;
