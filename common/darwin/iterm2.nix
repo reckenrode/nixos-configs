@@ -1,5 +1,10 @@
 { pkgs, ... }:
 
+let
+  iterm2 = pkgs.iterm2.overrideAttrs (_: {
+    dontFixup = true;
+  });
+in
 {
-  environment.systemPackages = [ pkgs.iterm2 ];
+  environment.systemPackages = [ iterm2 ];
 }
