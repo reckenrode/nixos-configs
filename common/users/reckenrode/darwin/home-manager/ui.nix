@@ -6,7 +6,7 @@
     AppleShowScrollBars = "Always";
     AppleReduceDesktopTinting = true;
     CGDisableCursorLocationMagnification = true;
-    NSAlertMetricsGatheringEnabled = false;
+    # NSAlertMetricsGatheringEnabled = false;
   };
 
   targets.darwin.defaults."com.apple.universalaccess" = {
