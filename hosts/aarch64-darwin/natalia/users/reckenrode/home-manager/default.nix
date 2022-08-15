@@ -23,7 +23,7 @@
       };
     in
     [
-      crossover
+#      crossover
       daisydisk
       ffxiv
       firefox-bin
