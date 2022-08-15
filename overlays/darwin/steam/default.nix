@@ -1,7 +1,7 @@
 _: prev:
 
 let
-  derivation = { lib, fetchurl, stdenv, undmg, steam-icon ? ./steam.icns }:
+  derivation = { lib, fetchurl, stdenv, undmg, steam-icon ? null }:
     stdenv.mkDerivation rec {
       pname = "steam";
       version = "2022.03.07";
