@@ -3,9 +3,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    dxvk.url = "github:NixOS/nixpkgs/pull/181602/head";
+    moltenvk.url = "github:reckenrode/nixpkgs/moltenvk-update";
 
-    darwin.url = "github:lnl7/nix-darwin";
+    darwin.url = "github:lnl7/nix-darwin/pull/490/head";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # FIXME: switch back to a versioned branch once the fix for building on recent nix-darwin
@@ -52,11 +52,15 @@
         "vscode"
       ];
 
-      channels.nixpkgs-unstable.overlaysBuilder = channels: [
-        (final: prev: { inherit (channels.dxvk) dxvk; })
-      ];
-
       sharedOverlays = [ overlays ];
+
+      channels.nixpkgs-unstable.overlaysBuilder = channels: [
+        (_: prev: {
+	  darwin = prev.darwin.overrideScope (_: _: {
+	    inherit (channels.moltenvk.darwin) moltenvk;
+          });
+	})
+      ];
 
       hostDefaults.modules = [
         ./common/configuration.nix
