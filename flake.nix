@@ -3,9 +3,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    dxvk.url = "github:NixOS/nixpkgs/pull/181602/head";
+    moltenvk.url = "github:NixOS/nixpkgs/pull/186705/head";
 
-    darwin.url = "github:lnl7/nix-darwin";
+    darwin.url = "github:LnL7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # FIXME: switch back to a versioned branch once the fix for building on recent nix-darwin
@@ -53,7 +53,11 @@
       ];
 
       channels.nixpkgs-unstable.overlaysBuilder = channels: [
-        (final: prev: { inherit (channels.dxvk) dxvk; })
+        (_: prev: {
+          darwin = prev.darwin.overrideScope (_: prevScope: {
+            inherit (channels.moltenvk.darwin) moltenvk;
+          });
+        })
       ];
 
       sharedOverlays = [ overlays ];

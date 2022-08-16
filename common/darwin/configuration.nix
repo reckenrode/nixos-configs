@@ -22,7 +22,8 @@ in
   ];
 
   nix = {
-    useSandbox = "relaxed";
+    configureBuildUsers = true;
+    settings.sandbox = "relaxed";
     nixPath = mkForce nixPath;
   };
 
@@ -35,6 +36,4 @@ in
   services.nix-daemon.enable = true;
 
   system.defaults.ActivityMonitor.ShowCategory = null;
-
-  users.nix.configureBuildUsers = true;
 }
