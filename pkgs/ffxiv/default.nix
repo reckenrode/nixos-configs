@@ -14,8 +14,6 @@
 , wine64Packages
 }:
 
-assert wine64Packages.unstable.version == "7.13";
-
 let
   pname = "ffxiv";
   desktopName = "Final Fantasy XIV (Unofficial)";
@@ -24,23 +22,7 @@ let
   # multiple GB unnecessarily.
   ffxivClient = callPackage ./ffxiv-client.nix { };
 
-  # asyncDxvk = dxvk.overrideAttrs (old: {
-  #   dxvkPatches = old.dxvkPatches ++ [
-  #     (fetchpatch {
-  #       url = "https://raw.githubusercontent.com/Sporif/dxvk-async/${dxvk.version}/dxvk-async.patch";
-  #       hash = "sha256-16j0FbgT98mCziolnJ79wgY4dAELad03881L3tmnMlY=";
-  #     })
-  #   ];
-  # });
-
-  wine64 = (wine64Packages.unstable.overrideAttrs (old: {
-    patches = old.patches ++ [
-      (fetchpatch {
-        url = "https://bugs.winehq.org/attachment.cgi?id=72791&action=diff&context=patch&collapsed=&headers=1&format=raw";
-        hash = "sha256-hiYH374lr85ekqg8v2WNvjxHR5ysKHPaQnsb1NJ36n0=";
-      })
-    ];
-  })).override {
+  wine64 = wine64Packages.unstable.override {
     vulkanSupport = true;
     vkd3dSupport = false;
     embedInstallers = true;
