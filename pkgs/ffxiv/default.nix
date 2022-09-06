@@ -112,7 +112,7 @@ let
       fi
 
       # Make sure DXVK and mcfgthreads reflect the latest versions in nixpkgs.
-      for dll in ${dxvk.bin}/x64/*; do
+      for dll in ${lib.getBin dxvk}/x64/*; do
         dllname=$(basename "$dll")
         ln -sf "$dll" "$WINEPREFIX/dosdevices/c:/windows/system32/$dllname"
       done
