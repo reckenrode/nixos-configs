@@ -2,10 +2,10 @@
 
 {
   targets.darwin.defaults."com.apple.Safari" = {
-    AutoFillCreditCardData = false;
-    AutoFillFromAddressBook = false;
+    AutoFillCreditCardData = true;
+    AutoFillFromAddressBook = true;
     AutoFillMiscellaneousForms = false;
-    AutoFillPasswords = false;
+    AutoFillPasswords = true;
     AutoOpenSafeDownloads = false;
     EnableNarrowTabs = true;
     IncludeDevelopMenu = true;
