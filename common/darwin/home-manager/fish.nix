@@ -18,7 +18,7 @@
         set -g fish_user_paths ${fishUserPaths}
         fish_add_path -g --path --append --move ${fishHomePaths}
         # Remove home-local path from $PATH
-        contains -i "$HOME/.nix-profile/bin" $PATH \
+        contains -i "$HOME/.nix-profile/bin" $PATH > /dev/null \
         && set -g -e PATH[$(contains -i "$HOME/.nix-profile/bin" $PATH)]
       '';
   };
