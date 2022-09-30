@@ -22,7 +22,18 @@ let
   # multiple GB unnecessarily.
   ffxivClient = callPackage ./ffxiv-client.nix { };
 
+  moltenvk = darwin.moltenvk.overrideAttrs (oldAttrs: {
+    patches = oldAttrs.patches ++ [
+      (fetchpatch {
+        name = "ffxiv-flicker.patch";
+        url = "https://github.com/KhronosGroup/MoltenVK/files/9686958/zeroinit.txt";
+        hash = "sha256-aORWU7zPTRKSTVF4I0D8rNthdxoZbioZsNUG0/Dq2go=";
+      })
+    ];
+  });
+
   wine64 = wine64Packages.unstable.override {
+    inherit moltenvk;
     vulkanSupport = true;
     vkd3dSupport = false;
     embedInstallers = true;
