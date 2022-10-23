@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports = [
@@ -8,6 +8,9 @@
     ./systemd-networkd.nix
     ./zfs.nix
   ];
+
+  # The latest Linux kernel version officially supported by ZFS.
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_5_19;
 
   networking.hostName = "meteion";
   networking.hostId = "41b9e6d1";
