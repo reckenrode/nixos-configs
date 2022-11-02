@@ -29,13 +29,18 @@ let
         url = "https://github.com/KhronosGroup/MoltenVK/files/9686958/zeroinit.txt";
         hash = "sha256-aORWU7zPTRKSTVF4I0D8rNthdxoZbioZsNUG0/Dq2go=";
       })
+      ./command-storage-optimization.patch
+#      (fetchpatch {
+#        name = "command-storage-optimization.patch";
+#        url = "https://patch-diff.githubusercontent.com/raw/KhronosGroup/MoltenVK/pull/1678.patch";
+#        hash = "sha256-kmui3FcnxrQrDsswwFy3ZYk1l6Eg0MCv2mTiJGkI43s=";
+#      })
     ];
   });
 
   wine64 = wine64Packages.unstable.override {
     inherit moltenvk;
     vulkanSupport = true;
-    vkd3dSupport = false;
     embedInstallers = true;
   };
 
@@ -71,19 +76,16 @@ let
       if [[ "$(${coreutils}/bin/uname -s)" = "Darwin" ]]; then
         MVK_CONFIG_LOG_LEVEL=0
         MVK_CONFIG_RESUME_LOST_DEVICE=1
+        MVK_CONFIG_VK_SEMAPHORE_SUPPORT_STYLE=1
         # Detect whether FFXIV is running on Apple Silicon
         if /usr/bin/arch -arch arm64 -c /bin/echo &> /dev/null; then
           # Enable Metal fences on Apple GPUs for better performance.
-          MVK_ALLOW_METAL_EVENTS=0
-          MVK_ALLOW_METAL_FENCES=1
           MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE=0
         else
-          MVK_ALLOW_METAL_EVENTS=1
-          MVK_ALLOW_METAL_FENCES=0
           MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE=1 # Required by DXVK on Intel and AMD GPUs.
         fi
         export MVK_CONFIG_RESUME_LOST_DEVICE \
-          MVK_ALLOW_METAL_EVENTS MVK_ALLOW_METAL_FENCES MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE
+          MVK_CONFIG_VK_SEMAPHORE_SUPPORT_STYLE MVK_CONFIG_FULL_IMAGE_VIEW_SWIZZLE
       fi
 
       export WINEPREFIX MVK_CONFIG_LOG_LEVEL WINEDEBUG WINEESYNC \
