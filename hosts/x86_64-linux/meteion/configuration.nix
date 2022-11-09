@@ -11,7 +11,7 @@
   ];
 
   # The latest Linux kernel version officially supported by ZFS.
-  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_5_19;
+  boot.kernelPackages = lib.mkForce pkgs.zfsStable.latestCompatibleLinuxPackages;
 
   networking.hostName = "meteion";
   networking.hostId = "41b9e6d1";
