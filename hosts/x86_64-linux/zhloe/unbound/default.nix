@@ -38,7 +38,7 @@ in
           local-data = [
             ''"jihli.infra.largeandhighquality.com AAAA fda9:51fe:3bbf:c9f:c665:16ff:fedd:7d5b"''
             ''"khloe.infra.largeandhighquality.com AAAA fda9:51fe:3bbf:c9f:dea6:32ff:fe37:1c49"''
-            ''"meteion.infra.largeandhighquality.com AAAA fda9:51fe:3bbf:c9f:265e:beff:fe5d:63a"''
+            ''"meteion.infra.largeandhighquality.com AAAA fda9:51fe:3bbf:c9f:2ad0:eaff:fe00:82af"''
             ''"zhloe.infra.largeandhighquality.com AAAA fda9:51fe:3bbf:c9f:2e0:67ff:fe15:ced3"''
           ];
 
