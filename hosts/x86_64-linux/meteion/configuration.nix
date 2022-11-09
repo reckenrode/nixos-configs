@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./loader.nix
+    ./iwd.nix
     ./samba
     ./systemd-networkd.nix
     ./zfs.nix
