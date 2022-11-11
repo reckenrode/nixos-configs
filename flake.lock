@@ -57,11 +57,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1667762339,
-        "narHash": "sha256-V6nIQfw2z7/s15+O/OCQOxuyNPKjCzXAwO1M+hj8Z2U=",
+        "lastModified": 1668210683,
+        "narHash": "sha256-Gi8r2NCvCpptlLOGBIEFlsBTi4lbtBzVlVZDMgdRLi0=",
         "owner": "reckenrode",
         "repo": "nix-foundryvtt",
-        "rev": "f67d6eb0c2d50ca4854b022fb4aef2d7a92905b1",
+        "rev": "8471c9ec145f775be44950abc7818b75cc9b8df6",
         "type": "github"
       },
       "original": {
