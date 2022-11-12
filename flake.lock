@@ -52,20 +52,19 @@
     },
     "foundryvtt": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1668210683,
-        "narHash": "sha256-Gi8r2NCvCpptlLOGBIEFlsBTi4lbtBzVlVZDMgdRLi0=",
+        "lastModified": 1668229095,
+        "narHash": "sha256-tYdAXxyOBejYQaLaTyr8DdjT1HV4d9iTQiv+qFuzc0c=",
         "owner": "reckenrode",
         "repo": "nix-foundryvtt",
-        "rev": "8471c9ec145f775be44950abc7818b75cc9b8df6",
+        "rev": "7386d7f8d9df91c9bc10ff439633ce00bafca8b9",
         "type": "github"
       },
       "original": {
         "owner": "reckenrode",
+        "ref": "buildNpmPackage-PoC",
         "repo": "nix-foundryvtt",
         "type": "github"
       }
@@ -93,16 +92,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1668016843,
-        "narHash": "sha256-ioBuF+IAhmJO7s4ewEij1LkMxJvCCNCKXxMto/DU02I=",
-        "owner": "NixOS",
+        "lastModified": 1668135026,
+        "narHash": "sha256-hMJWzhwDu12pjgnWf5ydcdnML5bSY6ms5BOd60l8GY8=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "fa842715565307b7e05cdb187b08c05f16ed08f1",
+        "rev": "1612525f97d2101963833ba5f1aa1ef7b01df64c",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-22.05",
+        "owner": "nixos",
+        "ref": "pull/200470/head",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -139,12 +138,28 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1668016843,
+        "narHash": "sha256-ioBuF+IAhmJO7s4ewEij1LkMxJvCCNCKXxMto/DU02I=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "fa842715565307b7e05cdb187b08c05f16ed08f1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-22.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "darwin": "darwin",
         "foundryvtt": "foundryvtt",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix",
         "utils": "utils",
