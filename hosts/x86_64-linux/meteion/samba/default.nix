@@ -38,6 +38,8 @@
       #spotlight backend = elasticsearch
       #elasticsearch:address = localhost
       #elasticsearch:port = ${toString config.services.elasticsearch.port}
+      guest account = samba-guest
+      map to guest = Bad User
     '';
   };
 

@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   services.samba.shares.reckenrode = {
@@ -13,14 +13,6 @@
     "directory mask" = "0750";
   };
 
-  services.samba.shares.tabletop-group = {
-    path = "/srv/samba/tabletop-group";
-    browseable = "yes";
-    "guest ok" = "yes";
-    writeable = "no";
-    "write list" = "reckenrode";
-  };
-
   services.samba.shares.weiweilin = {
     path = "/srv/samba/weiweilin";
     "valid users" = "weiweilin";
@@ -31,5 +23,25 @@
     "force user" = "weiweilin";
     "create mask" = "0640";
     "directory mask" = "0750";
+  };
+
+  services.samba.shares.tabletop-group = {
+    path = "/srv/samba/tabletop-group";
+    browseable = "yes";
+    "guest ok" = "yes";
+    writeable = "no";
+    "write list" = "reckenrode";
+  };
+
+  users = {
+    groups.samba-guest = { };
+    users.samba-guest = {
+      isSystemUser = true;
+      description = "Samba guest users";
+      group = "samba-guest";
+      home = "/var/empty";
+      createHome = false;
+      shell = pkgs.shadow;
+    };
   };
 }
