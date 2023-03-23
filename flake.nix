@@ -1,75 +1,48 @@
+# SPDX-License-Identifier: MIT
+
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    darwin.url = "github:LnL7/nix-darwin";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
-
-    # FIXME: switch back to a versioned branch once the fix for building on recent nix-darwin
-    # lands there.
-    utils.url = "github:gytis-ivaskevicius/flake-utils-plus";
-
-    home-manager.url = "github:nix-community/home-manager/release-22.05";
+    home-manager.url = "github:nix-community/home-manager/release-22.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    foundryvtt.url = "github:reckenrode/nix-foundryvtt/buildNpmPackage-PoC";
-#    foundryvtt.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-packages.url = "github:reckenrode/nix-packages";
+    nix-packages.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-unstable-packages.url = "github:reckenrode/nix-packages";
+    nix-unstable-packages.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     verify-archive.url = "github:reckenrode/verify-archive/releases";
     verify-archive.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, utils, nixpkgs, darwin, home-manager, ... }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nix-darwin, home-manager, ... }@inputs:
     let
-      inherit (nixpkgs.lib) recursiveUpdate;
-
-      lib = import ./lib;
-      overlays = import ./overlays { inherit lib; };
-      packages = import ./pkgs;
+      modules = import ./modules/top-level/all-modules.nix { inherit (nixpkgs) lib; };
     in
-    utils.lib.mkFlake rec {
-      inherit self inputs lib;
-
-      channelsConfig.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
-        "crossover"
-        "daisydisk"
-        "dungeondraft"
-        "wonderdraft"
-        "ffxiv"
-        "firefox-bin"
-        "foundryvtt"
-        "ruby-mine"
-        "pycharm-professional"
-        "pathofexile"
-        "pngout"
-        "steam"
-        "vscode"
-      ];
-
-      sharedOverlays = [ overlays ];
-
-      hostDefaults.modules = [
-        ./common/configuration.nix
-      ];
-
-      hosts = lib.mkHosts {
-        inherit self;
-        hostsPath = ./hosts;
+    {
+      darwinConfigurations = {
+        natalia = nix-darwin.lib.darwinSystem {
+          inherit inputs;
+          system = "aarch64-darwin";
+          modules = [
+            ./hosts/natalia/configuration.nix
+            home-manager.darwinModules.home-manager
+          ] ++ modules.darwin;
+        };
       };
 
-      outputsBuilder = channels: {
-        packages =
-          let
-            inherit (channels.nixpkgs.stdenv.hostPlatform) system;
-          in
-          packages { inherit lib channels; } // {
-            inherit (inputs.verify-archive.packages."${system}") verify-archive;
-            inherit (inputs.foundryvtt.packages."${system}") foundryvtt;
-          };
+      homeModules.reckenrode = { ... }: {
+        imports = [ ./home-manager/reckenrode/home.nix ] ++ modules.home;
+        _module.args = { inherit inputs; };
       };
     };
 }
