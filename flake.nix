@@ -24,7 +24,7 @@
     verify-archive.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nix-darwin, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nix-darwin, home-manager, sops-nix, ... }@inputs:
     let
       modules = import ./modules/top-level/all-modules.nix { inherit (nixpkgs) lib; };
     in
@@ -40,9 +40,27 @@
         };
       };
 
-      homeModules.reckenrode = { ... }: {
-        imports = [ ./home-manager/reckenrode/home.nix ] ++ modules.home;
-        _module.args = { inherit inputs; };
+      nixosConfigurations = {
+        zhloe = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/zhloe/configuration.nix
+            home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
+            { _module.args = { inherit inputs; }; }
+          ] ++ modules.nixos;
+        };
+      };
+
+      homeModules = {
+        reckenrode = {
+          imports = [ ./home-manager/reckenrode/home.nix ] ++ modules.home;
+          _module.args = { inherit inputs; };
+        };
+        server-admin = {
+          imports = [ ./home-manager/server-admin/home.nix ] ++ modules.home;
+          _module.args = { inherit inputs; };
+        };
       };
     };
 }
