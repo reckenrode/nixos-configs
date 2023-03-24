@@ -41,6 +41,16 @@
       };
 
       nixosConfigurations = {
+        meteion = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/meteion/configuration.nix
+            home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
+            { _module.args = { inherit inputs; }; }
+          ] ++ modules.nixos;
+        };
+
         zhloe = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
