@@ -38,6 +38,15 @@
             home-manager.darwinModules.home-manager
           ] ++ modules.darwin;
         };
+
+        imac = nix-darwin.lib.darwinSystem {
+          inherit inputs;
+          system = "x86_64-darwin";
+          modules = [
+            ./hosts/imac/configuration.nix
+            home-manager.darwinModules.home-manager
+          ] ++ modules.darwin;
+        };
       };
 
       nixosConfigurations = {
