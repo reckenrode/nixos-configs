@@ -8,6 +8,9 @@
     home-manager.url = "github:nix-community/home-manager/release-22.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    home-manager-unstable.url = "github:nix-community/home-manager";
+    home-manager-unstable.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -27,7 +30,7 @@
     verify-archive.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nix-darwin, home-manager, foundryvtt, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nix-darwin, home-manager, home-manager-unstable, foundryvtt, sops-nix, ... }@inputs:
     let
       modules = import ./modules/top-level/all-modules.nix { inherit (nixpkgs) lib; };
     in
@@ -58,6 +61,16 @@
           modules = [
             ./hosts/meteion/configuration.nix
             home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
+            { _module.args = { inherit inputs; }; }
+          ] ++ modules.nixos;
+        };
+
+        vamp = nixpkgs-unstable.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./hosts/vamp/configuration.nix
+            home-manager-unstable.nixosModules.home-manager
             sops-nix.nixosModules.sops
             { _module.args = { inherit inputs; }; }
           ] ++ modules.nixos;
