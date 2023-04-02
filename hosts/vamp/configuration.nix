@@ -51,12 +51,12 @@
 
 #  sops.defaultSopsFile = ./secrets.yaml;
 
-  system.autoUpgrade = {
-    enable = true;
-    allowReboot = true;
-    dates = "03:00";
-    flake = "github:reckenrode/nixos-configs/refactor";
-  };
+#  system.autoUpgrade = {
+#    enable = true;
+#    allowReboot = true;
+#    dates = "03:00";
+#    flake = "github:reckenrode/nixos-configs/refactor";
+#  };
 
   system.stateVersion = "23.05";
 

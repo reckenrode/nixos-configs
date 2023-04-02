@@ -57,7 +57,7 @@
     enable = true;
     allowReboot = true;
     dates = "03:00";
-    flake = "github:reckenrode/nixos-configs/refactor";
+    flake = "github:reckenrode/nixos-configs";
   };
 
   system.stateVersion = "22.11";

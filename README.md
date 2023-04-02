@@ -8,13 +8,6 @@ actively used anymore.
 The current version of this flake favors explicit configuration and uses modules to share common
 configuration settings.  The modules directory organization is inspired by [RFC-0140][rfc-0140].
 
-## Outputs
-
-* *`darwinConfigurations`* contains the configurations used by my Darwin machines;
-* *`nixosConfigurations`* likewise contains the configurations used by my NixOS machines; and
-* *`homeModules`* contains pre-configured [Home Manager][home-manager] module sets that I use to
-  share common Home Manager configurations between my system configurations.
-
 ## Extra Packages
 
 I no longer maintain packages in this repository.  They have been moved to

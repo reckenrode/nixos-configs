@@ -65,6 +65,12 @@
 
   sops.defaultSopsFile = ./secrets.yaml;
 
+  system.autoUpgrade = {
+    enable = true;
+    allowReboot = true;
+    dates = "03:00";
+    flake = "github:reckenrode/nixos-configs";
+  };
   system.stateVersion = "22.11";
 
   systemd.network.networks.wan = {
