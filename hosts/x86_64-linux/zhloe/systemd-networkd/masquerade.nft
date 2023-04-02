@@ -1,6 +1,0 @@
-table ip nat {
-  chain postrouting {
-    type nat hook postrouting priority 100
-    oifname enp1s0 masquerade
-  }
-}
