@@ -20,11 +20,14 @@
     nix-unstable-packages.url = "github:reckenrode/nix-packages";
     nix-unstable-packages.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
+    foundryvtt.url = "github:reckenrode/nix-foundryvtt";
+    foundryvtt.inputs.nixpkgs.follows = "nixpkgs";
+
     verify-archive.url = "github:reckenrode/verify-archive/releases";
     verify-archive.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nix-darwin, home-manager, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nix-darwin, home-manager, foundryvtt, sops-nix, ... }@inputs:
     let
       modules = import ./modules/top-level/all-modules.nix { inherit (nixpkgs) lib; };
     in
@@ -55,6 +58,17 @@
           modules = [
             ./hosts/meteion/configuration.nix
             home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
+            { _module.args = { inherit inputs; }; }
+          ] ++ modules.nixos;
+        };
+
+        web-server = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/web-server/configuration.nix
+            home-manager.nixosModules.home-manager
+            foundryvtt.nixosModules.foundryvtt
             sops-nix.nixosModules.sops
             { _module.args = { inherit inputs; }; }
           ] ++ modules.nixos;
