@@ -10,7 +10,7 @@
 
   environment.systemPackages = lib.attrValues {
     inherit (pkgs) iterm2;
-    inherit (inputs.nix-packages.packages.${pkgs.system}) netnewswire secretive;
+    inherit (inputs.nix-packages.packages.${pkgs.system}) daisydisk netnewswire secretive;
     inherit (inputs.nix-packages.packages.${pkgs.system}.pkgsx86_64Darwin) steam-mac;
     inherit (inputs.nix-unstable-packages.packages.${pkgs.system}.pkgsx86_64Darwin) ffxiv;
     inherit (inputs.verify-archive.packages.${pkgs.system}) verify-archive;
