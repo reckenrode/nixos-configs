@@ -110,14 +110,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1680096143,
-        "narHash": "sha256-3ljvfWh0PYiy8yvlo7cEAsB78acOSdQLsN6c2GyjY7c=",
-        "type": "git",
-        "url": "file:///Users/reckenrode/Developer/nix-packages"
+        "lastModified": 1680094753,
+        "narHash": "sha256-QZHagHgpxYHmyjuoPHp5lDDhlvYGVckLH/icTyrckHI=",
+        "owner": "reckenrode",
+        "repo": "nix-packages",
+        "rev": "b6b63d80f8e94d68f4978bc57644061195014c19",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///Users/reckenrode/Developer/nix-packages"
+        "owner": "reckenrode",
+        "repo": "nix-packages",
+        "type": "github"
       }
     },
     "nixpkgs": {

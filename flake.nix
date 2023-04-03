@@ -20,7 +20,7 @@
     nix-packages.url = "github:reckenrode/nix-packages";
     nix-packages.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-unstable-packages.url = "/Users/reckenrode/Developer/nix-packages";
+    nix-unstable-packages.url = "github:reckenrode/nix-packages";
     nix-unstable-packages.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
     foundryvtt.url = "github:reckenrode/nix-foundryvtt";
