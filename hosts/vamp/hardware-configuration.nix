@@ -17,17 +17,17 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/4e397c7c-4d51-499c-9dd1-bcdb1ef95e12";
+    { device = "/dev/vda1";
       fsType = "xfs";
     };
 
   fileSystems."/boot/efi" =
-    { device = "/dev/disk/by-uuid/DE14-AC6C";
+    { device = "/dev/vda3";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/52e998e7-2150-4e0c-9a65-52a16690f7a0"; }
+    [ { device = "/dev/vda2"; }
     ];
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
