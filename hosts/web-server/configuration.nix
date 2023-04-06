@@ -12,6 +12,8 @@
     ./reverse-proxy.nix
   ];
 
+  boot.initrd.systemd.enable = true;
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.kernelParams = [ "console=ttyS0,19200n8" ];

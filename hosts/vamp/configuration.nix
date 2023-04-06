@@ -7,6 +7,8 @@
     ./hardware-configuration.nix
   ];
 
+  boot.initrd.systemd.enable = true;
+
   boot.kernelPackages = pkgs.linuxPackages;
 
   boot.loader.systemd-boot.enable = true;

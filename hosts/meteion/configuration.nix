@@ -9,6 +9,8 @@
     ./systemd-networkd.nix
   ];
 
+  boot.initrd.systemd.enable = true;
+
   # Use the LTS kernel from nixpkgs-unstable to ensure compatibility with the ZFS modules.
   # FIXME: Use the stable LTS kernel once 23.05 is released.
   boot.kernelPackages = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.linuxPackages;
