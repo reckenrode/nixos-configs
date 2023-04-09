@@ -5,6 +5,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./file-server.nix
     ./samba.nix
     ./systemd-networkd.nix
   ];
