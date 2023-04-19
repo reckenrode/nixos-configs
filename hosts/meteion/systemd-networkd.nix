@@ -3,7 +3,7 @@
 {
   systemd.network.networks.wlan = {
     enable = true;
-    matchConfig.Name = "wlan0";
+    matchConfig.Name = "wlan";
     networkConfig = {
       DHCP = "ipv4";
       IPv6PrivacyExtensions = true;
