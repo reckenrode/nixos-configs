@@ -17,7 +17,7 @@ in
   security.acme = {
     acceptTerms = true;
     certs.${domain} = {
-      postRun = "systemctl reload caddy"
+      postRun = "systemctl reload caddy";
     };
     defaults = {
       credentialsFile = "/run/secrets/linode";
@@ -51,7 +51,6 @@ in
       }
     '';
   };
-
 
   sops.secrets.linode = {
     mode = "400";
