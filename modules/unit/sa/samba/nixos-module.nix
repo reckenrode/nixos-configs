@@ -23,7 +23,6 @@
       securityType = "user";
       extraConfig = ''
         # Performance optimizations
-        socket options = TCP_NODELAY IPTOS_LOWDELAY
         use sendfile = yes
         aio read size = 1
         aio write size = 1
