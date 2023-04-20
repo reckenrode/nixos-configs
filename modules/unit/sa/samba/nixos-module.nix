@@ -26,6 +26,7 @@
         use sendfile = yes
         aio read size = 1
         aio write size = 1
+        min receivefile size = 16384
 
         # Mac-friendly client settings
         #vfs objects = zfsacl catia fruit streams_xattr
