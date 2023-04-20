@@ -4,12 +4,9 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [
-      (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
+  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
@@ -69,8 +66,11 @@
     };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/377435b9-edbd-4a2d-961b-f8226b972009"; }];
+    [
+      { device = "/dev/disk/by-uuid/377435b9-edbd-4a2d-961b-f8226b972009"; }
+    ];
 
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 }
