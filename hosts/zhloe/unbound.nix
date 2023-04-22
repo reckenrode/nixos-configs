@@ -7,14 +7,19 @@ let
 in
 {
   networking.nftables.ruleset = ''
+    table inet nat {
+      chain prerouting { # This is necessary because some Android phones hardcode the DNS servers.
+        type nat hook prerouting priority 0; policy accept;
+        iifname enp2s0 meta l4proto { tcp, udp } ip6 saddr {fda9:51fe:3bbf:c9f::/64, fe80::/64} ip6 daddr != {fda9:51fe:3bbf:c9f::/64, fe80::/64} th dport { domain, 853 } redirect
+        iifname enp2s0 meta l4proto { tcp, udp } ip  saddr                     192.168.238.0/24 ip  daddr !=                     192.168.238.0/24 th dport { domain, 853 } redirect
+      }
+    }
+
     table inet filter {
       chain input {
-        iifname enp2s0 ip6 saddr fda9:51fe:3bbf:c9f::/64 tcp dport { 853, https } accept
-        iifname enp2s0 ip6 saddr fda9:51fe:3bbf:c9f::/64 udp dport { 853, https } accept
-        iifname enp2s0 ip  saddr        192.168.238.0/24 tcp dport domain accept
-        iifname enp2s0 ip  saddr        192.168.238.0/24 udp dport domain accept
-        iifname enp2s0 ip6 saddr               fe80::/64 tcp dport domain accept
-        iifname enp2s0 ip6 saddr               fe80::/64 udp dport domain accept
+        iifname enp2s0 meta l4proto { tcp, udp } ip6 saddr fda9:51fe:3bbf:c9f::/64 th dport { domain, https, 853 } accept
+        iifname enp2s0 meta l4proto { tcp, udp } ip  saddr        192.168.238.0/24 th dport { domain, 853 } accept
+        iifname enp2s0 meta l4proto { tcp, udp } ip6 saddr               fe80::/64 th dport { domain, 853 } accept
       }
     }
   '';
