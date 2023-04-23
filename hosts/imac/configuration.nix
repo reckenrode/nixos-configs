@@ -20,7 +20,7 @@
   ];
 
   home-manager.users =  {
-    reckenrode = inputs.self.homeModules.sys-admin;
+    reckenrode = inputs.self.homeModules.server-admin;
 
     weiweilin = { pkgs, ... }: {
       home.packages = lib.attrValues { inherit (pkgs) python3Full poetry; };
