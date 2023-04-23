@@ -3,11 +3,12 @@
 { pkgs, lib, inputs, ... }:
 
 {
-  environment.darwinConfig = inputs.self + /hosts/natalia/configuration.nix;
+  environment.darwinConfig = inputs.self + /hosts/imac/configuration.nix;
+
+  environment.defaultPackages = lib.attrValues { inherit (pkgs) neovim perl rsync; };
 
   environment.systemPackages = lib.attrValues {
-    inherit (pkgs) iterm2
-      bzip2 coreutils curl diffutils findutils gnutar gzip less openssh time unzip zip zstd;
+    inherit (pkgs) iterm2;
     inherit (inputs.verify-archive.packages.${pkgs.system}) verify-archive;
   };
 
