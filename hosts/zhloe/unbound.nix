@@ -44,7 +44,9 @@ in
 
           interface = [
             "192.168.238.1"
+            "192.168.238.1@853"
             "fe80::2e0:67ff:fe15:ced3%enp2s0"
+            "fe80::2e0:67ff:fe15:ced3%enp2s0@853"
             "fda9:51fe:3bbf:c9f:2e0:67ff:fe15:ced3@443"
             "fda9:51fe:3bbf:c9f:2e0:67ff:fe15:ced3@853"
           ];
