@@ -25,6 +25,8 @@
     weiweilin = { pkgs, ... }: {
       home.packages = lib.attrValues { inherit (pkgs) python3Full poetry; };
 
+      home.stateVersion = "22.11";
+
       programs.git = {
         enable = true;
         userEmail = "stormer.boxes-06@icloud.com";
