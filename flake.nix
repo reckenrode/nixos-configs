@@ -45,7 +45,7 @@
           ] ++ modules.darwin;
         };
 
-        imac = nix-darwin.lib.darwinSystem {
+        iMac = nix-darwin.lib.darwinSystem {
           inherit inputs;
           system = "x86_64-darwin";
           modules = [
