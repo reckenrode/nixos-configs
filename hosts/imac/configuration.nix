@@ -21,7 +21,20 @@
   ];
 
   home-manager.users =  {
-    reckenrode = inputs.self.homeModules.server-admin;
+    reckenrode = lib.mkMerge [
+      inputs.self.homeModules.server-admin
+      {
+        programs.git = {
+          enable = true;
+          userEmail = "randy@largeandhighquality.com";
+          userName = "Randy Eckenrode";
+          extraConfig = {
+            init = { defaultBranch = "main"; };
+            credential.helper = "${pkgs.git}/bin/git-credential-osxkeychain";
+          };
+        };
+      }
+    ];
 
     weiweilin = { pkgs, ... }: {
       home.packages = lib.attrValues { inherit (pkgs) python3Full poetry; };
