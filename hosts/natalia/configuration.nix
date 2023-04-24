@@ -2,6 +2,15 @@
 
 { pkgs, lib, inputs, ... }:
 
+let
+  nonfree-unstable = import inputs.nixpkgs-unstable {
+    localSystem = pkgs.system;
+    config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+      "1password"
+      "1password-cli"
+    ];
+  };
+in
 {
   environment.darwinConfig = inputs.self + /hosts/natalia/configuration.nix;
 
@@ -25,7 +34,11 @@
   ];
 
   home-manager.users = { inherit (inputs.self.homeModules) reckenrode; };
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "vscode" ];
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "1password"
+    "1password-cli"
+    "vscode"
+  ];
 
   networking.hostName = "natalia";
 
@@ -47,6 +60,16 @@
 
     generateRegistryFromInputs = true;
     generateNixPathFromInputs = true;
+  };
+
+  programs._1password = {
+    enable = true;
+    package = nonfree-unstable._1password;
+  };
+
+  programs._1password-gui = {
+    enable = true;
+    package = nonfree-unstable._1password-gui;
   };
 
   programs = {
