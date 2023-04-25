@@ -8,7 +8,7 @@ let
     else config.system.build.applications + /Applications;
 
   baseDir = if config ? home
-    then "$HOME/Applications/Home Manager Apps"
+    then "${config.home.homeDirectory}/Applications/Home Manager Apps"
     else "/Applications/Nix Apps";
 
   copyScript = lib.optionalString (config ? system) ''
