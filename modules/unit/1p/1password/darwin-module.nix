@@ -18,7 +18,7 @@ in
       enable = lib.mkEnableOption "Whether to enable the 1Password CLI tool.";
       copyToUsrLocal = lib.mkOption {
         description = "Copy `op` to `/usr/local/bin`. This is required to share authentication with the desktop app.";
-        type = types.boolean;
+        type = types.bool;
         default = true;
       };
       package = lib.mkOption {
@@ -31,7 +31,7 @@ in
       enable = lib.mkEnableOption "Whether to enable the 1Password GUI application.";
       copyToApplications = lib.mkOption {
         description = "Copy `1Password.app` to `/Applications`. This is required to share authentication with extensions and the CLI tool.";
-        type = types.boolean;
+        type = types.bool;
         default = true;
       };
       package = lib.mkOption {
@@ -45,22 +45,42 @@ in
   config =
     let
       _1password-cli-cfg = lib.mkIf cfg-cli.enable {
-        system.activationScripts.postActivation.text = ''
-          mkdir -p /usr/local/bin
-          cp ${lib.getBin cfg-cli.package}/bin/op /usr/local/bin/op
-        '';
+        environment.systemPackages = lib.optional (!cfg-cli.copyToUsrLocal) cfg-cli.package;
+
+        system.activationScripts.postActivation.text =
+          lib.optionalString cfg-cli.copyToUsrLocal ''
+            install -o root -g wheel -m0555 -D \
+              ${lib.getBin cfg-cli.package}/bin/op /usr/local/bin/op
+          '';
       };
       _1password-gui-cfg = lib.mkIf cfg-gui.enable {
-        system.activationScripts.postActivation.text = ''
-          appsDir="/Applications/Nix Apps"
-          if [ -d "$appsDir" ]; then
-            rm -rf "$appsDir/1Password.app"
-          fi
-          rsyncFlags='--archive --checksum --chmod=-w --copy-unsafe-links --delete'
-          ${lib.getBin pkgs.rsync}/bin/rsync $rsyncFlags \
-            ${cfg-gui.package}/Applications/1Password.app/ /Applications/1Password.app
-          chmod a-w -R /Applications/1Password.app
-        '';
+        environment.systemPackages = lib.optional (!cfg-gui.copyToApplications) cfg-gui.package;
+
+        system.activationScripts.postActivation.text =
+          lib.optionalString cfg-gui.copyToApplications ''
+            appsDir="/Applications/Nix Apps"
+            if [ -d "$appsDir" ]; then
+              rm -rf "$appsDir/1Password.app"
+            fi
+
+            app="/Applications/1Password.app"
+            if [ -L "$app" ] || [ -f "$app"  ]; then
+              rm "$app"
+            fi
+            install -o root -g wheel -m0555 -d "$app"
+
+            rsyncFlags=(
+              --archive
+              --checksum
+              --chmod=-w
+              --copy-unsafe-links
+              --delete
+              --no-group
+              --no-owner
+            )
+            ${lib.getBin pkgs.rsync}/bin/rsync "''${rsyncFlags[@]}" \
+              ${cfg-gui.package}/Applications/1Password.app/ /Applications/1Password.app
+          '';
       };
     in
     lib.mkMerge [ _1password-cli-cfg _1password-gui-cfg ];
