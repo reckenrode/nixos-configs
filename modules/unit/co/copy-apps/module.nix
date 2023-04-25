@@ -17,10 +17,18 @@ let
     appsSrc="${appsSrc}"
     if [ -d "$appsSrc" ]; then
       baseDir="${baseDir}"
-      rsyncArgs="--archive --checksum --chmod=-w --copy-unsafe-links --delete"
+      rsyncFlags=(
+        --archive
+        --checksum
+        --chmod=-w
+        --copy-unsafe-links
+        --delete
+        --no-group
+        --no-owner
+      )
       $DRY_RUN_CMD mkdir -p "$baseDir"
       $DRY_RUN_CMD ${lib.getBin pkgs.rsync}/bin/rsync \
-        ''${VERBOSE_ARG:+-v} $rsyncArgs "$appsSrc/" "$baseDir"
+        ''${VERBOSE_ARG:+-v} "''${rsyncFlags[@]}" "$appsSrc/" "$baseDir"
     fi
   '';
 
