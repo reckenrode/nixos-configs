@@ -44,7 +44,7 @@
       '';
     };
 
-    sops.secrets.smbpasswd.mode = "400";
+    sops.secrets.smbpasswd.mode = "600";
 
     system.activationScripts.sambaUserSetup = {
       text = ''

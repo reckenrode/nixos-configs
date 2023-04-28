@@ -6,71 +6,57 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "sd_mod" "sdhci_pci" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  boot.zfs.forceImportRoot = false;
+
+  services.udev.extraRules = ''
+    ACTION=="add|change", KERNEL=="sd[a-z]*[0-9]*|mmcblk[0-9]*p[0-9]*|nvme[0-9]*n[0-9]*p[0-9]*", ENV{ID_FS_TYPE}=="zfs_member", ATTR{../queue/scheduler}="none"
+  '';
+  services.zfs.autoScrub.enable = true;
+  services.zfs.autoScrub.pools = [ "meteia" "ultima-thule" ];
+
   fileSystems."/" =
-    {
-      device = "meteia/system/mnt-root";
-      fsType = "zfs";
-    };
-
-  fileSystems."/nix" =
-    {
-      device = "meteia/system/nix";
-      fsType = "zfs";
-    };
-
-  fileSystems."/home" =
-    {
-      device = "meteia/user/home";
-      fsType = "zfs";
-    };
-
-  fileSystems."/root" =
-    {
-      device = "meteia/user/root";
+    { device = "ultima-thule/system/root";
       fsType = "zfs";
     };
 
   fileSystems."/boot/efi" =
-    {
-      device = "/dev/disk/by-uuid/0DDE-9C1F";
+    { device = "/dev/disk/by-uuid/4FAA-B3D4";
       fsType = "vfat";
     };
 
-  fileSystems."/srv/samba/weiweilin" =
-    {
-      device = "ultima-thule/user/weiweilin";
+  fileSystems."/home" =
+    { device = "ultima-thule/user/home";
       fsType = "zfs";
     };
 
-  fileSystems."/srv/samba/reckenrode" =
-    {
-      device = "ultima-thule/user/reckenrode";
+  fileSystems."/nix" =
+    { device = "ultima-thule/local/nix";
       fsType = "zfs";
     };
 
-  fileSystems."/srv/samba/tabletop-group" =
-    {
-      device = "ultima-thule/user/tabletop-group";
+  fileSystems."/var" =
+    { device = "ultima-thule/system/var";
+      fsType = "zfs";
+    };
+
+  fileSystems."/srv/samba" =
+    { device = "meteia/samba";
       fsType = "zfs";
     };
 
   fileSystems."/srv/time-machine" =
-    {
-      device = "ultima-thule/time-machine";
+    { device = "meteia/time-machine";
       fsType = "zfs";
     };
 
-  swapDevices =
-    [
-      { device = "/dev/disk/by-uuid/377435b9-edbd-4a2d-961b-f8226b972009"; }
-    ];
+  swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 }
