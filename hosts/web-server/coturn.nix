@@ -6,20 +6,20 @@ let
   turnHostName = "turn.largeandhighquality.com";
 in
 {
-  networking.nftables.ruleset =
-    let
-      listeningPort = builtins.toString config.services.coturn.tls-listening-port;
-      minPort = builtins.toString config.services.coturn.min-port;
-      maxPort = builtins.toString config.services.coturn.max-port;
-    in
-    ''
-      table inet filter {
-        chain input {
-          tcp dport { ${listeningPort}, ${minPort} - ${maxPort} } accept
-          udp dport { ${listeningPort}, ${minPort} - ${maxPort} } accept
-        }
-      }
-    '';
+#  networking.nftables.ruleset =
+#    let
+#      listeningPort = builtins.toString config.services.coturn.tls-listening-port;
+#      minPort = builtins.toString config.services.coturn.min-port;
+#      maxPort = builtins.toString config.services.coturn.max-port;
+#    in
+#    ''
+#      table inet filter {
+#        chain input {
+#          tcp dport { ${listeningPort}, ${minPort} - ${maxPort} } accept
+#          udp dport { ${listeningPort}, ${minPort} - ${maxPort} } accept
+#        }
+#      }
+#    '';
 
   security.acme = {
     acceptTerms = true;
@@ -36,7 +36,7 @@ in
       certPath = "/var/lib/acme/${turnHostName}";
     in
     {
-      enable = true;
+      enable = false;
       cert = "${certPath}/fullchain.pem";
       pkey = "${certPath}/key.pem";
       no-tcp = true;
