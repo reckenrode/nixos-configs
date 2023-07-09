@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: MIT
 
-{ lib, pkgs, ... }:
+{ lib, pkgs, config, ... }:
 
 let
   inherit (lib) concatMapStringsSep foldl';
@@ -12,23 +12,26 @@ in
     let
       fishUserPaths = lib.optional pkgs.stdenv.hostPlatform.isLinux "/run/wrappers/bin"
         ++ [
-          "/nix/var/nix/profiles/per-user/$USER/profile/bin"
-          "/etc/profiles/per-user/$USER/bin"
+          "/nix/var/nix/profiles/per-user/${config.home.username}/profile/bin"
+          "/etc/profiles/per-user/${config.home.username}/bin"
           "/nix/var/nix/profiles/default/bin"
           "/run/current-system/sw/bin"
         ];
 
-      fishHomePath = "$HOME/.local/bin";
+      fishHomePath = config.home.homeDirectory + "/.local/bin";
 
       toFishList = concatMapStringsSep " " toQuotedPath;
-      toQuotedPath = path: "\"${path}\"";
+      toQuotedPath = lib.flip lib.pipe [
+        (lib.replaceStrings [ "'" ] [ "\\'" ])
+        (path: "'${path}'")
+      ];
     in
     ''
       set -g fish_user_paths ${toFishList fishUserPaths}
       fish_add_path -g --path --append --move ${toQuotedPath fishHomePath}
       # Remove home-local path from $PATH
-      contains -i "$HOME/.nix-profile/bin" $PATH > /dev/null \
-      && set -g -e PATH[$(contains -i "$HOME/.nix-profile/bin" $PATH)]
+      contains -i '${config.home.homeDirectory}/.nix-profile/bin' $PATH > /dev/null \
+      && set -g -e PATH[$(contains -i '${config.home.homeDirectory}/.nix-profile/bin' $PATH)]
     '';
 
   programs.fish.functions = {
