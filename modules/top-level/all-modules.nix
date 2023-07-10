@@ -27,10 +27,10 @@ let
       (filter pathExists)
     ];
 
-  allModules = enumerateModules { basePath = ../unit; };
+  allModules = enumerateModules { basePath = ../by-name; };
 in
 {
-  darwin = allModules ++ enumerateModules { prefix = "darwin-"; basePath = ../unit; };
-  nixos = allModules ++ enumerateModules { prefix = "nixos-"; basePath = ../unit; };
-  home = enumerateModules { prefix = "hm-"; basePath = ../unit; };
+  darwin = allModules ++ enumerateModules { prefix = "darwin-"; basePath = ../by-name; };
+  nixos = allModules ++ enumerateModules { prefix = "nixos-"; basePath = ../by-name; };
+  home = enumerateModules { prefix = "hm-"; basePath = ../by-name; };
 }
