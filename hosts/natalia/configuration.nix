@@ -33,7 +33,7 @@ in
     }
   ];
 
-  home-manager.users = { inherit (inputs.self.homeModules) reckenrode; };
+  home-manager.users = { inherit (inputs.self.hmModules) reckenrode; };
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "1password"
     "1password-cli"

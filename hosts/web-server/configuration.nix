@@ -31,7 +31,7 @@
     device = "/dev/sda";
   };
 
-  home-manager.users.reckenrode = inputs.self.homeModules.server-admin;
+  home-manager.users.reckenrode = inputs.self.hmModules.server-admin;
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "pngout" ];
 

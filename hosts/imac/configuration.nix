@@ -22,7 +22,7 @@
 
   home-manager.users =  {
     reckenrode = lib.mkMerge [
-      inputs.self.homeModules.server-admin
+      inputs.self.hmModules.server-admin
       {
         programs.git = {
           enable = true;

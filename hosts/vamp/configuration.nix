@@ -21,7 +21,7 @@
     efiSysMountPoint = "/boot/efi";
   };
 
-  home-manager.users.reckenrode = inputs.self.homeModules.server-admin;
+  home-manager.users.reckenrode = inputs.self.hmModules.server-admin;
 
   networking.hostName = "vamp";
 
