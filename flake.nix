@@ -24,8 +24,7 @@
     nix-unstable-packages.url = "github:reckenrode/nix-packages";
     nix-unstable-packages.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
-    foundryvtt.url = "github:reckenrode/nix-foundryvtt";
-    foundryvtt.inputs.nixpkgs.follows = "nixpkgs";
+    foundryvtt.url = "github:reckenrode/nix-foundryvtt?ref=foundry-update";
 
     verify-archive.url = "github:reckenrode/verify-archive/releases";
     verify-archive.inputs.nixpkgs.follows = "nixpkgs";
