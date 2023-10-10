@@ -5,16 +5,15 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1695505579,
-        "narHash": "sha256-Dcl7lpMfCaY39ltroaPbyAIFbb4us6Dj+BS9CQwdXiU=",
+        "lastModified": 1696777017,
+        "narHash": "sha256-yCqwecHKXGXjAlS5JrtVO2EAkFCYWqvLF+ER0WebZ6g=",
         "owner": "reckenrode",
         "repo": "nix-foundryvtt",
-        "rev": "e7c459a76b09d1b38ed97adfd013911a0478c5ff",
+        "rev": "9b880a901139a65bebb72d359425d45c7f5224b2",
         "type": "github"
       },
       "original": {
         "owner": "reckenrode",
-        "ref": "foundry-update",
         "repo": "nix-foundryvtt",
         "type": "github"
       }
