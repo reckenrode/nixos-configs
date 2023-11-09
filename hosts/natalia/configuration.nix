@@ -55,7 +55,7 @@ in
 
     settings = {
       extra-platforms = [ "x86_64-darwin" ];
-      sandbox = "relaxed";
+      sandbox = false;
     };
 
     generateRegistryFromInputs = true;
