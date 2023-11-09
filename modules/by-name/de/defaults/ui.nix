@@ -15,5 +15,9 @@
     targets.darwin.defaults."com.apple.universalaccess" = {
       showWindowTitlebarIcons = true;
     };
+
+    targets.darwin.defaults."com.apple.WindowManager" = {
+      EnableStandardClickToShowDesktop = false;
+    };
   };
 }
