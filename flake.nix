@@ -35,6 +35,15 @@
     in
     {
       darwinConfigurations = {
+        josette = nix-darwin.lib.darwinSystem {
+          inherit inputs;
+          system = "aarch64-darwin";
+          modules = [
+            ./hosts/natalia/configuration.nix
+            home-manager.darwinModules.home-manager
+          ] ++ modules.darwin;
+        };
+
         natalia = nix-darwin.lib.darwinSystem {
           inherit inputs;
           system = "aarch64-darwin";
