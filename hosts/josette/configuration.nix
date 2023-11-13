@@ -12,7 +12,7 @@ let
   };
 in
 {
-  environment.darwinConfig = inputs.self + /hosts/natalia/configuration.nix;
+  environment.darwinConfig = inputs.self + /hosts/josette/configuration.nix;
 
   environment.defaultPackages = lib.attrValues { inherit (pkgs) neovim perl rsync; };
   environment.variables.EDITOR = "${lib.getBin pkgs.neovim}/bin/nvim";
@@ -28,7 +28,7 @@ in
   hardware.printers = [
     {
       name = "HP_Color_LaserJet_Pro_M454dw";
-      icon = inputs.self + /hosts/natalia/M453dw.icns;
+      icon = inputs.self + /hosts/josette/M453dw.icns;
       suppliesUrl = "https://jihli.infra.largeandhighquality.com/#hId-pgConsumables";
     }
   ];
@@ -40,7 +40,7 @@ in
     "vscode"
   ];
 
-  networking.hostName = "natalia";
+  networking.hostName = "josette";
 
   nix = {
     configureBuildUsers = true;
@@ -56,21 +56,22 @@ in
     settings = {
       extra-platforms = [ "x86_64-darwin" ];
       sandbox = false;
+      use-xdg-base-directories = true;
     };
 
     generateRegistryFromInputs = true;
     generateNixPathFromInputs = true;
   };
 
-  programs._1password = {
-    enable = true;
-    package = nonfree-unstable._1password;
-  };
+#  programs._1password = {
+#    enable = true;
+#    package = nonfree-unstable._1password;
+#  };
 
-  programs._1password-gui = {
-    enable = true;
-    package = nonfree-unstable._1password-gui;
-  };
+#  programs._1password-gui = {
+#    enable = true;
+#    package = nonfree-unstable._1password-gui;
+#  };
 
   programs = {
     bash.enable = false;
