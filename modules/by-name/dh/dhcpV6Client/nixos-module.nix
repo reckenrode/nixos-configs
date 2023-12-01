@@ -15,7 +15,7 @@ in
       defaultText = "[]";
       example = ''[ "enp1s0" ]'';
       description = "The interfaces for which to set up firewall rules to allow DHCPv6";
-      type = types.listOf types.string;
+      type = types.listOf types.str;
     };
   };
 
