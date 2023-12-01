@@ -14,7 +14,7 @@
 
   boot.initrd.systemd.enable = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   boot.kernelParams = [ "console=ttyS0,19200n8" ];
   boot.loader.grub.extraConfig = ''
