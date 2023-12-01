@@ -9,7 +9,7 @@ let
 in
 {
   services.foundryvtt = {
-    enable = true;
+    enable = false;
     hostName = "vtt.largeandhighquality.com";
     minifyStaticFiles = true;
     package = foundryvtt;
