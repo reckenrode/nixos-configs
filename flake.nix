@@ -2,10 +2,10 @@
 
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-23.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager?ref=release-22.11";
+    home-manager.url = "github:nix-community/home-manager?ref=release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager-unstable.url = "github:nix-community/home-manager";
@@ -39,7 +39,7 @@
           inherit inputs;
           system = "aarch64-darwin";
           modules = [
-            ./hosts/natalia/configuration.nix
+            ./hosts/josette/configuration.nix
             home-manager.darwinModules.home-manager
           ] ++ modules.darwin;
         };
