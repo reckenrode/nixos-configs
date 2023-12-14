@@ -110,6 +110,16 @@ in
           };
         };
       };
+      "dotnet.dotnetPath" = pkgs.dotnet-sdk_8;
+      "FSharp.dotnetRoot" = pkgs.dotnet-sdk_8;
+      "omnisharp.dotnetPath" = pkgs.dotnet-sdk_8;
+      "omnisharp.sdkPath" = pkgs.dotnet-sdk_8;
+      "dotnetAcquisitionExtension.existingDotnetPath" = [
+        {
+          extensionId = "ms-dotnettools.csharp";
+          path = "${lib.getBin pkgs.dotnet-sdk_8}/bin/dotnet";
+        }
+      ];
       "explorer.confirmDelete" = false;
       "explorer.confirmDragAndDrop" = false;
       "explorer.sortOrder" = "mixed";
