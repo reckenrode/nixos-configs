@@ -36,7 +36,7 @@ in
   };
 
   home.packages = lib.attrValues {
-    inherit (pkgs) ripgrep waifu2x-converter-cpp;
+    inherit (pkgs) btop ripgrep waifu2x-converter-cpp;
     inherit (pkgs.darwin) trash;
   } ++ map copyOf [ pkgs.alegreya pkgs.alegreya-sans ];
 
