@@ -61,6 +61,8 @@ in
 
   programs.gpg.enable = true;
 
+  programs.neovim.enable = true;
+
   programs.ssh = {
     enable = true;
     extraConfig =
