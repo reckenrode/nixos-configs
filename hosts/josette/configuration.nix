@@ -63,15 +63,15 @@ in
     generateNixPathFromInputs = true;
   };
 
-#  programs._1password = {
-#    enable = true;
-#    package = nonfree-unstable._1password;
-#  };
+  programs._1password = {
+    enable = true;
+    package = nonfree-unstable._1password;
+  };
 
-#  programs._1password-gui = {
-#    enable = true;
-#    package = nonfree-unstable._1password-gui;
-#  };
+  programs._1password-gui = {
+    enable = true;
+    package = nonfree-unstable._1password-gui;
+  };
 
   programs = {
     bash.enable = false;
