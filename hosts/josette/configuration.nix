@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: MIT
 
-{ pkgs, lib, inputs, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 let
   nonfree-unstable = import inputs.nixpkgs-unstable {
@@ -42,6 +42,27 @@ in
 
   networking.hostName = "josette";
 
+  environment.etc."ssh/ssh_config.d/101-linux-builder.conf".text = ''
+    Match User builder Host meteion.infra.largeandhighquality.com
+      IdentityAgent ${config.users.users.reckenrode.home}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+      Port 562
+  '';
+
+  nix = {
+    distributedBuilds = true;
+    buildMachines = [
+      {
+        hostName = "meteion.infra.largeandhighquality.com";
+        protocol = "ssh-ng";
+        sshUser = "builder";
+        publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUZqSTEwaVM0VklNMVpuOUxnV0wydG1YY0lhUTROTGtjS1JUTkNQSjQ0U2ggcm9vdEBtZXRlaW9uCg==";
+
+        supportedFeatures = [ "kvm" "benchmark" "big-parallel" ];
+        system = "x86_64-linux";
+      }
+    ];
+  };
+
   nix = {
     configureBuildUsers = true;
 
@@ -55,7 +76,9 @@ in
 
     settings = {
       extra-platforms = [ "x86_64-darwin" ];
+      extra-trusted-users = [ "reckenrode" ];
       sandbox = false;
+      builders-use-substitutes = true;
       use-xdg-base-directories = true;
     };
 
