@@ -5,7 +5,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-23.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager?ref=release-23.11";
+    lix-module.url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
+    lix-module.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager.url = "github:nix-community/home-manager?ref=release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager-unstable.url = "github:nix-community/home-manager";
@@ -29,7 +32,7 @@
     verify-archive.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nix-darwin, home-manager, home-manager-unstable, foundryvtt, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nix-darwin, lix-module, home-manager, home-manager-unstable, foundryvtt, sops-nix, ... }@inputs:
     let
       modules = import ./modules/top-level/all-modules.nix { inherit (nixpkgs) lib; };
     in
