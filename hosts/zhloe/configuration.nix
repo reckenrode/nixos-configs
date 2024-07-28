@@ -32,6 +32,21 @@
   networking.nftables.enable = true;
 
   nix = {
+    distributedBuilds = true;
+    buildMachines = [
+      {
+        hostName = "meteion.infra.largeandhighquality.com";
+        protocol = "ssh-ng";
+        sshUser = "builder";
+        sshKey = "/root/.ssh/id_meteon_builder";
+        publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUZqSTEwaVM0VklNMVpuOUxnV0wydG1YY0lhUTROTGtjS1JUTkNQSjQ0U2ggcm9vdEBtZXRlaW9uCg==";
+        supportedFeatures = [ "kvm" "benchmark" "big-parallel" ];
+        system = "x86_64-linux";
+      }
+    ];
+  };
+
+  nix = {
     gc = {
       automatic = true;
       dates = "weekly";
@@ -45,6 +60,11 @@
   };
 
   programs.fish.enable = true;
+
+  programs.ssh.extraConfig = lib.mkAfter ''
+    Host meteion.infra.largeandhighquality.com
+      Port 562
+  '';
 
   security.sudo = {
     execWheelOnly = true;
