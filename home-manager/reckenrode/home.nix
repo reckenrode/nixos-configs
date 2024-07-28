@@ -9,13 +9,17 @@ let
     '';
   });
 
-  mkSshConfig = { host ? hostname, hostname, port ? 562, user ? "reckenrode", identityFile ? null }: {
+  mkSshConfig = {
+    host ? hostname,
+    hostname,
+    port ? 562,
+    user ? "reckenrode",
+    identityAgent,
+  }: {
     name = host;
     value = {
       inherit hostname port user;
-    } // lib.optionalAttrs (identityFile != null) {
-      identityFile = [ "${identityFile}" ];
-      identitiesOnly = true;
+      extraOptions.IdentityAgent = identityAgent;
     };
   };
 
@@ -65,20 +69,20 @@ in
 
   programs.ssh = {
     enable = true;
-    extraConfig =
+    matchBlocks =
       let
-        secretiveAgentSocket = config.home.homeDirectory
-          + "/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh";
+        secretive = "~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh";
+        _1password = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
       in
-      "IdentityAgent ${secretiveAgentSocket}";
-    matchBlocks = builtins.listToAttrs (map mkSshConfig [
-      { hostname = "github.com"; port = 22; }
-      { hostname = "imac.local"; port = 22; }
-      { hostname = "largeandhighquality.com"; }
-      { hostname = "khloe.infra.largeandhighquality.com"; }
-      { hostname = "meteion.infra.largeandhighquality.com"; }
-      { hostname = "zhloe.infra.largeandhighquality.com"; }
-    ]);
+      builtins.listToAttrs (map mkSshConfig [
+        { hostname = "github.com"; port = 22; identityAgent = _1password; }
+        { hostname = "imac.local"; port = 22; identityAgent = secretive; }
+        { hostname = "largeandhighquality.com"; identityAgent = secretive; }
+        { hostname = "khloe.infra.largeandhighquality.com"; identityAgent = secretive; }
+        { hostname = "meteion.infra.largeandhighquality.com"; identityAgent = secretive; }
+        { hostname = "ssh.pijul.com"; port = 22; identityAgent = _1password; }
+        { hostname = "zhloe.infra.largeandhighquality.com"; identityAgent = secretive; }
+      ]);
   };
 
   programs.vscode = {
