@@ -56,9 +56,16 @@ in
         protocol = "ssh-ng";
         sshUser = "builder";
         publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUZqSTEwaVM0VklNMVpuOUxnV0wydG1YY0lhUTROTGtjS1JUTkNQSjQ0U2ggcm9vdEBtZXRlaW9uCg==";
-
         supportedFeatures = [ "kvm" "benchmark" "big-parallel" ];
         system = "x86_64-linux";
+      }
+      {
+        hostName = "meteion.infra.largeandhighquality.com";
+        protocol = "ssh-ng";
+        sshUser = "builder";
+        publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUZqSTEwaVM0VklNMVpuOUxnV0wydG1YY0lhUTROTGtjS1JUTkNQSjQ0U2ggcm9vdEBtZXRlaW9uCg==";
+        supportedFeatures = [ "kvm" "benchmark" "big-parallel" ];
+        system = "i686-linux";
       }
     ];
   };
