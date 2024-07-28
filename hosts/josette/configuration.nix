@@ -84,6 +84,7 @@ in
     settings = {
       extra-platforms = [ "x86_64-darwin" ];
       extra-trusted-users = [ "reckenrode" ];
+      max-jobs = 4;
       sandbox = false;
       builders-use-substitutes = true;
       use-xdg-base-directories = true;
