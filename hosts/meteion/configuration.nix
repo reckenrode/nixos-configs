@@ -40,6 +40,8 @@
       options = "--delete-older-than 30d";
     };
 
+    settings.max-jobs = 3;
+
     optimise.automatic = true;
 
     generateRegistryFromInputs = true;
