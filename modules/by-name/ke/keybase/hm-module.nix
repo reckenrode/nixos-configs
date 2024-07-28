@@ -1,6 +1,11 @@
 # SPDX-License-Identifier: MIT
 
-{ pkgs, lib, config, ...}:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   inherit (lib) types;
@@ -22,7 +27,11 @@ in
       enable = true;
       config = {
         Program = keybase;
-        ProgramArguments = [ keybase "--log-file=${logPath}/keybase.service.log" "service" ];
+        ProgramArguments = [
+          keybase
+          "--log-file=${logPath}/keybase.service.log"
+          "service"
+        ];
         EnvironmentVariables = {
           KEYBASE_LABEL = "keybase.service";
           KEYBASE_SERVICE_TYPE = "launchd";

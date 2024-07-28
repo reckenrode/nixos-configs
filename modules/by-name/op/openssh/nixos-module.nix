@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: MIT
 
-{ config, lib, ... }:
+{ lib, config, ... }:
 
 let
   inherit (lib) concatMapStringsSep;

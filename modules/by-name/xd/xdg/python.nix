@@ -1,9 +1,11 @@
 # SPDX-License-Identifier: MIT
 
-{ config, lib, inputs, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 
 {
-  config = lib.mkIf config.xdg.enable {
-    home.sessionVariables.PYTHONSTARTUP = ./pythonstartup.py;
-  };
+  config = lib.mkIf config.xdg.enable { home.sessionVariables.PYTHONSTARTUP = ./pythonstartup.py; };
 }

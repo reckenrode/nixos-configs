@@ -21,7 +21,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    systemd.services.coturn.preStart = lib.optionalString (cfg.static-users-file != null)
-      "cat ${cfg.static-users-file} >> ${runtimeConfigFile}";
+    systemd.services.coturn.preStart = lib.optionalString (
+      cfg.static-users-file != null
+    ) "cat ${cfg.static-users-file} >> ${runtimeConfigFile}";
   };
 }

@@ -1,6 +1,11 @@
 # SPDX-License-Identifier: MIT
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   inherit (lib) listToAttrs readFile;
@@ -28,23 +33,33 @@ in
     };
   };
 
-  sops.secrets = listToAttrs (map
-    (secret: {
-      name = secret;
-      value = {
-        mode = "400";
-        owner = config.users.users.acme.name;
-        group = config.users.groups.acme-certs.name;
-      };
-    }) [ "hp_printer" "linode" ]);
+  sops.secrets = listToAttrs (
+    map
+      (secret: {
+        name = secret;
+        value = {
+          mode = "400";
+          owner = config.users.users.acme.name;
+          group = config.users.groups.acme-certs.name;
+        };
+      })
+      [
+        "hp_printer"
+        "linode"
+      ]
+  );
 
-  systemd.services = listToAttrs (map
-    (domain: {
-      name = domain;
-      value.serviceConfig.SupplementaryGroups = [
-        config.users.groups.keys.name
-      ];
-    }) [ "acme-jihli.infra.largeandhighquality.com" "acme-zhloe.infra.largeandhighquality.com" ]);
+  systemd.services = listToAttrs (
+    map
+      (domain: {
+        name = domain;
+        value.serviceConfig.SupplementaryGroups = [ config.users.groups.keys.name ];
+      })
+      [
+        "acme-jihli.infra.largeandhighquality.com"
+        "acme-zhloe.infra.largeandhighquality.com"
+      ]
+  );
 
   users.groups.acme-certs = { };
 }

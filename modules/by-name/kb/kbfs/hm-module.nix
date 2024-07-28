@@ -1,6 +1,11 @@
 # SPDX-License-Identifier: MIT
 
-{ pkgs, lib, config, ...}:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   inherit (lib) types;
@@ -19,7 +24,10 @@ in
     extraFlags = lib.mkOption {
       type = types.listOf types.str;
       default = [ ];
-      example = [ "-label kbfs" "-mount-type normal" ];
+      example = [
+        "-label kbfs"
+        "-mount-type normal"
+      ];
       description = ''
         Additional flags to pass to the Keybase filesystem on launch.
       '';
@@ -33,8 +41,10 @@ in
       enable = true;
       config = {
         Program = kbfsfuse;
-        ProgramArguments = [ kbfsfuse "-log-file=${logPath}/keybase.kbfs.log" ]
-          ++ cfg.kbfs.extraFlags;
+        ProgramArguments = [
+          kbfsfuse
+          "-log-file=${logPath}/keybase.kbfs.log"
+        ] ++ cfg.kbfs.extraFlags;
         EnvironmentVariables = {
           KEYBASE_LABEL = "keybase.kbfs";
           KEYBASE_SERVICE_TYPE = "launchd";

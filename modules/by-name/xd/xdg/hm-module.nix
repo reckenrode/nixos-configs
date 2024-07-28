@@ -1,6 +1,11 @@
 # SPDX-License-Identifier: MIT
 
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   mkXdgHomeBin = lib.mkOrder 0 ''install -m 700 -d "$HOME/.local/bin"'';
@@ -24,7 +29,12 @@ in
         enable = true;
         config = {
           Program = "/bin/launchctl";
-          ProgramArguments = [ "/bin/launchctl" "setenv" "XDG_CACHE_HOME" config.xdg.cacheHome ];
+          ProgramArguments = [
+            "/bin/launchctl"
+            "setenv"
+            "XDG_CACHE_HOME"
+            config.xdg.cacheHome
+          ];
           RunAtLoad = true;
           StandardErrorPath = "/dev/null";
           StandardOutPath = "/dev/null";

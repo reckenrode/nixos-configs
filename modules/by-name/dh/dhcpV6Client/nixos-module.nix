@@ -1,9 +1,19 @@
 # SPDX-License-Identifier: MIT
 
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
-  inherit (lib) concatStringsSep optionalAttrs readFile types;
+  inherit (lib)
+    concatStringsSep
+    optionalAttrs
+    readFile
+    types
+    ;
   inherit (lib.trivial) pipe;
   inherit (pkgs) stdenv substituteAll;
 in
@@ -23,10 +33,12 @@ in
     let
       inherit (config.services.dhcpV6Client) interfaces;
 
-      generateFirewallRules = interface: readFile (substituteAll {
-        inherit interface;
-        src = ./dhcpV6Client.nft;
-      });
+      generateFirewallRules =
+        interface:
+        readFile (substituteAll {
+          inherit interface;
+          src = ./dhcpV6Client.nft;
+        });
     in
     lib.mkIf config.services.dhcpV6Client.openFirewall {
       networking.nftables.ruleset = pipe interfaces [

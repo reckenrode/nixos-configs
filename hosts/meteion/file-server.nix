@@ -1,5 +1,8 @@
 # SPDX-License-Identifier: MIT
-{ config, lib, pkgs, ... }:
+{
+  config,
+  ...
+}:
 
 let
   domain = "meteion.infra.largeandhighquality.com";
@@ -58,9 +61,7 @@ in
     group = config.users.groups.acme-certs.name;
   };
 
-  systemd.tmpfiles.rules = [
-    "d /srv/www 0755 root root"
-  ];
+  systemd.tmpfiles.rules = [ "d /srv/www 0755 root root" ];
 
   users.users.caddy.extraGroups = [ "acme-certs" ];
 

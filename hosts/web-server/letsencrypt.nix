@@ -8,9 +8,7 @@
     certs = {
       "largeandhighquality.com" = {
         domain = "largeandhighquality.com";
-        extraDomainNames = [
-          "www.largeandhighquality.com"
-        ];
+        extraDomainNames = [ "www.largeandhighquality.com" ];
       };
     };
     defaults = {

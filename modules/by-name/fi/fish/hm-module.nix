@@ -1,6 +1,11 @@
 # SPDX-License-Identifier: MIT
 
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   inherit (lib) concatMapStringsSep foldl';
@@ -10,13 +15,12 @@ in
 
   programs.fish.loginShellInit =
     let
-      fishUserPaths = lib.optional pkgs.stdenv.hostPlatform.isLinux "/run/wrappers/bin"
-        ++ [
-          "/nix/var/nix/profiles/per-user/${config.home.username}/profile/bin"
-          "/etc/profiles/per-user/${config.home.username}/bin"
-          "/nix/var/nix/profiles/default/bin"
-          "/run/current-system/sw/bin"
-        ];
+      fishUserPaths = lib.optional pkgs.stdenv.hostPlatform.isLinux "/run/wrappers/bin" ++ [
+        "/nix/var/nix/profiles/per-user/${config.home.username}/profile/bin"
+        "/etc/profiles/per-user/${config.home.username}/bin"
+        "/nix/var/nix/profiles/default/bin"
+        "/run/current-system/sw/bin"
+      ];
 
       fishHomePath = config.home.homeDirectory + "/.local/bin";
 

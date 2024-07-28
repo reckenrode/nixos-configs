@@ -1,5 +1,3 @@
 # SPDX-License-Identifier: MIT
 
-{
-  imports = [ ./module.nix ];
-}
+{ imports = [ ./module.nix ]; }

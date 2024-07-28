@@ -1,11 +1,14 @@
 # SPDX-License-Identifier: MIT
 
-{ lib, pkgs, inputs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
   boot.initrd.systemd.enable = true;
 
@@ -28,7 +31,10 @@
   networking.nftables.enable = true;
 
   nix = {
-    settings.extra-platforms = lib.mkForce [ "i686-linux" "x86_64-linux" ];
+    settings.extra-platforms = lib.mkForce [
+      "i686-linux"
+      "x86_64-linux"
+    ];
 
     gc = {
       automatic = true;
@@ -55,14 +61,14 @@
     ports = [ 562 ];
   };
 
-#  sops.defaultSopsFile = ./secrets.yaml;
+  #  sops.defaultSopsFile = ./secrets.yaml;
 
-#  system.autoUpgrade = {
-#    enable = true;
-#    allowReboot = true;
-#    dates = "03:00";
-#    flake = "github:reckenrode/nixos-configs/refactor";
-#  };
+  #  system.autoUpgrade = {
+  #    enable = true;
+  #    allowReboot = true;
+  #    dates = "03:00";
+  #    flake = "github:reckenrode/nixos-configs/refactor";
+  #  };
 
   system.stateVersion = "23.05";
 
@@ -92,7 +98,10 @@
     ];
   };
 
-  boot.binfmt.emulatedSystems = [ "i386-linux" "i686-linux" ];
+  boot.binfmt.emulatedSystems = [
+    "i386-linux"
+    "i686-linux"
+  ];
   virtualisation.rosetta.enable = true;
 
   zramSwap = {
@@ -101,4 +110,3 @@
     memoryPercent = 100;
   };
 }
-

@@ -24,8 +24,7 @@ in
     }
   '';
 
-  security.acme.certs."zhloe.infra.largeandhighquality.com".postRun =
-    "${pkgs.systemd}/bin/systemctl restart unbound.service";
+  security.acme.certs."zhloe.infra.largeandhighquality.com".postRun = "${pkgs.systemd}/bin/systemctl restart unbound.service";
 
   services.unbound =
     let
@@ -51,9 +50,7 @@ in
             "fda9:51fe:3bbf:c9f:2e0:67ff:fe15:ced3@853"
           ];
 
-          local-zone = [
-            "largeandhighquality.com. transparent"
-          ];
+          local-zone = [ "largeandhighquality.com. transparent" ];
 
           local-data = [
             ''"jihli.infra.largeandhighquality.com AAAA fda9:51fe:3bbf:c9f:c665:16ff:fedd:7d5b"''

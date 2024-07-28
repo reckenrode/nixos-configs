@@ -1,27 +1,35 @@
 # SPDX-License-Identifier: MIT
 
-{ pkgs, lib, config, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 
 let
-  copyOf = pkg: pkg.overrideAttrs (old: {
-    installPhase = ''
-      $DRY_RUN_CMD install -D -m 444 fonts/otf/* -t $out/share/fonts/otf
-    '';
-  });
+  copyOf =
+    pkg:
+    pkg.overrideAttrs (old: {
+      installPhase = ''
+        $DRY_RUN_CMD install -D -m 444 fonts/otf/* -t $out/share/fonts/otf
+      '';
+    });
 
-  mkSshConfig = {
-    host ? hostname,
-    hostname,
-    port ? 562,
-    user ? "reckenrode",
-    identityAgent,
-  }: {
-    name = host;
-    value = {
-      inherit hostname port user;
-      extraOptions.IdentityAgent = identityAgent;
+  mkSshConfig =
+    {
+      host ? hostname,
+      hostname,
+      port ? 562,
+      user ? "reckenrode",
+      identityAgent,
+    }:
+    {
+      name = host;
+      value = {
+        inherit hostname port user;
+        extraOptions.IdentityAgent = identityAgent;
+      };
     };
-  };
 
   mark-hansen.hledger-vscode = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
     mktplcRef = {
@@ -39,10 +47,15 @@ in
     stateVersion = "22.11";
   };
 
-  home.packages = lib.attrValues {
-    inherit (pkgs) btop ripgrep waifu2x-converter-cpp;
-    inherit (pkgs.darwin) trash;
-  } ++ map copyOf [ pkgs.alegreya pkgs.alegreya-sans ];
+  home.packages =
+    lib.attrValues {
+      inherit (pkgs) btop ripgrep waifu2x-converter-cpp;
+      inherit (pkgs.darwin) trash;
+    }
+    ++ map copyOf [
+      pkgs.alegreya
+      pkgs.alegreya-sans
+    ];
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
@@ -58,7 +71,9 @@ in
       signByDefault = true;
     };
     extraConfig = {
-      init = { defaultBranch = "main"; };
+      init = {
+        defaultBranch = "main";
+      };
       credential.helper = "${lib.getBin pkgs.git}/bin/git-credential-osxkeychain";
     };
   };
@@ -74,15 +89,41 @@ in
         secretive = "~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh";
         _1password = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
       in
-      builtins.listToAttrs (map mkSshConfig [
-        { hostname = "github.com"; port = 22; identityAgent = _1password; }
-        { hostname = "imac.local"; port = 22; identityAgent = secretive; }
-        { hostname = "largeandhighquality.com"; identityAgent = secretive; }
-        { hostname = "khloe.infra.largeandhighquality.com"; identityAgent = secretive; }
-        { hostname = "meteion.infra.largeandhighquality.com"; identityAgent = secretive; }
-        { hostname = "ssh.pijul.com"; port = 22; identityAgent = _1password; }
-        { hostname = "zhloe.infra.largeandhighquality.com"; identityAgent = secretive; }
-      ]);
+      builtins.listToAttrs (
+        map mkSshConfig [
+          {
+            hostname = "github.com";
+            port = 22;
+            identityAgent = _1password;
+          }
+          {
+            hostname = "imac.local";
+            port = 22;
+            identityAgent = secretive;
+          }
+          {
+            hostname = "largeandhighquality.com";
+            identityAgent = secretive;
+          }
+          {
+            hostname = "khloe.infra.largeandhighquality.com";
+            identityAgent = secretive;
+          }
+          {
+            hostname = "meteion.infra.largeandhighquality.com";
+            identityAgent = secretive;
+          }
+          {
+            hostname = "ssh.pijul.com";
+            port = 22;
+            identityAgent = _1password;
+          }
+          {
+            hostname = "zhloe.infra.largeandhighquality.com";
+            identityAgent = secretive;
+          }
+        ]
+      );
   };
 
   programs.vscode = {
@@ -136,9 +177,9 @@ in
       "window.titleBarStyle" = "native";
       "workbench.editor.tabCloseButton" = "left";
       "workbench.colorTheme" = "Default Light+";
-#        "lldb.adapterEnv" = {
-#          "LLDB_DEBUGSERVER_PATH" = debugserver;
-#        };
+      #        "lldb.adapterEnv" = {
+      #          "LLDB_DEBUGSERVER_PATH" = debugserver;
+      #        };
     };
   };
 

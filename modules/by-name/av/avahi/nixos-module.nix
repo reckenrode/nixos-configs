@@ -1,6 +1,10 @@
 # SPDX-License-Identifier: MIT
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 
 {
   config = lib.mkIf config.services.avahi.enable {

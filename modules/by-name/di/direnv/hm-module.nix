@@ -1,6 +1,10 @@
 # SPDX-License-Identifier: MIT
 
-{ pkgs, lib, config, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 
 {
   config = lib.mkIf config.programs.direnv.enable {

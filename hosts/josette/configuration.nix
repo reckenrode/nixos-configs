@@ -1,14 +1,22 @@
 # SPDX-License-Identifier: MIT
 
-{ config, pkgs, lib, inputs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
   nonfree-unstable = import inputs.nixpkgs-unstable {
     localSystem = pkgs.system;
-    config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "1password"
-      "1password-cli"
-    ];
+    config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "1password"
+        "1password-cli"
+      ];
   };
 in
 {
@@ -33,12 +41,16 @@ in
     }
   ];
 
-  home-manager.users = { inherit (inputs.self.hmModules) reckenrode; };
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "1password"
-    "1password-cli"
-    "vscode"
-  ];
+  home-manager.users = {
+    inherit (inputs.self.hmModules) reckenrode;
+  };
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "1password"
+      "1password-cli"
+      "vscode"
+    ];
 
   networking.hostName = "josette";
 
@@ -56,7 +68,11 @@ in
         protocol = "ssh-ng";
         sshUser = "builder";
         publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUZqSTEwaVM0VklNMVpuOUxnV0wydG1YY0lhUTROTGtjS1JUTkNQSjQ0U2ggcm9vdEBtZXRlaW9uCg==";
-        supportedFeatures = [ "kvm" "benchmark" "big-parallel" ];
+        supportedFeatures = [
+          "kvm"
+          "benchmark"
+          "big-parallel"
+        ];
         system = "x86_64-linux";
       }
       {
@@ -64,7 +80,11 @@ in
         protocol = "ssh-ng";
         sshUser = "builder";
         publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUZqSTEwaVM0VklNMVpuOUxnV0wydG1YY0lhUTROTGtjS1JUTkNQSjQ0U2ggcm9vdEBtZXRlaW9uCg==";
-        supportedFeatures = [ "kvm" "benchmark" "big-parallel" ];
+        supportedFeatures = [
+          "kvm"
+          "benchmark"
+          "big-parallel"
+        ];
         system = "i686-linux";
       }
     ];
@@ -75,7 +95,11 @@ in
 
     gc = {
       automatic = true;
-      interval = { Weekday = 0; Hour = 2; Minute = 0; };
+      interval = {
+        Weekday = 0;
+        Hour = 2;
+        Minute = 0;
+      };
       options = "--delete-older-than 30d";
     };
 

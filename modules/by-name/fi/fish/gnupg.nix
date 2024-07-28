@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: MIT
 
-{ config, lib, ... }:
+{ lib, config, ... }:
 
 {
   config = lib.mkIf config.programs.gpg.enable {

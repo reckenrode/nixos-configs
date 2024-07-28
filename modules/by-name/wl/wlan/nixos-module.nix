@@ -1,6 +1,10 @@
 # SPDX-License-Identifier: MIT
 
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 
 {
   config = lib.mkIf config.networking.wireless.iwd.enable {

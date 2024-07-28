@@ -1,11 +1,13 @@
 # SPDX-License-Identifier: MIT
 
-{ pkgs, lib, config, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  home.packages = lib.attrValues {
-    inherit (pkgs) neovim ripgrep;
-  };
+  home.packages = lib.attrValues { inherit (pkgs) neovim ripgrep; };
 
   home.sessionVariables = {
     EDITOR = "${lib.getBin pkgs.neovim}/bin/nvim";

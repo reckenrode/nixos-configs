@@ -12,7 +12,12 @@
       NSAutomaticQuoteSubstitutionEnabled = false;
       NSAutomaticSpellingCorrectionEnabled = false;
       NSAutomaticTextCompletionEnabled = false;
-      NSUserQuotesArray = [ ''"'' ''"'' "'" "'" ];
+      NSUserQuotesArray = [
+        ''"''
+        ''"''
+        "'"
+        "'"
+      ];
       WebAutomaticSpellingCorrectionEnabled = false;
       "com.apple.keyboard.fnState" = 1;
     };

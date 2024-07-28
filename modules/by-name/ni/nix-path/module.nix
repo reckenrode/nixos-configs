@@ -2,10 +2,22 @@
 
 # Based on https://github.com/gytis-ivaskevicius/flake-utils-plus/blob/baf73049d14736b3bd3d3d8ccb0daac209fbf291/lib/options.nix
 
-{ lib, config, inputs, ... }:
+{
+  lib,
+  config,
+  inputs,
+  ...
+}:
 
 let
-  inherit (lib) filterAttrs mapAttrs mapAttrs' mapAttrsToList nameValuePair types;
+  inherit (lib)
+    filterAttrs
+    mapAttrs
+    mapAttrs'
+    mapAttrsToList
+    nameValuePair
+    types
+    ;
   inherit (lib.trivial) pipe;
 
   hasDarwinConfig = config.environment ? darwinConfig;

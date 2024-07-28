@@ -32,7 +32,19 @@
     verify-archive.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nix-darwin, lix-module, home-manager, home-manager-unstable, foundryvtt, sops-nix, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      nix-darwin,
+      lix-module,
+      home-manager,
+      home-manager-unstable,
+      foundryvtt,
+      sops-nix,
+      ...
+    }@inputs:
     let
       modules = import ./modules/top-level/all-modules.nix { inherit (nixpkgs) lib; };
     in
@@ -75,7 +87,11 @@
             home-manager.nixosModules.home-manager
             lix-module.nixosModules.default
             sops-nix.nixosModules.sops
-            { _module.args = { inherit inputs; }; }
+            {
+              _module.args = {
+                inherit inputs;
+              };
+            }
           ] ++ modules.nixos;
         };
 
@@ -85,7 +101,11 @@
             ./hosts/vamp/configuration.nix
             home-manager-unstable.nixosModules.home-manager
             sops-nix.nixosModules.sops
-            { _module.args = { inherit inputs; }; }
+            {
+              _module.args = {
+                inherit inputs;
+              };
+            }
           ] ++ modules.nixos;
         };
 
@@ -96,7 +116,11 @@
             home-manager.nixosModules.home-manager
             foundryvtt.nixosModules.foundryvtt
             sops-nix.nixosModules.sops
-            { _module.args = { inherit inputs; }; }
+            {
+              _module.args = {
+                inherit inputs;
+              };
+            }
           ] ++ modules.nixos;
         };
 
@@ -107,7 +131,11 @@
             home-manager.nixosModules.home-manager
             lix-module.nixosModules.default
             sops-nix.nixosModules.sops
-            { _module.args = { inherit inputs; }; }
+            {
+              _module.args = {
+                inherit inputs;
+              };
+            }
           ] ++ modules.nixos;
         };
       };
@@ -115,11 +143,15 @@
       hmModules = {
         reckenrode = {
           imports = [ ./home-manager/reckenrode/home.nix ] ++ modules.home;
-          _module.args = { inherit inputs; };
+          _module.args = {
+            inherit inputs;
+          };
         };
         server-admin = {
           imports = [ ./home-manager/server-admin/home.nix ] ++ modules.home;
-          _module.args = { inherit inputs; };
+          _module.args = {
+            inherit inputs;
+          };
         };
       };
     };

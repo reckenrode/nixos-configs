@@ -1,6 +1,10 @@
 # Copied from https://github.com/nix-community/home-manager/blob/363c46b2480f1b73ec37cf68caac61f5daa82a2e/modules/misc/xdg-user-dirs.nix
 
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 
 with lib;
 
@@ -8,15 +12,23 @@ let
 
   cfg = config.xdg.userDirs;
 
-in {
+in
+{
   meta.maintainers = with maintainers; [ pacien ];
 
   imports = [
-    (mkRenamedOptionModule [ "xdg" "userDirs" "publishShare" ] [
-      "xdg"
-      "userDirs"
-      "publicShare"
-    ])
+    (mkRenamedOptionModule
+      [
+        "xdg"
+        "userDirs"
+        "publishShare"
+      ]
+      [
+        "xdg"
+        "userDirs"
+        "publicShare"
+      ]
+    )
   ];
 
   options.xdg.userDirs = {
@@ -37,64 +49,56 @@ in {
     desktop = mkOption {
       type = with types; nullOr (coercedTo path toString str);
       default = "${config.home.homeDirectory}/Desktop";
-      defaultText =
-        literalExpression ''"''${config.home.homeDirectory}/Desktop"'';
+      defaultText = literalExpression ''"''${config.home.homeDirectory}/Desktop"'';
       description = "The Desktop directory.";
     };
 
     documents = mkOption {
       type = with types; nullOr (coercedTo path toString str);
       default = "${config.home.homeDirectory}/Documents";
-      defaultText =
-        literalExpression ''"''${config.home.homeDirectory}/Documents"'';
+      defaultText = literalExpression ''"''${config.home.homeDirectory}/Documents"'';
       description = "The Documents directory.";
     };
 
     download = mkOption {
       type = with types; nullOr (coercedTo path toString str);
       default = "${config.home.homeDirectory}/Downloads";
-      defaultText =
-        literalExpression ''"''${config.home.homeDirectory}/Downloads"'';
+      defaultText = literalExpression ''"''${config.home.homeDirectory}/Downloads"'';
       description = "The Downloads directory.";
     };
 
     music = mkOption {
       type = with types; nullOr (coercedTo path toString str);
       default = "${config.home.homeDirectory}/Music";
-      defaultText =
-        literalExpression ''"''${config.home.homeDirectory}/Music"'';
+      defaultText = literalExpression ''"''${config.home.homeDirectory}/Music"'';
       description = "The Music directory.";
     };
 
     pictures = mkOption {
       type = with types; nullOr (coercedTo path toString str);
       default = "${config.home.homeDirectory}/Pictures";
-      defaultText =
-        literalExpression ''"''${config.home.homeDirectory}/Pictures"'';
+      defaultText = literalExpression ''"''${config.home.homeDirectory}/Pictures"'';
       description = "The Pictures directory.";
     };
 
     publicShare = mkOption {
       type = with types; nullOr (coercedTo path toString str);
       default = "${config.home.homeDirectory}/Public";
-      defaultText =
-        literalExpression ''"''${config.home.homeDirectory}/Public"'';
+      defaultText = literalExpression ''"''${config.home.homeDirectory}/Public"'';
       description = "The Public share directory.";
     };
 
     templates = mkOption {
       type = with types; nullOr (coercedTo path toString str);
       default = "${config.home.homeDirectory}/Templates";
-      defaultText =
-        literalExpression ''"''${config.home.homeDirectory}/Templates"'';
+      defaultText = literalExpression ''"''${config.home.homeDirectory}/Templates"'';
       description = "The Templates directory.";
     };
 
     videos = mkOption {
       type = with types; nullOr (coercedTo path toString str);
       default = "${config.home.homeDirectory}/Videos";
-      defaultText =
-        literalExpression ''"''${config.home.homeDirectory}/Videos"'';
+      defaultText = literalExpression ''"''${config.home.homeDirectory}/Videos"'';
       description = "The Videos directory.";
     };
 
@@ -110,38 +114,45 @@ in {
       description = "Other user directories.";
     };
 
-    createDirectories =
-      mkEnableOption "automatic creation of the XDG user directories";
+    createDirectories = mkEnableOption "automatic creation of the XDG user directories";
   };
 
-  config = let
-    directories = (filterAttrs (n: v: !isNull v) {
-      XDG_DESKTOP_DIR = cfg.desktop;
-      XDG_DOCUMENTS_DIR = cfg.documents;
-      XDG_DOWNLOAD_DIR = cfg.download;
-      XDG_MUSIC_DIR = cfg.music;
-      XDG_PICTURES_DIR = cfg.pictures;
-      XDG_PUBLICSHARE_DIR = cfg.publicShare;
-      XDG_TEMPLATES_DIR = cfg.templates;
-      XDG_VIDEOS_DIR = cfg.videos;
-    }) // cfg.extraConfig;
-  in mkIf cfg.enable {
-#    assertions =
-#      [ (hm.assertions.assertPlatform "xdg.userDirs" pkgs platforms.linux) ];
+  config =
+    let
+      directories =
+        (filterAttrs (n: v: !isNull v) {
+          XDG_DESKTOP_DIR = cfg.desktop;
+          XDG_DOCUMENTS_DIR = cfg.documents;
+          XDG_DOWNLOAD_DIR = cfg.download;
+          XDG_MUSIC_DIR = cfg.music;
+          XDG_PICTURES_DIR = cfg.pictures;
+          XDG_PUBLICSHARE_DIR = cfg.publicShare;
+          XDG_TEMPLATES_DIR = cfg.templates;
+          XDG_VIDEOS_DIR = cfg.videos;
+        })
+        // cfg.extraConfig;
+    in
+    mkIf cfg.enable {
+      #    assertions =
+      #      [ (hm.assertions.assertPlatform "xdg.userDirs" pkgs platforms.linux) ];
 
-    xdg.configFile."user-dirs.dirs".text = let
-      # For some reason, these need to be wrapped with quotes to be valid.
-      wrapped = mapAttrs (_: value: ''"${value}"'') directories;
-    in generators.toKeyValue { } wrapped;
+      xdg.configFile."user-dirs.dirs".text =
+        let
+          # For some reason, these need to be wrapped with quotes to be valid.
+          wrapped = mapAttrs (_: value: ''"${value}"'') directories;
+        in
+        generators.toKeyValue { } wrapped;
 
-    xdg.configFile."user-dirs.conf".text = "enabled=False";
+      xdg.configFile."user-dirs.conf".text = "enabled=False";
 
-    home.sessionVariables = directories;
+      home.sessionVariables = directories;
 
-    home.activation.createXdgUserDirectories = mkIf cfg.createDirectories (let
-      directoriesList = attrValues directories;
-      mkdir = (dir: ''$DRY_RUN_CMD mkdir -p $VERBOSE_ARG "${dir}"'');
-    in lib.hm.dag.entryAfter [ "linkGeneration" ]
-    (strings.concatMapStringsSep "\n" mkdir directoriesList));
-  };
+      home.activation.createXdgUserDirectories = mkIf cfg.createDirectories (
+        let
+          directoriesList = attrValues directories;
+          mkdir = (dir: ''$DRY_RUN_CMD mkdir -p $VERBOSE_ARG "${dir}"'');
+        in
+        lib.hm.dag.entryAfter [ "linkGeneration" ] (strings.concatMapStringsSep "\n" mkdir directoriesList)
+      );
+    };
 }

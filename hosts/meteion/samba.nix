@@ -1,6 +1,9 @@
 # SPDX-License-Identifier: MIT
 
-{ config, lib, pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 
 {
   # services.elasticsearch.enable = true;

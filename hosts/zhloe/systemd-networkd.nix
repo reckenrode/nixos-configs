@@ -37,11 +37,11 @@
       DNSLifetimeSec = 16200;
     };
 
-   extraConfig = ''
-     [IPv6Prefix]
-     Prefix=fda9:51fe:3bbf:c9f::/64
-     Assign=true
-   '';
+    extraConfig = ''
+      [IPv6Prefix]
+      Prefix=fda9:51fe:3bbf:c9f::/64
+      Assign=true
+    '';
   };
 
   systemd.network.networks.wan = {
@@ -68,7 +68,12 @@
     };
 
     routes = [
-      { routeConfig = { Type = "blackhole"; Destination = "192.168.100.1/32"; }; }
+      {
+        routeConfig = {
+          Type = "blackhole";
+          Destination = "192.168.100.1/32";
+        };
+      }
     ];
   };
 }

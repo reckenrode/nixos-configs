@@ -1,6 +1,10 @@
 # SPDX-License-Identifier: MIT
 
-{ lib, pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -90,7 +94,10 @@
     shell = pkgs.fish;
 
     isNormalUser = true;
-    extraGroups = [ "wheel" "samba-guest" ];
+    extraGroups = [
+      "wheel"
+      "samba-guest"
+    ];
 
     openssh.authorizedKeys.keys = [
       "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOnacmxOzH6dRpX6Y+scSn3hkNi6DBFi5/ltIOr85FBk9gs3e6u0zsSlfbgQ8Wl+OvBku1U3jjjYvjKAkrsgBgs="

@@ -1,14 +1,21 @@
 # SPDX-License-Identifier: MIT
 
-{ pkgs, lib, inputs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 let
   nonfree-unstable = import inputs.nixpkgs-unstable {
     localSystem = pkgs.system;
-    config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "1password"
-      "1password-cli"
-    ];
+    config.allowUnfreePredicate =
+      pkg:
+      builtins.elem (lib.getName pkg) [
+        "1password"
+        "1password-cli"
+      ];
   };
 in
 {
@@ -33,12 +40,16 @@ in
     }
   ];
 
-  home-manager.users = { inherit (inputs.self.hmModules) reckenrode; };
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "1password"
-    "1password-cli"
-    "vscode"
-  ];
+  home-manager.users = {
+    inherit (inputs.self.hmModules) reckenrode;
+  };
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "1password"
+      "1password-cli"
+      "vscode"
+    ];
 
   networking.hostName = "natalia";
 
@@ -47,7 +58,11 @@ in
 
     gc = {
       automatic = true;
-      interval = { Weekday = 0; Hour = 2; Minute = 0; };
+      interval = {
+        Weekday = 0;
+        Hour = 2;
+        Minute = 0;
+      };
       options = "--delete-older-than 30d";
     };
 

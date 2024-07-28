@@ -1,6 +1,11 @@
 # SPDX-License-Identifier: MIT
 
-{ pkgs, lib, inputs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   environment.darwinConfig = inputs.self + /hosts/imac/configuration.nix;
@@ -20,7 +25,7 @@
     }
   ];
 
-  home-manager.users =  {
+  home-manager.users = {
     reckenrode = lib.mkMerge [
       inputs.self.hmModules.server-admin
       {
@@ -29,30 +34,36 @@
           userEmail = "randy@largeandhighquality.com";
           userName = "Randy Eckenrode";
           extraConfig = {
-            init = { defaultBranch = "main"; };
+            init = {
+              defaultBranch = "main";
+            };
             credential.helper = "${pkgs.git}/bin/git-credential-osxkeychain";
           };
         };
       }
     ];
 
-    weiweilin = { pkgs, ... }: {
-      home.packages = lib.attrValues { inherit (pkgs) python3Full poetry; };
+    weiweilin =
+      { pkgs, ... }:
+      {
+        home.packages = lib.attrValues { inherit (pkgs) python3Full poetry; };
 
-      home.stateVersion = "22.11";
+        home.stateVersion = "22.11";
 
-      programs.git = {
-        enable = true;
-        userEmail = "stormer.boxes-06@icloud.com";
-        userName = "Weiwei Lin";
-        extraConfig = {
-          init = { defaultBranch = "main"; };
-          credential.helper = "${pkgs.git}/bin/git-credential-osxkeychain";
+        programs.git = {
+          enable = true;
+          userEmail = "stormer.boxes-06@icloud.com";
+          userName = "Weiwei Lin";
+          extraConfig = {
+            init = {
+              defaultBranch = "main";
+            };
+            credential.helper = "${pkgs.git}/bin/git-credential-osxkeychain";
+          };
         };
-      };
 
-      programs.vscode.enable = true;
-    };
+        programs.vscode.enable = true;
+      };
   };
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "vscode" ];
@@ -64,7 +75,11 @@
 
     gc = {
       automatic = true;
-      interval = { Weekday = 0; Hour = 2; Minute = 0; };
+      interval = {
+        Weekday = 0;
+        Hour = 2;
+        Minute = 0;
+      };
       options = "--delete-older-than 30d";
     };
 

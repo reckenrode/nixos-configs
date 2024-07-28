@@ -1,6 +1,11 @@
 # SPDX-License-Identifier: MIT
 
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   config = lib.mkIf config.services.samba.enable {

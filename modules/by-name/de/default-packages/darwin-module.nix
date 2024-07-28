@@ -1,23 +1,36 @@
 # SPDX-License-Identifier: MIT
 # Based on github:NixOS/nixpkgs/nixos/modules/config/system-path.nix
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
-  inherit (lib) concatMapStringsSep literalMD setPrio types;
+  inherit (lib)
+    concatMapStringsSep
+    literalMD
+    setPrio
+    types
+    ;
 
   defaultPackageNames = [
     "nano"
     "perl"
     "rsync"
-#    "strace"
+    #    "strace"
   ];
 
-  defaultPackages =
-    map
-      (n: let pkg = pkgs.${n}; in setPrio ((pkg.meta.priority or 5) + 3) pkg)
-      defaultPackageNames;
-  defaultPackagesText = "[ ${concatMapStringsSep " " (n: "pkgs.${n}") defaultPackageNames } ]";
+  defaultPackages = map (
+    n:
+    let
+      pkg = pkgs.${n};
+    in
+    setPrio ((pkg.meta.priority or 5) + 3) pkg
+  ) defaultPackageNames;
+  defaultPackagesText = "[ ${concatMapStringsSep " " (n: "pkgs.${n}") defaultPackageNames} ]";
 in
 {
   options.environment.defaultPackages = lib.mkOption {
@@ -29,7 +42,7 @@ in
 
           ${defaultPackagesText}
     '';
-    example = [];
+    example = [ ];
     description = lib.mdDoc ''
       Set of default packages that aren't strictly necessary
       for a running system, entries can be removed for a more

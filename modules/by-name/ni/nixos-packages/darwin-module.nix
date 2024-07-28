@@ -1,6 +1,11 @@
 # SPDX-License-Identifier: MIT
 
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   defaultPackages = lib.attrValues { inherit (pkgs) nano perl rsync; };
@@ -41,7 +46,8 @@ in
         util-linux
         which
         zstd
-        unzip;
+        unzip
+        ;
     };
   };
 }

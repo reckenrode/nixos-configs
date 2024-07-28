@@ -1,6 +1,11 @@
 # SPDX-License-Identifier: MIT
 
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   inherit (lib) types;
@@ -45,9 +50,7 @@ in
       "fruit:time machine max size" = "4TB";
     };
 
-    systemd.tmpfiles.rules = [
-      "d ${cfg.storagePath} 0755 time-machine time-machine"
-    ];
+    systemd.tmpfiles.rules = [ "d ${cfg.storagePath} 0755 time-machine time-machine" ];
 
     # Note: A password for the Samba time-machine user must be specified in ``/run/secrets/samba`.
     users = {

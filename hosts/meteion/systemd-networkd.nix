@@ -1,6 +1,10 @@
 # SPDX-License-Identifier: MIT
 
-{ lib, pkgs, inputs, ... }:
+{
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   # FIXME: Switch to the stable package once 23.05 is released.

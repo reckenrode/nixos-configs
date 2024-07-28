@@ -1,6 +1,11 @@
 # SPDX-License-Identifier: MIT
 
-{ lib, pkgs, inputs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -40,7 +45,11 @@
         sshUser = "builder";
         sshKey = "/root/.ssh/id_meteon_builder";
         publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUZqSTEwaVM0VklNMVpuOUxnV0wydG1YY0lhUTROTGtjS1JUTkNQSjQ0U2ggcm9vdEBtZXRlaW9uCg==";
-        supportedFeatures = [ "kvm" "benchmark" "big-parallel" ];
+        supportedFeatures = [
+          "kvm"
+          "benchmark"
+          "big-parallel"
+        ];
         system = "x86_64-linux";
       }
     ];
@@ -110,4 +119,3 @@
     memoryPercent = 100;
   };
 }
-
