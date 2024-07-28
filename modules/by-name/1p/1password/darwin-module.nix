@@ -4,7 +4,12 @@
 # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/programs/_1password.nix
 # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/programs/_1password-gui.nix
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   inherit (lib) types;
@@ -44,44 +49,58 @@ in
 
   config =
     let
+      _1password-cli-package = cfg-cli.package.overrideAttrs (old: {
+        meta = old.meta // {
+          broken = false;
+        };
+      });
+
       _1password-cli-cfg = lib.mkIf cfg-cli.enable {
-        environment.systemPackages = lib.optional (!cfg-cli.copyToUsrLocal) cfg-cli.package;
+        environment.systemPackages = lib.optional (!cfg-cli.copyToUsrLocal) _1password-cli-package;
 
-        system.activationScripts.postActivation.text =
-          lib.optionalString cfg-cli.copyToUsrLocal ''
-            install -o root -g wheel -m0555 -D \
-              ${lib.getBin cfg-cli.package}/bin/op /usr/local/bin/op
-          '';
+        system.activationScripts.postActivation.text = lib.optionalString cfg-cli.copyToUsrLocal ''
+          install -o root -g wheel -m0555 -D \
+            ${lib.getBin _1password-cli-package}/bin/op /usr/local/bin/op
+        '';
       };
+
+      _1password-gui-package = cfg-gui.package.overrideAttrs (old: {
+        meta = old.meta // {
+          broken = false;
+        };
+      });
+
       _1password-gui-cfg = lib.mkIf cfg-gui.enable {
-        environment.systemPackages = lib.optional (!cfg-gui.copyToApplications) cfg-gui.package;
+        environment.systemPackages = lib.optional (!cfg-gui.copyToApplications) _1password-gui-package;
 
-        system.activationScripts.postActivation.text =
-          lib.optionalString cfg-gui.copyToApplications ''
-            appsDir="/Applications/Nix Apps"
-            if [ -d "$appsDir" ]; then
-              rm -rf "$appsDir/1Password.app"
-            fi
+        system.activationScripts.postActivation.text = lib.optionalString cfg-gui.copyToApplications ''
+          appsDir="/Applications/Nix Apps"
+          if [ -d "$appsDir" ]; then
+            rm -rf "$appsDir/1Password.app"
+          fi
 
-            app="/Applications/1Password.app"
-            if [ -L "$app" ] || [ -f "$app"  ]; then
-              rm "$app"
-            fi
-            install -o root -g wheel -m0555 -d "$app"
+          app="/Applications/1Password.app"
+          if [ -L "$app" ] || [ -f "$app"  ]; then
+            rm "$app"
+          fi
+          install -o root -g wheel -m0555 -d "$app"
 
-            rsyncFlags=(
-              --archive
-              --checksum
-              --chmod=-w
-              --copy-unsafe-links
-              --delete
-              --no-group
-              --no-owner
-            )
-            ${lib.getBin pkgs.rsync}/bin/rsync "''${rsyncFlags[@]}" \
-              ${cfg-gui.package}/Applications/1Password.app/ /Applications/1Password.app
-          '';
+          rsyncFlags=(
+            --archive
+            --checksum
+            --chmod=-w
+            --copy-unsafe-links
+            --delete
+            --no-group
+            --no-owner
+          )
+          ${lib.getBin pkgs.rsync}/bin/rsync "''${rsyncFlags[@]}" \
+            ${_1password-gui-package}/Applications/1Password.app/ /Applications/1Password.app
+        '';
       };
     in
-    lib.mkMerge [ _1password-cli-cfg _1password-gui-cfg ];
+    lib.mkMerge [
+      _1password-cli-cfg
+      _1password-gui-cfg
+    ];
 }
