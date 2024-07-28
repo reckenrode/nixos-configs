@@ -73,6 +73,7 @@
           modules = [
             ./hosts/meteion/configuration.nix
             home-manager.nixosModules.home-manager
+            lix-module.nixosModules.default
             sops-nix.nixosModules.sops
             { _module.args = { inherit inputs; }; }
           ] ++ modules.nixos;
@@ -104,6 +105,7 @@
           modules = [
             ./hosts/zhloe/configuration.nix
             home-manager.nixosModules.home-manager
+            lix-module.nixosModules.default
             sops-nix.nixosModules.sops
             { _module.args = { inherit inputs; }; }
           ] ++ modules.nixos;
