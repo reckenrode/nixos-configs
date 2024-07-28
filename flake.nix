@@ -2,8 +2,8 @@
 
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-23.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-24.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs?ref=master";
 
     lix-module.url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
     lix-module.inputs.nixpkgs.follows = "nixpkgs";
@@ -44,6 +44,7 @@
           modules = [
             ./hosts/josette/configuration.nix
             home-manager.darwinModules.home-manager
+            lix-module.nixosModules.default
           ] ++ modules.darwin;
         };
 
