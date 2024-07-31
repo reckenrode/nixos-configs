@@ -15,8 +15,6 @@
     "xhci_pci"
     "ahci"
     "nvme"
-    "usbhid"
-    "usb_storage"
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
@@ -42,6 +40,10 @@
   fileSystems."/boot/efi" = {
     device = "/dev/disk/by-uuid/4FAA-B3D4";
     fsType = "vfat";
+    options = [
+      "fmask=0022"
+      "dmask=0022"
+    ];
   };
 
   fileSystems."/home" = {
