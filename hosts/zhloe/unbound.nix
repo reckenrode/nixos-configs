@@ -3,7 +3,10 @@
 { config, pkgs, ... }:
 
 let
-  unboundWithDoH = pkgs.unbound-with-systemd.override { withDoH = true; };
+  unboundWithDoH = pkgs.unbound-with-systemd.override {
+    withDoH = true;
+    withTFO = true;
+  };
 in
 {
   networking.nftables.ruleset = ''
