@@ -1,10 +1,6 @@
 # SPDX-License-Identifier: MIT
 
-{
-  pkgs,
-  inputs,
-  ...
-}:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -53,6 +49,23 @@
   };
 
   programs.fish.enable = true;
+
+  services.mysql = {
+    enable = true;
+    ensureDatabases = [ "practice" ];
+    package = pkgs.mariadb;
+    settings.mysqld = {
+      plugin-load-add = [ "ed25519=auth_ed25519" ];
+    };
+  };
+  networking.nftables.ruleset = ''
+    table inet filter {
+      chain input {
+        iifname wlan0 meta l4proto tcp ip6 saddr fda9:51fe:3bbf:c9f::/64 th dport 3306 accept
+        iifname wlan0 meta l4proto tcp ip  saddr        192.168.238.0/24 th dport 3306 accept
+      }
+    }
+  '';
 
   security.sudo = {
     execWheelOnly = true;
