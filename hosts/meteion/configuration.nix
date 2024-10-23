@@ -40,7 +40,10 @@
       options = "--delete-older-than 30d";
     };
 
-    settings.max-jobs = 3;
+    settings = {
+      max-jobs = 3;
+      trusted-users = [ "builder" ];
+    };
 
     optimise.automatic = true;
 
