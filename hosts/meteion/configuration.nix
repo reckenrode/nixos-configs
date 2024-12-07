@@ -6,6 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ./file-server.nix
+    ./jellyfin-server.nix
     ./samba.nix
     ./systemd-networkd.nix
   ];
