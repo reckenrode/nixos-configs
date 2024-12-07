@@ -23,7 +23,8 @@ in
   environment.darwinConfig = inputs.self + /hosts/josette/configuration.nix;
 
   environment.defaultPackages = lib.attrValues { inherit (pkgs) neovim perl rsync; };
-  environment.variables.EDITOR = "${lib.getBin pkgs.neovim}/bin/nvim";
+  environment.variables.EDITOR = "${lib.getExe pkgs.neovim}";
+  environment.variables.PAGER = "${lib.getExe pkgs.less} -RF";
 
   environment.systemPackages = lib.attrValues {
     inherit (pkgs) iterm2;
