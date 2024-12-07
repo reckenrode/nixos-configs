@@ -71,14 +71,34 @@ in
       signByDefault = true;
     };
     extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
+      init.defaultBranch = "main";
       credential.helper = "${lib.getBin pkgs.git}/bin/git-credential-osxkeychain";
+      url."git@github.com:".pushInsteadOf = "https://github.com/";
     };
   };
 
   programs.gpg.enable = true;
+
+  home.shellAliases = {
+    # Work around https://github.com/martinvonz/jj/issues/4508
+    jj = "RAYON_NUM_THREADS=4 command jj";
+  };
+
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      ui.diff-editor = ":builtin";
+      user = {
+        name = "Randy Eckenrode";
+        email = "randy@largeandhighquality.com";
+      };
+      signing = {
+        backend = "gpg";
+        key = "01D754863A6D64EAAC770D26FBF19A982CCE0048";
+        sign-all = true;
+      };
+    };
+  };
 
   programs.neovim.enable = true;
 
@@ -127,7 +147,7 @@ in
   };
 
   programs.vscode = {
-    enable = true;
+    enable = false;
     extensions = [
       pkgs.vscode-extensions.editorconfig.editorconfig
       mark-hansen.hledger-vscode
