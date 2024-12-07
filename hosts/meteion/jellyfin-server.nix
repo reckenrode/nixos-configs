@@ -1,8 +1,5 @@
 {
-  services.jellyfin = {
-    enable = true;
-    dataDir = "/srv/jellyfin";
-  };
+  services.jellyfin.enable = true;
   networking.nftables.ruleset = ''
       table inet filter {
         chain input {
