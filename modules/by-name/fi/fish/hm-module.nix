@@ -78,12 +78,55 @@ in
       echo -n -s (prompt_login)' ' $shlvl (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal " "$prompt_status $suffix " "
     '';
 
+    # Based on https://gist.github.com/hroi/d0dc0e95221af858ee129fd66251897e
+    fish_jj_prompt = ''
+      # Is jj installed?
+      if not command -sq jj
+          return 1
+      end
+
+      # Are we in a jj repo?
+      if not jj root --quiet &>/dev/null
+          return 1
+      end
+
+      # Generate prompt
+      jj log --ignore-working-copy --no-graph --color always -r @ -T '
+        surround(
+          " (", ")",
+          separate(
+            " ",
+            bookmarks.join(", "),
+            change_id.short(8),
+            surround(
+              "(", ")",
+              separate(
+                ", ",
+                if(conflict, "conflict"),
+                if(empty, "empty"),
+                if(divergent, "divergent"),
+                if(hidden, "hidden"),
+                if(!description, "no description"),
+              )
+            )
+          )
+        )
+      '
+    '';
+
     fish_title = ''
       set host (hostname -s)
       set user $USER
       set path (prompt_pwd)
       set job $_
       echo "$user@$host:$path  $job"
+    '';
+
+    fish_vcs_prompt = ''
+      fish_jj_prompt $argv
+      or fish_git_prompt $argv
+      or fish_hg_prompt $argv
+      or fish_fossil_prompt $argv
     '';
   };
 }
