@@ -38,10 +38,10 @@ in
 
         header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
 
+        encode zstd gzip
+
         redir /jellyfin /jellyfin/
         reverse_proxy /jellyfin/* 127.0.0.1:8096
-
-        encode zstd gzip
 
         handle /files/* {
           uri strip_prefix /files
