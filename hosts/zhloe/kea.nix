@@ -69,6 +69,7 @@ in
         in
         [
           {
+            id = 1;
             subnet = "192.168.238.1/24";
             pools = [ { pool = "192.168.238.4 - 192.168.238.254"; } ];
 
@@ -129,6 +130,7 @@ in
 
       subnet6 = [
         {
+          id = 1;
           subnet = "fda9:51fe:3bbf:c9f::/64";
 
           option-data = [
