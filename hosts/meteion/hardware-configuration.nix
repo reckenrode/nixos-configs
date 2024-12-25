@@ -61,6 +61,11 @@
     fsType = "zfs";
   };
 
+  fileSystems."/srv/jellyfin" = {
+    device = "meteia/jellyfin";
+    fsType = "zfs";
+  };
+
   fileSystems."/srv/samba" = {
     device = "meteia/samba";
     fsType = "zfs";
