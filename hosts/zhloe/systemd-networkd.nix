@@ -55,7 +55,8 @@
       DNSSEC = true;
       IPv6PrivacyExtensions = false;
       IPv6AcceptRA = true;
-      IPForward = true;
+      IPv4Forwarding = true;
+      IPv6Forwarding = true;
     };
 
     dhcpV4Config = {
@@ -69,10 +70,8 @@
 
     routes = [
       {
-        routeConfig = {
-          Type = "blackhole";
-          Destination = "192.168.100.1/32";
-        };
+        Type = "blackhole";
+        Destination = "192.168.100.1/32";
       }
     ];
   };
