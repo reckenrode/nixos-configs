@@ -60,12 +60,5 @@
     };
   };
 
-  systemd.tmpfiles.rules = [
-    "d /srv/samba 0755 root root"
-    "d /srv/samba/reckenrode 0755 reckenrode root"
-    "d /srv/samba/tabletop-group 0755 samba-guest samba-guest"
-    "d /srv/samba/weiweilin 0755 weiweilin root"
-  ];
-
   services.time-machine.enable = true;
 }
