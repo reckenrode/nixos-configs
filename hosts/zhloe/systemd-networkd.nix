@@ -15,6 +15,11 @@
     }
   '';
 
+  systemd.network.config.networkConfig = {
+    IPv4Forwarding = true;
+    IPv6Forwarding = true;
+  };
+
   systemd.network.networks.lan = {
     enable = true;
     matchConfig.Name = "enp2s0";
@@ -55,8 +60,6 @@
       DNSSEC = true;
       IPv6PrivacyExtensions = false;
       IPv6AcceptRA = true;
-      IPv4Forwarding = true;
-      IPv6Forwarding = true;
     };
 
     dhcpV4Config = {
