@@ -25,28 +25,28 @@
 
     services.samba = {
       package = pkgs.samba.override { enableMDNS = true; };
-      securityType = "user";
-      extraConfig = ''
+      settings.global = {
+        security = "user";
         # Performance optimizations
-        use sendfile = yes
-        aio read size = 1
-        aio write size = 1
-        min receivefile size = 16384
+        "use sendfile" = "yes";
+        "aio read size" = 1;
+        "aio write size" = 1;
+        "min receivefile size" = 16384;
 
         # Mac-friendly client settings
         #vfs objects = zfsacl catia fruit streams_xattr
-        vfs objects = catia fruit streams_xattr
-        fruit:aapl = yes
-        fruit:resource = xattr
-        fruit:metadata = stream
-        fruit:encoding = native
-        fruit:wipe_intentionally_left_blank_rfork = yes
+        "vfs objects" = "catia fruit streams_xattr";
+        "fruit:aapl" = "yes";
+        "fruit:resource" = "xattr";
+        "fruit:metadata" = "stream";
+        "fruit:encoding" = "native";
+        "fruit:wipe_intentionally_left_blank_rfork" = "yes";
 
         # Enable support for Spotlight queries
         #spotlight backend = elasticsearch
         #elasticsearch:address = localhost
         #elasticsearch:port = ${toString config.services.elasticsearch.port}
-      '';
+      };
     };
 
     sops.secrets.smbpasswd.mode = "600";

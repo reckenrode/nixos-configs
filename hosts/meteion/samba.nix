@@ -10,13 +10,13 @@
 
   services.samba = {
     enable = true;
-    extraConfig = ''
-      guest account = samba-guest
-      map to guest = Bad User
-    '';
+    settings.global = {
+      "guest account" = "samba-guest";
+      "map to guest" = "Bad User";
+    };
   };
 
-  services.samba.shares.reckenrode = {
+  services.samba.settings.reckenrode = {
     path = "/srv/samba/reckenrode";
     "valid users" = "reckenrode";
     browseable = "yes";
@@ -28,7 +28,7 @@
     "directory mask" = "0750";
   };
 
-  services.samba.shares.weiweilin = {
+  services.samba.settings.weiweilin = {
     path = "/srv/samba/weiweilin";
     "valid users" = "weiweilin";
     browseable = "yes";
@@ -40,7 +40,7 @@
     "directory mask" = "0750";
   };
 
-  services.samba.shares.tabletop-group = {
+  services.samba.settings.tabletop-group = {
     path = "/srv/samba/tabletop-group";
     browseable = "yes";
     "guest ok" = "yes";

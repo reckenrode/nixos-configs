@@ -33,12 +33,10 @@ in
 
     services.samba = {
       enable = true;
-      extraConfig = ''
-        mdns name = mdns
-      '';
+      settings.global."mdns name" = "mdns";
     };
 
-    services.samba.shares.time-machine = {
+    services.samba.settings.time-machine = {
       path = cfg.storagePath;
       "valid users" = "time-machine";
       public = "no";
