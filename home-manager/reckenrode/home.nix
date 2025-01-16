@@ -3,6 +3,7 @@
 {
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
@@ -86,6 +87,7 @@ in
 
   programs.jujutsu = {
     enable = true;
+    package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.jujutsu;
     settings = {
       ui.diff-editor = ":builtin";
       user = {
