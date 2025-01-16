@@ -29,7 +29,7 @@ in
       package = lib.mkOption {
         description = "The 1Password CLI package to use.";
         type = types.package;
-        default = pkgs._1password;
+        default = pkgs._1password-cli;
       };
     };
     _1password-gui = {
