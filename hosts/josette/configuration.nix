@@ -121,7 +121,7 @@ in
 
   programs._1password = {
     enable = true;
-    package = nonfree-unstable._1password;
+    package = nonfree-unstable._1password-cli;
   };
 
   programs._1password-gui = {
