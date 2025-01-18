@@ -87,7 +87,7 @@
   system.autoUpgrade = {
     enable = true;
     allowReboot = true;
-    dates = "03:00";
+    dates = "02:30";
     flake = "github:reckenrode/nixos-configs";
   };
 
