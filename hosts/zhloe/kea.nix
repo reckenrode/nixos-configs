@@ -24,7 +24,7 @@ let
     {
       name = "kea-dhcp${substring 4 1 type}";
       output_options = [ { output = "stderr"; } ];
-      severity = "INFO";
+      severity = "WARN";
       debuglevel = 0;
     }
   ];
