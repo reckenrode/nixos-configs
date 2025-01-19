@@ -104,9 +104,8 @@ in
       options = "--delete-older-than 30d";
     };
 
-    optimise.automatic = true;
-
     settings = {
+      auto-optimise-store = true;
       extra-platforms = [ "x86_64-darwin" ];
       extra-trusted-users = [ "reckenrode" ];
       max-jobs = 4;
