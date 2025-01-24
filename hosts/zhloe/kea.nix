@@ -105,6 +105,7 @@ in
               ({ hw-address = "c4:65:16:dd:7d:5b"; } // legacyDNS) # HP LaserJet Printer
               ({ hw-address = "e8:da:20:c0:e8:67"; } // legacyDNS) # Nintendo Switch
               ({ hw-address = "bc:60:a7:a8:29:12"; } // legacyDNS) # PlayStation 4
+              ({ hw-address = "60:3e:5f:67:56:4d"; } // legacyDNS)
             ];
           }
         ];
