@@ -7,13 +7,6 @@
   };
 
   networking.nftables.ruleset = ''
-    table inet firewall-cfg {
-      chain forward {
-        type filter hook forward priority 0; policy drop;
-        ct state vmap { established : accept, related : accept, invalid : drop }
-        iifname enp2s0 accept
-      }
-    }
     table ip firewall-cfg {
       chain postrouting {
         type nat hook postrouting priority 100
