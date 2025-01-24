@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: MIT
 
-table inet filter {
+table inet firewall-cfg {
   chain input {
     iifname @interface@ ip6 daddr fe80::/64 udp dport dhcpv6-client accept
   }

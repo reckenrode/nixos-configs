@@ -12,7 +12,7 @@ in
 
   config = lib.mkIf cfg.hardening {
     networking.nftables.ruleset = ''
-      table inet filter {
+      table inet firewall-cfg {
         chain input {
           ${concatMapStringsSep "\n" (port: "tcp dport ${toString port} accept") cfg.ports}
         }

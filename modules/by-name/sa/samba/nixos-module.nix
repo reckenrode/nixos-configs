@@ -10,7 +10,7 @@
 {
   config = lib.mkIf config.services.samba.enable {
     networking.nftables.ruleset = ''
-      table inet filter {
+      table inet firewall-cfg {
         chain input {
           ip6 saddr fda9:51fe:3bbf:c9f::/64 udp dport netbios-ns accept
           ip6 saddr fda9:51fe:3bbf:c9f::/64 udp dport netbios-dgm accept

@@ -9,7 +9,7 @@ let
 in
 {
   networking.nftables.ruleset = ''
-    table inet filter {
+    table inet firewall-cfg {
       chain input {
         tcp dport { http, https } accept
         udp dport { http, https } accept

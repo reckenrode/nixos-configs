@@ -63,7 +63,7 @@
     };
   };
   networking.nftables.ruleset = ''
-    table inet filter {
+    table inet firewall-cfg {
       chain input {
         iifname wlan0 meta l4proto tcp ip6 saddr fda9:51fe:3bbf:c9f::/64 th dport 3306 accept
         iifname wlan0 meta l4proto tcp ip  saddr        192.168.238.0/24 th dport 3306 accept

@@ -9,7 +9,7 @@
 {
   config = lib.mkIf config.services.avahi.enable {
     networking.nftables.ruleset = ''
-      table inet filter {
+      table inet firewall-cfg {
         chain input {
           ip saddr 192.168.238.0/24 tcp dport microsoft-ds accept
           ip saddr 192.168.238.0/24 udp sport mdns ip daddr 224.0.0.251/32 udp dport mdns accept

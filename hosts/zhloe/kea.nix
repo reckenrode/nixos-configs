@@ -31,7 +31,7 @@ let
 in
 {
   networking.nftables.ruleset = ''
-    table inet filter {
+    table inet firewall-cfg {
       chain input {
         iifname enp2s0 ip saddr 192.168.238.0/24 udp sport bootpc ip daddr 192.168.238.1 udp dport bootps accept
         iifname enp2s0 ip saddr 0.0.0.0 udp sport bootpc ip daddr { 192.16.238.255, 255.255.255.255 } udp dport bootps accept
