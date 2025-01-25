@@ -71,11 +71,11 @@
       UseDNS = false;
     };
 
-    routes = [
-      {
-        Type = "blackhole";
-        Destination = "192.168.100.1/32";
-      }
-    ];
+#    routes = [
+#      {
+#        Type = "blackhole";
+#        Destination = "192.168.100.1/32";
+#      }
+#    ];
   };
 }
