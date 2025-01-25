@@ -112,10 +112,4 @@
       "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOnacmxOzH6dRpX6Y+scSn3hkNi6DBFi5/ltIOr85FBk9gs3e6u0zsSlfbgQ8Wl+OvBku1U3jjjYvjKAkrsgBgs="
     ];
   };
-
-  zramSwap = {
-    enable = true;
-    memoryMax = 8 * 1024 * 1024 * 1024;
-    memoryPercent = 100;
-  };
 }
