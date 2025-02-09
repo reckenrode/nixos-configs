@@ -27,7 +27,7 @@ in
   environment.variables.PAGER = "${lib.getExe pkgs.less} -RF";
 
   environment.systemPackages = lib.attrValues {
-    inherit (pkgs) iterm2;
+    inherit (pkgs) iterm2 mpv;
     inherit (inputs.nix-packages.packages.${pkgs.system}) netnewswire secretive;
     inherit (inputs.nix-packages.packages.x86_64-darwin) steam-mac;
     inherit (inputs.nix-unstable-packages.packages.x86_64-darwin) ffxiv;
