@@ -89,6 +89,7 @@ in
     enable = true;
     package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.jujutsu;
     settings = {
+      git.subprocess = true;
       ui.diff-editor = ":builtin";
       user = {
         name = "Randy Eckenrode";
