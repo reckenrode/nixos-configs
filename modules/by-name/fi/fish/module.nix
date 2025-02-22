@@ -1,0 +1,3 @@
+{
+  programs.fish.useBabelfish = true;
+}
