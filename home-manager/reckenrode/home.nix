@@ -117,7 +117,7 @@ in
           {
             hostname = "github.com";
             port = 22;
-            identityAgent = _1password;
+            identityAgent = secretive;
           }
           {
             hostname = "imac.local";
