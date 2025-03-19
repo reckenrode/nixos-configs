@@ -89,7 +89,6 @@ in
     enable = true;
     package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.jujutsu;
     settings = {
-      git.subprocess = true;
       ui.diff-editor = ":builtin";
       user = {
         name = "Randy Eckenrode";
@@ -98,7 +97,7 @@ in
       signing = {
         backend = "gpg";
         key = "01D754863A6D64EAAC770D26FBF19A982CCE0048";
-        sign-all = true;
+        signing.behavior = "own";
       };
     };
   };
