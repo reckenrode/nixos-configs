@@ -32,8 +32,6 @@
 
   networking.nftables.enable = true;
 
-  networking.wireless.iwd.enable = true;
-
   nix = {
     gc = {
       automatic = true;

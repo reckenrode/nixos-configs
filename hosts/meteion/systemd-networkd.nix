@@ -16,14 +16,4 @@
       IPv6AcceptRA = true;
     };
   };
-
-  systemd.network.networks.wlan = {
-    enable = true;
-    matchConfig.Type = "wlan";
-    networkConfig = {
-      DHCP = "ipv4";
-      IPv6PrivacyExtensions = true;
-      IPv6AcceptRA = true;
-    };
-  };
 }
