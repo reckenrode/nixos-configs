@@ -81,24 +81,6 @@ in
             ];
 
             reservations = [
-              # Orbi Router
-              (
-                {
-                  hw-address = "b0:39:56:87:73:c2";
-                  ip-address = "192.168.238.2";
-                }
-                // legacyDNS
-              )
-
-              # Orbi Satellite
-              (
-                {
-                  hw-address = "b0:39:56:87:83:0d";
-                  ip-address = "192.168.238.3";
-                }
-                // legacyDNS
-              )
-
               ({ hw-address = "f0:99:bf:01:9b:7c"; } // legacyDNS) # Airport Extreme
               ({ hw-address = "00:1d:c9:d8:4f:4b"; } // legacyDNS) # Aria Scale
               ({ hw-address = "fc:b4:67:57:c3:c8"; } // legacyDNS) # Hatch Rest 2
@@ -106,6 +88,9 @@ in
               ({ hw-address = "e8:da:20:c0:e8:67"; } // legacyDNS) # Nintendo Switch
               ({ hw-address = "bc:60:a7:a8:29:12"; } // legacyDNS) # PlayStation 4
               ({ hw-address = "60:3e:5f:67:56:4d"; } // legacyDNS)
+              ({ hw-address = "98:ba:5f:11:08:56"; } // legacyDNS) # TP-Link Deco
+              ({ hw-address = "98:ba:5f:11:08:7a"; } // legacyDNS) #    ″     ″
+              ({ hw-address = "98:ba:5f:11:09:16"; } // legacyDNS) #    ″     ″
             ];
           }
         ];
