@@ -75,6 +75,22 @@
         "type": "github"
       }
     },
+    "lix-fixed": {
+      "locked": {
+        "lastModified": 1763274819,
+        "narHash": "sha256-srUz/4IoYKiqSsVj+QxvCywgt5F2QJbMdDzAjlElacQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "93e142f083a31d4d500ffb8f5059a7936afdc9a8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "93e142f083a31d4d500ffb8f5059a7936afdc9a8",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -190,6 +206,7 @@
         "foundryvtt": "foundryvtt",
         "home-manager": "home-manager",
         "home-manager-unstable": "home-manager-unstable",
+        "lix-fixed": "lix-fixed",
         "nix-darwin": "nix-darwin",
         "nix-packages": "nix-packages",
         "nix-unstable-packages": "nix-unstable-packages",
