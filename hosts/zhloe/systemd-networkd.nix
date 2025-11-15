@@ -69,6 +69,7 @@
 
     dhcpV6Config = {
       UseDNS = false;
+      PrefixDelegationHint = "::/56";
     };
   };
 }
