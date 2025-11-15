@@ -92,8 +92,6 @@ in
   };
 
   nix = {
-    configureBuildUsers = true;
-
     gc = {
       automatic = true;
       interval = {
@@ -104,8 +102,9 @@ in
       options = "--delete-older-than 30d";
     };
 
+    optimise.automatic = true;
+
     settings = {
-      auto-optimise-store = true;
       extra-platforms = [ "x86_64-darwin" ];
       extra-trusted-users = [ "reckenrode" ];
       max-jobs = 4;
@@ -133,9 +132,7 @@ in
     fish.enable = true;
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
-
-  services.nix-daemon.enable = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   system.stateVersion = 4;
 
