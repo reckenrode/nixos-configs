@@ -150,11 +150,11 @@ in
 
   programs.vscode = {
     enable = false;
-    extensions = [
+    profiles.default.extensions = [
       pkgs.vscode-extensions.editorconfig.editorconfig
       mark-hansen.hledger-vscode
     ];
-    userSettings = {
+    profiles.default.userSettings = {
       "editor.bracketPairColorization.enabled" = true;
       "editor.fontFamily" = "SF Mono, Menlo, Monaco, 'Courier New', monospace";
       "editor.guides.bracketPairs" = "active";
