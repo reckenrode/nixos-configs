@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "dxvk-fixed": {
+      "locked": {
+        "lastModified": 1764157450,
+        "narHash": "sha256-vL4kr9J2rxfwr11FdmumCEDCV0YpW/tl8kQ79JOcPPk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "997649d98506cbc514eeb1b7d8feac7e6031c57b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "pull/462102/merge",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "foundryvtt": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -170,6 +186,7 @@
     },
     "root": {
       "inputs": {
+        "dxvk-fixed": "dxvk-fixed",
         "foundryvtt": "foundryvtt",
         "home-manager": "home-manager",
         "home-manager-unstable": "home-manager-unstable",
