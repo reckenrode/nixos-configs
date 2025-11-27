@@ -9,7 +9,7 @@
 
 let
   inherit (lib) listToAttrs readFile;
-  inherit (pkgs) substituteAll;
+  inherit (pkgs) replaceVars;
 in
 {
   security.acme = {
@@ -18,10 +18,11 @@ in
       "jihli.infra.largeandhighquality.com" = {
         domain = "jihli.infra.largeandhighquality.com";
         keyType = "rsa4096";
-        postRun = readFile (substituteAll {
-          inherit (pkgs) coreutils curl openssl;
-          src = ./update-printer;
-        });
+        postRun = readFile (
+          replaceVars ./update-printer {
+            inherit (pkgs) coreutils curl openssl;
+          }
+        );
       };
       "zhloe.infra.largeandhighquality.com".domain = "zhloe.infra.largeandhighquality.com";
     };

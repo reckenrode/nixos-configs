@@ -15,7 +15,7 @@ let
     types
     ;
   inherit (lib.trivial) pipe;
-  inherit (pkgs) stdenv substituteAll;
+  inherit (pkgs) replaceVars;
 in
 {
   options.services.dhcpV6Client = {
@@ -35,10 +35,11 @@ in
 
       generateFirewallRules =
         interface:
-        readFile (substituteAll {
-          inherit interface;
-          src = ./dhcpV6Client.nft;
-        });
+        readFile (
+          replaceVars ./dhcpV6Client.nft {
+            inherit interface;
+          }
+        );
     in
     lib.mkIf config.services.dhcpV6Client.openFirewall {
       networking.nftables.ruleset = pipe interfaces [
