@@ -34,6 +34,13 @@
       IPv6SendRA = true;
     };
 
+    ipv6Prefixes = [
+      {
+        Assign = true;
+        Prefix = "fda9:51fe:3bbf:c9f::/64";
+      }
+    ];
+
     ipv6SendRAConfig = {
       OtherInformation = true;
       RouterLifetimeSec = 5400;
@@ -41,12 +48,6 @@
       Domains = "infra.largeandhighquality.com";
       DNSLifetimeSec = 16200;
     };
-
-    extraConfig = ''
-      [IPv6Prefix]
-      Prefix=fda9:51fe:3bbf:c9f::/64
-      Assign=true
-    '';
   };
 
   systemd.network.networks.wan = {
