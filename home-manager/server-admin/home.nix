@@ -13,7 +13,7 @@
     EDITOR = "${lib.getBin pkgs.neovim}/bin/nvim";
   };
 
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.11";
 
   programs.fish.enable = true;
 
