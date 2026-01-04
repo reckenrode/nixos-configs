@@ -10,7 +10,7 @@
 
 let
   nonfree-unstable = import inputs.nixpkgs-unstable {
-    localSystem = pkgs.system;
+    localSystem = pkgs.stdenv.hostPlatform.system;
     config.allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [
@@ -18,6 +18,10 @@ let
         "1password-cli"
       ];
   };
+
+  nix-packages = inputs.nix-packages.packages.${pkgs.stdenv.hostPlatform.system};
+  nix-packages-x86_64 = inputs.nix-packages.packages.x86_64-darwin;
+  verify-archive-pkgs = inputs.verify-archive.packages.${pkgs.stdenv.hostPlatform.system};
 in
 {
   environment.darwinConfig = inputs.self + /hosts/josette/configuration.nix;
@@ -29,9 +33,9 @@ in
   environment.systemPackages =
     lib.attrValues {
       inherit (pkgs) iterm2 mpv;
-      inherit (inputs.nix-packages.packages.${pkgs.system}) netnewswire secretive;
-      inherit (inputs.nix-packages.packages.x86_64-darwin) ffxiv steam-mac;
-      inherit (inputs.verify-archive.packages.${pkgs.system}) verify-archive;
+      inherit (nix-packages) netnewswire secretive;
+      inherit (nix-packages-x86_64) ffxiv steam-mac;
+      inherit (verify-archive-pkgs) verify-archive;
     };
 
   hardware.printers = [

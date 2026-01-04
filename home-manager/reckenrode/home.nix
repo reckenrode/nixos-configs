@@ -89,7 +89,7 @@ in
 
   programs.jujutsu = {
     enable = true;
-    package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.jujutsu;
+    package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.jujutsu;
     settings = {
       ui.diff-editor = ":builtin";
       user = {

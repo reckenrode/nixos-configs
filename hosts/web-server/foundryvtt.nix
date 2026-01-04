@@ -3,7 +3,7 @@
 { pkgs, inputs, ... }:
 
 let
-  foundryvtt = inputs.foundryvtt.packages.${pkgs.system}.foundryvtt.override {
+  foundryvtt = inputs.foundryvtt.packages.${pkgs.stdenv.hostPlatform.system}.foundryvtt.override {
     inherit (pkgs) pngout;
   };
 in
