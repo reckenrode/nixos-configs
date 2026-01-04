@@ -11,7 +11,7 @@
     home-manager-unstable.url = "github:nix-community/home-manager";
     home-manager-unstable.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
-    nix-darwin.url = "github:LnL7/nix-darwin?ref=nix-darwin-25.11";
+    nix-darwin.url = "github:nix-darwin/nix-darwin?ref=nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:Mic92/sops-nix";
