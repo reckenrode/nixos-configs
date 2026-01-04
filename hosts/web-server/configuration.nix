@@ -78,7 +78,7 @@
     dates = "03:00";
     flake = "github:reckenrode/nixos-configs";
   };
-  system.stateVersion = "22.11";
+  system.stateVersion = "25.11";
 
   systemd.network.networks.wan = {
     enable = true;
