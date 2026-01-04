@@ -29,6 +29,8 @@ in
           "diffie-hellman-group16-sha512"
           "diffie-hellman-group18-sha512"
           "diffie-hellman-group-exchange-sha256"
+          "mlkem768x25519-sha256"
+          "sntrup761x25519-sha512"
         ];
         Macs = [
           "hmac-sha2-512-etm@openssh.com"
