@@ -95,7 +95,7 @@
     flake = "github:reckenrode/nixos-configs";
   };
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.11";
 
   time.timeZone = "America/New_York";
 
