@@ -5,9 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs?ref=master";
 
-    dxvk-fixed.url = "github:NixOS/nixpkgs?ref=pull/462102/merge";
-    lix-fixed.url = "github:NixOS/nixpkgs?ref=93e142f083a31d4d500ffb8f5059a7936afdc9a8";
-
     home-manager.url = "github:nix-community/home-manager?ref=release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
