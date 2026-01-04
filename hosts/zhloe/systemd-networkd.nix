@@ -70,7 +70,7 @@
 
     dhcpV6Config = {
       UseDNS = false;
-      PrefixDelegationHint = "::/56";
+      PrefixDelegationHint = "::/60";
     };
   };
 }
