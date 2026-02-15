@@ -56,6 +56,11 @@
     fsType = "zfs";
   };
 
+  fileSystems."/nix/var/nix/builds" = {
+    device = "ultima-thule/local/nix-builds";
+    fsType = "zfs";
+  };
+
   fileSystems."/var" = {
     device = "ultima-thule/system/var";
     fsType = "zfs";
