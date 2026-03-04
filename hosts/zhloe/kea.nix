@@ -89,6 +89,7 @@ in
               ({ hw-address = "e8:da:20:c0:e8:67"; } // legacyDNS) # Nintendo Switch
               ({ hw-address = "bc:60:a7:a8:29:12"; } // legacyDNS) # PlayStation 4
               ({ hw-address = "60:3e:5f:67:56:4d"; } // legacyDNS)
+              ({ hw-address = "20:6e:f1:ad:29:b4"; } // legacyDNS) # Tailwind iQ3
               ({ hw-address = "98:ba:5f:11:08:56"; } // legacyDNS) # TP-Link Deco
               ({ hw-address = "98:ba:5f:11:08:7a"; } // legacyDNS) #    ″     ″
               ({ hw-address = "98:ba:5f:11:09:16"; } // legacyDNS) #    ″     ″
