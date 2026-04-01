@@ -48,6 +48,8 @@
       Domains = "infra.largeandhighquality.com";
       DNSLifetimeSec = 16200;
     };
+
+    dhcpPrefixDelegationConfig.UplinkInterface = "enp1s0";
   };
 
   systemd.network.networks.wan = {
