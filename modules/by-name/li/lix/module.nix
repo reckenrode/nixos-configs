@@ -1,16 +1,20 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }@args:
 
+let
+  pkgs = inputs.nixpkgs-unstable.legacyPackages.${args.pkgs.system};
+in
 {
   nixpkgs.overlays = [
     (final: prev: {
-      inherit (pkgs.lixPackageSets.stable)
+      inherit (pkgs.lixPackageSets.latest)
         nixpkgs-review
         nix-eval-jobs
         nix-fast-build
         colmena
+        nil
         ;
     })
   ];
 
-  nix.package = pkgs.lixPackageSets.stable.lix;
+  nix.package = pkgs.lixPackageSets.latest.lix;
 }
