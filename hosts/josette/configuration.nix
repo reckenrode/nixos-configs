@@ -111,6 +111,7 @@ in
     settings = {
       extra-platforms = [ "x86_64-darwin" ];
       extra-trusted-users = [ "reckenrode" ];
+      log-format = "multiline-with-logs";
       max-jobs = 4;
       sandbox = false;
       builders-use-substitutes = true;
@@ -138,7 +139,7 @@ in
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  system.stateVersion = 4;
+  system.stateVersion = 6;
 
   users.users.reckenrode = {
     description = "Randy Eckenrode";
