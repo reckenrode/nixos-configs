@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }@args:
 
 let
-  pkgs = inputs.nixpkgs-unstable.legacyPackages.${args.pkgs.system};
+  pkgs = inputs.nixpkgs-unstable.legacyPackages.${args.pkgs.stdenv.hostPlatform.system};
 in
 {
   nixpkgs.overlays = [
