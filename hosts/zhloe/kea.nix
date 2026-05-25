@@ -88,6 +88,8 @@ in
               ({ hw-address = "88:0c:e0:0e:b5:fc"; } // legacyDNS) # Lutron Smart Hub
               ({ hw-address = "e8:da:20:c0:e8:67"; } // legacyDNS) # Nintendo Switch
               ({ hw-address = "bc:60:a7:a8:29:12"; } // legacyDNS) # PlayStation 4
+              ({ hw-address = "d4:3d:39:84:60:32"; } // legacyDNS) # Level Connect
+              ({ hw-address = "d4:3d:39:7a:ad:5c"; } // legacyDNS) #   ″      ″
               ({ hw-address = "60:3e:5f:67:56:4d"; } // legacyDNS)
               ({ hw-address = "20:6e:f1:ad:29:b4"; } // legacyDNS) # Tailwind iQ3
               ({ hw-address = "98:ba:5f:11:08:56"; } // legacyDNS) # TP-Link Deco
