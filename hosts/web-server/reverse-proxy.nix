@@ -16,10 +16,10 @@
     acceptTerms = true;
     certs = {
       "${config.services.foundryvtt.hostName}" = {
-        credentialsFile = "/run/secrets/linode";
         dnsProvider = "linodev4";
         domain = config.services.foundryvtt.hostName;
         email = "randy@largeandhighquality.com";
+        environmentFile = "/run/secrets/linode";
         group = config.users.groups.acme-certs.name;
         postRun = "systemctl restart caddy";
       };

@@ -12,9 +12,9 @@
       };
     };
     defaults = {
-      credentialsFile = "/run/secrets/linode";
       dnsProvider = "linodev4";
       email = "randy@largeandhighquality.com";
+      environmentFile = "/run/secrets/linode";
       group = config.users.groups.acme-certs.name;
     };
   };
