@@ -18,8 +18,6 @@
 
   boot.initrd.systemd.enable = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_hardened;
-
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 5;
