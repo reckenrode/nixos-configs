@@ -49,12 +49,12 @@ in
   home-manager.users = {
     inherit (inputs.self.hmModules) reckenrode;
   };
+
   nixpkgs.config.allowUnfreePredicate =
     pkg:
     builtins.elem (lib.getName pkg) [
       "1password"
       "1password-cli"
-      "vscode"
     ];
 
   networking.hostName = "josette";
@@ -129,7 +129,7 @@ in
 
   programs._1password-gui = {
     enable = true;
-    package = nonfree-unstable._1password-gui;
+    package = nonfree-unstable._1password-gui-beta;
   };
 
   programs = {
