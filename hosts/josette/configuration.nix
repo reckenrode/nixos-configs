@@ -129,7 +129,7 @@ in
 
   programs._1password-gui = {
     enable = true;
-    package = nonfree-unstable._1password-gui-beta;
+    package = nonfree-unstable._1password-gui;
   };
 
   programs = {
