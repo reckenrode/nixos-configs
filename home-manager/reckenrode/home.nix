@@ -79,7 +79,7 @@
       in
       {
         "github.com" = {
-          IdentityAgent = secretive;
+          IdentityAgent = _1password;
         };
         "largeandhighquality.com" = {
           Port = 562;
