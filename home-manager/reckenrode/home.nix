@@ -4,6 +4,7 @@
   lib,
   pkgs,
   inputs,
+  config,
   ...
 }:
 
@@ -73,8 +74,8 @@
     enableDefaultConfig = false;
     settings =
       let
-        secretive = "~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh";
-        _1password = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
+        secretive = "${config.home.homeDirectory}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh";
+        _1password = "\"${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
       in
       {
         "github.com" = {
