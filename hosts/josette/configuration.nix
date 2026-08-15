@@ -61,7 +61,7 @@ in
 
   environment.etc."ssh/ssh_config.d/101-linux-builder.conf".text = ''
     Match User builder Host meteion.infra.largeandhighquality.com
-      IdentityAgent ${config.users.users.reckenrode.home}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+      IdentityAgent "${config.users.users.reckenrode.home}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
       Port 562
   '';
 

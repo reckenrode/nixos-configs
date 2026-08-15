@@ -97,8 +97,7 @@
     description = "Remote Build User";
     isNormalUser = true;
     openssh.authorizedKeys.keys = [
-      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBB5nhmWs2pX0S8S2OQU9Eai9f6O7zHcFRGCBlgf+C/SiOgHEeHdojSXLOguJ2kDsR3GUMaI69vfmJ93FPapcQjc="
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINBFYJbdgZnKjzvOrUqsSjco2iwwJb50UwTnhEJvoybh"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC4tyLMYbXgSoL7ijv0O7/dz6XwAsnHGEdVY1igU5T0s"
     ];
   };
 
@@ -113,7 +112,7 @@
     ];
 
     openssh.authorizedKeys.keys = [
-      "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOnacmxOzH6dRpX6Y+scSn3hkNi6DBFi5/ltIOr85FBk9gs3e6u0zsSlfbgQ8Wl+OvBku1U3jjjYvjKAkrsgBgs="
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGguVTMbggjvHvKes/BKkDT54np8oPgVYm7VnyTe9lH6"
     ];
   };
 
