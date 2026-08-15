@@ -94,7 +94,7 @@
   users.mutableUsers = false;
 
   users.users.builder = {
-    description = "Remove Build User";
+    description = "Remote Build User";
     isNormalUser = true;
     openssh.authorizedKeys.keys = [
       "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBB5nhmWs2pX0S8S2OQU9Eai9f6O7zHcFRGCBlgf+C/SiOgHEeHdojSXLOguJ2kDsR3GUMaI69vfmJ93FPapcQjc="
