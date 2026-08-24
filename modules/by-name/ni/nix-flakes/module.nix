@@ -1,3 +1,6 @@
 # SPDX-License-Identifier: MIT
 
-{ nix.extraOptions = "experimental-features = nix-command flakes"; }
+{
+  nix.channel.enable = false;
+  nix.extraOptions = "experimental-features = nix-command flakes";
+}
