@@ -95,6 +95,7 @@ in
               ({ hw-address = "98:ba:5f:11:08:56"; } // legacyDNS) # TP-Link Deco
               ({ hw-address = "98:ba:5f:11:08:7a"; } // legacyDNS) #    ″     ″
               ({ hw-address = "98:ba:5f:11:09:16"; } // legacyDNS) #    ″     ″
+              ({ hw-address = "70:ee:50:b9:a6:22"; } // legacyDNS) # VELUX App Control
             ];
           }
         ];
