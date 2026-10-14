@@ -2,11 +2,12 @@
 
 let
   pkgs = inputs.nixpkgs-unstable.legacyPackages.${args.pkgs.stdenv.hostPlatform.system};
+  lixPackageSet = pkgs.lixPackageSets.lix_2_96;
 in
 {
   nixpkgs.overlays = [
     (final: prev: {
-      inherit (pkgs.lixPackageSets.latest)
+      inherit (lixPackageSet)
         nixpkgs-review
         nix-eval-jobs
         nix-fast-build
@@ -16,5 +17,5 @@ in
     })
   ];
 
-  nix.package = pkgs.lixPackageSets.latest.lix;
+  nix.package = lixPackageSet.lix;
 }
